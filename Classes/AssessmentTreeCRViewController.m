@@ -12,7 +12,7 @@
 
 @implementation AssessmentTreeCRViewController
 
-@synthesize whichId, managedObjectContext, conditionStringArray, recommendationStringArray, conditionArray, recommendationArray, tree, isEditing;
+@synthesize whichId, managedObjectContext, conditionStringArray, recommendationStringArray, conditionArray, recommendationArray, tree, isEditing, conditionTableView, recommendationTableView;
 
 -(id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
     if (self = [super initWithNibName:@"AssessmentTreeCRView" bundle:[NSBundle mainBundle]]){
@@ -243,96 +243,105 @@
     [sortDescriptors release];
     conditionArray = [[NSMutableArray alloc] initWithArray:cArray];
     recommendationArray = [[NSMutableArray alloc] initWithArray:rArray];
-    [conditionPicker selectRow:selectedConditionIndex inComponent:0 animated:YES];
-    [recommendationPicker selectRow:selectedRecommendationIndex inComponent:0 animated:YES];
-    [self pickerView:conditionPicker didSelectRow:selectedConditionIndex inComponent:0];
-    [self pickerView:recommendationPicker didSelectRow:selectedRecommendationIndex inComponent:0];
+
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // There is only one section.
+    return 1;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    //return number of rows for each tableview
+	if (tableView == self.conditionTableView) {
+        return [conditionArray count];
+    } else if (tableView == self.recommendationTableView) {
+        return [recommendationArray count];
+    } else {
+        // shouldn't get here
+		return 0;
+    }
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	//Grab the recommendations and conditions from the arrays and populate the tableviews
+    UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CR"] autorelease];
+	if (tableView == self.conditionTableView) {
+		cell.textLabel.text = [conditionStringArray objectAtIndex:indexPath.row];
+    } else if (tableView == self.recommendationTableView) {
+        cell.textLabel.text = [recommendationStringArray objectAtIndex:indexPath.row];
+	}    
+    return cell;
+}
 
 -(IBAction)segmentSwitch:(id)sender {
     //switch between the views for condition and recommendation
     UISegmentedControl *segmentedButton = (UISegmentedControl *) sender;
     if (segmentedButton.selectedSegmentIndex == 0) {
-        [conditionView setHidden:NO];
-        [recommendationView setHidden:YES];
+        [conditionTableView setHidden:NO];
+        [recommendationTableView setHidden:YES];
     } else {
-        [conditionView setHidden:YES];
-        [recommendationView setHidden:NO];
+        [conditionTableView setHidden:YES];
+        [recommendationTableView setHidden:NO];
     }
 }
 
 -(IBAction)addCondition {
     //adds a new condition record
     isEditing = NO;
-    [conditionField setHidden:NO];
-    [conditionSaveButton setHidden:NO];
-    conditionSaveButton.titleLabel.text = @"Add";
-    [conditionField becomeFirstResponder];
+
 }
 -(IBAction)addRecommendation {
     //adds a new recommendation record
     isEditing = NO;
-    [recommendationField setHidden:NO];
-    [recommendationSaveButton setHidden:NO];
-    recommendationSaveButton.titleLabel.text = @"Add";
-    [recommendationField becomeFirstResponder];
 }
 -(IBAction)editCondition {
     //edit existing condition record
     isEditing = YES;
-    [conditionField setHidden: NO];
-    [conditionSaveButton setHidden: NO];
-    conditionSaveButton.titleLabel.text = @"Edit";
-    conditionField.text = [conditionStringArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-    [conditionField becomeFirstResponder];
 }
 -(IBAction)editRecommendation {
     //edit existing recommendation record
     isEditing = YES;
-    [recommendationField setHidden: NO];
-    [recommendationSaveButton setHidden: NO];
-    recommendationSaveButton.titleLabel.text = @"Edit";
-    recommendationField.text = [recommendationStringArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-    [recommendationField becomeFirstResponder];
 }
 -(IBAction)deleteCondition {
     //delete a condition record
     switch ([whichId intValue]) {
         case 1:
         {
-            TreeFormCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-            [managedObjectContext deleteObject:item];
+            //TreeFormCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
+            //[managedObjectContext deleteObject:item];
             break;
         }
         case 2:
         {
-            TreeCrownCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-            [managedObjectContext deleteObject:item];
+            //TreeCrownCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
+            //[managedObjectContext deleteObject:item];
             break;
         }
         case 3:
         {
-            TreeTrunkCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-            [managedObjectContext deleteObject:item];
+            //TreeTrunkCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
+            //[managedObjectContext deleteObject:item];
             break;
         }
         case 4:
         {
-            TreeRootFlareCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-            [managedObjectContext deleteObject:item];
+            //TreeRootFlareCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
+            //[managedObjectContext deleteObject:item];
             break;
         }
         case 5:
         {
-            TreeRootsCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-            [managedObjectContext deleteObject:item];
+            //TreeRootsCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
+            //[managedObjectContext deleteObject:item];
             break;
         }
         case 6:
         {
-            TreeOverallCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-            [managedObjectContext deleteObject:item];
+            //TreeOverallCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
+            //[managedObjectContext deleteObject:item];
             break;
         }
         default:
@@ -343,47 +352,46 @@
     if (![managedObjectContext save:&error]) {
        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
-    [conditionStringArray removeObjectAtIndex:[conditionPicker selectedRowInComponent:0]];
-	[conditionArray removeObjectAtIndex:[conditionPicker selectedRowInComponent:0]];
-    [conditionPicker reloadComponent:0];
+    //[conditionStringArray removeObjectAtIndex:[conditionPicker selectedRowInComponent:0]];
+	//[conditionArray removeObjectAtIndex:[conditionPicker selectedRowInComponent:0]];
 }
 -(IBAction)deleteRecommendation {
     //delete a recommendation entry
     switch ([whichId intValue]) {
         case 1:
         {
-            TreeFormRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-            [managedObjectContext deleteObject:item];
+            //TreeFormRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
+            //[managedObjectContext deleteObject:item];
             break;
         }
         case 2:
         {
-            TreeCrownRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-            [managedObjectContext deleteObject:item];
+            //TreeCrownRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
+            //[managedObjectContext deleteObject:item];
             break;
         }
         case 3:
         {
-            TreeTrunkRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-            [managedObjectContext deleteObject:item];
+            //TreeTrunkRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
+            //[managedObjectContext deleteObject:item];
             break;
         }
         case 4:
         {
-            TreeRootFlareRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-            [managedObjectContext deleteObject:item];
+            //TreeRootFlareRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
+            //[managedObjectContext deleteObject:item];
             break;
         }
         case 5:
         {
-            TreeRootsRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-            [managedObjectContext deleteObject:item];
+            //TreeRootsRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
+            //[managedObjectContext deleteObject:item];
             break;
         }
         case 6:
         {
-            TreeOverallRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-            [managedObjectContext deleteObject:item];
+            //TreeOverallRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
+            //[managedObjectContext deleteObject:item];
             break;
         }
         default:
@@ -393,154 +401,9 @@
     if (![managedObjectContext save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
-    [recommendationStringArray removeObjectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-    [recommendationArray removeObjectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-	[recommendationPicker reloadComponent:0];
-}
--(IBAction)conditionSaveButtonClick {
-    //add new or edit existing condition
-    [conditionField setHidden: YES];
-    [conditionSaveButton setHidden: YES];
-    if (isEditing) {
-        [self deleteCondition];
-    }
-    [conditionField resignFirstResponder];
-    switch ([whichId intValue]) {
-        case 1:
-        {
-            TreeFormCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeFormCondition" inManagedObjectContext:managedObjectContext];
-            item.name = [conditionField text];
-            [conditionArray addObject:item];
-            tree.form.condition = item;
-            break;
-        }
-        case 2:
-        {
-            TreeCrownCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeCrownCondition" inManagedObjectContext:managedObjectContext];
-            item.name = [conditionField text];
-            [conditionArray addObject:item];
-            tree.crown.condition = item;
-            break;
-        }
-        case 3:
-        {
-            TreeTrunkCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeTrunkCondition" inManagedObjectContext:managedObjectContext];
-            item.name = [conditionField text];
-            [conditionArray addObject:item];
-            tree.trunk.condition = item;
-            break;
-        }
-        case 4:
-        {
-            TreeRootFlareCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootFlareCondition" inManagedObjectContext:managedObjectContext];
-            item.name = [conditionField text];
-            [conditionArray addObject:item];
-            tree.rootflare.condition = item;
-            break;
-        }
-        case 5:
-        {
-            TreeRootsCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootsCondition" inManagedObjectContext:managedObjectContext];
-            item.name = [conditionField text];
-            [conditionArray addObject:item];
-            tree.roots.condition = item;
-            break;
-        }
-        case 6:
-        {
-            TreeOverallCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeOverallCondition" inManagedObjectContext:managedObjectContext];
-            item.name = [conditionField text];
-            [conditionArray addObject:item];
-            tree.overall.condition = item;
-            break;
-        }
-        default:
-            break;
-    }
-    NSError *error;
-    if (![managedObjectContext save:&error]) {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
-    [conditionStringArray addObject:[conditionField text]];
-    [conditionPicker reloadComponent:0];
-    conditionField.text = @"";
-    [conditionPicker selectRow:[conditionArray count] - 1 inComponent:0 animated:YES];
-}
--(IBAction)recommendationSaveButtonClick {
-    //save new or edit existing recommendation
-    [recommendationField setHidden: YES];
-    [recommendationSaveButton setHidden: YES];
-    if (isEditing) {
-        [self deleteRecommendation];
-    }
-    [recommendationField resignFirstResponder];
-    switch ([whichId intValue]) {
-        case 1:
-        {
-            TreeFormRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeFormRecommendation" inManagedObjectContext:managedObjectContext];
-            item.name = [recommendationField text];
-            [recommendationArray addObject:item];
-            tree.form.recommendation = item;
-            break;
-        }
-        case 2:
-        {
-            TreeCrownRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeCrownRecommendation" inManagedObjectContext:managedObjectContext];
-            item.name = [recommendationField text];
-            [recommendationArray addObject:item];
-            tree.crown.recommendation = item;
-            break;
-        }
-        case 3:
-        {
-            TreeTrunkRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeTrunkRecommendation" inManagedObjectContext:managedObjectContext];
-            item.name = [recommendationField text];
-            [recommendationArray addObject:item];
-            tree.trunk.recommendation = item;
-            break;
-        }
-        case 4:
-        {
-            TreeRootFlareRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootFlareRecommendation" inManagedObjectContext:managedObjectContext];
-            item.name = [recommendationField text];
-            [recommendationArray addObject:item];
-            tree.rootflare.recommendation = item;
-            break;
-        }
-        case 5:
-        {
-            TreeRootsRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootsRecommendation" inManagedObjectContext:managedObjectContext];
-            item.name = [recommendationField text];
-            [recommendationArray addObject:item];
-            tree.roots.recommendation = item;
-            break;
-        }
-        case 6:
-        {
-            TreeOverallRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeOverallRecommendation" inManagedObjectContext:managedObjectContext];
-            item.name = [recommendationField text];
-            [recommendationArray addObject:item];
-            tree.overall.recommendation = item;
-            break;
-        }
-        default:
-            break;
-    }
-    NSError *error;
-    if (![managedObjectContext save:&error]) {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
-    
-    [recommendationStringArray addObject:[recommendationField text]];
-    [recommendationPicker reloadComponent:0];
-    recommendationField.text = @"";
-    [recommendationPicker selectRow:[recommendationStringArray count] - 1 inComponent:0 animated:YES];
-}
--(IBAction)conditionTypingFinished {
-    [conditionField resignFirstResponder];
-}
--(IBAction)recommendationTypingFinished {
-    [recommendationField resignFirstResponder];
+    //[recommendationStringArray removeObjectAtIndex:[recommendationPicker selectedRowInComponent:0]];
+    //[recommendationArray removeObjectAtIndex:[recommendationPicker selectedRowInComponent:0]];
+	//[recommendationPicker reloadComponent:0];
 }
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -564,7 +427,7 @@
 }
 */
 
-
+/* old picker view stuff for reference
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
     //we only have one component in each picker
     return 1;
@@ -676,7 +539,7 @@
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
 }
-
+*/
 -(IBAction)photoButtonClick:(id)sender {
     //user clicked photo button
     UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Photos" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Add Existing", @"View Photos", nil];
@@ -704,7 +567,7 @@
             case 1:
             {
                 NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:@"TreeForm", @"entity", [tree.form objectID] , @"objectID", nil];
-                NSLog(@"CONDITION: %@", [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]]);
+               // NSLog(@"CONDITION: %@", [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]]);
                 [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Photos"] applyQuery:query] applyAnimated:YES]];
                 break;
             }
@@ -832,8 +695,6 @@
 
 - (void)viewDidUnload {
     [super viewDidUnload];
-    [conditionView release];
-    [recommendationView release];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }

@@ -165,7 +165,6 @@
 			treeOverallRecommendation.name = [option stringValue];
 		}
 		
-		
 		TreeForm *treeForm = [NSEntityDescription insertNewObjectForEntityForName:@"TreeForm" inManagedObjectContext:managedObjectContext];
 		assessmentTree.form = treeForm;
 		TreeCrown *treeCrown = [NSEntityDescription insertNewObjectForEntityForName:@"TreeCrown" inManagedObjectContext:managedObjectContext];
