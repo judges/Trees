@@ -1,0 +1,127 @@
+<treeoptions>
+	<form>
+		<condition>
+			<option>Correct</option>
+			<option>Thin</option>
+			<option>Overgrown</option>
+			<option>Crowded</option>
+			<option>Crowding</option>
+		</condition>
+		<recommendation>
+			<option>No action</option>
+			<option>Monitor</option>
+			<option>Remove deadwood</option>
+			<option>Prune</option>
+			<option>Prune adjacent vegetation</option>
+			<option>Thin canopy cover</option>
+			<option>Contact Arborist</option>
+		</recommendation>
+	</form>
+	<crown>
+		<condition>
+			<option>Bleeding</option>
+			<option>Canker</option>
+			<option>Cavity</option>
+			<option>Codominants/forks</option>
+			<option>Conks/mushrooms</option>
+			<option>Cracks/splits</option>
+			<option>Deadwood</option>
+			<option>Decay</option>
+			<option>Disease</option>
+			<option>Excessive end weight</option>
+			<option>Fruit/Flower - low production</option>
+			<option>Gall</option>
+			<option>Girdling</option>
+			<option>Hangers</option>
+			<option>Insect</option>
+			<option>Multi attachment</option>
+			<option>Nest hole/bee hive</option>
+			<option>Poor taper</option>
+			<option>Stumps</option>
+			<option>Wound</option>
+		</condition>
+		<recommendation>
+			<option>No action</option>
+			<option>Monitor</option>
+			<option>Prune</option>
+			<option>Install support</option>
+			<option>IPM application</option>
+			<option>Fertilize</option>
+			<option>Contact Arborist</option>
+		</recommendation>
+	</crown>
+	<trunk>
+		<condition>
+			<option>Cavity</option>
+			<option>Conk</option>
+			<option>Crack</option>
+			<option>Disease</option>
+			<option>Fire injury</option>
+			<option>Insects</option>
+			<option>Mechanical injury</option>
+			<option>Mushrooms</option>
+			<option>Sunken area</option>
+			<option>Swollen area</option>
+		</condition>
+		<recommendation>
+			<option>No action</option>
+			<option>Monitor</option>
+			<option>Contact Arborist</option>
+		</recommendation>
+	</trunk>
+	<rootflare>
+		<condition>
+			<option>Good</option>
+			<option>Collar/Flare</option>
+			<option>Root Anchorage</option>
+			<option>Mechanical Injury</option>
+			<option>Presence of insect/disease</option>
+			<option>Girdling/Kinked Roots</option>
+		</condition>
+		<recommendation>
+			<option>No action</option>
+			<option>Monitor</option>
+			<option>Soil amendment</option>
+			<option>IPM application</option>
+			<option>Contact Arborist</option>
+		</recommendation>
+	</rootflare>
+	<roots>
+		<condition>
+			<option>Compaction</option>
+			<option>Conks/Mushrooms</option>
+			<option>Disease</option>
+			<option>Erosion</option>
+			<option>Insects</option>
+			<option>Rot</option>
+			<option>Severed roots</option>
+			<option>Surface damage</option>
+		</condition>
+		<recommendation>
+			<option>No action</option>
+			<option>Monitor</option>
+			<option>Aeration</option>
+			<option>Amend soil</option>
+			<option>IPM application</option>
+			<option>Prune roots</option>
+			<option>Mulch</option>
+			<option>Contact Arborist</option>
+		</recommendation>
+	</roots>
+	<overall>
+		<condition>
+			<option>Excellent</option>
+			<option>Good</option>
+			<option>Fair</option>
+			<option>Poor</option>
+			<option>Dead</option>
+		</condition>
+		<recommendation>
+			<option>No action</option>
+			<option>Monitor</option>
+			<option>Remove</option>
+			<option>Remove/replace</option>
+			<option>Contact arborist</option>
+		</recommendation>
+	</overall>
+</treeoptions>

@@ -35,6 +35,7 @@
 #import "TreeTrunkRecommendation.h"
 #import "Image.h"
 #import "Photo.h"
+#import "DDXML.h"
 
 @interface AssessmentTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
     UIActionSheet *typeActionSheet;

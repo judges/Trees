@@ -128,6 +128,7 @@
 		208B3DD112C02B1500D8FA03 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B3DCB12C02B1500D8FA03 /* DDXMLElementAdditions.m */; };
 		208B3DD212C02B1500D8FA03 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B3DCD12C02B1500D8FA03 /* DDXMLNode.m */; };
 		208B3DD512C02B5B00D8FA03 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B3DD412C02B5B00D8FA03 /* NSStringAdditions.m */; };
+		20AC3F4512C10B9300BC4C12 /* TreeOptions.xml in Resources */ = {isa = PBXBuildFile; fileRef = 20AC3F4412C10B9300BC4C12 /* TreeOptions.xml */; };
 		2819307D112F81BE00ECF9B4 /* Trees.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2819307C112F81BE00ECF9B4 /* Trees.xcdatamodeld */; };
 		2860E38A111B897F00E27156 /* AppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E388111B897F00E27156 /* AppDelegate_iPhone.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
@@ -689,6 +690,7 @@
 		208B3DCE12C02B1500D8FA03 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDXMLPrivate.h; path = Classes/DDXMLPrivate.h; sourceTree = SOURCE_ROOT; };
 		208B3DD312C02B5B00D8FA03 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSStringAdditions.h; path = Classes/NSStringAdditions.h; sourceTree = SOURCE_ROOT; };
 		208B3DD412C02B5B00D8FA03 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSStringAdditions.m; path = Classes/NSStringAdditions.m; sourceTree = SOURCE_ROOT; };
+		20AC3F4412C10B9300BC4C12 /* TreeOptions.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TreeOptions.xml; sourceTree = "<group>"; };
 		2860E387111B897F00E27156 /* AppDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_iPhone.h; sourceTree = "<group>"; };
 		2860E388111B897F00E27156 /* AppDelegate_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_iPhone.m; sourceTree = "<group>"; };
 		2870939E111907710040F596 /* Trees.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Trees.xcdatamodel; sourceTree = "<group>"; };
@@ -785,8 +787,6 @@
 		208B329312BFE27A00D8FA03 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				208B3DB412C02B0100D8FA03 /* KissXML */,
-				208B3C2612C01B6B00D8FA03 /* HTTPRequest */,
 				208B329412BFE27A00D8FA03 /* Models */,
 				208B32DB12BFE27B00D8FA03 /* Views */,
 				208B32CA12BFE27B00D8FA03 /* Controllers */,
@@ -922,6 +922,7 @@
 		208B32FF12BFE2D200D8FA03 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				20AC3F4412C10B9300BC4C12 /* TreeOptions.xml */,
 				320B6C86F11D9990244A9730 /* Three20.bundle */,
 				208B330112BFE2D200D8FA03 /* AssessmentTreeCRView.xib */,
 				208B330212BFE2D200D8FA03 /* AssessmentTreeViewAndInput.xib */,
@@ -1008,6 +1009,7 @@
 				208B3C6412C01B8300D8FA03 /* ASIWebPageRequest.m */,
 			);
 			name = HTTPRequest;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		208B3DB412C02B0100D8FA03 /* KissXML */ = {
@@ -1027,6 +1029,7 @@
 				208B3DD412C02B5B00D8FA03 /* NSStringAdditions.m */,
 			);
 			name = KissXML;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		2860E386111B897F00E27156 /* iPhone */ = {
@@ -1055,6 +1058,8 @@
 			children = (
 				149BF39912BFB20D000E27DB /* license.txt */,
 				208B329112BFE25D00D8FA03 /* ReadMe.txt */,
+				208B3C2612C01B6B00D8FA03 /* HTTPRequest */,
+				208B3DB412C02B0100D8FA03 /* KissXML */,
 				208B32FF12BFE2D200D8FA03 /* Resources */,
 				208B329312BFE27A00D8FA03 /* Classes */,
 				208B325412BFE24A00D8FA03 /* images */,
@@ -1624,6 +1629,7 @@
 				208B330912BFE2D200D8FA03 /* AssessmentTreeViewAndInput.xib in Resources */,
 				208B330A12BFE2D200D8FA03 /* AssessmentTableView.xib in Resources */,
 				208B330B12BFE2D200D8FA03 /* AssessmentTableViewCell.xib in Resources */,
+				20AC3F4512C10B9300BC4C12 /* TreeOptions.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
