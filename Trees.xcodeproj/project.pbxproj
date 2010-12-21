@@ -123,11 +123,15 @@
 		208B3CCC12C01C4A00D8FA03 /* libxml2.2.7.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 208B3CCB12C01C4A00D8FA03 /* libxml2.2.7.3.dylib */; };
 		208B3D5A12C0257100D8FA03 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B3D5912C0257100D8FA03 /* Reachability.m */; };
 		208B3DAD12C026A000D8FA03 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 208B3DAC12C026A000D8FA03 /* libz.1.1.3.dylib */; };
+		208B3DCF12C02B1500D8FA03 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B3DC712C02B1500D8FA03 /* DDXMLDocument.m */; };
+		208B3DD012C02B1500D8FA03 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B3DC912C02B1500D8FA03 /* DDXMLElement.m */; };
+		208B3DD112C02B1500D8FA03 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B3DCB12C02B1500D8FA03 /* DDXMLElementAdditions.m */; };
+		208B3DD212C02B1500D8FA03 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B3DCD12C02B1500D8FA03 /* DDXMLNode.m */; };
+		208B3DD512C02B5B00D8FA03 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B3DD412C02B5B00D8FA03 /* NSStringAdditions.m */; };
 		2819307D112F81BE00ECF9B4 /* Trees.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2819307C112F81BE00ECF9B4 /* Trees.xcdatamodeld */; };
 		2860E38A111B897F00E27156 /* AppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E388111B897F00E27156 /* AppDelegate_iPhone.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28EEBFDD1118E19E00187D67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EEBFDC1118E19E00187D67 /* CoreData.framework */; };
-		3200DAD79397D7CA33CB8495 /* libextThree20XML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3200DAD79397D7CA33CB8494 /* libextThree20XML.a */; };
 		3201088596B4756681693705 /* libThree20UICommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3201088596B4756681693704 /* libThree20UICommon.a */; };
 		320A2827FEC940B25BC42C65 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A2827FEC940B25BC42C64 /* libThree20Core.a */; };
 		320A5A189C235877202780D5 /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A5A189C235877202780D4 /* libThree20Network.a */; };
@@ -383,55 +387,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 66FE8C0F1264DBC3001E0674;
 			remoteInfo = "Three20UINavigatorUnitTests-Xcode3.2.2";
-		};
-		208B3B1A12C0142D00D8FA03 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3200DAD79397D7CA33CB8490 /* extThree20XML.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 66C34C99126625E000489E9A;
-			remoteInfo = "extThree20XML-Xcode3.2.5";
-		};
-		208B3B1C12C0142D00D8FA03 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3200DAD79397D7CA33CB8490 /* extThree20XML.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 66D90FE512662690009AFDE6;
-			remoteInfo = "extThree20XML-Xcode3.2.2";
-		};
-		208B3B1E12C0142D00D8FA03 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3200DAD79397D7CA33CB8490 /* extThree20XML.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
-			remoteInfo = extThree20XMLUnitTests;
-		};
-		208B3B2012C0142D00D8FA03 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3200DAD79397D7CA33CB8490 /* extThree20XML.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 66C34CAF126625E000489E9A;
-			remoteInfo = "extThree20XMLUnitTests-Xcode3.2.5";
-		};
-		208B3B2212C0142D00D8FA03 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3200DAD79397D7CA33CB8490 /* extThree20XML.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 66D90FFA12662690009AFDE6;
-			remoteInfo = "extThree20XMLUnitTests-Xcode3.2.2";
-		};
-		3200DAD79397D7CA33CB8492 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3200DAD79397D7CA33CB8490 /* extThree20XML.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
-			remoteInfo = extThree20XML;
-		};
-		3200DAD79397D7CA33CB8496 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3200DAD79397D7CA33CB8490 /* extThree20XML.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
-			remoteInfo = extThree20XML;
 		};
 		3201088596B4756681693702 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -722,13 +677,24 @@
 		208B3D5812C0257100D8FA03 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Reachability/Reachability.h; sourceTree = SOURCE_ROOT; };
 		208B3D5912C0257100D8FA03 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Reachability/Reachability.m; sourceTree = SOURCE_ROOT; };
 		208B3DAC12C026A000D8FA03 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		208B3DC512C02B1500D8FA03 /* DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDXML.h; path = Classes/DDXML.h; sourceTree = SOURCE_ROOT; };
+		208B3DC612C02B1500D8FA03 /* DDXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDXMLDocument.h; path = Classes/DDXMLDocument.h; sourceTree = SOURCE_ROOT; };
+		208B3DC712C02B1500D8FA03 /* DDXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDXMLDocument.m; path = Classes/DDXMLDocument.m; sourceTree = SOURCE_ROOT; };
+		208B3DC812C02B1500D8FA03 /* DDXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDXMLElement.h; path = Classes/DDXMLElement.h; sourceTree = SOURCE_ROOT; };
+		208B3DC912C02B1500D8FA03 /* DDXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDXMLElement.m; path = Classes/DDXMLElement.m; sourceTree = SOURCE_ROOT; };
+		208B3DCA12C02B1500D8FA03 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDXMLElementAdditions.h; path = Classes/DDXMLElementAdditions.h; sourceTree = SOURCE_ROOT; };
+		208B3DCB12C02B1500D8FA03 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDXMLElementAdditions.m; path = Classes/DDXMLElementAdditions.m; sourceTree = SOURCE_ROOT; };
+		208B3DCC12C02B1500D8FA03 /* DDXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDXMLNode.h; path = Classes/DDXMLNode.h; sourceTree = SOURCE_ROOT; };
+		208B3DCD12C02B1500D8FA03 /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDXMLNode.m; path = Classes/DDXMLNode.m; sourceTree = SOURCE_ROOT; };
+		208B3DCE12C02B1500D8FA03 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDXMLPrivate.h; path = Classes/DDXMLPrivate.h; sourceTree = SOURCE_ROOT; };
+		208B3DD312C02B5B00D8FA03 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSStringAdditions.h; path = Classes/NSStringAdditions.h; sourceTree = SOURCE_ROOT; };
+		208B3DD412C02B5B00D8FA03 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSStringAdditions.m; path = Classes/NSStringAdditions.m; sourceTree = SOURCE_ROOT; };
 		2860E387111B897F00E27156 /* AppDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_iPhone.h; sourceTree = "<group>"; };
 		2860E388111B897F00E27156 /* AppDelegate_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_iPhone.m; sourceTree = "<group>"; };
 		2870939E111907710040F596 /* Trees.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Trees.xcdatamodel; sourceTree = "<group>"; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28EEBFDC1118E19E00187D67 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
-		3200DAD79397D7CA33CB8490 /* extThree20XML.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extThree20XML.xcodeproj; path = ../Three20/src/extThree20XML/extThree20XML.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3201088596B4756681693700 /* Three20UICommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UICommon.xcodeproj; path = ../Three20/src/Three20UICommon/Three20UICommon.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Core.xcodeproj; path = ../Three20/src/Three20Core/Three20Core.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320A5A189C235877202780D0 /* Three20Network.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Network.xcodeproj; path = ../Three20/src/Three20Network/Three20Network.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -746,7 +712,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3200DAD79397D7CA33CB8495 /* libextThree20XML.a in Frameworks */,
 				3201088596B4756681693705 /* libThree20UICommon.a in Frameworks */,
 				320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */,
 				320A737074758E53BA54BE95 /* libThree20UINavigator.a in Frameworks */,
@@ -820,6 +785,7 @@
 		208B329312BFE27A00D8FA03 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				208B3DB412C02B0100D8FA03 /* KissXML */,
 				208B3C2612C01B6B00D8FA03 /* HTTPRequest */,
 				208B329412BFE27A00D8FA03 /* Models */,
 				208B32DB12BFE27B00D8FA03 /* Views */,
@@ -1044,6 +1010,25 @@
 			name = HTTPRequest;
 			sourceTree = "<group>";
 		};
+		208B3DB412C02B0100D8FA03 /* KissXML */ = {
+			isa = PBXGroup;
+			children = (
+				208B3DC512C02B1500D8FA03 /* DDXML.h */,
+				208B3DC612C02B1500D8FA03 /* DDXMLDocument.h */,
+				208B3DC712C02B1500D8FA03 /* DDXMLDocument.m */,
+				208B3DC812C02B1500D8FA03 /* DDXMLElement.h */,
+				208B3DC912C02B1500D8FA03 /* DDXMLElement.m */,
+				208B3DCA12C02B1500D8FA03 /* DDXMLElementAdditions.h */,
+				208B3DCB12C02B1500D8FA03 /* DDXMLElementAdditions.m */,
+				208B3DCC12C02B1500D8FA03 /* DDXMLNode.h */,
+				208B3DCD12C02B1500D8FA03 /* DDXMLNode.m */,
+				208B3DCE12C02B1500D8FA03 /* DDXMLPrivate.h */,
+				208B3DD312C02B5B00D8FA03 /* NSStringAdditions.h */,
+				208B3DD412C02B5B00D8FA03 /* NSStringAdditions.m */,
+			);
+			name = KissXML;
+			sourceTree = "<group>";
+		};
 		2860E386111B897F00E27156 /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
@@ -1106,7 +1091,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3200DAD79397D7CA33CB8490 /* extThree20XML.xcodeproj */,
 				3201088596B4756681693700 /* Three20UICommon.xcodeproj */,
 				320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */,
 				320A737074758E53BA54BE90 /* Three20UINavigator.xcodeproj */,
@@ -1127,19 +1111,6 @@
 				208B3DAC12C026A000D8FA03 /* libz.1.1.3.dylib */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3200DAD79397D7CA33CB8493 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3200DAD79397D7CA33CB8494 /* libextThree20XML.a */,
-				208B3B1B12C0142D00D8FA03 /* libextThree20XML-Xcode3.2.5.a */,
-				208B3B1D12C0142D00D8FA03 /* libextThree20XML-Xcode3.2.2.a */,
-				208B3B1F12C0142D00D8FA03 /* extJSONUnitTests.octest */,
-				208B3B2112C0142D00D8FA03 /* extJSONUnitTests-Xcode3.2.5.octest */,
-				208B3B2312C0142D00D8FA03 /* extJSONUnitTests-Xcode3.2.2.octest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		3201088596B4756681693703 /* Products */ = {
@@ -1247,7 +1218,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				3200DAD79397D7CA33CB8491 /* PBXTargetDependency */,
 				3201088596B4756681693701 /* PBXTargetDependency */,
 				320D7DCCE32703ACAB9A45E1 /* PBXTargetDependency */,
 				320A737074758E53BA54BE91 /* PBXTargetDependency */,
@@ -1279,10 +1249,6 @@
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectReferences = (
-				{
-					ProductGroup = 3200DAD79397D7CA33CB8493 /* Products */;
-					ProjectRef = 3200DAD79397D7CA33CB8490 /* extThree20XML.xcodeproj */;
-				},
 				{
 					ProductGroup = 320D7DCCE32703ACAB9A45E3 /* Products */;
 					ProjectRef = 320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */;
@@ -1565,48 +1531,6 @@
 			remoteRef = 208B3AC712C0137200D8FA03 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		208B3B1B12C0142D00D8FA03 /* libextThree20XML-Xcode3.2.5.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libextThree20XML-Xcode3.2.5.a";
-			remoteRef = 208B3B1A12C0142D00D8FA03 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		208B3B1D12C0142D00D8FA03 /* libextThree20XML-Xcode3.2.2.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libextThree20XML-Xcode3.2.2.a";
-			remoteRef = 208B3B1C12C0142D00D8FA03 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		208B3B1F12C0142D00D8FA03 /* extJSONUnitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = extJSONUnitTests.octest;
-			remoteRef = 208B3B1E12C0142D00D8FA03 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		208B3B2112C0142D00D8FA03 /* extJSONUnitTests-Xcode3.2.5.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "extJSONUnitTests-Xcode3.2.5.octest";
-			remoteRef = 208B3B2012C0142D00D8FA03 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		208B3B2312C0142D00D8FA03 /* extJSONUnitTests-Xcode3.2.2.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "extJSONUnitTests-Xcode3.2.2.octest";
-			remoteRef = 208B3B2212C0142D00D8FA03 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3200DAD79397D7CA33CB8494 /* libextThree20XML.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libextThree20XML.a;
-			remoteRef = 3200DAD79397D7CA33CB8496 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		3201088596B4756681693704 /* libThree20UICommon.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1781,17 +1705,17 @@
 				208B3CBF12C01BEA00D8FA03 /* RootViewController.m in Sources */,
 				208B3CC012C01BEA00D8FA03 /* SampleViewController.m in Sources */,
 				208B3D5A12C0257100D8FA03 /* Reachability.m in Sources */,
+				208B3DCF12C02B1500D8FA03 /* DDXMLDocument.m in Sources */,
+				208B3DD012C02B1500D8FA03 /* DDXMLElement.m in Sources */,
+				208B3DD112C02B1500D8FA03 /* DDXMLElementAdditions.m in Sources */,
+				208B3DD212C02B1500D8FA03 /* DDXMLNode.m in Sources */,
+				208B3DD512C02B5B00D8FA03 /* NSStringAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3200DAD79397D7CA33CB8491 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = extThree20XML;
-			targetProxy = 3200DAD79397D7CA33CB8492 /* PBXContainerItemProxy */;
-		};
 		3201088596B4756681693701 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Three20UICommon;
@@ -1925,6 +1849,7 @@
 					"../Three20/Build/Products/three20/**",
 				);
 				OTHER_LDFLAGS = (
+					"-lxml2",
 					"-all_load",
 					"-ObjC",
 				);
