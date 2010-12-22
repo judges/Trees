@@ -16,7 +16,7 @@
     UIImageView *imageView;
     UILabel *nameLabel;
     UILabel *overviewLabel;
-    UILabel *prepTimeLabel;
+    UILabel *gpsLabel;
 	
 }
 
@@ -25,6 +25,6 @@
 @property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) UILabel *nameLabel;
 @property (nonatomic, retain) UILabel *overviewLabel;
-@property (nonatomic, retain) UILabel *prepTimeLabel;
+@property (nonatomic, retain) UILabel *gpsLabel;
 
 @end

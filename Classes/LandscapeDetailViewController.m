@@ -21,7 +21,7 @@
 
 @synthesize tableHeaderView;
 @synthesize photoButton;
-@synthesize nameTextField, overviewTextField, prepTimeTextField;
+@synthesize nameTextField, overviewTextField, gpsTextField;
 
 #pragma mark -
 #pragma mark View controller
@@ -45,7 +45,7 @@
 	self.navigationItem.title = landscape.name;
     nameTextField.text = landscape.name;    
     overviewTextField.text = landscape.overview;    
-    prepTimeTextField.text = landscape.prepTime;    
+    gpsTextField.text = landscape.gps;    
 	[self updatePhotoButton];
 	
 	// Update landscape type and ingredients on return.
@@ -68,7 +68,7 @@
 	self.photoButton = nil;
 	self.nameTextField = nil;
 	self.overviewTextField = nil;
-	self.prepTimeTextField = nil;
+	self.gpsTextField = nil;
 	[super viewDidUnload];
 }
 
@@ -82,7 +82,7 @@
 	[self updatePhotoButton];
 	nameTextField.enabled = editing;
 	overviewTextField.enabled = editing;
-	prepTimeTextField.enabled = editing;
+	gpsTextField.enabled = editing;
 	[self.navigationItem setHidesBackButton:editing animated:YES];
 	
 	
@@ -118,8 +118,8 @@
 	else if (textField == overviewTextField) {
 		landscape.overview = overviewTextField.text;
 	}
-	else if (textField == prepTimeTextField) {
-		landscape.prepTime = prepTimeTextField.text;
+	else if (textField == gpsTextField) {
+		landscape.gps = gpsTextField.text;
 	}
 	return YES;
 }
@@ -232,7 +232,7 @@
     [photoButton release];
     [nameTextField release];
     [overviewTextField release];
-    [prepTimeTextField release];
+    [gpsTextField release];
     [landscape release];
     [super dealloc];
 }

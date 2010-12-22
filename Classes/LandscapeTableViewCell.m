@@ -15,7 +15,7 @@
 - (CGRect)_imageViewFrame;
 - (CGRect)_nameLabelFrame;
 - (CGRect)_descriptionLabelFrame;
-- (CGRect)_prepTimeLabelFrame;
+- (CGRect)_gpsLabelFrame;
 @end
 
 #pragma mark -
@@ -23,7 +23,7 @@
 
 @implementation LandscapeTableViewCell
 
-@synthesize landscape, imageView, nameLabel, overviewLabel, prepTimeLabel;
+@synthesize landscape, imageView, nameLabel, overviewLabel, gpsLabel;
 
 
 
@@ -43,14 +43,14 @@
         [overviewLabel setHighlightedTextColor:[UIColor whiteColor]];
         [self.contentView addSubview:overviewLabel];
 		
-        prepTimeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        prepTimeLabel.textAlignment = UITextAlignmentRight;
-        [prepTimeLabel setFont:[UIFont systemFontOfSize:12.0]];
-        [prepTimeLabel setTextColor:[UIColor blackColor]];
-        [prepTimeLabel setHighlightedTextColor:[UIColor whiteColor]];
-		prepTimeLabel.minimumFontSize = 7.0;
-		prepTimeLabel.lineBreakMode = UILineBreakModeTailTruncation;
-        [self.contentView addSubview:prepTimeLabel];
+        gpsLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        gpsLabel.textAlignment = UITextAlignmentRight;
+        [gpsLabel setFont:[UIFont systemFontOfSize:12.0]];
+        [gpsLabel setTextColor:[UIColor blackColor]];
+        [gpsLabel setHighlightedTextColor:[UIColor whiteColor]];
+		gpsLabel.minimumFontSize = 7.0;
+		gpsLabel.lineBreakMode = UILineBreakModeTailTruncation;
+        [self.contentView addSubview:gpsLabel];
 		
         nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [nameLabel setFont:[UIFont boldSystemFontOfSize:14.0]];
@@ -75,11 +75,11 @@
     [imageView setFrame:[self _imageViewFrame]];
     [nameLabel setFrame:[self _nameLabelFrame]];
     [overviewLabel setFrame:[self _descriptionLabelFrame]];
-    [prepTimeLabel setFrame:[self _prepTimeLabelFrame]];
+    [gpsLabel setFrame:[self _gpsLabelFrame]];
     if (self.editing) {
-        prepTimeLabel.alpha = 0.0;
+        gpsLabel.alpha = 0.0;
     } else {
-        prepTimeLabel.alpha = 1.0;
+        gpsLabel.alpha = 1.0;
     }
 }
 
@@ -120,7 +120,7 @@
     }
 }
 
-- (CGRect)_prepTimeLabelFrame {
+- (CGRect)_gpsLabelFrame {
     CGRect contentViewBounds = self.contentView.bounds;
     return CGRectMake(contentViewBounds.size.width - PREP_TIME_WIDTH - TEXT_RIGHT_MARGIN, 4.0, PREP_TIME_WIDTH, 16.0);
 }
@@ -137,7 +137,7 @@
 	imageView.image = landscape.thumbnailImage;
 	nameLabel.text = landscape.name;
 	overviewLabel.text = landscape.overview;
-	prepTimeLabel.text = landscape.prepTime;
+	gpsLabel.text = landscape.gps;
 }
 
 
@@ -149,7 +149,7 @@
     [imageView release];
     [nameLabel release];
     [overviewLabel release];
-    [prepTimeLabel release];
+    [gpsLabel release];
     [super dealloc];
 }
 

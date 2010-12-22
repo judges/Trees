@@ -17,7 +17,6 @@
 
 @synthesize managedObjectContext, fetchedResultsController;
 
-
 #pragma mark -
 #pragma mark UIViewController 
 

@@ -18,7 +18,7 @@
 @dynamic image;
 @dynamic overview;
 @dynamic thumbnailImage;
-@dynamic prepTime;
+@dynamic gps;
 
 @end
 

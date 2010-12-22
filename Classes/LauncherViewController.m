@@ -150,7 +150,7 @@
 						
 							
 							[[[TTLauncherItem alloc] initWithTitle:@"NPS"
-															 image:@"bundle://nps-57.png"
+															 image:@"bundle://NPS-57.png"
 															   URL:@"http://www.nps.gov" canDelete:NO] autorelease],								
 
 							

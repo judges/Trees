@@ -25,7 +25,7 @@
 
 
 @property (nonatomic, retain) NSString *overview;
-@property (nonatomic, retain) NSString *prepTime;
+@property (nonatomic, retain) NSString *gps;
 @property (nonatomic, retain) UIImage *thumbnailImage;
 @property (nonatomic, retain) NSManagedObject *image;
 
