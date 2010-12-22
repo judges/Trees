@@ -1787,10 +1787,6 @@
 					"-force_load",
 					"../Three20/Build/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libThree20Style.a",
 					"-force_load",
-					"../Three20/Build/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libextThree20XML.a",
-					"-force_load",
-					"../Three20/Build/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libextThree20XML.a",
-					"-force_load",
 					"../Three20/Build/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libThree20Network.a",
 					"-force_load",
 					"../Three20/Build/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libThree20Core.a",
@@ -1807,12 +1803,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Trees_Prefix.pch;
 				HEADER_SEARCH_PATHS = (
-					../Three20/Build/Products/three20,
-					../Three20/Build/Products/three20,
-					../Three20/Build/Products/three20,
-					../Three20/Build/Products/three20,
-					../Three20/Build/Products/three20,
-					../Three20/Build/Products/three20,
+					/usr/include/libz,
+					/usr/include/libxml2,
 					../Three20/Build/Products/three20,
 				);
 				INFOPLIST_FILE = "Trees-Info.plist";
@@ -1827,10 +1819,6 @@
 					"../Three20/Build/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libThree20UI.a",
 					"-force_load",
 					"../Three20/Build/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libThree20Style.a",
-					"-force_load",
-					"../Three20/Build/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libextThree20XML.a",
-					"-force_load",
-					"../Three20/Build/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libextThree20XML.a",
 					"-force_load",
 					"../Three20/Build/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libThree20Network.a",
 					"-force_load",
@@ -1873,9 +1861,13 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = ../Three20/src;
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libz,
+					/usr/include/libxml2,
+				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
+					"-lxml2",
 					"-all_load",
 					"-ObjC",
 				);

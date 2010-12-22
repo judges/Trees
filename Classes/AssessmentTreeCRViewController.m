@@ -282,7 +282,77 @@
 	} else {
 		cell.accessoryType = UITableViewCellAccessoryNone;
 	}
-
+	if (tableView == self.conditionTableView) {
+		switch ([whichId intValue]) {
+            case 1:
+            {
+				tree.form.condition = [conditionArray objectAtIndex:indexPath.row];
+                break;
+            }
+            case 2:
+            {
+                tree.crown.condition = [conditionArray objectAtIndex:indexPath.row];
+                break;
+            }
+            case 3:
+            {
+                tree.trunk.condition = [conditionArray objectAtIndex:indexPath.row];
+                break;
+            }
+            case 4:
+            {
+                tree.rootflare.condition = [conditionArray objectAtIndex:indexPath.row];
+                break;
+            }
+            case 5:
+            {
+                tree.roots.condition = [conditionArray objectAtIndex:indexPath.row];
+                break;
+            }
+            case 6:
+            {
+                tree.overall.condition = [conditionArray objectAtIndex:indexPath.row];
+                break;
+            }
+            default:
+                break;
+        }
+    } else if (tableView == self.recommendationTableView) {
+        switch ([whichId intValue]) {
+            case 1:
+            {
+                tree.form.recommendation = [recommendationArray objectAtIndex:indexPath.row];
+                break;
+            }
+            case 2:
+            {
+                tree.crown.recommendation = [recommendationArray objectAtIndex:indexPath.row];
+                break;
+            }
+            case 3:
+            {
+                tree.trunk.recommendation = [recommendationArray objectAtIndex:indexPath.row];
+                break;
+            }
+            case 4:
+            {
+                tree.rootflare.recommendation = [recommendationArray objectAtIndex:indexPath.row];
+                break;
+            }
+            case 5:
+            {
+                tree.roots.recommendation = [recommendationArray objectAtIndex:indexPath.row];
+                break;
+            }
+            case 6:
+            {
+                tree.overall.recommendation = [recommendationArray objectAtIndex:indexPath.row];
+                break;
+            }
+            default:
+                break;
+        }
+	} 
 	return nil;
 }
 
