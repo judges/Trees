@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		149B80FA12C264C3001557AB /* LandscapeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149B80F912C264C3001557AB /* LandscapeListTableViewController.m */; };
+		149B810012C2673B001557AB /* LandscapeAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149B80FE12C2673B001557AB /* LandscapeAddViewController.m */; };
+		149B810112C2673B001557AB /* LandscapeAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 149B80FF12C2673B001557AB /* LandscapeAddView.xib */; };
+		149B812F12C26F04001557AB /* LandscapeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149B812D12C26F04001557AB /* LandscapeDetailViewController.m */; };
+		149B813012C26F04001557AB /* LandscapeDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 149B812E12C26F04001557AB /* LandscapeDetailHeaderView.xib */; };
+		149B813712C26F68001557AB /* LandscapeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 149B813612C26F68001557AB /* LandscapeTableViewCell.m */; };
+		149B814F12C276EC001557AB /* LandscapePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149B814E12C276EC001557AB /* LandscapePhotoViewController.m */; };
 		149BF39A12BFB20D000E27DB /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 149BF39912BFB20D000E27DB /* license.txt */; };
 		14DA250F12BFA7CD008400A2 /* Tree-256.png in Resources */ = {isa = PBXBuildFile; fileRef = 14DA250E12BFA7CD008400A2 /* Tree-256.png */; };
 		1D3623260D0F684500981E51 /* AppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate_iPad.m */; };
@@ -490,6 +497,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		149B80F812C264C3001557AB /* LandscapeListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeListTableViewController.h; sourceTree = "<group>"; };
+		149B80F912C264C3001557AB /* LandscapeListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeListTableViewController.m; sourceTree = "<group>"; };
+		149B80FD12C2673B001557AB /* LandscapeAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeAddViewController.h; sourceTree = "<group>"; };
+		149B80FE12C2673B001557AB /* LandscapeAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeAddViewController.m; sourceTree = "<group>"; };
+		149B80FF12C2673B001557AB /* LandscapeAddView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LandscapeAddView.xib; sourceTree = "<group>"; };
+		149B812C12C26F04001557AB /* LandscapeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeDetailViewController.h; sourceTree = "<group>"; };
+		149B812D12C26F04001557AB /* LandscapeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeDetailViewController.m; sourceTree = "<group>"; };
+		149B812E12C26F04001557AB /* LandscapeDetailHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LandscapeDetailHeaderView.xib; sourceTree = "<group>"; };
+		149B813512C26F68001557AB /* LandscapeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeTableViewCell.h; sourceTree = "<group>"; };
+		149B813612C26F68001557AB /* LandscapeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeTableViewCell.m; sourceTree = "<group>"; };
+		149B814D12C276EC001557AB /* LandscapePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapePhotoViewController.h; sourceTree = "<group>"; };
+		149B814E12C276EC001557AB /* LandscapePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapePhotoViewController.m; sourceTree = "<group>"; };
 		149BF39912BFB20D000E27DB /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
 		14DA250E12BFA7CD008400A2 /* Tree-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tree-256.png"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -885,6 +904,18 @@
 		208B32CE12BFE27B00D8FA03 /* Landscapes */ = {
 			isa = PBXGroup;
 			children = (
+				149B80F812C264C3001557AB /* LandscapeListTableViewController.h */,
+				149B80F912C264C3001557AB /* LandscapeListTableViewController.m */,
+				149B80FD12C2673B001557AB /* LandscapeAddViewController.h */,
+				149B80FE12C2673B001557AB /* LandscapeAddViewController.m */,
+				149B80FF12C2673B001557AB /* LandscapeAddView.xib */,
+				149B812C12C26F04001557AB /* LandscapeDetailViewController.h */,
+				149B812D12C26F04001557AB /* LandscapeDetailViewController.m */,
+				149B812E12C26F04001557AB /* LandscapeDetailHeaderView.xib */,
+				149B813512C26F68001557AB /* LandscapeTableViewCell.h */,
+				149B813612C26F68001557AB /* LandscapeTableViewCell.m */,
+				149B814D12C276EC001557AB /* LandscapePhotoViewController.h */,
+				149B814E12C276EC001557AB /* LandscapePhotoViewController.m */,
 			);
 			name = Landscapes;
 			sourceTree = "<group>";
@@ -1630,6 +1661,8 @@
 				208B330A12BFE2D200D8FA03 /* AssessmentTableView.xib in Resources */,
 				208B330B12BFE2D200D8FA03 /* AssessmentTableViewCell.xib in Resources */,
 				20AC3F4512C10B9300BC4C12 /* TreeOptions.xml in Resources */,
+				149B810112C2673B001557AB /* LandscapeAddView.xib in Resources */,
+				149B813012C26F04001557AB /* LandscapeDetailHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1716,6 +1749,11 @@
 				208B3DD112C02B1500D8FA03 /* DDXMLElementAdditions.m in Sources */,
 				208B3DD212C02B1500D8FA03 /* DDXMLNode.m in Sources */,
 				208B3DD512C02B5B00D8FA03 /* NSStringAdditions.m in Sources */,
+				149B80FA12C264C3001557AB /* LandscapeListTableViewController.m in Sources */,
+				149B810012C2673B001557AB /* LandscapeAddViewController.m in Sources */,
+				149B812F12C26F04001557AB /* LandscapeDetailViewController.m in Sources */,
+				149B813712C26F68001557AB /* LandscapeTableViewCell.m in Sources */,
+				149B814F12C276EC001557AB /* LandscapePhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
