@@ -274,12 +274,18 @@
 			if ([selected intValue] == indexPath.row) {
 				cell.accessoryType = UITableViewCellAccessoryCheckmark;
 			}
+			else {
+				cell.accessoryType = UITableViewCellAccessoryNone;
+			}
 		}
     } else if (tableView == self.recommendationTableView) {
         cell.textLabel.text = [recommendationStringArray objectAtIndex:indexPath.row];
 		for (NSNumber *selected in selectedRecommendationIndices) {
 			if ([selected intValue] == indexPath.row) {
 				cell.accessoryType = UITableViewCellAccessoryCheckmark;
+			}
+			else {
+				cell.accessoryType = UITableViewCellAccessoryNone;
 			}
 		}
 	}    
@@ -295,32 +301,32 @@
 			switch ([whichId intValue]) {
 				case 1:
 				{
-					[[tree valueForKeyPath:@"form.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"form.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 2:
 				{
-					[[tree valueForKeyPath:@"crown.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"crown.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 3:
 				{
-					[[tree valueForKeyPath:@"trunk.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"trunk.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 4:
 				{
-					[[tree valueForKeyPath:@"rootflare.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"rootflare.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 5:
 				{
-					[[tree valueForKeyPath:@"roots.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"roots.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 6:
 				{
-					[[tree valueForKeyPath:@"overall.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"overall.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				default:
@@ -330,32 +336,33 @@
 			switch ([whichId intValue]) {
 				case 1:
 				{
-					[[tree valueForKeyPath:@"form.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"form.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					
 					break;
 				}
 				case 2:
 				{
-					[[tree valueForKeyPath:@"crown.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"crown.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 3:
 				{
-					[[tree valueForKeyPath:@"trunk.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"trunk.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 4:
 				{
-					[[tree valueForKeyPath:@"rootflare.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"rootflare.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 5:
 				{
-					[[tree valueForKeyPath:@"roots.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"roots.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 6:
 				{
-					[[tree valueForKeyPath:@"overall.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"overall.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				default:
@@ -368,32 +375,32 @@
 			switch ([whichId intValue]) {
 				case 1:
 				{
-					[[tree valueForKeyPath:@"form.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"form.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 2:
 				{
-					[[tree valueForKeyPath:@"crown.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"crown.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 3:
 				{
-					[[tree valueForKeyPath:@"trunk.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"trunk.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 4:
 				{
-					[[tree valueForKeyPath:@"rootflare.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"rootflare.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 5:
 				{
-					[[tree valueForKeyPath:@"roots.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"roots.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 6:
 				{
-					[[tree valueForKeyPath:@"overall.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"overall.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				default:
@@ -403,32 +410,32 @@
 			switch ([whichId intValue]) {
 				case 1:
 				{
-					[[tree valueForKeyPath:@"form.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"form.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 2:
 				{
-					[[tree valueForKeyPath:@"crown.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"crown.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 3:
 				{
-					[[tree valueForKeyPath:@"trunk.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"trunk.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 4:
 				{
-					[[tree valueForKeyPath:@"rootflare.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"rootflare.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 5:
 				{
-					[[tree valueForKeyPath:@"roots.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"roots.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				case 6:
 				{
-					[[tree valueForKeyPath:@"overall.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					[[tree mutableSetValueForKeyPath:@"overall.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
 					break;
 				}
 				default:
@@ -436,7 +443,10 @@
 			}
 		}
 	}
-	
+	NSError *error;
+	if (![managedObjectContext save:&error]) {
+		NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+	}
 	return nil;
 }
 
