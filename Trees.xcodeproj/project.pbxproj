@@ -922,6 +922,7 @@
 		208B32FF12BFE2D200D8FA03 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2819307C112F81BE00ECF9B4 /* Trees.xcdatamodeld */,
 				20AC3F4412C10B9300BC4C12 /* TreeOptions.xml */,
 				320B6C86F11D9990244A9730 /* Three20.bundle */,
 				208B330112BFE2D200D8FA03 /* AssessmentTreeCRView.xib */,
@@ -1047,7 +1048,6 @@
 				208B32DC12BFE27B00D8FA03 /* AppDelegate_Shared.h */,
 				208B32DD12BFE27B00D8FA03 /* AppDelegate_Shared.m */,
 				14DA250E12BFA7CD008400A2 /* Tree-256.png */,
-				2819307C112F81BE00ECF9B4 /* Trees.xcdatamodeld */,
 				8D1107310486CEB800E47090 /* Trees-Info.plist */,
 			);
 			name = Shared;

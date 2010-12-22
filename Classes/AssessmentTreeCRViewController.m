@@ -13,6 +13,7 @@
 @implementation AssessmentTreeCRViewController
 
 @synthesize whichId, managedObjectContext, conditionStringArray, recommendationStringArray, conditionArray, recommendationArray, tree, isEditing, conditionTableView, recommendationTableView;
+@synthesize selectedConditionIndices, selectedRecommendationIndices;
 
 -(id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
     if (self = [super initWithNibName:@"AssessmentTreeCRView" bundle:[NSBundle mainBundle]]){
@@ -120,23 +121,23 @@
     NSError *error;
     NSMutableArray *cArray = [NSMutableArray arrayWithArray:[managedObjectContext executeFetchRequest:cFetchRequest error:&error]];
     NSMutableArray *rArray = [NSMutableArray arrayWithArray:[managedObjectContext executeFetchRequest:rFetchRequest error:&error]];
-    int selectedConditionIndex = 0;
-    int selectedRecommendationIndex = 0;
-    int cCtr = 0;
+    selectedConditionIndices = [[NSMutableArray alloc] init];
+    selectedRecommendationIndices = [[NSMutableArray alloc] init];
+	int cCtr = 0;
     int rCtr = 0;
     switch ([whichId intValue]) {
         case 1:
         {
             for (TreeFormCondition *item in cArray) {
-                if (tree.form.condition == item) {
-                    selectedConditionIndex = cCtr;
+                if ([[tree valueForKeyPath:@"form.condition"] containsObject:item]) {
+                    [selectedConditionIndices addObject:[NSNumber numberWithInt:cCtr]];
                 }
                 ++cCtr;
                 [conditionStringArray addObject:item.name];
             }
             for (TreeFormRecommendation *item in rArray) {
-                if (tree.form.recommendation == item) {
-                    selectedRecommendationIndex = rCtr;
+                if ([[tree valueForKeyPath:@"form.recommendation"] containsObject:item]) {
+                    [selectedRecommendationIndices addObject:[NSNumber numberWithInt:rCtr]];
                 }
                 ++rCtr;
                 [recommendationStringArray addObject:item.name];
@@ -146,15 +147,15 @@
         case 2:
         {
             for (TreeCrownCondition *item in cArray) {
-                if (tree.crown.condition == item) {
-                    selectedConditionIndex = cCtr;
+                if ([[tree valueForKeyPath:@"crown.condition"] containsObject:item]) {
+                    [selectedConditionIndices addObject:[NSNumber numberWithInt: cCtr]];
                 }
                 ++cCtr;
                 [conditionStringArray addObject:item.name];
             }
             for (TreeCrownRecommendation *item in rArray) {
-                if (tree.crown.recommendation == item) {
-                    selectedRecommendationIndex = rCtr;
+                if ([[tree valueForKeyPath:@"crown.recommendation"] containsObject:item]) {
+                    [selectedRecommendationIndices addObject:[NSNumber numberWithInt: rCtr]];
                 }
                 ++rCtr;
                 [recommendationStringArray addObject:item.name];
@@ -164,15 +165,15 @@
         case 3:
         {
             for (TreeTrunkCondition *item in cArray) {
-                if (tree.trunk.condition == item) {
-                    selectedConditionIndex = cCtr;
+                if ([[tree valueForKeyPath:@"trunk.condition"] containsObject:item]) {
+                    [selectedConditionIndices addObject:[NSNumber numberWithInt: cCtr]];
                 }
                 ++cCtr;
                 [conditionStringArray addObject:item.name];
             }
             for (TreeTrunkRecommendation *item in rArray) {
-                if (tree.trunk.recommendation == item) {
-                    selectedRecommendationIndex = rCtr;
+                if ([[tree valueForKeyPath:@"trunk.recommendation"] containsObject:item]) {
+                    [selectedRecommendationIndices addObject:[NSNumber numberWithInt: rCtr]];
                 }
                 ++rCtr;
                 [recommendationStringArray addObject:item.name];
@@ -182,15 +183,15 @@
         case 4:
         {
             for (TreeRootFlareCondition *item in cArray) {
-                if (tree.rootflare.condition == item) {
-                    selectedConditionIndex = cCtr;
+                if ([[tree valueForKeyPath:@"rootflare.condition"] containsObject:item]) {
+                    [selectedConditionIndices addObject:[NSNumber numberWithInt: cCtr]];
                 }
                 ++cCtr;
                 [conditionStringArray addObject:item.name];
             }
             for (TreeRootFlareRecommendation *item in rArray) {
-                if (tree.rootflare.recommendation == item) {
-                    selectedRecommendationIndex = rCtr;
+                if ([[tree valueForKeyPath:@"rootflare.recommendation"] containsObject:item]) {
+                    [selectedRecommendationIndices addObject:[NSNumber numberWithInt: rCtr]];
                 }
                 ++rCtr;
                 [recommendationStringArray addObject:item.name];
@@ -200,15 +201,15 @@
         case 5:
         {
             for (TreeRootsCondition *item in cArray) {
-                if (tree.roots.condition == item) {
-                    selectedConditionIndex = cCtr;
+                if ([[tree valueForKeyPath:@"roots.condition"] containsObject:item]) {
+                    [selectedConditionIndices addObject:[NSNumber numberWithInt: cCtr]];
                 }
                 ++cCtr;
                 [conditionStringArray addObject:item.name];
             }
             for (TreeRootsRecommendation *item in rArray) {
-                if (tree.roots.recommendation == item) {
-                    selectedRecommendationIndex = rCtr;
+                if ([[tree valueForKeyPath:@"roots.recommendation"] containsObject:item]) {
+                    [selectedRecommendationIndices addObject:[NSNumber numberWithInt: rCtr]];
                 }
                 ++rCtr;
                 [recommendationStringArray addObject:item.name];
@@ -218,15 +219,15 @@
         case 6:
         {
             for (TreeOverallCondition *item in cArray) {
-                if (tree.overall.condition == item) {
-                    selectedConditionIndex = cCtr;
+                if ([[tree valueForKeyPath:@"overall.condition"] containsObject:item]) {
+                    [selectedConditionIndices addObject:[NSNumber numberWithInt: cCtr]];
                 }
                 ++cCtr;
                 [conditionStringArray addObject:item.name];
             }
             for (TreeOverallRecommendation *item in rArray) {
-                if (tree.overall.recommendation == item) {
-                    selectedRecommendationIndex = rCtr;
+                if ([[tree valueForKeyPath:@"overall.recommendation"] containsObject:item]) {
+                    [selectedRecommendationIndices addObject:[NSNumber numberWithInt: rCtr]];
                 }
                 ++rCtr;
                 [recommendationStringArray addObject:item.name];
@@ -269,90 +270,173 @@
     UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CR"] autorelease];
 	if (tableView == self.conditionTableView) {
 		cell.textLabel.text = [conditionStringArray objectAtIndex:indexPath.row];
+		for (NSNumber *selected in selectedConditionIndices) {
+			if ([selected intValue] == indexPath.row) {
+				cell.accessoryType = UITableViewCellAccessoryCheckmark;
+			}
+		}
     } else if (tableView == self.recommendationTableView) {
         cell.textLabel.text = [recommendationStringArray objectAtIndex:indexPath.row];
+		for (NSNumber *selected in selectedRecommendationIndices) {
+			if ([selected intValue] == indexPath.row) {
+				cell.accessoryType = UITableViewCellAccessoryCheckmark;
+			}
+		}
 	}    
     return cell;
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	//check if unchecked and uncheck if checked, persist those changes in the datastore
 	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 	if (cell.accessoryType == UITableViewCellAccessoryNone) {
 		cell.accessoryType = UITableViewCellAccessoryCheckmark;
+		if (tableView == self.conditionTableView) {
+			switch ([whichId intValue]) {
+				case 1:
+				{
+					[[tree valueForKeyPath:@"form.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 2:
+				{
+					[[tree valueForKeyPath:@"crown.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 3:
+				{
+					[[tree valueForKeyPath:@"trunk.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 4:
+				{
+					[[tree valueForKeyPath:@"rootflare.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 5:
+				{
+					[[tree valueForKeyPath:@"roots.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 6:
+				{
+					[[tree valueForKeyPath:@"overall.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				default:
+					break;
+			}
+		} else if (tableView == self.recommendationTableView) {
+			switch ([whichId intValue]) {
+				case 1:
+				{
+					[[tree valueForKeyPath:@"form.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 2:
+				{
+					[[tree valueForKeyPath:@"crown.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 3:
+				{
+					[[tree valueForKeyPath:@"trunk.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 4:
+				{
+					[[tree valueForKeyPath:@"rootflare.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 5:
+				{
+					[[tree valueForKeyPath:@"roots.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 6:
+				{
+					[[tree valueForKeyPath:@"overall.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				default:
+					break;
+			}
+		} 
 	} else {
 		cell.accessoryType = UITableViewCellAccessoryNone;
+		if (tableView == self.conditionTableView) {
+			switch ([whichId intValue]) {
+				case 1:
+				{
+					[[tree valueForKeyPath:@"form.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 2:
+				{
+					[[tree valueForKeyPath:@"crown.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 3:
+				{
+					[[tree valueForKeyPath:@"trunk.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 4:
+				{
+					[[tree valueForKeyPath:@"rootflare.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 5:
+				{
+					[[tree valueForKeyPath:@"roots.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 6:
+				{
+					[[tree valueForKeyPath:@"overall.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				default:
+					break;
+			}
+		} else if (tableView == self.recommendationTableView) {
+			switch ([whichId intValue]) {
+				case 1:
+				{
+					[[tree valueForKeyPath:@"form.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 2:
+				{
+					[[tree valueForKeyPath:@"crown.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 3:
+				{
+					[[tree valueForKeyPath:@"trunk.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 4:
+				{
+					[[tree valueForKeyPath:@"rootflare.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 5:
+				{
+					[[tree valueForKeyPath:@"roots.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 6:
+				{
+					[[tree valueForKeyPath:@"overall.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				default:
+					break;
+			}
+		}
 	}
-	if (tableView == self.conditionTableView) {
-		switch ([whichId intValue]) {
-            case 1:
-            {
-				tree.form.condition = [conditionArray objectAtIndex:indexPath.row];
-                break;
-            }
-            case 2:
-            {
-                tree.crown.condition = [conditionArray objectAtIndex:indexPath.row];
-                break;
-            }
-            case 3:
-            {
-                tree.trunk.condition = [conditionArray objectAtIndex:indexPath.row];
-                break;
-            }
-            case 4:
-            {
-                tree.rootflare.condition = [conditionArray objectAtIndex:indexPath.row];
-                break;
-            }
-            case 5:
-            {
-                tree.roots.condition = [conditionArray objectAtIndex:indexPath.row];
-                break;
-            }
-            case 6:
-            {
-                tree.overall.condition = [conditionArray objectAtIndex:indexPath.row];
-                break;
-            }
-            default:
-                break;
-        }
-    } else if (tableView == self.recommendationTableView) {
-        switch ([whichId intValue]) {
-            case 1:
-            {
-                tree.form.recommendation = [recommendationArray objectAtIndex:indexPath.row];
-                break;
-            }
-            case 2:
-            {
-                tree.crown.recommendation = [recommendationArray objectAtIndex:indexPath.row];
-                break;
-            }
-            case 3:
-            {
-                tree.trunk.recommendation = [recommendationArray objectAtIndex:indexPath.row];
-                break;
-            }
-            case 4:
-            {
-                tree.rootflare.recommendation = [recommendationArray objectAtIndex:indexPath.row];
-                break;
-            }
-            case 5:
-            {
-                tree.roots.recommendation = [recommendationArray objectAtIndex:indexPath.row];
-                break;
-            }
-            case 6:
-            {
-                tree.overall.recommendation = [recommendationArray objectAtIndex:indexPath.row];
-                break;
-            }
-            default:
-                break;
-        }
-	} 
+	
 	return nil;
 }
 
@@ -786,6 +870,8 @@
     [recommendationStringArray release];
     [conditionArray release];
     [recommendationArray release];
+	[selectedConditionIndices release];
+	[selectedRecommendationIndices release];
     [imagePicker release];
     [super dealloc];
 }

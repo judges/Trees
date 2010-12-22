@@ -31,18 +31,20 @@
     if (self.assessmentTree) {
         self.caliper.text = [NSString stringWithFormat:@"%@ \'", [self.assessmentTree.caliper stringValue]];
         self.height.text = [NSString stringWithFormat:@"%@ \'", [self.assessmentTree.height stringValue]];
-        self.formCText.text = self.assessmentTree.form.condition.name;
-        self.crownCText.text = self.assessmentTree.crown.condition.name;
-        self.trunkCText.text = self.assessmentTree.trunk.condition.name;
-        self.rootFlareCText.text = self.assessmentTree.rootflare.condition.name;
-        self.rootsCText.text = self.assessmentTree.roots.condition.name;
-        self.overallCText.text = self.assessmentTree.overall.condition.name;
-        self.formRText.text = self.assessmentTree.form.recommendation.name;
-        self.crownRText.text = self.assessmentTree.crown.recommendation.name;
-        self.trunkRText.text = self.assessmentTree.trunk.recommendation.name;
-        self.rootFlareRText.text = self.assessmentTree.rootflare.recommendation.name;
-        self.rootsRText.text = self.assessmentTree.roots.recommendation.name;
-        self.overallRText.text = self.assessmentTree.overall.recommendation.name;
+		
+        //for now, just show a random selected condition and recommendation
+		self.formCText.text = [[self.assessmentTree.form valueForKeyPath:@"condition.name"] anyObject];
+		self.crownCText.text = [[self.assessmentTree.crown valueForKeyPath:@"condition.name"] anyObject];
+        self.trunkCText.text = [[self.assessmentTree.trunk valueForKeyPath:@"condition.name"] anyObject];
+        self.rootFlareCText.text = [[self.assessmentTree.rootflare valueForKeyPath:@"condition.name"] anyObject];
+        self.rootsCText.text = [[self.assessmentTree.roots valueForKeyPath:@"condition.name"] anyObject];
+        self.overallCText.text = [[self.assessmentTree.overall valueForKeyPath:@"condition.name"] anyObject];
+        self.formRText.text = [[self.assessmentTree.form valueForKeyPath:@"recommendation.name"] anyObject];
+        self.crownRText.text = [[self.assessmentTree.crown valueForKeyPath:@"recommendation.name"] anyObject];
+        self.trunkRText.text = [[self.assessmentTree.trunk valueForKeyPath:@"recommendation.name"] anyObject];
+        self.rootFlareRText.text = [[self.assessmentTree.rootflare valueForKeyPath:@"recommendation.name"] anyObject];
+        self.rootsRText.text = [[self.assessmentTree.roots valueForKeyPath:@"recommendation.name"] anyObject];
+        self.overallRText.text = [[self.assessmentTree.overall valueForKeyPath:@"recommendation.name"] anyObject];
         self.assessorField.text = self.assessmentTree.assessor;
         self.caliperField.text = [self.assessmentTree.caliper stringValue];
         self.heightField.text = [self.assessmentTree.height stringValue];

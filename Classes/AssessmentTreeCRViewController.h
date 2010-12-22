@@ -23,6 +23,8 @@
     NSMutableArray *recommendationStringArray;
     NSMutableArray *conditionArray;
     NSMutableArray *recommendationArray;
+	NSMutableArray *selectedConditionIndices;
+	NSMutableArray *selectedRecommendationIndices;
     NSNumber *whichId;
     @private
         NSManagedObjectContext *managedObjectContext;
@@ -35,6 +37,8 @@
 @property (nonatomic, retain) NSMutableArray *recommendationStringArray;
 @property (nonatomic, retain) NSMutableArray *conditionArray;
 @property (nonatomic, retain) NSMutableArray *recommendationArray;
+@property (nonatomic, retain) NSMutableArray *selectedConditionIndices;
+@property (nonatomic, retain) NSMutableArray *selectedRecommendationIndices;
 @property (nonatomic, retain) UITableView *conditionTableView;
 @property (nonatomic, retain) UITableView *recommendationTableView;
 -(id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query;
