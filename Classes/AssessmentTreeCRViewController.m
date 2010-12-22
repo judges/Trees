@@ -274,18 +274,12 @@
 			if ([selected intValue] == indexPath.row) {
 				cell.accessoryType = UITableViewCellAccessoryCheckmark;
 			}
-			else {
-				cell.accessoryType = UITableViewCellAccessoryNone;
-			}
 		}
     } else if (tableView == self.recommendationTableView) {
         cell.textLabel.text = [recommendationStringArray objectAtIndex:indexPath.row];
 		for (NSNumber *selected in selectedRecommendationIndices) {
 			if ([selected intValue] == indexPath.row) {
 				cell.accessoryType = UITableViewCellAccessoryCheckmark;
-			}
-			else {
-				cell.accessoryType = UITableViewCellAccessoryNone;
 			}
 		}
 	}    
@@ -298,9 +292,14 @@
 	if (cell.accessoryType == UITableViewCellAccessoryNone) {
 		cell.accessoryType = UITableViewCellAccessoryCheckmark;
 		if (tableView == self.conditionTableView) {
+			[selectedConditionIndices addObject:[NSNumber numberWithInt: indexPath.row]];
 			switch ([whichId intValue]) {
 				case 1:
 				{
+					//NSMutableSet *conditions = [tree.form mutableSetValueForKey:@"condition"];
+					//[conditions	addObject:[conditionArray objectAtIndex:indexPath.row]];
+					//[tree.form setValue:conditions forKey:@"condition"];
+					
 					[[tree mutableSetValueForKeyPath:@"form.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
 					break;
 				}
@@ -333,6 +332,7 @@
 					break;
 			}
 		} else if (tableView == self.recommendationTableView) {
+			[selectedRecommendationIndices addObject:[NSNumber numberWithInt: indexPath.row]];
 			switch ([whichId intValue]) {
 				case 1:
 				{
@@ -372,6 +372,7 @@
 	} else {
 		cell.accessoryType = UITableViewCellAccessoryNone;
 		if (tableView == self.conditionTableView) {
+			[selectedConditionIndices removeObject:[NSNumber numberWithInt: indexPath.row]];
 			switch ([whichId intValue]) {
 				case 1:
 				{
@@ -407,6 +408,7 @@
 					break;
 			}
 		} else if (tableView == self.recommendationTableView) {
+			[selectedRecommendationIndices removeObject:[NSNumber numberWithInt: indexPath.row]];
 			switch ([whichId intValue]) {
 				case 1:
 				{
