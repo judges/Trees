@@ -11,13 +11,23 @@
 
 @class Assessment;
 
-@interface Landscape :  Photo  
+@interface ImageToDataTransformer : NSValueTransformer {
+}
+@end
+
+@interface Landscape :  NSManagedObject  
 {
 }
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSDate * timeStamp;
 @property (nonatomic, retain) NSSet* assessments;
+
+
+@property (nonatomic, retain) NSString *overview;
+@property (nonatomic, retain) NSString *prepTime;
+@property (nonatomic, retain) UIImage *thumbnailImage;
+@property (nonatomic, retain) NSManagedObject *image;
 
 @end
 
