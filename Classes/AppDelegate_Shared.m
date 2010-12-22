@@ -45,7 +45,7 @@
 	
   [map from:@"land://launcher" toViewController:[LauncherViewController class]];	
 
-  //[map from:@"land://Landscapes" toViewController:[LandscapesTableViewController class]];
+  [map from:@"land://Landscapes" toViewController:[LandscapeListTableViewController class]];
   [map from:@"land://assessments" toViewController:[AssessmentTableViewController class]];
   [map from:@"land://assessments/TreeViewAndInput?" toViewController:[AssessmentTreeViewAndInputController class]];
   [map from:@"land://assessments/TreeForm?" toViewController:[AssessmentTreeCRViewController class]];
