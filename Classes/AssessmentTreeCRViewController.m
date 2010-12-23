@@ -741,7 +741,7 @@
 
 - (void)editRecommendation {
     //edit existing recommendation record
-	[self deleteCondition:editingRow];
+	[self deleteRecommendation:editingRow];
 	[self addRecommendation];
 }
 
