@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 //#import "LandscapeAddViewController.h"
 
+
+/*
 @class Landscape;
 @class LandscapeTableViewCell;
-
+*/
+ 
 @interface LandscapeListTableViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
 	
 @private
@@ -24,7 +27,11 @@
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
+
+/*
 - (void)showLandscape:(Landscape *)landscape animated:(BOOL)animated;
 - (void)configureCell:(LandscapeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
-
+*/
+ 
+ 
 @end
