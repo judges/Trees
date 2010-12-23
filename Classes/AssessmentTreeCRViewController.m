@@ -24,6 +24,8 @@
 			tapCount = 0;
 			//set tappedRow
 			tappedRow = 0;
+			//no rows being edited at start
+			editingRow = -1;
             //pass the TreeAssessment from the previous view
             tree = [query objectForKey:@"assessmentTree"];
             //initialize the arrays to store the conditions and recommendations
@@ -305,16 +307,33 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	//checking for double taps here
     if(tapCount == 1 && tapTimer != nil && tappedRow == indexPath.row){
-        //double tap 
+        //double tap -- call up the edit screen
+		tapCount = 0;
         [tapTimer invalidate];
         [self setTapTimer:nil];
 		
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Double Tap" message:@"You double-tapped the row" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-        [alert show];
-        [alert release];
+		//set editing bool
+		isEditing = TRUE;
+		editingRow = indexPath.row;
+		
+		//show alert entrybox
+        if ([conditionTableView isHidden]) {
+			UIAlertView *editAlertView = [[UIAlertView alloc] initWithTitle:@"Edit Recommendation" message:@"this gets covered" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+			addTextField.text = [recommendationStringArray objectAtIndex:indexPath.row];
+			[editAlertView addSubview:addTextField];
+			[editAlertView show];
+			[editAlertView release];
+		} else {
+			UIAlertView *editAlertView = [[UIAlertView alloc] initWithTitle:@"Edit Condition" message:@"this gets covered" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+			addTextField.text = [conditionStringArray objectAtIndex:indexPath.row];
+			[editAlertView addSubview:addTextField];
+			[editAlertView show];
+			[editAlertView release];
+		}
+		
     }
     else if(tapCount == 0){
-        //This is the first tap
+        //This is the first tap -- toggle the checkmark
         tapCount = tapCount + 1;
         tappedRow = indexPath.row;
 		
@@ -323,10 +342,11 @@
 		NSInvocation *singleTapInvocation = [NSInvocation invocationWithMethodSignature:singleTapSignature];
 		[singleTapInvocation setTarget:self];
 		[singleTapInvocation setSelector:@selector(singleTapWithATableView:withAnIndexPath:)];
+		//This may seem wrong, but arguments 0 and 1 are reserved internally by objc, so 2 and 3 is right
 		[singleTapInvocation setArgument:&tableView atIndex:2];
 		[singleTapInvocation setArgument:&indexPath atIndex:3];
 		
-		[self setTapTimer:[NSTimer scheduledTimerWithTimeInterval:0.3 invocation:singleTapInvocation repeats:YES]];
+		[self setTapTimer:[NSTimer scheduledTimerWithTimeInterval:0.3 invocation:singleTapInvocation repeats:NO]];
     }
     else if(tappedRow != indexPath.row){
         //tap on new row
@@ -529,6 +549,10 @@
 }
 
 - (void)add:(id)sender {
+	//set editing bool
+	isEditing = FALSE;
+	
+	//show modal entry box
 	if ([conditionTableView isHidden]) {
 		UIAlertView *addAlertView = [[UIAlertView alloc] initWithTitle:@"Enter Recommendation" message:@"this gets covered" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
 		[addAlertView addSubview:addTextField];
@@ -549,10 +573,18 @@
 			break;
 		case 1: //OK clicked
 			if ([conditionTableView isHidden]) {
-				[self addRecommendation];
+				if (isEditing) {
+					[self editRecommendation];
+				} else {
+					[self addRecommendation];
+				}
 				[recommendationTableView reloadData];
 			} else {
-				[self addCondition];
+				if (isEditing) {
+					[self editCondition];
+				} else {
+					[self addCondition];
+				}
 				[conditionTableView reloadData];
 			}
 			break;
@@ -563,6 +595,7 @@
 }
 
 - (void)didPresentAlertView:(UIAlertView *)alertView {
+	//show the keyboard when the modal view pops up
 	[addTextField becomeFirstResponder];
 }
 
@@ -702,12 +735,14 @@
 	 
 - (void)editCondition {
     //edit existing condition record
-
+	[self deleteCondition:editingRow];
+	[self addCondition];
 }
 
 - (void)editRecommendation {
     //edit existing recommendation record
-
+	[self deleteCondition:editingRow];
+	[self addRecommendation];
 }
 
 - (void)deleteCondition:(NSInteger)row {

@@ -30,6 +30,7 @@
     NSNumber *whichId;
 	NSInteger tapCount;
 	NSInteger tappedRow;
+	NSInteger editingRow;
     @private
         NSManagedObjectContext *managedObjectContext;
 }
@@ -38,6 +39,7 @@
 @property (nonatomic, retain) NSNumber *whichId;
 @property NSInteger tapCount;
 @property NSInteger tappedRow;
+@property NSInteger editingRow;
 @property (nonatomic, retain) NSTimer *tapTimer;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSMutableArray *conditionStringArray;
