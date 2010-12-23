@@ -128,132 +128,134 @@
     [rFetchRequest setSortDescriptors:sortDescriptors];
     
     NSError *error;
-    NSMutableArray *cArray = [NSMutableArray arrayWithArray:[managedObjectContext executeFetchRequest:cFetchRequest error:&error]];
-    NSMutableArray *rArray = [NSMutableArray arrayWithArray:[managedObjectContext executeFetchRequest:rFetchRequest error:&error]];
+    conditionArray = [[NSMutableArray alloc] initWithArray:[managedObjectContext executeFetchRequest:cFetchRequest error:&error]];
+    recommendationArray = [[NSMutableArray alloc] initWithArray:[managedObjectContext executeFetchRequest:rFetchRequest error:&error]];
     selectedConditionIndices = [[NSMutableArray alloc] init];
     selectedRecommendationIndices = [[NSMutableArray alloc] init];
+	
+	//determine selected indices
+	[self findSelectedItems];
+	
+	//add names to seperate string array
+    for (NSManagedObject *item in conditionArray)
+	{
+		[conditionStringArray addObject:item.name]
+	}
+	for (NSManagedObject *item in recommendationArray)
+	{
+		[recommendationStringArray addObject:item.name]
+	}
+	
+    [cFetchRequest release];
+    [rFetchRequest release];
+    [sortDescriptor release];
+    [sortDescriptors release];
+}
+- (void)findSelectedItems {
 	int cCtr = 0;
     int rCtr = 0;
+	[selectedConditionIndices removeAllObjects];
+	[selectedRecommendationIndices removeAllObjects];
     switch ([whichId intValue]) {
         case 1:
         {
-            for (TreeFormCondition *item in cArray) {
+            for (TreeFormCondition *item in conditionArray) {
                 if ([[tree valueForKeyPath:@"form.condition"] containsObject:item]) {
                     [selectedConditionIndices addObject:[NSNumber numberWithInt:cCtr]];
                 }
                 ++cCtr;
-                [conditionStringArray addObject:item.name];
             }
-            for (TreeFormRecommendation *item in rArray) {
+            for (TreeFormRecommendation *item in recommendationArray) {
                 if ([[tree valueForKeyPath:@"form.recommendation"] containsObject:item]) {
                     [selectedRecommendationIndices addObject:[NSNumber numberWithInt:rCtr]];
                 }
                 ++rCtr;
-                [recommendationStringArray addObject:item.name];
             }
             break;
         }
         case 2:
         {
-            for (TreeCrownCondition *item in cArray) {
+            for (TreeCrownCondition *item in conditionArray) {
                 if ([[tree valueForKeyPath:@"crown.condition"] containsObject:item]) {
                     [selectedConditionIndices addObject:[NSNumber numberWithInt: cCtr]];
                 }
                 ++cCtr;
-                [conditionStringArray addObject:item.name];
             }
-            for (TreeCrownRecommendation *item in rArray) {
+            for (TreeCrownRecommendation *item in recommendationArray) {
                 if ([[tree valueForKeyPath:@"crown.recommendation"] containsObject:item]) {
                     [selectedRecommendationIndices addObject:[NSNumber numberWithInt: rCtr]];
                 }
                 ++rCtr;
-                [recommendationStringArray addObject:item.name];
             }
             break;
         }
         case 3:
         {
-            for (TreeTrunkCondition *item in cArray) {
+            for (TreeTrunkCondition *item in conditionArray) {
                 if ([[tree valueForKeyPath:@"trunk.condition"] containsObject:item]) {
                     [selectedConditionIndices addObject:[NSNumber numberWithInt: cCtr]];
                 }
                 ++cCtr;
-                [conditionStringArray addObject:item.name];
             }
-            for (TreeTrunkRecommendation *item in rArray) {
+            for (TreeTrunkRecommendation *item in recommendationArray) {
                 if ([[tree valueForKeyPath:@"trunk.recommendation"] containsObject:item]) {
                     [selectedRecommendationIndices addObject:[NSNumber numberWithInt: rCtr]];
                 }
                 ++rCtr;
-                [recommendationStringArray addObject:item.name];
             }
             break;
         }
         case 4:
         {
-            for (TreeRootFlareCondition *item in cArray) {
+            for (TreeRootFlareCondition *item in conditionArray) {
                 if ([[tree valueForKeyPath:@"rootflare.condition"] containsObject:item]) {
                     [selectedConditionIndices addObject:[NSNumber numberWithInt: cCtr]];
                 }
                 ++cCtr;
-                [conditionStringArray addObject:item.name];
             }
-            for (TreeRootFlareRecommendation *item in rArray) {
+            for (TreeRootFlareRecommendation *item in recommendationArray) {
                 if ([[tree valueForKeyPath:@"rootflare.recommendation"] containsObject:item]) {
                     [selectedRecommendationIndices addObject:[NSNumber numberWithInt: rCtr]];
                 }
                 ++rCtr;
-                [recommendationStringArray addObject:item.name];
             }
             break;
         }
         case 5:
         {
-            for (TreeRootsCondition *item in cArray) {
+            for (TreeRootsCondition *item in conditionArray) {
                 if ([[tree valueForKeyPath:@"roots.condition"] containsObject:item]) {
                     [selectedConditionIndices addObject:[NSNumber numberWithInt: cCtr]];
                 }
                 ++cCtr;
-                [conditionStringArray addObject:item.name];
             }
-            for (TreeRootsRecommendation *item in rArray) {
+            for (TreeRootsRecommendation *item in recommendationArray) {
                 if ([[tree valueForKeyPath:@"roots.recommendation"] containsObject:item]) {
                     [selectedRecommendationIndices addObject:[NSNumber numberWithInt: rCtr]];
                 }
                 ++rCtr;
-                [recommendationStringArray addObject:item.name];
             }
             break;
         }
         case 6:
         {
-            for (TreeOverallCondition *item in cArray) {
+            for (TreeOverallCondition *item in conditionArray) {
                 if ([[tree valueForKeyPath:@"overall.condition"] containsObject:item]) {
                     [selectedConditionIndices addObject:[NSNumber numberWithInt: cCtr]];
                 }
                 ++cCtr;
-                [conditionStringArray addObject:item.name];
             }
-            for (TreeOverallRecommendation *item in rArray) {
+            for (TreeOverallRecommendation *item in recommendationArray) {
                 if ([[tree valueForKeyPath:@"overall.recommendation"] containsObject:item]) {
                     [selectedRecommendationIndices addObject:[NSNumber numberWithInt: rCtr]];
                 }
                 ++rCtr;
-                [recommendationStringArray addObject:item.name];
             }
             break;
         }
         default:
             break;
     }
-    
-    [cFetchRequest release];
-    [rFetchRequest release];
-    [sortDescriptor release];
-    [sortDescriptors release];
-    conditionArray = [[NSMutableArray alloc] initWithArray:cArray];
-    recommendationArray = [[NSMutableArray alloc] initWithArray:rArray];
-
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -566,6 +568,11 @@
     }
 	NSString *conditionString = [NSString stringWithString:[addTextField text]];
     [conditionStringArray addObject:conditionString];
+	//resort string and object arrays
+	[conditionStringArray sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES] autorelease]]];
+	[conditionArray sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease]]];
+	//recalculate selected indices
+	[self findSelectedItems];
 	/*
 	//resort now that we've added a new entry
 	NSSortDescriptor *stringSortDesc = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES];
@@ -639,6 +646,11 @@
     }
     NSString *recommendationString = [NSString stringWithString:[addTextField text]];
     [recommendationStringArray addObject:recommendationString];
+	//resort string and object arrays
+	[conditionStringArray sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES] autorelease]]];
+	[conditionArray sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease]]];
+	//recalculate selected indices
+	[self findSelectedItems];
 	/*
 	//resort now that we've added a new entry
 	NSSortDescriptor *stringSortDesc = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES];

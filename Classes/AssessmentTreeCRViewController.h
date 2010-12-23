@@ -43,6 +43,7 @@
 @property (nonatomic, retain) UITableView *conditionTableView;
 @property (nonatomic, retain) UITableView *recommendationTableView;
 -(id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query;
+-(void)findSelectedItems; 
 -(void)addCondition;
 -(void)addRecommendation;
 -(void)editCondition;
