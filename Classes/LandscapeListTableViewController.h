@@ -7,17 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LandscapeAddViewController.h"
+//#import "LandscapeAddViewController.h"
 
 @class Landscape;
 @class LandscapeTableViewCell;
 
-@interface LandscapeListTableViewController : UITableViewController <LandscapeAddDelegate, NSFetchedResultsControllerDelegate> {
-
-	@private
+@interface LandscapeListTableViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
 	
-		NSFetchedResultsController *fetchedResultsController;
-		NSManagedObjectContext *managedObjectContext;
+@private
+	
+	NSFetchedResultsController *fetchedResultsController_;
+	NSManagedObjectContext *managedObjectContext_;
 	
 }
 

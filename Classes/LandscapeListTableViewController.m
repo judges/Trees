@@ -7,172 +7,188 @@
 //
 
 #import "LandscapeListTableViewController.h"
-#import "LandscapeDetailViewController.h"
-#import "Landscape.h"
-#import "LandscapeTableViewCell.h"
+//#import "LandscapeDetailViewController.h"
+//#import "Landscape.h"
+//#import "LandscapeTableViewCell.h"
 
 
 @implementation LandscapeListTableViewController
 
 
-@synthesize managedObjectContext, fetchedResultsController;
+@synthesize fetchedResultsController=fetchedResultsController_, managedObjectContext=managedObjectContext_;
+
 
 #pragma mark -
-#pragma mark UIViewController 
-
+#pragma mark View lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-	// Configure navigation bar
 	
-	self.title	= @"Landscapes";
-		
-    // Add an Edit button in the navigation bar for this view controller.
+    // Set up the edit and add buttons.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-	
-	// Add an Add button in the navigation bar for this view controller.
-	UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add:)];
-    self.navigationItem.rightBarButtonItem = addButtonItem;
-    [addButtonItem release];
-	
-	// Set the table view's row height
-    self.tableView.rowHeight = 44.0;
-	
-	NSError *error = nil;
-	if (![[self fetchedResultsController] performFetch:&error]) {
-		/*
-		 Replace this implementation with code to handle the error appropriately.
-		 
-		 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-		 */
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		abort();
-	}
-	
+    
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject)];
+    self.navigationItem.rightBarButtonItem = addButton;
+    [addButton release];
 }
 
 
-
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // All orientations but upsidedown
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+// Implement viewWillAppear: to do additional setup before the view is presented.
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
+
+
+/*
+ - (void)viewDidAppear:(BOOL)animated {
+ [super viewDidAppear:animated];
+ }
+ */
+/*
+ - (void)viewWillDisappear:(BOOL)animated {
+ [super viewWillDisappear:animated];
+ }
+ */
+/*
+ - (void)viewDidDisappear:(BOOL)animated {
+ [super viewDidDisappear:animated];
+ }
+ */
+
+/*
+ // Override to allow orientations other than the default portrait orientation.
+ - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+ // Return YES for supported orientations.
+ return (interfaceOrientation == UIInterfaceOrientationPortrait);
+ }
+ */
+
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    
+    NSManagedObject *managedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = [[managedObject valueForKey:@"timeStamp"] description];
+}
+
 
 #pragma mark -
-#pragma mark Landscape support
+#pragma mark Add a new object
 
-- (void)add:(id)sender {
-	// To add a new landscape, create a LandscapeAddViewController.  Present it as a modal view so that the user's focus is on the task of adding the landscape; wrap the controller in a navigation controller to provide a navigation bar for the Done and Save buttons (added by the LandscapeAddViewController in its viewDidLoad method).
-    LandscapeAddViewController *addController = [[LandscapeAddViewController alloc] initWithNibName:@"LandscapeAddView" bundle:nil];
-    addController.delegate = self;
-	
-	Landscape *newLandscape = [NSEntityDescription insertNewObjectForEntityForName:@"Landscape" inManagedObjectContext:self.managedObjectContext];
-	addController.landscape = newLandscape;
-	
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:addController];
-    [self presentModalViewController:navigationController animated:YES];
+- (void)insertNewObject {
     
-    [navigationController release];
-    [addController release];
-}
-
-- (void)landscapeAddViewController:(LandscapeAddViewController *)landscapeAddViewController didAddLandscape:(Landscape *)landscape {
-    if (landscape) {        
-        // Show the landscape in a new view controller
-        [self showLandscape:landscape animated:NO];
+    // Create a new instance of the entity managed by the fetched results controller.
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
+    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+    
+    // If appropriate, configure the new managed object.
+    [newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
+    
+    // Save the context.
+    NSError *error = nil;
+    if (![context save:&error]) {
+        /*
+         Replace this implementation with code to handle the error appropriately.
+         
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+         */
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
     }
-    
-    // Dismiss the modal add landscape view controller
-    [self dismissModalViewControllerAnimated:YES];
 }
 
-- (void)showLandscape:(Landscape *)landscape animated:(BOOL)animated {
-    // Create a detail view controller, set the landscape, then push it.
-    LandscapeDetailViewController *detailViewController = [[LandscapeDetailViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    detailViewController.landscape = landscape;
-    
-    [self.navigationController pushViewController:detailViewController animated:animated];
-    [detailViewController release];
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+	
+    // Prevent new objects being added when in editing mode.
+    [super setEditing:(BOOL)editing animated:(BOOL)animated];
+    self.navigationItem.rightBarButtonItem.enabled = !editing;
 }
+
 
 #pragma mark -
-#pragma mark Table view data methods
+#pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the count the sections.
-
-    NSInteger count = [[fetchedResultsController sections] count];	
-	
-	if (count == 0) {
-		count = 1;
-	}
-	
-    return count;
+    return [[self.fetchedResultsController sections] count];
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger numberOfRows = 0;
-	
-    if ([[fetchedResultsController sections] count] > 0) {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[fetchedResultsController sections] objectAtIndex:section];
-        numberOfRows = [sectionInfo numberOfObjects];
-    }
-    
-    return numberOfRows;
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
 }
 
+
+// Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Dequeue or if necessary create a LandscapeTableViewCell, then set its landscape to the landscape for the current row.
-    static NSString *LandscapeCellIdentifier = @"LandscapeCellIdentifier";
     
-    LandscapeTableViewCell *landscapeCell = (LandscapeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:LandscapeCellIdentifier];
-    if (landscapeCell == nil) {
-        landscapeCell = [[[LandscapeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:LandscapeCellIdentifier] autorelease];
-		landscapeCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-	[self configureCell:landscapeCell atIndexPath:indexPath];
+    // Configure the cell.
+    [self configureCell:cell atIndexPath:indexPath];
     
-    return landscapeCell;
-}
-
-- (void)configureCell:(LandscapeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    // Configure the cell
-	Landscape *landscape = (Landscape *)[fetchedResultsController objectAtIndexPath:indexPath];
-    cell.landscape = landscape;
+    return cell;
 }
 
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	Landscape *landscape = (Landscape *)[fetchedResultsController objectAtIndexPath:indexPath];
-    
-    [self showLandscape:landscape animated:YES];
-}
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the managed object for the given index path
-		NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
-		[context deleteObject:[fetchedResultsController objectAtIndexPath:indexPath]];
-		
-		// Save the context.
-		NSError *error;
-		if (![context save:&error]) {
-			/*
-			 Replace this implementation with code to handle the error appropriately.
-			 
-			 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
-			 */
-			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-			abort();
-		}
-	}   
+        NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+        [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+        
+        // Save the context.
+        NSError *error = nil;
+        if (![context save:&error]) {
+            /*
+             Replace this implementation with code to handle the error appropriately.
+             
+             abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+             */
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }   
+}
+
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    // The table view should not be re-orderable.
+    return NO;
+}
+
+
+#pragma mark -
+#pragma mark Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Navigation logic may go here -- for example, create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     NSManagedObject *selectedObject = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     [detailViewController release];
+     */
 }
 
 
@@ -180,96 +196,144 @@
 #pragma mark Fetched results controller
 
 - (NSFetchedResultsController *)fetchedResultsController {
-    // Set up the fetched results controller if needed.
-    if (fetchedResultsController == nil) {
-        // Create the fetch request for the entity.
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        // Edit the entity name as appropriate.
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Landscape" inManagedObjectContext:managedObjectContext];
-        [fetchRequest setEntity:entity];
-        
-        // Edit the sort key as appropriate.
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-        NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-        
-        [fetchRequest setSortDescriptors:sortDescriptors];
-        
-        // Edit the section name key path and cache name if appropriate.
-        // nil for section name key path means "no sections".
-        NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
-        aFetchedResultsController.delegate = self;
-        self.fetchedResultsController = aFetchedResultsController;
-        
-        [aFetchedResultsController release];
-        [fetchRequest release];
-        [sortDescriptor release];
-        [sortDescriptors release];
+    
+    if (fetchedResultsController_ != nil) {
+        return fetchedResultsController_;
     }
-	
-	return fetchedResultsController;
-} 
+    
+    /*
+     Set up the fetched results controller.
+	 */
+    // Create the fetch request for the entity.
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    // Edit the entity name as appropriate.
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Landscape" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    // Set the batch size to a suitable number.
+    [fetchRequest setFetchBatchSize:20];
+    
+    // Edit the sort key as appropriate.
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    // Edit the section name key path and cache name if appropriate.
+    // nil for section name key path means "no sections".
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
+    aFetchedResultsController.delegate = self;
+    self.fetchedResultsController = aFetchedResultsController;
+    
+    [aFetchedResultsController release];
+    [fetchRequest release];
+    [sortDescriptor release];
+    [sortDescriptors release];
+    
+    NSError *error = nil;
+    if (![fetchedResultsController_ performFetch:&error]) {
+        /*
+         Replace this implementation with code to handle the error appropriately.
+         
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+         */
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    return fetchedResultsController_;
+}    
 
-/**
- Delegate methods of NSFetchedResultsController to respond to additions, removals and so on.
- */
+
+#pragma mark -
+#pragma mark Fetched results controller delegate
+
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-	// The fetch controller is about to start sending change notifications, so prepare the table view for updates.
-	[self.tableView beginUpdates];
+    [self.tableView beginUpdates];
 }
 
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-	UITableView *tableView = self.tableView;
-	
-	switch(type) {
-		case NSFetchedResultsChangeInsert:
-			[tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-			break;
-			
-		case NSFetchedResultsChangeDelete:
-			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-			break;
-			
-		case NSFetchedResultsChangeUpdate:
-			[self configureCell:(LandscapeTableViewCell *)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-			break;
-			
-		case NSFetchedResultsChangeMove:
-			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    UITableView *tableView = self.tableView;
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
             [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
-	}
-}
-
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
-	switch(type) {
-		case NSFetchedResultsChangeInsert:
-			[self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-			break;
-			
-		case NSFetchedResultsChangeDelete:
-			[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-			break;
-	}
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
 }
 
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-	// The fetch controller has sent all current change notifications, so tell the table view to process all updates.
-	[self.tableView endUpdates];
+    [self.tableView endUpdates];
 }
+
+
+/*
+ // Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed. 
+ 
+ - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+ // In the simplest, most efficient, case, reload the table view.
+ [self.tableView reloadData];
+ }
+ */
 
 
 #pragma mark -
 #pragma mark Memory management
 
+- (void)didReceiveMemoryWarning {
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Relinquish ownership any cached data, images, etc that aren't in use.
+}
+
+
+- (void)viewDidUnload {
+    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
+    // For example: self.myOutlet = nil;
+}
+
+
 - (void)dealloc {
-	[fetchedResultsController release];
-	[managedObjectContext release];
+    [fetchedResultsController_ release];
+    [managedObjectContext_ release];
     [super dealloc];
 }
 
-@end
 
+@end
