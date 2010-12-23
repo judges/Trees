@@ -19,6 +19,7 @@
     IBOutlet UIButton *photoButton;
     IBOutlet UISegmentedControl *switchControl;
     UITextField *addTextField;
+	NSTimer *tapTimer;
 	
     NSMutableArray *conditionStringArray;
     NSMutableArray *recommendationStringArray;
@@ -27,12 +28,17 @@
 	NSMutableArray *selectedConditionIndices;
 	NSMutableArray *selectedRecommendationIndices;
     NSNumber *whichId;
+	NSInteger tapCount;
+	NSInteger tappedRow;
     @private
         NSManagedObjectContext *managedObjectContext;
 }
 @property  BOOL isEditing;
 @property (nonatomic, retain) AssessmentTree *tree;
 @property (nonatomic, retain) NSNumber *whichId;
+@property NSInteger tapCount;
+@property NSInteger tappedRow;
+@property (nonatomic, retain) NSTimer *tapTimer;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSMutableArray *conditionStringArray;
 @property (nonatomic, retain) NSMutableArray *recommendationStringArray;
@@ -43,6 +49,7 @@
 @property (nonatomic, retain) UITableView *conditionTableView;
 @property (nonatomic, retain) UITableView *recommendationTableView;
 -(id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query;
+-(void)singleTapWithATableView:(UITableView *)tableView withAnIndexPath:(NSIndexPath *)indexPath;
 -(void)findSelectedItems; 
 -(void)addCondition;
 -(void)addRecommendation;

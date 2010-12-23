@@ -13,13 +13,17 @@
 @implementation AssessmentTreeCRViewController
 
 @synthesize whichId, managedObjectContext, conditionStringArray, recommendationStringArray, conditionArray, recommendationArray, tree, isEditing, conditionTableView, recommendationTableView;
-@synthesize selectedConditionIndices, selectedRecommendationIndices;
+@synthesize selectedConditionIndices, selectedRecommendationIndices, tapCount, tapTimer, tappedRow;
 
 -(id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
     if (self = [super initWithNibName:@"AssessmentTreeCRView" bundle:[NSBundle mainBundle]]){
         if(query && [query objectForKey:@"assessmentTree"] && [query objectForKey:@"id"]){ 
             //Grabs the id that called the page so we know which properties to load.
             whichId = [query objectForKey:@"id"];
+			//set tap count to zero
+			tapCount = 0;
+			//set tappedRow
+			tappedRow = 0;
             //pass the TreeAssessment from the previous view
             tree = [query objectForKey:@"assessmentTree"];
             //initialize the arrays to store the conditions and recommendations
@@ -298,7 +302,47 @@
     return cell;
 }
 
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	//checking for double taps here
+    if(tapCount == 1 && tapTimer != nil && tappedRow == indexPath.row){
+        //double tap 
+        [tapTimer invalidate];
+        [self setTapTimer:nil];
+		
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Double Tap" message:@"You double-tapped the row" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alert show];
+        [alert release];
+    }
+    else if(tapCount == 0){
+        //This is the first tap
+        tapCount = tapCount + 1;
+        tappedRow = indexPath.row;
+		
+		//This is essentially a complex selector call to the singleTap function using an NSInvocation
+		NSMethodSignature *singleTapSignature = [AssessmentTreeCRViewController instanceMethodSignatureForSelector:@selector(singleTapWithATableView:withAnIndexPath:)];
+		NSInvocation *singleTapInvocation = [NSInvocation invocationWithMethodSignature:singleTapSignature];
+		[singleTapInvocation setTarget:self];
+		[singleTapInvocation setSelector:@selector(singleTapWithATableView:withAnIndexPath:)];
+		[singleTapInvocation setArgument:&tableView atIndex:2];
+		[singleTapInvocation setArgument:&indexPath atIndex:3];
+		
+		[self setTapTimer:[NSTimer scheduledTimerWithTimeInterval:0.3 invocation:singleTapInvocation repeats:YES]];
+    }
+    else if(tappedRow != indexPath.row){
+        //tap on new row
+        tapCount = 0;
+        if(tapTimer != nil){
+			[tapTimer invalidate];
+			[self setTapTimer:nil];
+        }
+    }
+}
+
+- (void)singleTapWithATableView:(UITableView *)tableView withAnIndexPath:(NSIndexPath *)indexPath {
+	if(tapTimer != nil){
+        tapCount = 0;
+        tappedRow = -1;
+    }
 	//check if unchecked and uncheck if checked, persist those changes in the datastore
 	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 	if (cell.accessoryType == UITableViewCellAccessoryNone) {
@@ -456,9 +500,7 @@
 	if (![managedObjectContext save:&error]) {
 		NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
 	}
-	return nil;
 }
-
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	//Enables swipe to delete
