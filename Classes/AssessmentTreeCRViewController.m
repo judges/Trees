@@ -27,6 +27,9 @@
             recommendationStringArray = [[NSMutableArray alloc] init];
             //create imagepicker
             imagePicker = [[UIImagePickerController alloc] init];
+			//create textbox for popup
+			addTextField = [[UITextField alloc] initWithFrame:CGRectMake(15.0, 45.0, 254.0, 25.0)];
+			[addTextField setBackgroundColor:[UIColor whiteColor]];
             //set appropriate title
             switch ([whichId intValue]) {
                 case 1:
@@ -76,6 +79,12 @@
     if(!managedObjectContext){
         managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     }
+	// Include an Add + button
+    UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add:)];
+    self.navigationItem.rightBarButtonItem = addButtonItem;
+    [addButtonItem release];
+	
+	//fetch all of the options
     NSFetchRequest *cFetchRequest = [[NSFetchRequest alloc] init];
     NSFetchRequest *rFetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *cEntity;
@@ -268,6 +277,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	//Grab the recommendations and conditions from the arrays and populate the tableviews
     UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CR"] autorelease];
+	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	if (tableView == self.conditionTableView) {
 		cell.textLabel.text = [conditionStringArray objectAtIndex:indexPath.row];
 		for (NSNumber *selected in selectedConditionIndices) {
@@ -296,10 +306,6 @@
 			switch ([whichId intValue]) {
 				case 1:
 				{
-					//NSMutableSet *conditions = [tree.form mutableSetValueForKey:@"condition"];
-					//[conditions	addObject:[conditionArray objectAtIndex:indexPath.row]];
-					//[tree.form setValue:conditions forKey:@"condition"];
-					
 					[[tree mutableSetValueForKeyPath:@"form.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
 					break;
 				}
@@ -337,7 +343,6 @@
 				case 1:
 				{
 					[[tree mutableSetValueForKeyPath:@"form.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
-					
 					break;
 				}
 				case 2:
@@ -464,24 +469,199 @@
     }
 }
 
--(IBAction)addCondition {
+- (void)add:(id)sender {
+	if ([conditionTableView isHidden]) {
+		UIAlertView *addAlertView = [[UIAlertView alloc] initWithTitle:@"Enter Recommendation" message:@"this gets covered" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+		[addAlertView addSubview:addTextField];
+		[addAlertView show];
+		[addAlertView release];
+	} else {
+		UIAlertView *addAlertView = [[UIAlertView alloc] initWithTitle:@"Enter Condition" message:@"this gets covered" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+		[addAlertView addSubview:addTextField];
+		[addAlertView show];
+		[addAlertView release];
+	}
+}
+
+//UIAlertViewDelegate Methods
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	switch (buttonIndex) {
+		case 0: //Cancel clicked
+			break;
+		case 1: //OK clicked
+			if ([conditionTableView isHidden]) {
+				[self addRecommendation];
+				[recommendationTableView reloadData];
+			} else {
+				[self addCondition];
+				[conditionTableView reloadData];
+			}
+			break;
+		default:
+			break;
+	}
+}
+
+- (void)didPresentAlertView:(UIAlertView *)alertView {
+	[addTextField becomeFirstResponder];
+}
+
+- (void)addCondition {
     //adds a new condition record
-    isEditing = NO;
+	switch ([whichId intValue]) {
+        case 1:
+        {
+            TreeFormCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeFormCondition" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [conditionArray addObject:item];
+			[[tree mutableSetValueForKeyPath:@"form.condition"] addObject:item];
+            break;
+        }
+        case 2:
+        {
+            TreeCrownCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeCrownCondition" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [conditionArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"crown.condition"] addObject:item];
+            break;
+        }
+        case 3:
+        {
+            TreeTrunkCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeTrunkCondition" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [conditionArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"trunk.condition"] addObject:item];
+            break;
+        }
+        case 4:
+        {
+            TreeRootFlareCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootFlareCondition" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [conditionArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"rootflare.condition"] addObject:item];
+            break;
+        }
+        case 5:
+        {
+            TreeRootsCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootsCondition" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [conditionArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"roots.condition"] addObject:item];
+            break;
+        }
+        case 6:
+        {
+            TreeOverallCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeOverallCondition" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [conditionArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"overall.condition"] addObject:item];
+            break;
+        }
+        default:
+            break;
+    }
+    NSError *error;
+    if (![managedObjectContext save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+	NSString *conditionString = [NSString stringWithString:[addTextField text]];
+    [conditionStringArray addObject:conditionString];
+	/*
+	//resort now that we've added a new entry
+	NSSortDescriptor *stringSortDesc = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES];
+	[conditionStringArray sortUsingDescriptors:[NSArray arrayWithObject:stringSortDesc]];
+	[stringSortDesc release];
+	//don't forget object array or table won't match data!
+	NSSortDescriptor *dataSortDesc = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+	[conditionArray sortUsingDescriptors:[NSArray arrayWithObject:dataSortDesc]];
+	[stringSortDesc release];
+	
+	[selectedConditionIndices addObject:[NSNumber numberWithInt:[conditionStringArray indexOfObject:conditionString]]];
+	*/
+}
+- (void)addRecommendation {
+    //adds a new recommendation record
+	switch ([whichId intValue]) {
+        case 1:
+        {
+            TreeFormRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeFormRecommendation" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [recommendationArray addObject:item];
+			[[tree mutableSetValueForKeyPath:@"form.recommendation"] addObject:item];
+            break;
+        }
+        case 2:
+        {
+            TreeCrownRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeCrownRecommendation" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [recommendationArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"crown.recommendation"] addObject:item];
+            break;
+        }
+        case 3:
+        {
+            TreeTrunkRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeTrunkRecommendation" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [recommendationArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"trunk.recommendation"] addObject:item];
+            break;
+        }
+        case 4:
+        {
+            TreeRootFlareRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootFlareRecommendation" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [recommendationArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"rootflare.recommendation"] addObject:item];
+            break;
+        }
+        case 5:
+        {
+            TreeRootsRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootsRecommendation" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [recommendationArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"roots.recommendation"] addObject:item];
+            break;
+        }
+        case 6:
+        {
+            TreeOverallRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeOverallRecommendation" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [recommendationArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"overall.recommendation"] addObject:item];
+            break;
+        }
+        default:
+            break;
+    }
+    NSError *error;
+    if (![managedObjectContext save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+    NSString *recommendationString = [NSString stringWithString:[addTextField text]];
+    [recommendationStringArray addObject:recommendationString];
+	/*
+	//resort now that we've added a new entry
+	NSSortDescriptor *stringSortDesc = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES];
+	[recommendationStringArray sortUsingDescriptors:[NSArray arrayWithObject:stringSortDesc]];
+	[stringSortDesc release];
+	//don't forget object array or table won't match data!
+	NSSortDescriptor *dataSortDesc = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+	[recommendationArray sortUsingDescriptors:[NSArray arrayWithObject:dataSortDesc]];
+	[stringSortDesc release];
+	
+	[selectedRecommendationIndices addObject:[NSNumber numberWithInt:[recommendationStringArray indexOfObject:recommendationString]]];
+	*/
+}
+	 
+- (void)editCondition {
+    //edit existing condition record
 
 }
--(IBAction)addRecommendation {
-    //adds a new recommendation record
-    isEditing = NO;
-}
--(IBAction)editCondition {
-    //edit existing condition record
-    isEditing = YES;
-}
--(IBAction)editRecommendation {
+- (void)editRecommendation {
     //edit existing recommendation record
-    isEditing = YES;
+
 }
--(IBAction)deleteCondition {
+- (void)deleteCondition {
     //delete a condition record
     switch ([whichId intValue]) {
         case 1:
@@ -531,7 +711,7 @@
     //[conditionStringArray removeObjectAtIndex:[conditionPicker selectedRowInComponent:0]];
 	//[conditionArray removeObjectAtIndex:[conditionPicker selectedRowInComponent:0]];
 }
--(IBAction)deleteRecommendation {
+- (void)deleteRecommendation {
     //delete a recommendation entry
     switch ([whichId intValue]) {
         case 1:
@@ -885,6 +1065,7 @@
 	[selectedConditionIndices release];
 	[selectedRecommendationIndices release];
     [imagePicker release];
+	[addTextField release];
     [super dealloc];
 }
 

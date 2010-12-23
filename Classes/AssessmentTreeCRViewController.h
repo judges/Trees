@@ -10,7 +10,7 @@
 #import "AppDelegate_Shared.h"
 
 
-@interface AssessmentTreeCRViewController : UIViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource> {
+@interface AssessmentTreeCRViewController : UIViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate> {
     AssessmentTree *tree;
     UIImagePickerController *imagePicker;
     IBOutlet UIView *mainView;
@@ -18,7 +18,8 @@
     IBOutlet UITableView *recommendationTableView;
     IBOutlet UIButton *photoButton;
     IBOutlet UISegmentedControl *switchControl;
-    
+    UITextField *addTextField;
+	
     NSMutableArray *conditionStringArray;
     NSMutableArray *recommendationStringArray;
     NSMutableArray *conditionArray;
@@ -42,12 +43,12 @@
 @property (nonatomic, retain) UITableView *conditionTableView;
 @property (nonatomic, retain) UITableView *recommendationTableView;
 -(id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query;
--(IBAction)addCondition;
--(IBAction)addRecommendation;
--(IBAction)editCondition;
--(IBAction)editRecommendation;
--(IBAction)deleteCondition;
--(IBAction)deleteRecommendation;
+-(void)addCondition;
+-(void)addRecommendation;
+-(void)editCondition;
+-(void)editRecommendation;
+-(void)deleteCondition;
+-(void)deleteRecommendation;
 -(IBAction)segmentSwitch:(id)sender;
 -(IBAction)photoButtonClick:(id)sender;
 @end

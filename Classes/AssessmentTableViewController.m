@@ -376,7 +376,6 @@
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-     NSLog(@"cellForRowAtIndexPath called");
     
 	// Define your row
     NSInteger row = [indexPath row];
