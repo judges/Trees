@@ -137,13 +137,13 @@
 	[self findSelectedItems];
 	
 	//add names to seperate string array
-    for (NSManagedObject *item in conditionArray)
+    for (TreeOption *item in conditionArray)
 	{
-		[conditionStringArray addObject:item.name]
+		[conditionStringArray addObject:item.name];
 	}
-	for (NSManagedObject *item in recommendationArray)
+	for (TreeOption *item in recommendationArray)
 	{
-		[recommendationStringArray addObject:item.name]
+		[recommendationStringArray addObject:item.name];
 	}
 	
     [cFetchRequest release];

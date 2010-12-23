@@ -1,26 +1,26 @@
 //
-//  TreeRootFlareCondition.h
-//  landscapes
+//  TreeRootFlareRecommendation.h
+//  Trees
 //
-//  Created by Evan Cordell on 8/16/10.
-//  Copyright 2010 NCPTT. All rights reserved.
+//  Created by Evan on 12/23/10.
+//  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
 #import <CoreData/CoreData.h>
+#import "TreeOption.h"
 
 @class TreeRootFlare;
 
-@interface TreeRootFlareCondition :  NSManagedObject  
+@interface TreeRootFlareRecommendation :  TreeOption  
 {
 }
 
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet* rootflare;
 
 @end
 
 
-@interface TreeRootFlareCondition (CoreDataGeneratedAccessors)
+@interface TreeRootFlareRecommendation (CoreDataGeneratedAccessors)
 - (void)addRootflareObject:(TreeRootFlare *)value;
 - (void)removeRootflareObject:(TreeRootFlare *)value;
 - (void)addRootflare:(NSSet *)value;

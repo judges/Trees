@@ -52,30 +52,18 @@
 		208B329212BFE25D00D8FA03 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = 208B329112BFE25D00D8FA03 /* ReadMe.txt */; };
 		208B32DE12BFE27B00D8FA03 /* PhotoSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B329712BFE27A00D8FA03 /* PhotoSet.m */; };
 		208B32DF12BFE27B00D8FA03 /* DisplayPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B329912BFE27B00D8FA03 /* DisplayPhoto.m */; };
-		208B32E012BFE27B00D8FA03 /* TreeRootFlareRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B329B12BFE27B00D8FA03 /* TreeRootFlareRecommendation.m */; };
 		208B32E112BFE27B00D8FA03 /* TreeRoots.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B329D12BFE27B00D8FA03 /* TreeRoots.m */; };
-		208B32E212BFE27B00D8FA03 /* TreeFormCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B329F12BFE27B00D8FA03 /* TreeFormCondition.m */; };
-		208B32E312BFE27B00D8FA03 /* TreeCrownRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32A112BFE27B00D8FA03 /* TreeCrownRecommendation.m */; };
 		208B32E412BFE27B00D8FA03 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32A312BFE27B00D8FA03 /* Image.m */; };
 		208B32E512BFE27B00D8FA03 /* AssessmentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32A512BFE27B00D8FA03 /* AssessmentType.m */; };
 		208B32E612BFE27B00D8FA03 /* TreeTrunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32A712BFE27B00D8FA03 /* TreeTrunk.m */; };
-		208B32E712BFE27B00D8FA03 /* TreeRootsRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32A912BFE27B00D8FA03 /* TreeRootsRecommendation.m */; };
 		208B32E812BFE27B00D8FA03 /* TreeOverall.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32AB12BFE27B00D8FA03 /* TreeOverall.m */; };
-		208B32E912BFE27B00D8FA03 /* TreeOverallRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32AD12BFE27B00D8FA03 /* TreeOverallRecommendation.m */; };
-		208B32EA12BFE27B00D8FA03 /* TreeOverallCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32AF12BFE27B00D8FA03 /* TreeOverallCondition.m */; };
 		208B32EB12BFE27B00D8FA03 /* AssessmentTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32B112BFE27B00D8FA03 /* AssessmentTree.m */; };
-		208B32EC12BFE27B00D8FA03 /* TreeFormRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32B312BFE27B00D8FA03 /* TreeFormRecommendation.m */; };
 		208B32ED12BFE27B00D8FA03 /* TreeForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32B512BFE27B00D8FA03 /* TreeForm.m */; };
 		208B32EE12BFE27B00D8FA03 /* TreeRootFlare.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32B712BFE27B00D8FA03 /* TreeRootFlare.m */; };
-		208B32EF12BFE27B00D8FA03 /* TreeTrunkCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32B912BFE27B00D8FA03 /* TreeTrunkCondition.m */; };
-		208B32F012BFE27B00D8FA03 /* TreeTrunkRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32BB12BFE27B00D8FA03 /* TreeTrunkRecommendation.m */; };
-		208B32F112BFE27B00D8FA03 /* TreeRootFlareCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32BD12BFE27B00D8FA03 /* TreeRootFlareCondition.m */; };
-		208B32F212BFE27B00D8FA03 /* TreeCrownCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32BF12BFE27B00D8FA03 /* TreeCrownCondition.m */; };
 		208B32F312BFE27B00D8FA03 /* Landscape.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32C112BFE27B00D8FA03 /* Landscape.m */; };
 		208B32F412BFE27B00D8FA03 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32C312BFE27B00D8FA03 /* Photo.m */; };
 		208B32F512BFE27B00D8FA03 /* TreeCrown.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32C512BFE27B00D8FA03 /* TreeCrown.m */; };
 		208B32F612BFE27B00D8FA03 /* Assessment.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32C712BFE27B00D8FA03 /* Assessment.m */; };
-		208B32F712BFE27B00D8FA03 /* TreeRootsCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32C912BFE27B00D8FA03 /* TreeRootsCondition.m */; };
 		208B32F812BFE27B00D8FA03 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32CD12BFE27B00D8FA03 /* PhotoViewController.m */; };
 		208B32F912BFE27B00D8FA03 /* AssessmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32D112BFE27B00D8FA03 /* AssessmentTableViewCell.m */; };
 		208B32FA12BFE27B00D8FA03 /* AssessmentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32D312BFE27B00D8FA03 /* AssessmentTableViewController.m */; };
@@ -136,6 +124,19 @@
 		208B3DD212C02B1500D8FA03 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B3DCD12C02B1500D8FA03 /* DDXMLNode.m */; };
 		208B3DD512C02B5B00D8FA03 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B3DD412C02B5B00D8FA03 /* NSStringAdditions.m */; };
 		20AC3F4512C10B9300BC4C12 /* TreeOptions.xml in Resources */ = {isa = PBXBuildFile; fileRef = 20AC3F4412C10B9300BC4C12 /* TreeOptions.xml */; };
+		20AC43AF12C3B48900BC4C12 /* TreeRootFlareRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AC439612C3B48900BC4C12 /* TreeRootFlareRecommendation.m */; };
+		20AC43B012C3B48900BC4C12 /* TreeFormCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AC439812C3B48900BC4C12 /* TreeFormCondition.m */; };
+		20AC43B112C3B48900BC4C12 /* TreeOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AC439A12C3B48900BC4C12 /* TreeOption.m */; };
+		20AC43B212C3B48900BC4C12 /* TreeCrownRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AC439C12C3B48900BC4C12 /* TreeCrownRecommendation.m */; };
+		20AC43B312C3B48900BC4C12 /* TreeRootsRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AC439E12C3B48900BC4C12 /* TreeRootsRecommendation.m */; };
+		20AC43B412C3B48900BC4C12 /* TreeOverallRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AC43A012C3B48900BC4C12 /* TreeOverallRecommendation.m */; };
+		20AC43B512C3B48900BC4C12 /* TreeOverallCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AC43A212C3B48900BC4C12 /* TreeOverallCondition.m */; };
+		20AC43B612C3B48900BC4C12 /* TreeFormRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AC43A412C3B48900BC4C12 /* TreeFormRecommendation.m */; };
+		20AC43B712C3B48900BC4C12 /* TreeTrunkCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AC43A612C3B48900BC4C12 /* TreeTrunkCondition.m */; };
+		20AC43B812C3B48900BC4C12 /* TreeTrunkRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AC43A812C3B48900BC4C12 /* TreeTrunkRecommendation.m */; };
+		20AC43B912C3B48900BC4C12 /* TreeRootFlareCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AC43AA12C3B48900BC4C12 /* TreeRootFlareCondition.m */; };
+		20AC43BA12C3B48900BC4C12 /* TreeCrownCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AC43AC12C3B48900BC4C12 /* TreeCrownCondition.m */; };
+		20AC43BB12C3B48900BC4C12 /* TreeRootsCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AC43AE12C3B48900BC4C12 /* TreeRootsCondition.m */; };
 		2819307D112F81BE00ECF9B4 /* Trees.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2819307C112F81BE00ECF9B4 /* Trees.xcdatamodeld */; };
 		2860E38A111B897F00E27156 /* AppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E388111B897F00E27156 /* AppDelegate_iPhone.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
@@ -550,44 +551,22 @@
 		208B329712BFE27A00D8FA03 /* PhotoSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoSet.m; sourceTree = "<group>"; };
 		208B329812BFE27A00D8FA03 /* DisplayPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayPhoto.h; sourceTree = "<group>"; };
 		208B329912BFE27B00D8FA03 /* DisplayPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayPhoto.m; sourceTree = "<group>"; };
-		208B329A12BFE27B00D8FA03 /* TreeRootFlareRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeRootFlareRecommendation.h; sourceTree = "<group>"; };
-		208B329B12BFE27B00D8FA03 /* TreeRootFlareRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeRootFlareRecommendation.m; sourceTree = "<group>"; };
 		208B329C12BFE27B00D8FA03 /* TreeRoots.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeRoots.h; sourceTree = "<group>"; };
 		208B329D12BFE27B00D8FA03 /* TreeRoots.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeRoots.m; sourceTree = "<group>"; };
-		208B329E12BFE27B00D8FA03 /* TreeFormCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeFormCondition.h; sourceTree = "<group>"; };
-		208B329F12BFE27B00D8FA03 /* TreeFormCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeFormCondition.m; sourceTree = "<group>"; };
-		208B32A012BFE27B00D8FA03 /* TreeCrownRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeCrownRecommendation.h; sourceTree = "<group>"; };
-		208B32A112BFE27B00D8FA03 /* TreeCrownRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeCrownRecommendation.m; sourceTree = "<group>"; };
 		208B32A212BFE27B00D8FA03 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
 		208B32A312BFE27B00D8FA03 /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
 		208B32A412BFE27B00D8FA03 /* AssessmentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssessmentType.h; sourceTree = "<group>"; };
 		208B32A512BFE27B00D8FA03 /* AssessmentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssessmentType.m; sourceTree = "<group>"; };
 		208B32A612BFE27B00D8FA03 /* TreeTrunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeTrunk.h; sourceTree = "<group>"; };
 		208B32A712BFE27B00D8FA03 /* TreeTrunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeTrunk.m; sourceTree = "<group>"; };
-		208B32A812BFE27B00D8FA03 /* TreeRootsRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeRootsRecommendation.h; sourceTree = "<group>"; };
-		208B32A912BFE27B00D8FA03 /* TreeRootsRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeRootsRecommendation.m; sourceTree = "<group>"; };
 		208B32AA12BFE27B00D8FA03 /* TreeOverall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeOverall.h; sourceTree = "<group>"; };
 		208B32AB12BFE27B00D8FA03 /* TreeOverall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeOverall.m; sourceTree = "<group>"; };
-		208B32AC12BFE27B00D8FA03 /* TreeOverallRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeOverallRecommendation.h; sourceTree = "<group>"; };
-		208B32AD12BFE27B00D8FA03 /* TreeOverallRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeOverallRecommendation.m; sourceTree = "<group>"; };
-		208B32AE12BFE27B00D8FA03 /* TreeOverallCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeOverallCondition.h; sourceTree = "<group>"; };
-		208B32AF12BFE27B00D8FA03 /* TreeOverallCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeOverallCondition.m; sourceTree = "<group>"; };
 		208B32B012BFE27B00D8FA03 /* AssessmentTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssessmentTree.h; sourceTree = "<group>"; };
 		208B32B112BFE27B00D8FA03 /* AssessmentTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssessmentTree.m; sourceTree = "<group>"; };
-		208B32B212BFE27B00D8FA03 /* TreeFormRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeFormRecommendation.h; sourceTree = "<group>"; };
-		208B32B312BFE27B00D8FA03 /* TreeFormRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeFormRecommendation.m; sourceTree = "<group>"; };
 		208B32B412BFE27B00D8FA03 /* TreeForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeForm.h; sourceTree = "<group>"; };
 		208B32B512BFE27B00D8FA03 /* TreeForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeForm.m; sourceTree = "<group>"; };
 		208B32B612BFE27B00D8FA03 /* TreeRootFlare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeRootFlare.h; sourceTree = "<group>"; };
 		208B32B712BFE27B00D8FA03 /* TreeRootFlare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeRootFlare.m; sourceTree = "<group>"; };
-		208B32B812BFE27B00D8FA03 /* TreeTrunkCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeTrunkCondition.h; sourceTree = "<group>"; };
-		208B32B912BFE27B00D8FA03 /* TreeTrunkCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeTrunkCondition.m; sourceTree = "<group>"; };
-		208B32BA12BFE27B00D8FA03 /* TreeTrunkRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeTrunkRecommendation.h; sourceTree = "<group>"; };
-		208B32BB12BFE27B00D8FA03 /* TreeTrunkRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeTrunkRecommendation.m; sourceTree = "<group>"; };
-		208B32BC12BFE27B00D8FA03 /* TreeRootFlareCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeRootFlareCondition.h; sourceTree = "<group>"; };
-		208B32BD12BFE27B00D8FA03 /* TreeRootFlareCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeRootFlareCondition.m; sourceTree = "<group>"; };
-		208B32BE12BFE27B00D8FA03 /* TreeCrownCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeCrownCondition.h; sourceTree = "<group>"; };
-		208B32BF12BFE27B00D8FA03 /* TreeCrownCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeCrownCondition.m; sourceTree = "<group>"; };
 		208B32C012BFE27B00D8FA03 /* Landscape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Landscape.h; sourceTree = "<group>"; };
 		208B32C112BFE27B00D8FA03 /* Landscape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Landscape.m; sourceTree = "<group>"; };
 		208B32C212BFE27B00D8FA03 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
@@ -596,8 +575,6 @@
 		208B32C512BFE27B00D8FA03 /* TreeCrown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeCrown.m; sourceTree = "<group>"; };
 		208B32C612BFE27B00D8FA03 /* Assessment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assessment.h; sourceTree = "<group>"; };
 		208B32C712BFE27B00D8FA03 /* Assessment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Assessment.m; sourceTree = "<group>"; };
-		208B32C812BFE27B00D8FA03 /* TreeRootsCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeRootsCondition.h; sourceTree = "<group>"; };
-		208B32C912BFE27B00D8FA03 /* TreeRootsCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeRootsCondition.m; sourceTree = "<group>"; };
 		208B32CC12BFE27B00D8FA03 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		208B32CD12BFE27B00D8FA03 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		208B32D012BFE27B00D8FA03 /* AssessmentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssessmentTableViewCell.h; sourceTree = "<group>"; };
@@ -710,6 +687,32 @@
 		208B3DD312C02B5B00D8FA03 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSStringAdditions.h; path = Classes/NSStringAdditions.h; sourceTree = SOURCE_ROOT; };
 		208B3DD412C02B5B00D8FA03 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSStringAdditions.m; path = Classes/NSStringAdditions.m; sourceTree = SOURCE_ROOT; };
 		20AC3F4412C10B9300BC4C12 /* TreeOptions.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TreeOptions.xml; sourceTree = "<group>"; };
+		20AC439512C3B48900BC4C12 /* TreeRootFlareRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeRootFlareRecommendation.h; path = ../Shared/TreeRootFlareRecommendation.h; sourceTree = "<group>"; };
+		20AC439612C3B48900BC4C12 /* TreeRootFlareRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeRootFlareRecommendation.m; path = ../Shared/TreeRootFlareRecommendation.m; sourceTree = "<group>"; };
+		20AC439712C3B48900BC4C12 /* TreeFormCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeFormCondition.h; path = ../Shared/TreeFormCondition.h; sourceTree = "<group>"; };
+		20AC439812C3B48900BC4C12 /* TreeFormCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeFormCondition.m; path = ../Shared/TreeFormCondition.m; sourceTree = "<group>"; };
+		20AC439912C3B48900BC4C12 /* TreeOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeOption.h; path = ../Shared/TreeOption.h; sourceTree = "<group>"; };
+		20AC439A12C3B48900BC4C12 /* TreeOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeOption.m; path = ../Shared/TreeOption.m; sourceTree = "<group>"; };
+		20AC439B12C3B48900BC4C12 /* TreeCrownRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeCrownRecommendation.h; path = ../Shared/TreeCrownRecommendation.h; sourceTree = "<group>"; };
+		20AC439C12C3B48900BC4C12 /* TreeCrownRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeCrownRecommendation.m; path = ../Shared/TreeCrownRecommendation.m; sourceTree = "<group>"; };
+		20AC439D12C3B48900BC4C12 /* TreeRootsRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeRootsRecommendation.h; path = ../Shared/TreeRootsRecommendation.h; sourceTree = "<group>"; };
+		20AC439E12C3B48900BC4C12 /* TreeRootsRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeRootsRecommendation.m; path = ../Shared/TreeRootsRecommendation.m; sourceTree = "<group>"; };
+		20AC439F12C3B48900BC4C12 /* TreeOverallRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeOverallRecommendation.h; path = ../Shared/TreeOverallRecommendation.h; sourceTree = "<group>"; };
+		20AC43A012C3B48900BC4C12 /* TreeOverallRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeOverallRecommendation.m; path = ../Shared/TreeOverallRecommendation.m; sourceTree = "<group>"; };
+		20AC43A112C3B48900BC4C12 /* TreeOverallCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeOverallCondition.h; path = ../Shared/TreeOverallCondition.h; sourceTree = "<group>"; };
+		20AC43A212C3B48900BC4C12 /* TreeOverallCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeOverallCondition.m; path = ../Shared/TreeOverallCondition.m; sourceTree = "<group>"; };
+		20AC43A312C3B48900BC4C12 /* TreeFormRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeFormRecommendation.h; path = ../Shared/TreeFormRecommendation.h; sourceTree = "<group>"; };
+		20AC43A412C3B48900BC4C12 /* TreeFormRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeFormRecommendation.m; path = ../Shared/TreeFormRecommendation.m; sourceTree = "<group>"; };
+		20AC43A512C3B48900BC4C12 /* TreeTrunkCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeTrunkCondition.h; path = ../Shared/TreeTrunkCondition.h; sourceTree = "<group>"; };
+		20AC43A612C3B48900BC4C12 /* TreeTrunkCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeTrunkCondition.m; path = ../Shared/TreeTrunkCondition.m; sourceTree = "<group>"; };
+		20AC43A712C3B48900BC4C12 /* TreeTrunkRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeTrunkRecommendation.h; path = ../Shared/TreeTrunkRecommendation.h; sourceTree = "<group>"; };
+		20AC43A812C3B48900BC4C12 /* TreeTrunkRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeTrunkRecommendation.m; path = ../Shared/TreeTrunkRecommendation.m; sourceTree = "<group>"; };
+		20AC43A912C3B48900BC4C12 /* TreeRootFlareCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeRootFlareCondition.h; path = ../Shared/TreeRootFlareCondition.h; sourceTree = "<group>"; };
+		20AC43AA12C3B48900BC4C12 /* TreeRootFlareCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeRootFlareCondition.m; path = ../Shared/TreeRootFlareCondition.m; sourceTree = "<group>"; };
+		20AC43AB12C3B48900BC4C12 /* TreeCrownCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeCrownCondition.h; path = ../Shared/TreeCrownCondition.h; sourceTree = "<group>"; };
+		20AC43AC12C3B48900BC4C12 /* TreeCrownCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeCrownCondition.m; path = ../Shared/TreeCrownCondition.m; sourceTree = "<group>"; };
+		20AC43AD12C3B48900BC4C12 /* TreeRootsCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeRootsCondition.h; path = ../Shared/TreeRootsCondition.h; sourceTree = "<group>"; };
+		20AC43AE12C3B48900BC4C12 /* TreeRootsCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeRootsCondition.m; path = ../Shared/TreeRootsCondition.m; sourceTree = "<group>"; };
 		2860E387111B897F00E27156 /* AppDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_iPhone.h; sourceTree = "<group>"; };
 		2860E388111B897F00E27156 /* AppDelegate_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_iPhone.m; sourceTree = "<group>"; };
 		2870939E111907710040F596 /* Trees.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Trees.xcdatamodel; sourceTree = "<group>"; };
@@ -816,44 +819,22 @@
 		208B329412BFE27A00D8FA03 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				208B329A12BFE27B00D8FA03 /* TreeRootFlareRecommendation.h */,
-				208B329B12BFE27B00D8FA03 /* TreeRootFlareRecommendation.m */,
 				208B329C12BFE27B00D8FA03 /* TreeRoots.h */,
 				208B329D12BFE27B00D8FA03 /* TreeRoots.m */,
-				208B329E12BFE27B00D8FA03 /* TreeFormCondition.h */,
-				208B329F12BFE27B00D8FA03 /* TreeFormCondition.m */,
-				208B32A012BFE27B00D8FA03 /* TreeCrownRecommendation.h */,
-				208B32A112BFE27B00D8FA03 /* TreeCrownRecommendation.m */,
 				208B32A212BFE27B00D8FA03 /* Image.h */,
 				208B32A312BFE27B00D8FA03 /* Image.m */,
 				208B32A412BFE27B00D8FA03 /* AssessmentType.h */,
 				208B32A512BFE27B00D8FA03 /* AssessmentType.m */,
 				208B32A612BFE27B00D8FA03 /* TreeTrunk.h */,
 				208B32A712BFE27B00D8FA03 /* TreeTrunk.m */,
-				208B32A812BFE27B00D8FA03 /* TreeRootsRecommendation.h */,
-				208B32A912BFE27B00D8FA03 /* TreeRootsRecommendation.m */,
 				208B32AA12BFE27B00D8FA03 /* TreeOverall.h */,
 				208B32AB12BFE27B00D8FA03 /* TreeOverall.m */,
-				208B32AC12BFE27B00D8FA03 /* TreeOverallRecommendation.h */,
-				208B32AD12BFE27B00D8FA03 /* TreeOverallRecommendation.m */,
-				208B32AE12BFE27B00D8FA03 /* TreeOverallCondition.h */,
-				208B32AF12BFE27B00D8FA03 /* TreeOverallCondition.m */,
 				208B32B012BFE27B00D8FA03 /* AssessmentTree.h */,
 				208B32B112BFE27B00D8FA03 /* AssessmentTree.m */,
-				208B32B212BFE27B00D8FA03 /* TreeFormRecommendation.h */,
-				208B32B312BFE27B00D8FA03 /* TreeFormRecommendation.m */,
 				208B32B412BFE27B00D8FA03 /* TreeForm.h */,
 				208B32B512BFE27B00D8FA03 /* TreeForm.m */,
 				208B32B612BFE27B00D8FA03 /* TreeRootFlare.h */,
 				208B32B712BFE27B00D8FA03 /* TreeRootFlare.m */,
-				208B32B812BFE27B00D8FA03 /* TreeTrunkCondition.h */,
-				208B32B912BFE27B00D8FA03 /* TreeTrunkCondition.m */,
-				208B32BA12BFE27B00D8FA03 /* TreeTrunkRecommendation.h */,
-				208B32BB12BFE27B00D8FA03 /* TreeTrunkRecommendation.m */,
-				208B32BC12BFE27B00D8FA03 /* TreeRootFlareCondition.h */,
-				208B32BD12BFE27B00D8FA03 /* TreeRootFlareCondition.m */,
-				208B32BE12BFE27B00D8FA03 /* TreeCrownCondition.h */,
-				208B32BF12BFE27B00D8FA03 /* TreeCrownCondition.m */,
 				208B32C012BFE27B00D8FA03 /* Landscape.h */,
 				208B32C112BFE27B00D8FA03 /* Landscape.m */,
 				208B32C212BFE27B00D8FA03 /* Photo.h */,
@@ -862,8 +843,32 @@
 				208B32C512BFE27B00D8FA03 /* TreeCrown.m */,
 				208B32C612BFE27B00D8FA03 /* Assessment.h */,
 				208B32C712BFE27B00D8FA03 /* Assessment.m */,
-				208B32C812BFE27B00D8FA03 /* TreeRootsCondition.h */,
-				208B32C912BFE27B00D8FA03 /* TreeRootsCondition.m */,
+				20AC439512C3B48900BC4C12 /* TreeRootFlareRecommendation.h */,
+				20AC439612C3B48900BC4C12 /* TreeRootFlareRecommendation.m */,
+				20AC439712C3B48900BC4C12 /* TreeFormCondition.h */,
+				20AC439812C3B48900BC4C12 /* TreeFormCondition.m */,
+				20AC439912C3B48900BC4C12 /* TreeOption.h */,
+				20AC439A12C3B48900BC4C12 /* TreeOption.m */,
+				20AC439B12C3B48900BC4C12 /* TreeCrownRecommendation.h */,
+				20AC439C12C3B48900BC4C12 /* TreeCrownRecommendation.m */,
+				20AC439D12C3B48900BC4C12 /* TreeRootsRecommendation.h */,
+				20AC439E12C3B48900BC4C12 /* TreeRootsRecommendation.m */,
+				20AC439F12C3B48900BC4C12 /* TreeOverallRecommendation.h */,
+				20AC43A012C3B48900BC4C12 /* TreeOverallRecommendation.m */,
+				20AC43A112C3B48900BC4C12 /* TreeOverallCondition.h */,
+				20AC43A212C3B48900BC4C12 /* TreeOverallCondition.m */,
+				20AC43A312C3B48900BC4C12 /* TreeFormRecommendation.h */,
+				20AC43A412C3B48900BC4C12 /* TreeFormRecommendation.m */,
+				20AC43A512C3B48900BC4C12 /* TreeTrunkCondition.h */,
+				20AC43A612C3B48900BC4C12 /* TreeTrunkCondition.m */,
+				20AC43A712C3B48900BC4C12 /* TreeTrunkRecommendation.h */,
+				20AC43A812C3B48900BC4C12 /* TreeTrunkRecommendation.m */,
+				20AC43A912C3B48900BC4C12 /* TreeRootFlareCondition.h */,
+				20AC43AA12C3B48900BC4C12 /* TreeRootFlareCondition.m */,
+				20AC43AB12C3B48900BC4C12 /* TreeCrownCondition.h */,
+				20AC43AC12C3B48900BC4C12 /* TreeCrownCondition.m */,
+				20AC43AD12C3B48900BC4C12 /* TreeRootsCondition.h */,
+				20AC43AE12C3B48900BC4C12 /* TreeRootsCondition.m */,
 				208B329512BFE27A00D8FA03 /* Not Generated */,
 			);
 			name = Models;
@@ -1679,30 +1684,18 @@
 				2860E38A111B897F00E27156 /* AppDelegate_iPhone.m in Sources */,
 				208B32DE12BFE27B00D8FA03 /* PhotoSet.m in Sources */,
 				208B32DF12BFE27B00D8FA03 /* DisplayPhoto.m in Sources */,
-				208B32E012BFE27B00D8FA03 /* TreeRootFlareRecommendation.m in Sources */,
 				208B32E112BFE27B00D8FA03 /* TreeRoots.m in Sources */,
-				208B32E212BFE27B00D8FA03 /* TreeFormCondition.m in Sources */,
-				208B32E312BFE27B00D8FA03 /* TreeCrownRecommendation.m in Sources */,
 				208B32E412BFE27B00D8FA03 /* Image.m in Sources */,
 				208B32E512BFE27B00D8FA03 /* AssessmentType.m in Sources */,
 				208B32E612BFE27B00D8FA03 /* TreeTrunk.m in Sources */,
-				208B32E712BFE27B00D8FA03 /* TreeRootsRecommendation.m in Sources */,
 				208B32E812BFE27B00D8FA03 /* TreeOverall.m in Sources */,
-				208B32E912BFE27B00D8FA03 /* TreeOverallRecommendation.m in Sources */,
-				208B32EA12BFE27B00D8FA03 /* TreeOverallCondition.m in Sources */,
 				208B32EB12BFE27B00D8FA03 /* AssessmentTree.m in Sources */,
-				208B32EC12BFE27B00D8FA03 /* TreeFormRecommendation.m in Sources */,
 				208B32ED12BFE27B00D8FA03 /* TreeForm.m in Sources */,
 				208B32EE12BFE27B00D8FA03 /* TreeRootFlare.m in Sources */,
-				208B32EF12BFE27B00D8FA03 /* TreeTrunkCondition.m in Sources */,
-				208B32F012BFE27B00D8FA03 /* TreeTrunkRecommendation.m in Sources */,
-				208B32F112BFE27B00D8FA03 /* TreeRootFlareCondition.m in Sources */,
-				208B32F212BFE27B00D8FA03 /* TreeCrownCondition.m in Sources */,
 				208B32F312BFE27B00D8FA03 /* Landscape.m in Sources */,
 				208B32F412BFE27B00D8FA03 /* Photo.m in Sources */,
 				208B32F512BFE27B00D8FA03 /* TreeCrown.m in Sources */,
 				208B32F612BFE27B00D8FA03 /* Assessment.m in Sources */,
-				208B32F712BFE27B00D8FA03 /* TreeRootsCondition.m in Sources */,
 				208B32F812BFE27B00D8FA03 /* PhotoViewController.m in Sources */,
 				208B32F912BFE27B00D8FA03 /* AssessmentTableViewCell.m in Sources */,
 				208B32FA12BFE27B00D8FA03 /* AssessmentTableViewController.m in Sources */,
@@ -1754,6 +1747,19 @@
 				149B812F12C26F04001557AB /* LandscapeDetailViewController.m in Sources */,
 				149B813712C26F68001557AB /* LandscapeTableViewCell.m in Sources */,
 				149B814F12C276EC001557AB /* LandscapePhotoViewController.m in Sources */,
+				20AC43AF12C3B48900BC4C12 /* TreeRootFlareRecommendation.m in Sources */,
+				20AC43B012C3B48900BC4C12 /* TreeFormCondition.m in Sources */,
+				20AC43B112C3B48900BC4C12 /* TreeOption.m in Sources */,
+				20AC43B212C3B48900BC4C12 /* TreeCrownRecommendation.m in Sources */,
+				20AC43B312C3B48900BC4C12 /* TreeRootsRecommendation.m in Sources */,
+				20AC43B412C3B48900BC4C12 /* TreeOverallRecommendation.m in Sources */,
+				20AC43B512C3B48900BC4C12 /* TreeOverallCondition.m in Sources */,
+				20AC43B612C3B48900BC4C12 /* TreeFormRecommendation.m in Sources */,
+				20AC43B712C3B48900BC4C12 /* TreeTrunkCondition.m in Sources */,
+				20AC43B812C3B48900BC4C12 /* TreeTrunkRecommendation.m in Sources */,
+				20AC43B912C3B48900BC4C12 /* TreeRootFlareCondition.m in Sources */,
+				20AC43BA12C3B48900BC4C12 /* TreeCrownCondition.m in Sources */,
+				20AC43BB12C3B48900BC4C12 /* TreeRootsCondition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

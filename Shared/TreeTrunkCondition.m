@@ -1,9 +1,9 @@
 // 
 //  TreeTrunkCondition.m
-//  landscapes
+//  Trees
 //
-//  Created by Evan Cordell on 8/16/10.
-//  Copyright 2010 NCPTT. All rights reserved.
+//  Created by Evan on 12/23/10.
+//  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
 #import "TreeTrunkCondition.h"
@@ -12,7 +12,6 @@
 
 @implementation TreeTrunkCondition 
 
-@dynamic name;
 @dynamic trunk;
 
 @end
