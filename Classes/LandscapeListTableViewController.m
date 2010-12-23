@@ -36,11 +36,6 @@
     NSError *error=nil;
     
 	
-	// Include an Add + button
-    UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add:)];
-    self.navigationItem.rightBarButtonItem = addButtonItem;
-    [addButtonItem release];	
-	
 	// Set the table view's row height
     self.tableView.rowHeight = 52.0;
 	
@@ -282,7 +277,6 @@
 - (void)dealloc {
 	
     [landscapesArray release];
-	
     [fetchedResultsController release];
     [super dealloc];
 }

@@ -13,7 +13,7 @@
 @implementation AssessmentTreeCRViewController
 
 @synthesize whichId, managedObjectContext, conditionStringArray, recommendationStringArray, conditionArray, recommendationArray, tree, isEditing, conditionTableView, recommendationTableView;
-@synthesize selectedConditionIndices, selectedRecommendationIndices, tapCount, tapTimer, tappedRow;
+@synthesize selectedConditionIndices, selectedRecommendationIndices, tapCount, tapTimer, tappedRow, editingRow;
 
 -(id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
     if (self = [super initWithNibName:@"AssessmentTreeCRView" bundle:[NSBundle mainBundle]]){
