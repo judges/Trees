@@ -48,8 +48,8 @@
 -(void)addRecommendation;
 -(void)editCondition;
 -(void)editRecommendation;
--(void)deleteCondition;
--(void)deleteRecommendation;
+-(void)deleteCondition:(NSInteger)row;
+-(void)deleteRecommendation:(NSInteger)row;
 -(IBAction)segmentSwitch:(id)sender;
 -(IBAction)photoButtonClick:(id)sender;
 @end

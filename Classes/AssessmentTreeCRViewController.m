@@ -459,6 +459,21 @@
 	return nil;
 }
 
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+	//Enables swipe to delete
+	if (editingStyle == UITableViewCellEditingStyleDelete) {
+		if ([conditionTableView isHidden]) {
+			[self deleteRecommendation:[indexPath row]];
+			[recommendationTableView reloadData];
+		} else {
+			[self deleteCondition:[indexPath row]];
+			[conditionTableView reloadData];
+		}
+
+	}
+}
+
 -(IBAction)segmentSwitch:(id)sender {
     //switch between the views for condition and recommendation
     UISegmentedControl *segmentedButton = (UISegmentedControl *) sender;
@@ -502,6 +517,7 @@
 		default:
 			break;
 	}
+	addTextField.text = @"";
 }
 
 - (void)didPresentAlertView:(UIAlertView *)alertView {
@@ -573,19 +589,8 @@
 	[conditionArray sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease]]];
 	//recalculate selected indices
 	[self findSelectedItems];
-	/*
-	//resort now that we've added a new entry
-	NSSortDescriptor *stringSortDesc = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES];
-	[conditionStringArray sortUsingDescriptors:[NSArray arrayWithObject:stringSortDesc]];
-	[stringSortDesc release];
-	//don't forget object array or table won't match data!
-	NSSortDescriptor *dataSortDesc = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-	[conditionArray sortUsingDescriptors:[NSArray arrayWithObject:dataSortDesc]];
-	[stringSortDesc release];
-	
-	[selectedConditionIndices addObject:[NSNumber numberWithInt:[conditionStringArray indexOfObject:conditionString]]];
-	*/
 }
+
 - (void)addRecommendation {
     //adds a new recommendation record
 	switch ([whichId intValue]) {
@@ -647,132 +652,60 @@
     NSString *recommendationString = [NSString stringWithString:[addTextField text]];
     [recommendationStringArray addObject:recommendationString];
 	//resort string and object arrays
-	[conditionStringArray sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES] autorelease]]];
-	[conditionArray sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease]]];
+	[recommendationStringArray sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES] autorelease]]];
+	[recommendationArray sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease]]];
 	//recalculate selected indices
 	[self findSelectedItems];
-	/*
-	//resort now that we've added a new entry
-	NSSortDescriptor *stringSortDesc = [[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES];
-	[recommendationStringArray sortUsingDescriptors:[NSArray arrayWithObject:stringSortDesc]];
-	[stringSortDesc release];
-	//don't forget object array or table won't match data!
-	NSSortDescriptor *dataSortDesc = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-	[recommendationArray sortUsingDescriptors:[NSArray arrayWithObject:dataSortDesc]];
-	[stringSortDesc release];
-	
-	[selectedRecommendationIndices addObject:[NSNumber numberWithInt:[recommendationStringArray indexOfObject:recommendationString]]];
-	*/
 }
 	 
 - (void)editCondition {
     //edit existing condition record
 
 }
+
 - (void)editRecommendation {
     //edit existing recommendation record
 
 }
-- (void)deleteCondition {
+
+- (void)deleteCondition:(NSInteger)row {
     //delete a condition record
-    switch ([whichId intValue]) {
-        case 1:
-        {
-            //TreeFormCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-            //[managedObjectContext deleteObject:item];
-            break;
-        }
-        case 2:
-        {
-            //TreeCrownCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-            //[managedObjectContext deleteObject:item];
-            break;
-        }
-        case 3:
-        {
-            //TreeTrunkCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-            //[managedObjectContext deleteObject:item];
-            break;
-        }
-        case 4:
-        {
-            //TreeRootFlareCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-            //[managedObjectContext deleteObject:item];
-            break;
-        }
-        case 5:
-        {
-            //TreeRootsCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-            //[managedObjectContext deleteObject:item];
-            break;
-        }
-        case 6:
-        {
-            //TreeOverallCondition *item = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-            //[managedObjectContext deleteObject:item];
-            break;
-        }
-        default:
-            break;
-    }
-    
+	TreeOption *item = [conditionArray objectAtIndex:row];
+	[managedObjectContext deleteObject:item];
     NSError *error;
     if (![managedObjectContext save:&error]) {
        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
-    //[conditionStringArray removeObjectAtIndex:[conditionPicker selectedRowInComponent:0]];
-	//[conditionArray removeObjectAtIndex:[conditionPicker selectedRowInComponent:0]];
+    } else {
+		//only remove from screen if it's removed from the db (this should always happen)
+		[conditionArray removeObjectAtIndex:row];
+		[conditionStringArray removeObjectAtIndex:row];
+	}
+	//resort string and object arrays
+	[conditionStringArray sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES] autorelease]]];
+	[conditionArray sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease]]];
+	//recalculate selected indices
+	[self findSelectedItems];
 }
-- (void)deleteRecommendation {
+
+- (void)deleteRecommendation:(NSInteger)row {
     //delete a recommendation entry
-    switch ([whichId intValue]) {
-        case 1:
-        {
-            //TreeFormRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-            //[managedObjectContext deleteObject:item];
-            break;
-        }
-        case 2:
-        {
-            //TreeCrownRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-            //[managedObjectContext deleteObject:item];
-            break;
-        }
-        case 3:
-        {
-            //TreeTrunkRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-            //[managedObjectContext deleteObject:item];
-            break;
-        }
-        case 4:
-        {
-            //TreeRootFlareRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-            //[managedObjectContext deleteObject:item];
-            break;
-        }
-        case 5:
-        {
-            //TreeRootsRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-            //[managedObjectContext deleteObject:item];
-            break;
-        }
-        case 6:
-        {
-            //TreeOverallRecommendation *item = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-            //[managedObjectContext deleteObject:item];
-            break;
-        }
-        default:
-            break;
-    }
+	TreeOption *item = [recommendationArray objectAtIndex:row];
+	[managedObjectContext deleteObject:item];
     NSError *error;
     if (![managedObjectContext save:&error]) {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
-    //[recommendationStringArray removeObjectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-    //[recommendationArray removeObjectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-	//[recommendationPicker reloadComponent:0];
+		NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    } else {
+		//only remove from screen if it's removed from the db (this should always happen)
+		[recommendationArray removeObjectAtIndex:row];
+		[recommendationStringArray removeObjectAtIndex:row];
+	}
+	//resort string and object arrays
+	[recommendationStringArray sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"self" ascending:YES] autorelease]]];
+	[recommendationArray sortUsingDescriptors:[NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease]]];
+	//recalculate selected indices
+	[self findSelectedItems];
 }
+			 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
