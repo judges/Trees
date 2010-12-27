@@ -10,6 +10,7 @@
 #import "Assessment.h"
 #import "AssessmentTree.h"
 #import "AppDelegate_Shared.h"
+#import "DistancePickerView.h"
 
 @interface AssessmentTreeViewAndInputController : UIViewController <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, TTPostControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
     IBOutlet UIView *viewView;
@@ -51,8 +52,8 @@
     IBOutlet UIButton *button6;
 	UIActionSheet *caliperActionSheet;
     UIActionSheet *heightActionSheet;
-	UIPickerView *caliperPickerView;
-    UIPickerView *heightPickerView;
+	DistancePickerView *caliperPickerView;
+    DistancePickerView *heightPickerView;
  @private
     NSFetchedResultsController *fetchedResultsController;
     NSManagedObjectContext *managedObjectContext;

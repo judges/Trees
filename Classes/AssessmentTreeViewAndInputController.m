@@ -49,8 +49,8 @@
 	
 	//setup pickerviews
 	CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
-    caliperPickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
-    heightPickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
+    caliperPickerView = [[DistancePickerView alloc] initWithFrame:pickerFrame];
+    heightPickerView = [[DistancePickerView alloc] initWithFrame:pickerFrame];
     
 }
 
@@ -174,6 +174,17 @@
     caliperPickerView.dataSource = self;
     caliperPickerView.delegate = self;
     
+	//stick labels on the right components
+	NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
+	if ([lengthUnits isEqualToString:@"Metric"]) {
+		[caliperPickerView addLabel:@"m" forComponent:0 forLongestString:@"ft"];
+		[caliperPickerView addLabel:@"cm" forComponent:2 forLongestString:@"cm"];
+	} else if ([lengthUnits isEqualToString:@"Imperial"]) {
+		[caliperPickerView addLabel:@"ft" forComponent:1 forLongestString:@"ft"];
+		[caliperPickerView addLabel:@"in" forComponent:2 forLongestString:@"cm"];
+	}
+	
+	 
     [caliperActionSheet addSubview:caliperPickerView];
     
     UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Close"]];
@@ -212,6 +223,16 @@
     heightPickerView.dataSource = self;
     heightPickerView.delegate = self;
     
+	//stick labels on the right components
+	NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
+	if ([lengthUnits isEqualToString:@"Metric"]) {
+		[heightPickerView addLabel:@"m" forComponent:2 forLongestString:@"ft"];
+		[heightPickerView addLabel:@"cm" forComponent:4 forLongestString:@"cm"];
+	} else if ([lengthUnits isEqualToString:@"Imperial"]) {
+		[heightPickerView addLabel:@"ft" forComponent:2 forLongestString:@"ft"];
+		[heightPickerView addLabel:@"in" forComponent:3 forLongestString:@"cm"];
+	}
+	
     [heightActionSheet addSubview:heightPickerView];
     
     UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Close"]];
@@ -256,18 +277,24 @@
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
 	//decides how many sections for each picker
-	//right now everything is the same but the logic is in place if it needs to be changed in the future.
-	//(The compiler should figure this out and optimize it?)
 	NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
 	if ([lengthUnits isEqualToString:@"Metric"]) {
 		//metric
-		return 4;
+		if (thePickerView == caliperPickerView) {
+			return 3;
+		} else {
+			return 5;
+		}
 	} else if ([lengthUnits isEqualToString:@"Imperial"]) {
 		//imperial
-		return 4;
+		if (thePickerView == caliperPickerView) {
+			return 3;
+		} else {
+			return 4;
+		}
 	} else {
 		//won't get here
-		return 4;
+		return 1;
 	}
 }
 
@@ -284,17 +311,12 @@
 					return 13;
 					break;
 				case 1:
-					//caliper meters label
-					return 1;
+					//caliper centimeters 10s list
+					return 10;
 					break;
 				case 2:
-					//caliper centimeters list
-					//0-99cm
-					return 100;
-					break;
-				case 3:
-					//caliper centimeters label
-					return 1;
+					//caliper centimeters ones list
+					return 10;
 					break;
 				default:
 					break;
@@ -303,19 +325,17 @@
 			//imperial caliper
 			switch (component) {
 				case 0:
-					//caliper feet list
-					//0-40 - largest ever recorded is about 37
-					return 41;
+					//caliper feet 10s list
+					return 4;
+					break;
 				case 1:
-					//caliper feet label
-					return 1;
+					//caliper feet ones list
+					return 10;
+					break;
 				case 2:
 					//caliper inches list
 					//0-11in
 					return 12;
-				case 3:
-					//caliper inches label
-					return 1;
 					break;
 				default:
 					break;
@@ -327,22 +347,24 @@
 			//metric height
 			switch (component) {
 				case 0:
-					//height meters list
-					//0-120m
-					return 121;
+					//height meters hundreds list
+					return 2;
 					break;
 				case 1:
-					//height meters label
-					return 1;
+					//height meters tens list
+					return 10;
 					break;
 				case 2:
-					//height centimeters list
-					//0-99cm
-					return 100;
+					//height meters ones list
+					return 10;
 					break;
 				case 3:
-					//height centimeters label
-					return 1;
+					//height centimeters tens list
+					return 10;
+					break;
+				case 4:
+					//height centimeters ones list
+					return 10;
 					break;
 				default:
 					break;
@@ -351,22 +373,20 @@
 			//imperial height
 			switch (component) {
 				case 0:
-					//height feet list
-					//0-400ft
-					return 401;
+					//height feet hundreds list
+					return 4;
 					break;
 				case 1:
-					//height feet label
-					return 1;
+					//height feet tens list
+					return 10;
 					break;
 				case 2:
-					//height inches list
-					//0-11in
-					return 12;
+					//height feet ones list
+					return 10;
 					break;
 				case 3:
-					//height inches label
-					return 1;
+					//height inches list
+					return 12;
 					break;
 				default:
 					break;
@@ -377,30 +397,9 @@
 	return 1;
 }
 
-- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+- (NSString *)pickerView:(DistancePickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     //load data into picker views
-	NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
-	if ([lengthUnits isEqualToString:@"Metric"]) {
-		if (component == 1) {
-			return @"m";
-		} else if (component == 3) {
-			return @"cm";
-		} else {
-			return [NSString stringWithFormat:@"%d", row];
-		}
-
-	} else if ([lengthUnits isEqualToString:@"Imperial"]) {
-		if (component == 1) {
-			return @"ft";
-		} else if (component == 3) {
-			return @"in";
-		} else {
-			return [NSString stringWithFormat:@"%d", row];
-		}
-
-	} 
-	//shouldn't ever get here
-	return 0;
+	return [NSString stringWithFormat:@"%d", row];
 }
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
