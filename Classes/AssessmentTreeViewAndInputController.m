@@ -14,7 +14,7 @@
 @synthesize assessmentTree, assessor, date, caliper, height;
 @synthesize formCText, crownCText, trunkCText, rootFlareCText, rootsCText, overallCText;
 @synthesize formRText, crownRText, trunkRText, rootFlareRText, rootsRText, overallRText;
-@synthesize assessorField, caliperField, heightField;
+@synthesize assessorField, caliperButton, heightButton;
 
 -(id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
     //initializes and passes assessment from parent controller
@@ -26,6 +26,34 @@
     } 
     return self; 
 } 
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    if(!managedObjectContext){
+        managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+    }
+    
+    self.title = @"Tree";
+    self.assessor.text = self.assessmentTree.assessor;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterLongStyle];
+    NSString *dateStr= [dateFormatter stringFromDate:self.assessmentTree.created_at];
+    [dateFormatter release];
+    self.date.text = dateStr;
+	
+	//setup actionsheets
+	caliperActionSheet = [[UIActionSheet alloc] initWithTitle:@"Caliper" delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+    heightActionSheet = [[UIActionSheet alloc] initWithTitle:@"Height" delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+	photoActionSheet = [[UIActionSheet alloc] initWithTitle:@"Photos" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Add Existing", @"View Photos", nil];
+    photoActionSheet.actionSheetStyle = UIActionSheetStyleDefault;
+	
+	//setup pickerviews
+	CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
+    caliperPickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
+    heightPickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
+    
+}
+
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
     if (self.assessmentTree) {
@@ -46,8 +74,8 @@
         self.rootsRText.text = [[self.assessmentTree.roots valueForKeyPath:@"recommendation.name"] anyObject];
         self.overallRText.text = [[self.assessmentTree.overall valueForKeyPath:@"recommendation.name"] anyObject];
         self.assessorField.text = self.assessmentTree.assessor;
-        self.caliperField.text = [self.assessmentTree.caliper stringValue];
-        self.heightField.text = [self.assessmentTree.height stringValue];
+		[self.caliperButton setTitle:[self.assessmentTree.caliper stringValue] forState:UIControlStateNormal];
+		[self.heightButton setTitle:[self.assessmentTree.height stringValue] forState:UIControlStateNormal];
     }
     if (self.formCText.text == nil || self.formRText.text == nil) {
         [button1 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
@@ -105,10 +133,7 @@
 }
 -(IBAction)photoButtonClick:(id)sender {
     //user clicked photo button
-    UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Photos" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Add Existing", @"View Photos", nil];
-    popupQuery.actionSheetStyle = UIActionSheetStyleDefault;
-    [popupQuery showInView:self.view];
-    [popupQuery release];
+    [photoActionSheet showInView:self.view];
     
 }
 -(IBAction)notesButtonClick:(id)sender {
@@ -139,26 +164,111 @@
     }
     self.assessor.text = self.assessmentTree.assessor;
 }
--(IBAction)saveCaliper:(id)sender {
-    //edit the caliper field
-    [caliperField resignFirstResponder];
-    self.assessmentTree.caliper = [NSDecimalNumber decimalNumberWithString:[(UITextField*)sender text]];
-    NSError *saveError;
-    if (![managedObjectContext save:&saveError]) {
-       NSLog(@"Saving changes to caliper failed: %@", saveError);
+
+-(IBAction)caliperClick:(id)sender {
+	//show the caliper picker with close and select buttons
+    [caliperActionSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+    
+    
+    caliperPickerView.showsSelectionIndicator = YES;
+    caliperPickerView.dataSource = self;
+    caliperPickerView.delegate = self;
+    
+    [caliperActionSheet addSubview:caliperPickerView];
+    
+    UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Close"]];
+    closeButton.momentary = YES; 
+    closeButton.frame = CGRectMake(10, 7.0f, 50.0f, 30.0f);
+    closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
+    closeButton.tintColor = [UIColor blackColor];
+    [closeButton addTarget:self action:@selector(dismissActionSheet:) forControlEvents:UIControlEventValueChanged];
+    [caliperActionSheet addSubview:closeButton];
+    [closeButton release];
+    
+    UISegmentedControl *doneButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Done"]];
+    doneButton.momentary = YES; 
+    doneButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
+    doneButton.segmentedControlStyle = UISegmentedControlStyleBar;
+    doneButton.tintColor = [UIColor blackColor];
+    [doneButton addTarget:self action:@selector(caliperSelected:) forControlEvents:UIControlEventValueChanged];
+    [caliperActionSheet addSubview:doneButton];
+    [doneButton release];
+    
+    [caliperActionSheet showInView:self.view];
+    [caliperActionSheet setBounds:CGRectMake(0, 0, 320, 485)];
+    
+    //select the first entry by default
+    if([caliperPickerView numberOfRowsInComponent:0] > 0) {
+        [self pickerView:caliperPickerView didSelectRow:0 inComponent:0];
     }
-    self.caliper.text = [self.assessmentTree.caliper stringValue];
 }
--(IBAction)saveHeight:(id)sender {
-    //edit the height field
-    [heightField resignFirstResponder];
-    self.assessmentTree.height = [NSDecimalNumber decimalNumberWithString:[(UITextField*)sender text]];
-    NSError *saveError;
-    if (![managedObjectContext save:&saveError]) {
-        NSLog(@"Saving changes to height failed: %@", saveError);
+
+-(IBAction)heightClick:(id)sender {
+    //show the height picker with close and select buttons
+    [heightActionSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+    
+    
+    heightPickerView.showsSelectionIndicator = YES;
+    heightPickerView.dataSource = self;
+    heightPickerView.delegate = self;
+    
+    [heightActionSheet addSubview:heightPickerView];
+    
+    UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Close"]];
+    closeButton.momentary = YES; 
+    closeButton.frame = CGRectMake(10, 7.0f, 50.0f, 30.0f);
+    closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
+    closeButton.tintColor = [UIColor blackColor];
+    [closeButton addTarget:self action:@selector(dismissActionSheet:) forControlEvents:UIControlEventValueChanged];
+    [heightActionSheet addSubview:closeButton];
+    [closeButton release];
+    
+    UISegmentedControl *doneButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Done"]];
+    doneButton.momentary = YES; 
+    doneButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
+    doneButton.segmentedControlStyle = UISegmentedControlStyleBar;
+    doneButton.tintColor = [UIColor blackColor];
+    [doneButton addTarget:self action:@selector(heightSelected:) forControlEvents:UIControlEventValueChanged];
+    [heightActionSheet addSubview:doneButton];
+    [doneButton release];
+    
+    [heightActionSheet showInView:self.view];
+    [heightActionSheet setBounds:CGRectMake(0, 0, 320, 485)];
+    
+    //select the first entry by default
+    if([heightPickerView numberOfRowsInComponent:0] > 0) {
+        [self pickerView:heightPickerView didSelectRow:0 inComponent:0];
     }
-    self.height.text = [self.assessmentTree.height stringValue];
 }
+- (void)caliperSelected:(id)sender {
+	[caliperActionSheet dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+- (void)heightSelected:(id)sender {
+	[heightActionSheet dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+- (void)dismissActionSheet:(id)sender {
+    //user clicks close on an action sheet
+    [caliperActionSheet dismissWithClickedButtonIndex:0 animated:YES];
+    [heightActionSheet dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
+    //we only have one component in picker
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
+    //get number of rows for picker views
+    if (thePickerView==caliperPickerView) {
+        
+    } else {
+       
+    }
+	return 0;
+}
+
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -169,23 +279,6 @@
 }
 */
 
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    if(!managedObjectContext){
-        managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext];
-    }
-    
-    self.title = @"Tree";
-    self.assessor.text = self.assessmentTree.assessor;
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterLongStyle];
-    NSString *dateStr= [dateFormatter stringFromDate:self.assessmentTree.created_at];
-    [dateFormatter release];
-    self.date.text = dateStr;
-    
-}
 
 
 /*
@@ -211,23 +304,31 @@
 
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
-        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera; 
-        imagePicker.allowsEditing = NO; 
-        imagePicker.delegate = self;
-        [self presentModalViewController:imagePicker animated:YES];
-    } else if (buttonIndex == 1) {
-        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary; 
-        imagePicker.allowsEditing = NO; 
-        imagePicker.delegate = self;
-        [self presentModalViewController:imagePicker animated:YES];
-    } else if (buttonIndex == 2) {
-        //flip to ttimageview thing
-        NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:@"AssessmentTree", @"entity", assessmentTree.objectID , @"objectID", nil];
-        [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Photos"] applyQuery:query] applyAnimated:YES]];
-    } else if (buttonIndex == 3) {
-        //cancel
-    }
+	if (actionSheet == photoActionSheet) {
+		if (buttonIndex == 0) {
+			imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera; 
+			imagePicker.allowsEditing = NO; 
+			imagePicker.delegate = self;
+			[self presentModalViewController:imagePicker animated:YES];
+		} else if (buttonIndex == 1) {
+			imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary; 
+			imagePicker.allowsEditing = NO; 
+			imagePicker.delegate = self;
+			[self presentModalViewController:imagePicker animated:YES];
+		} else if (buttonIndex == 2) {
+			//flip to ttimageview thing
+			NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:@"AssessmentTree", @"entity", assessmentTree.objectID , @"objectID", nil];
+			[[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Photos"] applyQuery:query] applyAnimated:YES]];
+		} else if (buttonIndex == 3) {
+			//cancel
+		}
+	} else if (actionSheet == caliperActionSheet) {
+		//handle caliper
+		
+	} else if (actionSheet == heightActionSheet) {
+		//handle height
+		
+	}
 }
 
 - (void)imagePickerController: (UIImagePickerController *)picker
@@ -261,6 +362,11 @@
     //[assessment release];
     //[assessmentTree release];
     //[managedObjectContext release];
+	[photoActionSheet release];
+	[caliperActionSheet release];
+	[heightActionSheet release];
+	[caliperPickerView release];
+	[heightPickerView release];
     [imagePicker release];
     [super dealloc];
 }

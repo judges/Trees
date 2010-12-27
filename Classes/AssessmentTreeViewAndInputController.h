@@ -11,7 +11,7 @@
 #import "AssessmentTree.h"
 #import "AppDelegate_Shared.h"
 
-@interface AssessmentTreeViewAndInputController : UIViewController <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, TTPostControllerDelegate> {
+@interface AssessmentTreeViewAndInputController : UIViewController <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, TTPostControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
     IBOutlet UIView *viewView;
     IBOutlet UIView *inputView;
     IBOutlet UIButton *photoButton;
@@ -19,6 +19,7 @@
     
     AssessmentTree *assessmentTree;
     UIImagePickerController *imagePicker;
+	UIActionSheet *photoActionSheet;
     
     //view page
     IBOutlet UILabel *assessor;
@@ -40,14 +41,18 @@
     
     //input page
     IBOutlet UITextField *assessorField;
-    IBOutlet UITextField *caliperField;
-    IBOutlet UITextField *heightField;
+    IBOutlet UIButton *caliperButton;
+    IBOutlet UIButton *heightButton;
     IBOutlet UIButton *button1;
     IBOutlet UIButton *button2;
     IBOutlet UIButton *button3;
     IBOutlet UIButton *button4;
     IBOutlet UIButton *button5;
     IBOutlet UIButton *button6;
+	UIActionSheet *caliperActionSheet;
+    UIActionSheet *heightActionSheet;
+	UIPickerView *caliperPickerView;
+    UIPickerView *heightPickerView;
  @private
     NSFetchedResultsController *fetchedResultsController;
     NSManagedObjectContext *managedObjectContext;
@@ -75,16 +80,20 @@
 
 //input
 @property (nonatomic, retain) UITextField *assessorField;
-@property (nonatomic, retain) UITextField *caliperField;
-@property (nonatomic, retain) UITextField *heightField;
+@property (nonatomic, retain) UIButton *caliperButton;
+@property (nonatomic, retain) UIButton *heightButton;
 
 
 -(id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query;
 -(IBAction)segmentSwitch:(id)sender;
 -(IBAction)treeButtonClick:(id)sender;
 -(IBAction)saveAssessor:(id)sender;
--(IBAction)saveCaliper:(id)sender;
--(IBAction)saveHeight:(id)sender;
+-(IBAction)caliperClick:(id)sender;
+-(IBAction)heightClick:(id)sender;
 -(IBAction)photoButtonClick:(id)sender;
 -(IBAction)notesButtonClick:(id)sender;
+
+- (void)dismissActionSheet:(id)sender;
+- (void)caliperSelected:(id)sender;
+- (void)heightSelected:(id)sender;
 @end
