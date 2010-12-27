@@ -256,6 +256,9 @@
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
     //we only have one component in picker
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSString *lengthUnits = [defaults stringForKey:@"lengthUnits"];
+	NSLog(@"%@", lengthUnits);
     return 1;
 }
 

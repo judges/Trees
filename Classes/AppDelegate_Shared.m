@@ -56,6 +56,11 @@
 		//set up launcher
 		[navigator openURLAction:[TTURLAction actionWithURLPath:@"land://launcher"]];
   }
+	// Set the application defaults
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:@"Metric" forKey:@"lengthUnits"];
+	[defaults registerDefaults:appDefaults];
+	[defaults synchronize];
   
 }
 
