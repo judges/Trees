@@ -888,6 +888,7 @@
 		208B32CA12BFE27B00D8FA03 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				20AC457B12C8FA1B00BC4C12 /* Settings */,
 				208B387512C00EDA00D8FA03 /* LauncherViewController.h */,
 				208B32DA12BFE27B00D8FA03 /* LauncherViewController.m */,
 				208B32CF12BFE27B00D8FA03 /* Assessments */,
@@ -1066,6 +1067,13 @@
 			);
 			name = KissXML;
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		20AC457B12C8FA1B00BC4C12 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		2860E386111B897F00E27156 /* iPhone */ = {
