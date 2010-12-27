@@ -145,7 +145,7 @@
 							nil],
 						   
 						   
-
+						   /*
 						   [NSArray arrayWithObjects:
 						
 							
@@ -154,7 +154,7 @@
 															   URL:@"http://www.nps.gov" canDelete:NO] autorelease],								
 
 							
-							nil],
+							nil],*/
 						   nil
 						   ];
 	[self.view addSubview:_launcherView];

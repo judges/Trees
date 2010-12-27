@@ -8,15 +8,6 @@
 
 @synthesize managedObjectContext, fetchedResultsController;
 
-/*
-
- //load managedObjectContext from AppDelegate
- if(!managedObjectContext){
- managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext];
- } 
- 
-*/
-
 #pragma mark -
 #pragma mark UIViewController overrides
 
@@ -62,7 +53,9 @@
 
 - (void)add:(id)sender {
 	// To add a new landscape, create a LandscapeAddViewController.  Present it as a modal view so that the user's focus is on the task of adding the landscape; wrap the controller in a navigation controller to provide a navigation bar for the Done and Save buttons (added by the LandscapeAddViewController in its viewDidLoad method).
+	
     LandscapeAddViewController *addController = [[LandscapeAddViewController alloc] initWithNibName:@"LandscapeAddView" bundle:nil];
+	
     addController.delegate = self;
 	
 	Landscape *newLandscape = [NSEntityDescription insertNewObjectForEntityForName:@"Landscape" inManagedObjectContext:self.managedObjectContext];
