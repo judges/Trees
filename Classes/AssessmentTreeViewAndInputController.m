@@ -177,10 +177,10 @@
 	//stick labels on the right components
 	NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
 	if ([lengthUnits isEqualToString:@"Metric"]) {
-		[caliperPickerView addLabel:@"m" forComponent:0 forLongestString:@"ft"];
+		[caliperPickerView addLabel:@"m" forComponent:0 forLongestString:@"m"];
 		[caliperPickerView addLabel:@"cm" forComponent:2 forLongestString:@"cm"];
 	} else if ([lengthUnits isEqualToString:@"Imperial"]) {
-		[caliperPickerView addLabel:@"ft" forComponent:1 forLongestString:@"ft"];
+		[caliperPickerView addLabel:@"ft" forComponent:1 forLongestString:@"m"];
 		[caliperPickerView addLabel:@"in" forComponent:2 forLongestString:@"cm"];
 	}
 	
@@ -226,10 +226,10 @@
 	//stick labels on the right components
 	NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
 	if ([lengthUnits isEqualToString:@"Metric"]) {
-		[heightPickerView addLabel:@"m" forComponent:2 forLongestString:@"ft"];
+		[heightPickerView addLabel:@"m" forComponent:2 forLongestString:@"m"];
 		[heightPickerView addLabel:@"cm" forComponent:4 forLongestString:@"cm"];
 	} else if ([lengthUnits isEqualToString:@"Imperial"]) {
-		[heightPickerView addLabel:@"ft" forComponent:2 forLongestString:@"ft"];
+		[heightPickerView addLabel:@"ft" forComponent:2 forLongestString:@"m"];
 		[heightPickerView addLabel:@"in" forComponent:3 forLongestString:@"cm"];
 	}
 	
@@ -300,7 +300,7 @@
 
 - (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
     //get number of rows for picker views
-	 NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
+	NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
     if (thePickerView==caliperPickerView) {
 		if ([lengthUnits isEqualToString:@"Metric"]) {
 			//metric caliper
@@ -397,9 +397,225 @@
 	return 1;
 }
 
-- (NSString *)pickerView:(DistancePickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+//- (NSString *)pickerView:(DistancePickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     //load data into picker views
-	return [NSString stringWithFormat:@"%d", row];
+//	return [NSString stringWithFormat:@"%d", row];
+//}
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+	NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
+	if ([lengthUnits isEqualToString:@"Metric"]) {
+		if (pickerView == caliperPickerView) {
+			//metric caliper - 3 components
+			switch (component) {
+				case 0:
+					return 160;
+					break;
+				case 1:
+					return 50;
+					break;
+				case 2:
+					return 110;
+					break;
+				default:
+					break;
+			}
+		} else {
+			//metric height - 5 components
+			switch (component) {
+				case 0:
+					return 40;
+					break;
+				case 1:
+					return 40;
+					break;
+				case 2:
+					return 100;
+					break;
+				case 3:
+					return 40;
+					break;
+				case 4:
+					return 100;
+				default:
+					break;
+			}
+		}
+	} else if ([lengthUnits isEqualToString:@"Imperial"]) {
+		if (pickerView == caliperPickerView) {
+			//imperial caliper - 3 components
+			switch (component) {
+				case 0:
+					return 60;
+					break;
+				case 1:
+					return 100;
+					break;
+				case 2:
+					return 160;
+					break;
+				default:
+					break;
+			}
+		} else {
+			//imperial height - 4 components
+			switch (component) {
+				case 0:
+					return 50;
+					break;
+				case 1:
+					return 50;
+					break;
+				case 2:
+					return 110;
+					break;
+				case 3:
+					return 110;
+					break;
+				default:
+					break;
+			}
+		}
+
+	}
+	return 10;
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
+	UILabel *label;
+	if ([lengthUnits isEqualToString:@"Metric"]) {
+		if (pickerView == caliperPickerView) {
+			//metric caliper - 3 components
+			switch (component) {
+				case 0:
+				{
+					label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+					[label setTextAlignment:UITextAlignmentCenter];
+					break;
+				}
+				case 1:
+				{
+					label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 50)];
+					[label setTextAlignment:UITextAlignmentRight];
+					break;
+				}
+				case 2:
+				{
+					label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 90, 50)];
+					[label setTextAlignment:UITextAlignmentLeft];
+					break;
+				}
+				default:
+				{
+					break;
+				}
+			}
+		} else {
+			//metric height - 5 components
+			switch (component) {
+				case 0:
+				{
+					label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 50)];
+					[label setTextAlignment:UITextAlignmentCenter];
+					break;
+				}
+				case 1:
+				{
+					label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 50)];
+					[label setTextAlignment:UITextAlignmentCenter];
+					break;
+				}
+				case 2:
+				{
+					label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 50)];
+					[label setTextAlignment:UITextAlignmentLeft];
+					break;
+				}
+				case 3:
+				{
+					label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 50)];
+					[label setTextAlignment:UITextAlignmentRight];
+					break;
+				}
+				case 4:
+				{
+					label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 50)];
+					[label setTextAlignment:UITextAlignmentLeft];
+					break;
+				}
+				default:
+					break;
+			}
+		}
+	} else if ([lengthUnits isEqualToString:@"Imperial"]) {
+		if (pickerView == caliperPickerView) {
+			//imperial caliper - 3 components
+			switch (component) {
+				case 0:
+				{
+					label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 50)];
+					[label setTextAlignment:UITextAlignmentRight];
+					break;
+				}
+				case 1:
+				{
+					label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 50)];
+					[label setTextAlignment:UITextAlignmentLeft];
+					break;
+				}
+				case 2:
+				{
+					label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
+					[label setTextAlignment:UITextAlignmentCenter];
+					break;
+				}
+				default:
+				{
+					break;
+				}
+			}
+		} else {
+			//imperial height - 4 components
+			switch (component) {
+				case 0:
+				{
+					label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 50)];
+					[label setTextAlignment:UITextAlignmentCenter];
+					break;
+				}
+				case 1:
+				{
+					label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 50)];
+					[label setTextAlignment:UITextAlignmentCenter];
+					break;
+				}
+				case 2:
+				{
+					label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 50)];
+					[label setTextAlignment:UITextAlignmentLeft];
+					break;
+				}
+				case 3:
+				{
+					label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 50)];
+					[label setTextAlignment:UITextAlignmentLeft];
+					break;
+				}
+
+				default:
+					break;
+			}
+		}
+		
+	}
+	label.opaque=NO;
+	label.backgroundColor = [UIColor clearColor];
+	label.textColor = [UIColor blackColor];
+	UIFont *font = [UIFont boldSystemFontOfSize:20];
+	label.font = font;
+	[label setText:[NSString stringWithFormat:@"%d", row]];
+	return [label autorelease];
 }
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
