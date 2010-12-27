@@ -99,7 +99,7 @@
 							
 							*/
 							
-							[[[TTLauncherItem alloc] initWithTitle:@"Trees"
+							[[[TTLauncherItem alloc] initWithTitle:@"Tree Inventory"
 															 image:@"bundle://tree-57.png"
 															   URL:@"land://Trees" canDelete:NO] autorelease],	
 
