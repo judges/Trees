@@ -216,7 +216,7 @@
 		photoButton.enabled = editing;
 		
 		if (editing) {
-			[photoButton setImage:[UIImage imageNamed:@"choosePhoto.png"] forState:UIControlStateNormal];
+			[photoButton setImage:[UIImage imageNamed:@"photo_camera_29.png"] forState:UIControlStateNormal];
 		} else {
 			[photoButton setImage:nil forState:UIControlStateNormal];
 		}
