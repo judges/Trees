@@ -7,31 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LandscapeAddViewController.h"
 #import "AppDelegate_Shared.h"
 
-//#import "LandscapeAddViewController.h"
+@class Landscape;
+@class LandscapeTableViewCell;
 
-
-/*
- @class Landscape;
- @class LandscapeTableViewCell;
- */
 
 @interface LandscapeListTableViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
 	
 @private
-	NSFetchedResultsController *fetchedResultsController;
-	NSManagedObjectContext *managedObjectContext;
-    
+	
+	NSFetchedResultsController *fetchedResultsController_;
+	NSManagedObjectContext *managedObjectContext_;
+	
 }
+
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain) NSMutableArray *landscapesArray;
 
-/*
+
+
  - (void)showLandscape:(Landscape *)landscape animated:(BOOL)animated;
  - (void)configureCell:(LandscapeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
- */
+
 
 
 @end
