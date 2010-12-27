@@ -199,6 +199,14 @@
 	[self.navigationItem setRightBarButtonItem:nil animated:YES];
 }
 
+#pragma mark -
+#pragma mark IASKAppSettingsViewControllerDelegate protocol
+
+- (void)settingsViewControllerDidEnd:(IASKAppSettingsViewController*)sender {
+    [self dismissModalViewControllerAnimated:YES];
+	
+	// code here to reconfigure the app for changed settings
+}
 
 @end
 

@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <Three20/Three20.h>
+#import "IASKAppSettingsViewController.h"
 
-@interface LauncherViewController : TTViewController <TTLauncherViewDelegate> {
+@interface LauncherViewController : TTViewController <TTLauncherViewDelegate, IASKSettingsDelegate> {
 	TTLauncherView* _launcherView;
 }
 

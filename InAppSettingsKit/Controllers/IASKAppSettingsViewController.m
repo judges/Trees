@@ -32,7 +32,7 @@ static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
 static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
 static const CGFloat MAXIMUM_SCROLL_FRACTION = 0.8;
 
-static NSString *kIASKCredits = @"Powered by InAppSettingsKit"; // Leave this as-is!!!
+static NSString *kIASKCredits = @""; // Leave this as-is!!!
 
 #define kIASKSpecifierValuesViewControllerIndex       0
 #define kIASKSpecifierChildViewControllerIndex        1
@@ -95,10 +95,10 @@ CGRect IASKCGRectSwap(CGRect rect);
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ([super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         // If set to YES, will display credits for InAppSettingsKit creators
-        _showCreditsFooter = YES;
+        _showCreditsFooter = NO;
         
         // If set to YES, will add a DONE button at the right of the navigation bar
-        _showDoneButton = YES;
+        _showDoneButton = NO;
     }
     return self;
 }
