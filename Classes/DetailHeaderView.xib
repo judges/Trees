@@ -45,7 +45,7 @@
 					<object class="IBUIButton" id="567814349">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 10}, {64, 64}}</string>
+						<string key="NSFrame">{{10, 10}, {95, 95}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -79,7 +79,7 @@
 					<object class="IBUITextField" id="779291397">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{92, 10}, {208, 25}}</string>
+						<string key="NSFrame">{{110, 10}, {208, 25}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -111,7 +111,7 @@
 					<object class="IBUITextField" id="408470889">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{92, 37}, {208, 28}}</string>
+						<string key="NSFrame">{{110, 37}, {208, 28}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -141,7 +141,7 @@
 					<object class="IBUITextField" id="505979111">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{128, 81}, {172, 28}}</string>
+						<string key="NSFrame">{{146, 81}, {172, 28}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -167,7 +167,7 @@
 					<object class="IBUILabel" id="759219994">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{92, 85}, {28, 20}}</string>
+						<string key="NSFrame">{{110, 85}, {28, 20}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -296,8 +296,8 @@
 							<reference ref="505979111"/>
 							<reference ref="779291397"/>
 							<reference ref="567814349"/>
-							<reference ref="408470889"/>
 							<reference ref="759219994"/>
+							<reference ref="408470889"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>

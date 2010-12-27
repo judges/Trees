@@ -186,9 +186,9 @@
 	CGSize size = selectedImage.size;
 	CGFloat ratio = 0;
 	if (size.width > size.height) {
-		ratio = 44.0 / size.width;
+		ratio = 95.0 / size.width;
 	} else {
-		ratio = 44.0 / size.height;
+		ratio = 95.0 / size.height;
 	}
 	CGRect rect = CGRectMake(0.0, 0.0, ratio * size.width, ratio * size.height);
 	
