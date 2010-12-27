@@ -11,18 +11,47 @@
 
 @implementation TreeListTableViewController
 
+@synthesize managedObjectContext, fetchedResultsController;
 
 #pragma mark -
-#pragma mark View lifecycle
+#pragma mark UIViewController overrides
 
-/*
 - (void)viewDidLoad {
-    [super viewDidLoad];
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // Configure the navigation bar
+    self.title = @"Trees";
+	
+	//load managedObjectContext from AppDelegate
+    if(!managedObjectContext){
+        managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+    }
+	
+    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    
+    UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add:)];
+    self.navigationItem.rightBarButtonItem = addButtonItem;
+    [addButtonItem release];
+    
+    // Set the table view's row height
+    self.tableView.rowHeight = 44.0;
+	
+	NSError *error = nil;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+		/*
+		 Replace this implementation with code to handle the error appropriately.
+		 
+		 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+		 */
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		abort();
+	}		
 }
-*/
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Support all orientations except upside down
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
