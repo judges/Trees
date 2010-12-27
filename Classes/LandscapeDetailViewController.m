@@ -91,11 +91,15 @@
     
     [self.tableView endUpdates];
 	
+	
+
+	
 	/*
 	 If editing is finished, save the managed object context.
 	 */
 	if (!editing) {
-		NSManagedObjectContext *context = landscape.managedObjectContext;
+		
+		NSManagedObjectContext *context = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext];
 		NSError *error = nil;
 		if (![context save:&error]) {
 			/*
