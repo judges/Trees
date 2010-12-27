@@ -73,7 +73,7 @@
 						</object>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">choosePhoto.png</string>
+							<string key="NSResourceName">photo_camera_29.png</string>
 						</object>
 					</object>
 					<object class="IBUITextField" id="779291397">
@@ -413,18 +413,18 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>gpsTextField</string>
 							<string>nameTextField</string>
 							<string>overviewTextField</string>
 							<string>photoButton</string>
-							<string>gpsTextField</string>
 							<string>tableHeaderView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UITextField</string>
 							<string>UITextField</string>
-							<string>UIButton</string>
 							<string>UITextField</string>
+							<string>UIButton</string>
 							<string>UIView</string>
 						</object>
 					</object>
@@ -432,14 +432,18 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>gpsTextField</string>
 							<string>nameTextField</string>
 							<string>overviewTextField</string>
 							<string>photoButton</string>
-							<string>gpsTextField</string>
 							<string>tableHeaderView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">gpsTextField</string>
+								<string key="candidateClassName">UITextField</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">nameTextField</string>
 								<string key="candidateClassName">UITextField</string>
@@ -451,10 +455,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">photoButton</string>
 								<string key="candidateClassName">UIButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">gpsTextField</string>
-								<string key="candidateClassName">UITextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">tableHeaderView</string>
@@ -730,8 +730,8 @@
 		<string key="IBDocument.LastKnownRelativeProjectPath">../Trees.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">choosePhoto.png</string>
-			<string key="NS.object.0">{16, 16}</string>
+			<string key="NS.key.0">photo_camera_29.png</string>
+			<string key="NS.object.0">{36, 29}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">132</string>
 	</data>
