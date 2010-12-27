@@ -67,6 +67,17 @@
 - (void)loadView {
 	[super loadView];
 	
+	
+	CGRect  bounds = self.view.bounds;
+	// searchBar
+	TTTableViewController *searchController = [[[TTTableViewController alloc] init] autorelease];
+	self.searchViewController = searchController;
+	[self.view addSubview:_searchController.searchBar];
+	
+	// launcherView
+	_launcherView.frame = CGRectMake(0,45,bounds.size.width,bounds.size.height-2*45); 
+	
+	
 	_launcherView = [[TTLauncherView alloc] initWithFrame:self.view.bounds];
 	_launcherView.backgroundColor = [UIColor colorWithRed:0.486 green:0.318 blue:
 									 0.192 alpha:1.0];
