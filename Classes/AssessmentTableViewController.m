@@ -323,9 +323,8 @@
     } else {
         return [[landscapesArray objectAtIndex:row] name];
     }
-
-    
 }
+
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     //set the selected type or row based on user interaction
     if (thePickerView==typePickerView) {

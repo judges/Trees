@@ -255,21 +255,157 @@
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
-    //we only have one component in picker
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSString *lengthUnits = [defaults stringForKey:@"lengthUnits"];
-	NSLog(@"%@", lengthUnits);
-    return 1;
+	//decides how many sections for each picker
+	//right now everything is the same but the logic is in place if it needs to be changed in the future.
+	//(The compiler should figure this out and optimize it?)
+	NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
+	if ([lengthUnits isEqualToString:@"Metric"]) {
+		//metric
+		return 4;
+	} else if ([lengthUnits isEqualToString:@"Imperial"]) {
+		//imperial
+		return 4;
+	} else {
+		//won't get here
+		return 4;
+	}
 }
 
 - (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
     //get number of rows for picker views
+	 NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
     if (thePickerView==caliperPickerView) {
-        
+		if ([lengthUnits isEqualToString:@"Metric"]) {
+			//metric caliper
+			switch (component) {
+				case 0:
+					//caliper meters list
+					//0-12m
+					return 13;
+					break;
+				case 1:
+					//caliper meters label
+					return 1;
+					break;
+				case 2:
+					//caliper centimeters list
+					//0-99cm
+					return 100;
+					break;
+				case 3:
+					//caliper centimeters label
+					return 1;
+					break;
+				default:
+					break;
+			}
+		} else if ([lengthUnits isEqualToString:@"Imperial"]) {
+			//imperial caliper
+			switch (component) {
+				case 0:
+					//caliper feet list
+					//0-40 - largest ever recorded is about 37
+					return 41;
+				case 1:
+					//caliper feet label
+					return 1;
+				case 2:
+					//caliper inches list
+					//0-11in
+					return 12;
+				case 3:
+					//caliper inches label
+					return 1;
+					break;
+				default:
+					break;
+			}
+		}
     } else {
-       
+       //height picker
+		if ([lengthUnits isEqualToString:@"Metric"]) {
+			//metric height
+			switch (component) {
+				case 0:
+					//height meters list
+					//0-120m
+					return 121;
+					break;
+				case 1:
+					//height meters label
+					return 1;
+					break;
+				case 2:
+					//height centimeters list
+					//0-99cm
+					return 100;
+					break;
+				case 3:
+					//height centimeters label
+					return 1;
+					break;
+				default:
+					break;
+			}
+		} else if ([lengthUnits isEqualToString:@"Imperial"]) {
+			//imperial height
+			switch (component) {
+				case 0:
+					//height feet list
+					//0-400ft
+					return 401;
+					break;
+				case 1:
+					//height feet label
+					return 1;
+					break;
+				case 2:
+					//height inches list
+					//0-11in
+					return 12;
+					break;
+				case 3:
+					//height inches label
+					return 1;
+					break;
+				default:
+					break;
+			}
+		}
     }
+	//shouldn't ever get here
+	return 1;
+}
+
+- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    //load data into picker views
+	NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
+	if ([lengthUnits isEqualToString:@"Metric"]) {
+		if (component == 1) {
+			return @"m";
+		} else if (component == 3) {
+			return @"cm";
+		} else {
+			return [NSString stringWithFormat:@"%d", row];
+		}
+
+	} else if ([lengthUnits isEqualToString:@"Imperial"]) {
+		if (component == 1) {
+			return @"ft";
+		} else if (component == 3) {
+			return @"in";
+		} else {
+			return [NSString stringWithFormat:@"%d", row];
+		}
+
+	} 
+	//shouldn't ever get here
 	return 0;
+}
+
+- (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    //set the selected type or row based on user interaction
+    
 }
 
 /*

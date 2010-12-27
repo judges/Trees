@@ -20,3 +20,5 @@ within it, and conduct condition assessments on those features.
 The primary focus is on vegetation, trees in particular.
 
 ================================================================================
+
+Note: If Imperial units are selected, data is still stored in Metric. Therefore 1 in = 25.4mm and 1 ft = 304.8mm
