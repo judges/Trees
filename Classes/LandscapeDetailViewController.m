@@ -176,7 +176,7 @@
 	}
 	
     // Create an image object for the new image.
-	NSManagedObject *image = [NSEntityDescription insertNewObjectForEntityForName:@"Image" inManagedObjectContext:landscape.managedObjectContext];
+	NSManagedObject *image = [NSEntityDescription insertNewObjectForEntityForName:@"ImageLandscape" inManagedObjectContext:landscape.managedObjectContext];
 	landscape.image = image;
 	
 	// Set the image for the image managed object.
