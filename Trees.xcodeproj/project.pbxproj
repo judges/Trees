@@ -137,6 +137,8 @@
 		20AC43B912C3B48900BC4C12 /* TreeRootFlareCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AC43AA12C3B48900BC4C12 /* TreeRootFlareCondition.m */; };
 		20AC43BA12C3B48900BC4C12 /* TreeCrownCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AC43AC12C3B48900BC4C12 /* TreeCrownCondition.m */; };
 		20AC43BB12C3B48900BC4C12 /* TreeRootsCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AC43AE12C3B48900BC4C12 /* TreeRootsCondition.m */; };
+		20AC45A712C8FC1D00BC4C12 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AC45A512C8FC1D00BC4C12 /* SettingsViewController.m */; };
+		20AC45A812C8FC1D00BC4C12 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20AC45A612C8FC1D00BC4C12 /* SettingsViewController.xib */; };
 		2819307D112F81BE00ECF9B4 /* Trees.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2819307C112F81BE00ECF9B4 /* Trees.xcdatamodeld */; };
 		2860E38A111B897F00E27156 /* AppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E388111B897F00E27156 /* AppDelegate_iPhone.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
@@ -713,6 +715,9 @@
 		20AC43AC12C3B48900BC4C12 /* TreeCrownCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeCrownCondition.m; path = ../Shared/TreeCrownCondition.m; sourceTree = "<group>"; };
 		20AC43AD12C3B48900BC4C12 /* TreeRootsCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreeRootsCondition.h; path = ../Shared/TreeRootsCondition.h; sourceTree = "<group>"; };
 		20AC43AE12C3B48900BC4C12 /* TreeRootsCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreeRootsCondition.m; path = ../Shared/TreeRootsCondition.m; sourceTree = "<group>"; };
+		20AC45A412C8FC1D00BC4C12 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		20AC45A512C8FC1D00BC4C12 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		20AC45A612C8FC1D00BC4C12 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = Classes/SettingsViewController.xib; sourceTree = "<group>"; };
 		2860E387111B897F00E27156 /* AppDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_iPhone.h; sourceTree = "<group>"; };
 		2860E388111B897F00E27156 /* AppDelegate_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_iPhone.m; sourceTree = "<group>"; };
 		2870939E111907710040F596 /* Trees.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Trees.xcdatamodel; sourceTree = "<group>"; };
@@ -959,6 +964,7 @@
 		208B32FF12BFE2D200D8FA03 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				20AC45A612C8FC1D00BC4C12 /* SettingsViewController.xib */,
 				20AC3F4412C10B9300BC4C12 /* TreeOptions.xml */,
 				320B6C86F11D9990244A9730 /* Three20.bundle */,
 				208B330112BFE2D200D8FA03 /* AssessmentTreeCRView.xib */,
@@ -1072,6 +1078,8 @@
 		20AC457B12C8FA1B00BC4C12 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				20AC45A412C8FC1D00BC4C12 /* SettingsViewController.h */,
+				20AC45A512C8FC1D00BC4C12 /* SettingsViewController.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1676,6 +1684,7 @@
 				20AC3F4512C10B9300BC4C12 /* TreeOptions.xml in Resources */,
 				149B810112C2673B001557AB /* LandscapeAddView.xib in Resources */,
 				149B813012C26F04001557AB /* DetailHeaderView.xib in Resources */,
+				20AC45A812C8FC1D00BC4C12 /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1768,6 +1777,7 @@
 				20AC43B912C3B48900BC4C12 /* TreeRootFlareCondition.m in Sources */,
 				20AC43BA12C3B48900BC4C12 /* TreeCrownCondition.m in Sources */,
 				20AC43BB12C3B48900BC4C12 /* TreeRootsCondition.m in Sources */,
+				20AC45A712C8FC1D00BC4C12 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
