@@ -38,18 +38,21 @@
 		
         imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
 		imageView.contentMode = UIViewContentModeScaleAspectFit;
+		[imageView setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:imageView];
 		
         overviewLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [overviewLabel setFont:[UIFont systemFontOfSize:12.0]];
         [overviewLabel setTextColor:[UIColor darkGrayColor]];
         [overviewLabel setHighlightedTextColor:[UIColor whiteColor]];
+		[overviewLabel setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:overviewLabel];
 		
         gpsLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         gpsLabel.textAlignment = UITextAlignmentRight;
         [gpsLabel setFont:[UIFont systemFontOfSize:12.0]];
         [gpsLabel setTextColor:[UIColor blackColor]];
+		[gpsLabel setBackgroundColor:[UIColor clearColor]];
         [gpsLabel setHighlightedTextColor:[UIColor whiteColor]];
 		gpsLabel.minimumFontSize = 7.0;
 		gpsLabel.lineBreakMode = UILineBreakModeTailTruncation;
@@ -58,6 +61,7 @@
         nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [nameLabel setFont:[UIFont boldSystemFontOfSize:14.0]];
         [nameLabel setTextColor:[UIColor blackColor]];
+		[nameLabel setBackgroundColor:[UIColor clearColor]];
         [nameLabel setHighlightedTextColor:[UIColor whiteColor]];
         [self.contentView addSubview:nameLabel];
     }
