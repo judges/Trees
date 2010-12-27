@@ -119,12 +119,24 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // Dequeue or if necessary create a LandscapeTableViewCell, then set its landscape to the landscape for the current row.
     static NSString *LandscapeCellIdentifier = @"LandscapeCellIdentifier";
-    
+ 	
     LandscapeTableViewCell *landscapeCell = (LandscapeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:LandscapeCellIdentifier];
     if (landscapeCell == nil) {
         landscapeCell = [[[LandscapeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:LandscapeCellIdentifier] autorelease];
 		landscapeCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
+	
+	// Define your row
+    NSInteger row = [indexPath row];
+	
+	UIView *backgroundView = [[UIView alloc] init];
+	if ((row % 2) == 0)
+		backgroundView.backgroundColor = [UIColor lightGrayColor];
+	else
+		backgroundView.backgroundColor = [UIColor whiteColor];
+	
+	landscapeCell.backgroundView = backgroundView;
+	[backgroundView release]; 
     
 	[self configureCell:landscapeCell atIndexPath:indexPath];
     

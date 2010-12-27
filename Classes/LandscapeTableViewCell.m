@@ -33,6 +33,9 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 	
 	if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+		
+
+		
         imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
 		imageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview:imageView];
