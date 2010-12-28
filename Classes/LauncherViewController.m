@@ -21,9 +21,6 @@
 		//Set navigation bar color
 		self.title = @"Trees";
 		self.view.backgroundColor = [UIColor colorWithRed:0.486 green:0.318 blue:0.192 alpha:1.0];		//earth brown
-		self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.180 green:0.267 blue: 0.173 alpha:1.0];	//forest green
-		self.navigationBarTintColor = [UIColor colorWithRed:0.180 green:0.267 blue: 0.173 alpha:1.0];	//forest green
-		
 		
 	}
 	return self;
@@ -66,12 +63,11 @@
 
 - (void)loadView {
 	[super loadView];
-	
-	
 	CGRect  bounds = self.view.bounds;
 	// searchBar
 	TTTableViewController *searchController = [[[TTTableViewController alloc] init] autorelease];
 	self.searchViewController = searchController;
+
 	[self.view addSubview:_searchController.searchBar];
 	
 	// launcherView
@@ -190,6 +186,8 @@
         [[TTURLCache sharedCache] removeURL:url fromDisk:YES];
         ++urlctr;
     }
+	self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.180 green:0.267 blue: 0.173 alpha:1.0];
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -212,6 +210,7 @@
 - (void)launcherViewDidEndEditing:(TTLauncherView*)launcher {
 	[self.navigationItem setRightBarButtonItem:nil animated:YES];
 }
+
 
 #pragma mark -
 #pragma mark IASKAppSettingsViewControllerDelegate protocol

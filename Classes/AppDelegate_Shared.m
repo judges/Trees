@@ -37,8 +37,6 @@
   TTNavigator* navigator = [TTNavigator navigator];
   navigator.persistenceMode = TTNavigatorPersistenceModeNone;
 
-	
-
   TTURLMap* map = navigator.URLMap;
 
   [map from:@"*" toViewController:[TTWebController class]];
