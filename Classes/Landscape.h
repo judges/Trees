@@ -24,7 +24,7 @@
 @property (nonatomic, retain) NSSet* assessments;
 
 
-@property (nonatomic, retain) NSString *overview;
+@property (nonatomic, retain) NSString *address1;
 @property (nonatomic, retain) NSString *gps;
 @property (nonatomic, retain) UIImage *thumbnailImage;
 @property (nonatomic, retain) NSManagedObject *image;

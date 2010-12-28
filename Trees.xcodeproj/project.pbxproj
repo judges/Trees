@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		140A237512CA3EF300E88D65 /* photo_camera_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 140A237412CA3EF300E88D65 /* photo_camera_128.png */; };
+		144D4CE112CA590800EB71A4 /* Trees.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 144D4CDF12CA590800EB71A4 /* Trees.xcdatamodeld */; };
 		149B80FA12C264C3001557AB /* LandscapeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149B80F912C264C3001557AB /* LandscapeListTableViewController.m */; };
 		149B810012C2673B001557AB /* LandscapeAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149B80FE12C2673B001557AB /* LandscapeAddViewController.m */; };
 		149B810112C2673B001557AB /* LandscapeAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 149B80FF12C2673B001557AB /* LandscapeAddView.xib */; };
@@ -167,7 +168,6 @@
 		20CE583512CA4D40008624F3 /* AssessmentTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE583012CA4D40008624F3 /* AssessmentTree.m */; };
 		20CE583612CA4D40008624F3 /* Height.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE583212CA4D40008624F3 /* Height.m */; };
 		20CE583712CA4D40008624F3 /* Caliper.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE583412CA4D40008624F3 /* Caliper.m */; };
-		2819307D112F81BE00ECF9B4 /* Trees.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2819307C112F81BE00ECF9B4 /* Trees.xcdatamodeld */; };
 		2860E38A111B897F00E27156 /* AppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E388111B897F00E27156 /* AppDelegate_iPhone.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28EEBFDD1118E19E00187D67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EEBFDC1118E19E00187D67 /* CoreData.framework */; };
@@ -529,6 +529,7 @@
 
 /* Begin PBXFileReference section */
 		140A237412CA3EF300E88D65 /* photo_camera_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_camera_128.png; sourceTree = "<group>"; };
+		144D4CE012CA590800EB71A4 /* Trees.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Trees.xcdatamodel; sourceTree = "<group>"; };
 		149B80F812C264C3001557AB /* LandscapeListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeListTableViewController.h; sourceTree = "<group>"; };
 		149B80F912C264C3001557AB /* LandscapeListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeListTableViewController.m; sourceTree = "<group>"; };
 		149B80FD12C2673B001557AB /* LandscapeAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeAddViewController.h; sourceTree = "<group>"; };
@@ -795,7 +796,6 @@
 		20CE583412CA4D40008624F3 /* Caliper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Caliper.m; path = ../Shared/Caliper.m; sourceTree = "<group>"; };
 		2860E387111B897F00E27156 /* AppDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_iPhone.h; sourceTree = "<group>"; };
 		2860E388111B897F00E27156 /* AppDelegate_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_iPhone.m; sourceTree = "<group>"; };
-		2870939E111907710040F596 /* Trees.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Trees.xcdatamodel; sourceTree = "<group>"; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28EEBFDC1118E19E00187D67 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
@@ -1264,10 +1264,10 @@
 		28EEBF621118D79A00187D67 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				144D4CDF12CA590800EB71A4 /* Trees.xcdatamodeld */,
 				208B32DC12BFE27B00D8FA03 /* AppDelegate_Shared.h */,
 				208B32DD12BFE27B00D8FA03 /* AppDelegate_Shared.m */,
 				14DA250E12BFA7CD008400A2 /* Tree-256.png */,
-				2819307C112F81BE00ECF9B4 /* Trees.xcdatamodeld */,
 				8D1107310486CEB800E47090 /* Trees-Info.plist */,
 			);
 			name = Shared;
@@ -1876,7 +1876,6 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate_iPad.m in Sources */,
-				2819307D112F81BE00ECF9B4 /* Trees.xcdatamodeld in Sources */,
 				2860E38A111B897F00E27156 /* AppDelegate_iPhone.m in Sources */,
 				208B32DE12BFE27B00D8FA03 /* PhotoSet.m in Sources */,
 				208B32DF12BFE27B00D8FA03 /* DisplayPhoto.m in Sources */,
@@ -1976,6 +1975,7 @@
 				20CE583512CA4D40008624F3 /* AssessmentTree.m in Sources */,
 				20CE583612CA4D40008624F3 /* Height.m in Sources */,
 				20CE583712CA4D40008624F3 /* Caliper.m in Sources */,
+				144D4CE112CA590800EB71A4 /* Trees.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2161,14 +2161,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		2819307C112F81BE00ECF9B4 /* Trees.xcdatamodeld */ = {
+		144D4CDF12CA590800EB71A4 /* Trees.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				2870939E111907710040F596 /* Trees.xcdatamodel */,
+				144D4CE012CA590800EB71A4 /* Trees.xcdatamodel */,
 			);
-			currentVersion = 2870939E111907710040F596 /* Trees.xcdatamodel */;
-			name = Trees.xcdatamodeld;
-			path = Shared/Trees.xcdatamodeld;
+			currentVersion = 144D4CE012CA590800EB71A4 /* Trees.xcdatamodel */;
+			path = Trees.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
