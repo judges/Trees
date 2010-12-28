@@ -51,6 +51,34 @@
 	CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
     caliperPickerView = [[DistancePickerView alloc] initWithFrame:pickerFrame];
     heightPickerView = [[DistancePickerView alloc] initWithFrame:pickerFrame];
+	
+	caliperPickerView.showsSelectionIndicator = YES;
+    caliperPickerView.dataSource = self;
+    caliperPickerView.delegate = self;
+    
+	//stick labels on the right components
+	NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
+	if ([lengthUnits isEqualToString:@"Metric"]) {
+		[caliperPickerView addLabel:@"m" forComponent:0 forLongestString:@"m"];
+		[caliperPickerView addLabel:@"cm" forComponent:2 forLongestString:@"cm"];
+	} else if ([lengthUnits isEqualToString:@"Imperial"]) {
+		[caliperPickerView addLabel:@"ft" forComponent:1 forLongestString:@"m"];
+		[caliperPickerView addLabel:@"in" forComponent:2 forLongestString:@"cm"];
+	}
+	
+	heightPickerView.showsSelectionIndicator = YES;
+    heightPickerView.dataSource = self;
+    heightPickerView.delegate = self;
+    
+	//stick labels on the right components
+	if ([lengthUnits isEqualToString:@"Metric"]) {
+		[heightPickerView addLabel:@"m" forComponent:2 forLongestString:@"m"];
+		[heightPickerView addLabel:@"cm" forComponent:4 forLongestString:@"cm"];
+	} else if ([lengthUnits isEqualToString:@"Imperial"]) {
+		[heightPickerView addLabel:@"ft" forComponent:2 forLongestString:@"m"];
+		[heightPickerView addLabel:@"in" forComponent:3 forLongestString:@"cm"];
+	}
+	
     
 }
 
@@ -177,24 +205,7 @@
 
 -(IBAction)caliperClick:(id)sender {
 	//show the caliper picker with close and select buttons
-    [caliperActionSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
-    
-    
-    caliperPickerView.showsSelectionIndicator = YES;
-    caliperPickerView.dataSource = self;
-    caliperPickerView.delegate = self;
-    
-	//stick labels on the right components
-	NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
-	if ([lengthUnits isEqualToString:@"Metric"]) {
-		[caliperPickerView addLabel:@"m" forComponent:0 forLongestString:@"m"];
-		[caliperPickerView addLabel:@"cm" forComponent:2 forLongestString:@"cm"];
-	} else if ([lengthUnits isEqualToString:@"Imperial"]) {
-		[caliperPickerView addLabel:@"ft" forComponent:1 forLongestString:@"m"];
-		[caliperPickerView addLabel:@"in" forComponent:2 forLongestString:@"cm"];
-	}
-	
-	 
+    [caliperActionSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];	 
     [caliperActionSheet addSubview:caliperPickerView];
     
     UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Close"]];
@@ -218,31 +229,36 @@
     [caliperActionSheet showInView:self.view];
     [caliperActionSheet setBounds:CGRectMake(0, 0, 320, 485)];
     
-    //select the first entry by default
-    if([caliperPickerView numberOfRowsInComponent:0] > 0) {
+    //select the correct rows
+    if(self.assessmentTree.caliper == nil) {
         [self pickerView:caliperPickerView didSelectRow:0 inComponent:0];
-    }
+    } else {
+		NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
+		if ([lengthUnits isEqualToString:@"Metric"]) {
+			//meters
+			[caliperPickerView selectRow:[self.assessmentTree.caliper.m intValue] inComponent:0 animated:YES];
+			//cm - parse out the ones place
+			NSInteger ones = [self.assessmentTree.caliper.cm intValue] % 10;
+			//cm - parse out tens place
+			NSInteger tens = ([self.assessmentTree.caliper.cm intValue] - ones)/10;
+			[caliperPickerView selectRow:tens inComponent:1 animated:YES];
+			[caliperPickerView selectRow:ones inComponent:2 animated:YES];
+		} else if ([lengthUnits isEqualToString:@"Imperial"]) {
+			//feet - ones place
+			NSInteger ones = [self.assessmentTree.caliper.ft intValue] % 10;
+			//feet - tens place
+			NSInteger tens = ([self.assessmentTree.caliper.ft intValue] - ones)/10;
+			[caliperPickerView selectRow:tens inComponent:0 animated:YES];
+			[caliperPickerView selectRow:ones inComponent:1 animated:YES];
+			//inches
+			[caliperPickerView selectRow:[self.assessmentTree.caliper.in intValue] inComponent:2 animated:YES];
+		}
+	}
 }
 
 -(IBAction)heightClick:(id)sender {
     //show the height picker with close and select buttons
     [heightActionSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
-    
-    
-    heightPickerView.showsSelectionIndicator = YES;
-    heightPickerView.dataSource = self;
-    heightPickerView.delegate = self;
-    
-	//stick labels on the right components
-	NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
-	if ([lengthUnits isEqualToString:@"Metric"]) {
-		[heightPickerView addLabel:@"m" forComponent:2 forLongestString:@"m"];
-		[heightPickerView addLabel:@"cm" forComponent:4 forLongestString:@"cm"];
-	} else if ([lengthUnits isEqualToString:@"Imperial"]) {
-		[heightPickerView addLabel:@"ft" forComponent:2 forLongestString:@"m"];
-		[heightPickerView addLabel:@"in" forComponent:3 forLongestString:@"cm"];
-	}
-	
     [heightActionSheet addSubview:heightPickerView];
     
     UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Close"]];
@@ -266,10 +282,38 @@
     [heightActionSheet showInView:self.view];
     [heightActionSheet setBounds:CGRectMake(0, 0, 320, 485)];
     
-    //select the first entry by default
-    if([heightPickerView numberOfRowsInComponent:0] > 0) {
+    //select the correct rows
+    if(self.assessmentTree.height == nil) {
         [self pickerView:heightPickerView didSelectRow:0 inComponent:0];
-    }
+    } else {
+		NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
+		if ([lengthUnits isEqualToString:@"Metric"]) {
+			//meters - parse in base 10
+			NSInteger mOnes = ([self.assessmentTree.height.m intValue] % 100) % 10;
+			NSInteger mTens = (([self.assessmentTree.height.m intValue] % 100) - mOnes) / 10;
+			NSInteger mHundreds = ([self.assessmentTree.height.m intValue] - 10 * mTens - mOnes) / 100;
+			[heightPickerView selectRow:mHundreds inComponent:0 animated:YES];
+			[heightPickerView selectRow:mTens inComponent:1 animated:YES];
+			[heightPickerView selectRow:mOnes inComponent:2 animated:YES];
+			
+			//cm - parse out the ones place
+			NSInteger ones = [self.assessmentTree.height.cm intValue] % 10;
+			//cm - parse out tens place
+			NSInteger tens = ([self.assessmentTree.height.cm intValue] - ones)/10;
+			[heightPickerView selectRow:tens inComponent:3 animated:YES];
+			[heightPickerView selectRow:ones inComponent:4 animated:YES];
+		} else if ([lengthUnits isEqualToString:@"Imperial"]) {
+			//feet - parse in base 10
+			NSInteger fOnes = ([self.assessmentTree.height.ft intValue] % 100) % 10;
+			NSInteger fTens = (([self.assessmentTree.height.ft intValue] % 100) - fOnes) / 10;
+			NSInteger fHundreds = ([self.assessmentTree.height.ft intValue] - 10 * fTens - fOnes) / 100;
+			[heightPickerView selectRow:fHundreds inComponent:0 animated:YES];
+			[heightPickerView selectRow:fTens inComponent:1 animated:YES];
+			[heightPickerView selectRow:fOnes inComponent:2 animated:YES];
+			//inches
+			[heightPickerView selectRow:[self.assessmentTree.height.in intValue] inComponent:3 animated:YES];
+		}
+	}
 }
 - (void)caliperSelected:(id)sender {
 	//user clicks done on action sheet
@@ -310,15 +354,14 @@
 	Height *hat = [NSEntityDescription insertNewObjectForEntityForName:@"Height" inManagedObjectContext:managedObjectContext];
 	
 	if ([lengthUnits isEqualToString:@"Imperial"]) {
-		NSLog(@"%d", [heightPickerView selectedRowInComponent:0] * 10 + [heightPickerView selectedRowInComponent:1]);
-		hat.ft = [NSNumber numberWithInt:([heightPickerView selectedRowInComponent:0] * 10 + [heightPickerView selectedRowInComponent:1])];
-		hat.in = [NSNumber numberWithInt:[heightPickerView selectedRowInComponent:2]];
+		hat.ft = [NSNumber numberWithInt:([heightPickerView selectedRowInComponent:0] * 100 + [heightPickerView selectedRowInComponent:1] * 10 + [heightPickerView selectedRowInComponent:2])];
+		hat.in = [NSNumber numberWithInt:[heightPickerView selectedRowInComponent:3]];
 		[heightButton setTitle:[NSString stringWithFormat:@"%d ft %d in", [hat.ft intValue], [hat.in intValue]] forState:UIControlStateNormal];
 		self.height.text = [NSString stringWithFormat:@"%d ft %d in", [hat.ft intValue], [hat.in intValue]];
 		NSLog(@"%d ft %d in", hat.ft, hat.in);
 	} else if ([lengthUnits isEqualToString:@"Metric"]) {
-		hat.m = [NSNumber numberWithInt:[heightPickerView selectedRowInComponent:0]];
-		hat.cm = [NSNumber numberWithInt:([heightPickerView selectedRowInComponent:1] * 10 + [heightPickerView selectedRowInComponent:2])];
+		hat.m = [NSNumber numberWithInt:([heightPickerView selectedRowInComponent:0] * 100 + [heightPickerView selectedRowInComponent:1] * 10 + [heightPickerView selectedRowInComponent:2])];
+		hat.cm = [NSNumber numberWithInt:([heightPickerView selectedRowInComponent:3] * 10 + [heightPickerView selectedRowInComponent:4])];
 		[heightButton setTitle:[NSString stringWithFormat:@"%d m %d cm", [hat.m intValue], [hat.cm intValue]] forState:UIControlStateNormal];
 		self.height.text = [NSString stringWithFormat:@"%d m %d cm", [hat.m intValue], [hat.cm intValue]];
 	}
