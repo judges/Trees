@@ -20,7 +20,6 @@
 
 		//Set navigation bar color
 		self.title = @"Trees";
-		self.view.backgroundColor = [UIColor colorWithRed:0.486 green:0.318 blue:0.192 alpha:1.0];		//earth brown
 		
 	}
 	return self;
@@ -186,8 +185,8 @@
         [[TTURLCache sharedCache] removeURL:url fromDisk:YES];
         ++urlctr;
     }
-	self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.180 green:0.267 blue: 0.173 alpha:1.0];
-
+	self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.180 green:0.267 blue: 0.173 alpha:1.0]; //forest green
+	self.view.backgroundColor = [UIColor colorWithRed:0.486 green:0.318 blue:0.192 alpha:1.0];		//earth brown
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
