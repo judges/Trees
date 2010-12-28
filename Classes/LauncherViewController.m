@@ -38,12 +38,10 @@
 	if((self.interfaceOrientation == UIDeviceOrientationLandscapeLeft) || (self.interfaceOrientation == UIDeviceOrientationLandscapeRight)){
 		_launcherView.columnCount = 5;
 		_launcherView.frame=self.view.bounds;
-		//_launcherView.backgroundColor = [UIColor colorWithRed:0.180 green:0.267 blue: 0.173 alpha:1.0];
-		
+	
 	} else	if((self.interfaceOrientation == UIDeviceOrientationPortrait) || (self.interfaceOrientation == UIDeviceOrientationPortraitUpsideDown)){
-		_launcherView.columnCount = 3;
+		_launcherView.columnCount = 4;
 		_launcherView.frame=self.view.bounds;
-		//_launcherView.backgroundColor = [UIColor colorWithRed:0.486 green:0.318 blue:0.192 alpha:1.0];
 	}
 }
 
@@ -97,7 +95,7 @@
 		_launcherView.frame=self.view.bounds;
 		
 	} else	if((self.interfaceOrientation == UIDeviceOrientationPortrait) || (self.interfaceOrientation == UIDeviceOrientationPortraitUpsideDown)){
-		_launcherView.columnCount = 3;
+		_launcherView.columnCount = 4;
 		_launcherView.frame=self.view.bounds;
 	}
  
