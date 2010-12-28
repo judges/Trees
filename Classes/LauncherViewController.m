@@ -97,6 +97,12 @@
 															 image:@"bundle://inventory-57.png"
 															   URL:@"land://Inventory" canDelete:NO] autorelease],
 							*/
+
+							
+							
+							[[[TTLauncherItem alloc] initWithTitle:@"Tree Inventory"
+															 image:@"bundle://tree-57.png"
+															   URL:@"land://Trees" canDelete:NO] autorelease],								
 							
 							[[[TTLauncherItem alloc] initWithTitle:@"Assessments"
 															 image:@"bundle://assessments-57.png"
@@ -109,10 +115,7 @@
 															   URL:@"land://Tasks" canDelete:NO] autorelease],							
 							
 							*/
-							
-							[[[TTLauncherItem alloc] initWithTitle:@"Tree Inventory"
-															 image:@"bundle://tree-57.png"
-															   URL:@"land://Trees" canDelete:NO] autorelease],	
+
 
 							/*
 							[[[TTLauncherItem alloc] initWithTitle:@"Cemetery"
