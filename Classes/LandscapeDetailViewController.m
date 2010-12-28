@@ -21,7 +21,7 @@
 
 @synthesize tableHeaderView;
 @synthesize photoButton;
-@synthesize nameTextField, overviewTextField, gpsTextField;
+@synthesize nameTextField, address1TextField, gpsTextField;
 
 #pragma mark -
 #pragma mark View controller
@@ -44,7 +44,7 @@
     [photoButton setImage:landscape.thumbnailImage forState:UIControlStateNormal];
 	self.navigationItem.title = landscape.name;
     nameTextField.text = landscape.name;    
-    overviewTextField.text = landscape.overview;    
+    address1TextField.text = landscape.address1;    
     gpsTextField.text = landscape.gps;    
 	[self updatePhotoButton];
 	
@@ -67,7 +67,7 @@
     self.tableHeaderView = nil;
 	self.photoButton = nil;
 	self.nameTextField = nil;
-	self.overviewTextField = nil;
+	self.address1TextField = nil;
 	self.gpsTextField = nil;
 	[super viewDidUnload];
 }
@@ -81,7 +81,7 @@
     
 	[self updatePhotoButton];
 	nameTextField.enabled = editing;
-	overviewTextField.enabled = editing;
+	address1TextField.enabled = editing;
 	gpsTextField.enabled = editing;
 	[self.navigationItem setHidesBackButton:editing animated:YES];
 	
@@ -119,8 +119,8 @@
 		landscape.name = nameTextField.text;
 		self.navigationItem.title = landscape.name;
 	}
-	else if (textField == overviewTextField) {
-		landscape.overview = overviewTextField.text;
+	else if (textField == address1TextField) {
+		landscape.address1 = address1TextField.text;
 	}
 	else if (textField == gpsTextField) {
 		landscape.gps = gpsTextField.text;
@@ -222,7 +222,8 @@
 		if (editing) {
 			[photoButton setImage:[UIImage imageNamed:@"photo_camera_128.png"] forState:UIControlStateNormal];
 		} else {
-			[photoButton setImage:nil forState:UIControlStateNormal];
+			//[photoButton setImage:nil forState:UIControlStateNormal];
+			[photoButton setImage:[UIImage imageNamed:@"photo_camera_128.png"] forState:UIControlStateNormal];
 		}
 	}
 }
@@ -235,7 +236,7 @@
     [tableHeaderView release];
     [photoButton release];
     [nameTextField release];
-    [overviewTextField release];
+    [address1TextField release];
     [gpsTextField release];
     [landscape release];
     [super dealloc];

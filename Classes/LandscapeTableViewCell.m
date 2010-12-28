@@ -14,7 +14,7 @@
 @interface LandscapeTableViewCell (SubviewFrames)
 - (CGRect)_imageViewFrame;
 - (CGRect)_nameLabelFrame;
-- (CGRect)_descriptionLabelFrame;
+- (CGRect)_address1LabelFrame;
 - (CGRect)_gpsLabelFrame;
 @end
 
@@ -23,7 +23,7 @@
 
 @implementation LandscapeTableViewCell
 
-@synthesize landscape, imageView, nameLabel, overviewLabel, gpsLabel;
+@synthesize landscape, imageView, nameLabel, address1Label, gpsLabel;
 
 
 
@@ -41,12 +41,12 @@
 		[imageView setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:imageView];
 		
-        overviewLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        [overviewLabel setFont:[UIFont systemFontOfSize:12.0]];
-        [overviewLabel setTextColor:[UIColor darkGrayColor]];
-        [overviewLabel setHighlightedTextColor:[UIColor whiteColor]];
-		[overviewLabel setBackgroundColor:[UIColor clearColor]];
-        [self.contentView addSubview:overviewLabel];
+        address1Label = [[UILabel alloc] initWithFrame:CGRectZero];
+        [address1Label setFont:[UIFont systemFontOfSize:12.0]];
+        [address1Label setTextColor:[UIColor darkGrayColor]];
+        [address1Label setHighlightedTextColor:[UIColor whiteColor]];
+		[address1Label setBackgroundColor:[UIColor clearColor]];
+        [self.contentView addSubview:address1Label];
 		
         gpsLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         gpsLabel.textAlignment = UITextAlignmentRight;
@@ -81,7 +81,7 @@
 	
     [imageView setFrame:[self _imageViewFrame]];
     [nameLabel setFrame:[self _nameLabelFrame]];
-    [overviewLabel setFrame:[self _descriptionLabelFrame]];
+    [address1Label setFrame:[self _address1LabelFrame]];
     [gpsLabel setFrame:[self _gpsLabelFrame]];
     if (self.editing) {
         gpsLabel.alpha = 0.0;
@@ -118,7 +118,7 @@
     }
 }
 
-- (CGRect)_descriptionLabelFrame {
+- (CGRect)_address1LabelFrame {
     if (self.editing) {
         return CGRectMake(IMAGE_SIZE + EDITING_INSET + TEXT_LEFT_MARGIN, 22.0, self.contentView.bounds.size.width - IMAGE_SIZE - EDITING_INSET - TEXT_LEFT_MARGIN, 16.0);
     }
@@ -143,7 +143,7 @@
 	}
 	imageView.image = landscape.thumbnailImage;
 	nameLabel.text = landscape.name;
-	overviewLabel.text = landscape.overview;
+	address1Label.text = landscape.address1;
 	gpsLabel.text = landscape.gps;
 }
 
@@ -155,7 +155,7 @@
     [landscape release];
     [imageView release];
     [nameLabel release];
-    [overviewLabel release];
+    [address1Label release];
     [gpsLabel release];
     [super dealloc];
 }
