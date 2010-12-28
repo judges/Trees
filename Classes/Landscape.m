@@ -16,7 +16,7 @@
 @dynamic timeStamp;
 @dynamic assessments;
 @dynamic image;
-@dynamic address1;
+@dynamic overview;
 @dynamic thumbnailImage;
 @dynamic gps;
 

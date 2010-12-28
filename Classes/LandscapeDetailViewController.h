@@ -21,7 +21,7 @@
 	UIView *tableHeaderView;    
 	UIButton *photoButton;
 	UITextField *nameTextField;
-	UITextField *address1TextField;
+	UITextField *overviewTextField;
 	UITextField *gpsTextField;	
 	
 }
@@ -32,7 +32,7 @@
 @property (nonatomic, retain) IBOutlet UIView *tableHeaderView;
 @property (nonatomic, retain) IBOutlet UIButton *photoButton;
 @property (nonatomic, retain) IBOutlet UITextField *nameTextField;
-@property (nonatomic, retain) IBOutlet UITextField *address1TextField;
+@property (nonatomic, retain) IBOutlet UITextField *overviewTextField;
 @property (nonatomic, retain) IBOutlet UITextField *gpsTextField;
 
 - (IBAction)photoTapped;
