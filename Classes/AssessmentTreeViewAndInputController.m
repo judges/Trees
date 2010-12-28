@@ -731,6 +731,119 @@
     
 }
 
+#pragma mark -
+#pragma mark Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 6;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    
+    
+    
+    return 5;
+    
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	switch (section) {
+		case 0:
+			return @"Form";	
+			break;
+		case 1:
+			return @"Crown";
+			break;
+		case 2:
+			return @"Trunk";
+		case 3:
+			return @"Root Flare";
+			break;
+		case 4:
+			return @"Roots";
+			break;
+		case 5:
+			return @"Overall";
+			break;
+
+		default:
+			break;
+	}
+}
+
+/*
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+	/// Define your row
+   // NSInteger row = [indexPath row];
+	
+   // static NSString *AssessmentCellIdentifier = @"AssessmentTableViewCell";
+    UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CR"] autorelease];
+	
+    AssessmentTableViewCell *assessmentCell = (AssessmentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:AssessmentCellIdentifier];
+    if (assessmentCell == nil) {
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"AssessmentTableViewCell" owner:nil options:nil];
+        for (id currentObject in topLevelObjects) {
+            if ([currentObject isKindOfClass:[UITableViewCell class]]) {
+                assessmentCell = (AssessmentTableViewCell *) currentObject;
+                break;
+            }
+        }
+        [self configureCell:assessmentCell atIndexPath:indexPath];
+    }
+    
+    if (row % 2)
+        [assessmentCell setBackgroundColor:[UIColor colorWithRed:0.616f green:0.616f blue:0.627f alpha:1.0f]];
+    else
+        [assessmentCell setBackgroundColor:[UIColor colorWithRed:0.525f green:0.5250f blue:0.541f alpha:1.0f]];
+
+    return cell;
+}
+*/
+//- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    // Configure the cell
+	/*
+    Assessment *assessment = (Assessment *)[fetchedResultsController objectAtIndexPath:indexPath];
+    cell.assessment = assessment;
+    cell.landscapeName.text = assessment.landscape.name;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterLongStyle];
+    NSString *date= [dateFormatter stringFromDate:assessment.created_at];
+    [dateFormatter release];
+    cell.date.text = date;
+    cell.typeName.text = assessment.type.name;
+	 */
+//}
+
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+     
+}
+
+
+
+/*
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
+
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
+
+
+
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {

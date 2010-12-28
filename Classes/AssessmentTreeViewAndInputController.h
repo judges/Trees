@@ -14,7 +14,9 @@
 #import "AppDelegate_Shared.h"
 #import "DistancePickerView.h"
 
-@interface AssessmentTreeViewAndInputController : UIViewController <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, TTPostControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
+@interface AssessmentTreeViewAndInputController : UIViewController <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, 
+																	TTPostControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, 
+																	UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UIView *viewView;
     IBOutlet UIView *inputView;
     IBOutlet UIButton *photoButton;

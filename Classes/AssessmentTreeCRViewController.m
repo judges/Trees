@@ -794,9 +794,6 @@
 */
 
 
-
-
-
 /*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -805,119 +802,7 @@
 }
 */
 
-/* old picker view stuff for reference
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
-    //we only have one component in each picker
-    return 1;
-}
 
-- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
-    //returns number of rows in the pickers
-    NSInteger i;
-    if (thePickerView == conditionPicker) {
-        i = conditionStringArray.count;
-    }
-    else if (thePickerView == recommendationPicker) {
-        i = recommendationStringArray.count;
-    }
-    return i;
-}
-
-- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    //puts the entries in the pickers
-    NSString *s;
-    if (thePickerView == conditionPicker) {
-        s = [conditionStringArray objectAtIndex:row];
-    }
-    else if (thePickerView == recommendationPicker) {
-        s = [recommendationStringArray objectAtIndex:row];
-    }
-    return s;
-}
-- (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    //changes condition or recommendation to selected row
-    if (thePickerView == conditionPicker) {
-        [conditionField setHidden: YES];
-        [conditionSaveButton setHidden: YES];
-        switch ([whichId intValue]) {
-            case 1:
-            {
-				tree.form.condition = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-                break;
-            }
-            case 2:
-            {
-                tree.crown.condition = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-                break;
-            }
-            case 3:
-            {
-                tree.trunk.condition = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-                break;
-            }
-            case 4:
-            {
-                tree.rootflare.condition = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-                break;
-            }
-            case 5:
-            {
-                tree.roots.condition = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-                break;
-            }
-            case 6:
-            {
-                tree.overall.condition = [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]];
-                break;
-            }
-            default:
-                break;
-        }
-    }
-    else if (thePickerView == recommendationPicker) {
-        [recommendationField setHidden: YES];
-        [recommendationSaveButton setHidden: YES];
-        switch ([whichId intValue]) {
-            case 1:
-            {
-                tree.form.recommendation = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-                break;
-            }
-            case 2:
-            {
-                tree.crown.recommendation = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-                break;
-            }
-            case 3:
-            {
-                tree.trunk.recommendation = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-                break;
-            }
-            case 4:
-            {
-                tree.rootflare.recommendation = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-                break;
-            }
-            case 5:
-            {
-                tree.roots.recommendation = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-                break;
-            }
-            case 6:
-            {
-                tree.overall.recommendation = [recommendationArray objectAtIndex:[recommendationPicker selectedRowInComponent:0]];
-                break;
-            }
-            default:
-                break;
-        }
-    }
-    NSError *error;
-    if (![managedObjectContext save:&error]) {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
-}
-*/
 -(IBAction)photoButtonClick:(id)sender {
     //user clicked photo button
     UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Photos" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Add Existing", @"View Photos", nil];
