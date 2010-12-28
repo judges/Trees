@@ -12,6 +12,6 @@
 
 @implementation Caliper 
 
-@dynamic assessment;
+@dynamic tree;
 
 @end

@@ -1,13 +1,15 @@
 // 
 //  AssessmentTree.m
-//  landscapes
+//  Trees
 //
-//  Created by Evan Cordell on 8/16/10.
+//  Created by Evan on 12/28/10.
 //  Copyright 2010 NCPTT. All rights reserved.
 //
 
 #import "AssessmentTree.h"
 
+#import "Caliper.h"
+#import "Height.h"
 #import "TreeCrown.h"
 #import "TreeForm.h"
 #import "TreeOverall.h"
@@ -18,12 +20,12 @@
 @implementation AssessmentTree 
 
 @dynamic height;
-@dynamic caliper;
-@dynamic crown;
+@dynamic form;
 @dynamic rootflare;
 @dynamic roots;
 @dynamic trunk;
+@dynamic caliper;
 @dynamic overall;
-@dynamic form;
+@dynamic crown;
 
 @end

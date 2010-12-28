@@ -60,7 +60,6 @@
 		208B32E512BFE27B00D8FA03 /* AssessmentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32A512BFE27B00D8FA03 /* AssessmentType.m */; };
 		208B32E612BFE27B00D8FA03 /* TreeTrunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32A712BFE27B00D8FA03 /* TreeTrunk.m */; };
 		208B32E812BFE27B00D8FA03 /* TreeOverall.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32AB12BFE27B00D8FA03 /* TreeOverall.m */; };
-		208B32EB12BFE27B00D8FA03 /* AssessmentTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32B112BFE27B00D8FA03 /* AssessmentTree.m */; };
 		208B32ED12BFE27B00D8FA03 /* TreeForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32B512BFE27B00D8FA03 /* TreeForm.m */; };
 		208B32EE12BFE27B00D8FA03 /* TreeRootFlare.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32B712BFE27B00D8FA03 /* TreeRootFlare.m */; };
 		208B32F312BFE27B00D8FA03 /* Landscape.m in Sources */ = {isa = PBXBuildFile; fileRef = 208B32C112BFE27B00D8FA03 /* Landscape.m */; };
@@ -164,9 +163,10 @@
 		20AC462E12C8FDA600BC4C12 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AC462D12C8FDA600BC4C12 /* MessageUI.framework */; };
 		20AC464712C900A400BC4C12 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 20AC464612C900A400BC4C12 /* Settings.bundle */; };
 		20CE55F612C93DC6008624F3 /* Distance.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE55F512C93DC6008624F3 /* Distance.m */; };
-		20CE55FF12C93EC2008624F3 /* Height.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE55FC12C93EC2008624F3 /* Height.m */; };
-		20CE560012C93EC2008624F3 /* Caliper.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE55FE12C93EC2008624F3 /* Caliper.m */; };
 		20CE565F12C94197008624F3 /* DistancePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE565E12C94197008624F3 /* DistancePickerView.m */; };
+		20CE583512CA4D40008624F3 /* AssessmentTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE583012CA4D40008624F3 /* AssessmentTree.m */; };
+		20CE583612CA4D40008624F3 /* Height.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE583212CA4D40008624F3 /* Height.m */; };
+		20CE583712CA4D40008624F3 /* Caliper.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE583412CA4D40008624F3 /* Caliper.m */; };
 		2819307D112F81BE00ECF9B4 /* Trees.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2819307C112F81BE00ECF9B4 /* Trees.xcdatamodeld */; };
 		2860E38A111B897F00E27156 /* AppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E388111B897F00E27156 /* AppDelegate_iPhone.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
@@ -595,8 +595,6 @@
 		208B32A712BFE27B00D8FA03 /* TreeTrunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeTrunk.m; sourceTree = "<group>"; };
 		208B32AA12BFE27B00D8FA03 /* TreeOverall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeOverall.h; sourceTree = "<group>"; };
 		208B32AB12BFE27B00D8FA03 /* TreeOverall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeOverall.m; sourceTree = "<group>"; };
-		208B32B012BFE27B00D8FA03 /* AssessmentTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssessmentTree.h; sourceTree = "<group>"; };
-		208B32B112BFE27B00D8FA03 /* AssessmentTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssessmentTree.m; sourceTree = "<group>"; };
 		208B32B412BFE27B00D8FA03 /* TreeForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeForm.h; sourceTree = "<group>"; };
 		208B32B512BFE27B00D8FA03 /* TreeForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeForm.m; sourceTree = "<group>"; };
 		208B32B612BFE27B00D8FA03 /* TreeRootFlare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeRootFlare.h; sourceTree = "<group>"; };
@@ -787,12 +785,14 @@
 		20AC464612C900A400BC4C12 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		20CE55F412C93DC6008624F3 /* Distance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Distance.h; path = ../Shared/Distance.h; sourceTree = "<group>"; };
 		20CE55F512C93DC6008624F3 /* Distance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Distance.m; path = ../Shared/Distance.m; sourceTree = "<group>"; };
-		20CE55FB12C93EC2008624F3 /* Height.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Height.h; path = ../Shared/Height.h; sourceTree = "<group>"; };
-		20CE55FC12C93EC2008624F3 /* Height.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Height.m; path = ../Shared/Height.m; sourceTree = "<group>"; };
-		20CE55FD12C93EC2008624F3 /* Caliper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Caliper.h; path = ../Shared/Caliper.h; sourceTree = "<group>"; };
-		20CE55FE12C93EC2008624F3 /* Caliper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Caliper.m; path = ../Shared/Caliper.m; sourceTree = "<group>"; };
 		20CE565D12C94197008624F3 /* DistancePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistancePickerView.h; sourceTree = "<group>"; };
 		20CE565E12C94197008624F3 /* DistancePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistancePickerView.m; sourceTree = "<group>"; };
+		20CE582F12CA4D40008624F3 /* AssessmentTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssessmentTree.h; path = ../Shared/AssessmentTree.h; sourceTree = "<group>"; };
+		20CE583012CA4D40008624F3 /* AssessmentTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssessmentTree.m; path = ../Shared/AssessmentTree.m; sourceTree = "<group>"; };
+		20CE583112CA4D40008624F3 /* Height.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Height.h; path = ../Shared/Height.h; sourceTree = "<group>"; };
+		20CE583212CA4D40008624F3 /* Height.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Height.m; path = ../Shared/Height.m; sourceTree = "<group>"; };
+		20CE583312CA4D40008624F3 /* Caliper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Caliper.h; path = ../Shared/Caliper.h; sourceTree = "<group>"; };
+		20CE583412CA4D40008624F3 /* Caliper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Caliper.m; path = ../Shared/Caliper.m; sourceTree = "<group>"; };
 		2860E387111B897F00E27156 /* AppDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_iPhone.h; sourceTree = "<group>"; };
 		2860E388111B897F00E27156 /* AppDelegate_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_iPhone.m; sourceTree = "<group>"; };
 		2870939E111907710040F596 /* Trees.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Trees.xcdatamodel; sourceTree = "<group>"; };
@@ -922,8 +922,6 @@
 				208B32A712BFE27B00D8FA03 /* TreeTrunk.m */,
 				208B32AA12BFE27B00D8FA03 /* TreeOverall.h */,
 				208B32AB12BFE27B00D8FA03 /* TreeOverall.m */,
-				208B32B012BFE27B00D8FA03 /* AssessmentTree.h */,
-				208B32B112BFE27B00D8FA03 /* AssessmentTree.m */,
 				208B32B412BFE27B00D8FA03 /* TreeForm.h */,
 				208B32B512BFE27B00D8FA03 /* TreeForm.m */,
 				208B32B612BFE27B00D8FA03 /* TreeRootFlare.h */,
@@ -964,10 +962,12 @@
 				20AC43AE12C3B48900BC4C12 /* TreeRootsCondition.m */,
 				20CE55F412C93DC6008624F3 /* Distance.h */,
 				20CE55F512C93DC6008624F3 /* Distance.m */,
-				20CE55FB12C93EC2008624F3 /* Height.h */,
-				20CE55FC12C93EC2008624F3 /* Height.m */,
-				20CE55FD12C93EC2008624F3 /* Caliper.h */,
-				20CE55FE12C93EC2008624F3 /* Caliper.m */,
+				20CE582F12CA4D40008624F3 /* AssessmentTree.h */,
+				20CE583012CA4D40008624F3 /* AssessmentTree.m */,
+				20CE583112CA4D40008624F3 /* Height.h */,
+				20CE583212CA4D40008624F3 /* Height.m */,
+				20CE583312CA4D40008624F3 /* Caliper.h */,
+				20CE583412CA4D40008624F3 /* Caliper.m */,
 				208B329512BFE27A00D8FA03 /* Not Generated */,
 			);
 			name = Models;
@@ -1885,7 +1885,6 @@
 				208B32E512BFE27B00D8FA03 /* AssessmentType.m in Sources */,
 				208B32E612BFE27B00D8FA03 /* TreeTrunk.m in Sources */,
 				208B32E812BFE27B00D8FA03 /* TreeOverall.m in Sources */,
-				208B32EB12BFE27B00D8FA03 /* AssessmentTree.m in Sources */,
 				208B32ED12BFE27B00D8FA03 /* TreeForm.m in Sources */,
 				208B32EE12BFE27B00D8FA03 /* TreeRootFlare.m in Sources */,
 				208B32F312BFE27B00D8FA03 /* Landscape.m in Sources */,
@@ -1972,10 +1971,11 @@
 				20AC460D12C8FCB700BC4C12 /* IASKSwitch.m in Sources */,
 				20AC460E12C8FCB700BC4C12 /* IASKTextField.m in Sources */,
 				20CE55F612C93DC6008624F3 /* Distance.m in Sources */,
-				20CE55FF12C93EC2008624F3 /* Height.m in Sources */,
-				20CE560012C93EC2008624F3 /* Caliper.m in Sources */,
 				20CE565F12C94197008624F3 /* DistancePickerView.m in Sources */,
 				14DBFCAC12C954680051B792 /* TreeListTableViewController.m in Sources */,
+				20CE583512CA4D40008624F3 /* AssessmentTree.m in Sources */,
+				20CE583612CA4D40008624F3 /* Height.m in Sources */,
+				20CE583712CA4D40008624F3 /* Caliper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

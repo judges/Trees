@@ -1,5 +1,5 @@
 //
-//  Caliper.h
+//  Height.h
 //  Trees
 //
 //  Created by Evan on 12/28/10.
@@ -11,11 +11,11 @@
 
 @class AssessmentTree;
 
-@interface Caliper :  Distance  
+@interface Height :  Distance  
 {
 }
 
-@property (nonatomic, retain) AssessmentTree * assessment;
+@property (nonatomic, retain) AssessmentTree * tree;
 
 @end
 

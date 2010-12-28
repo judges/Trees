@@ -57,8 +57,20 @@
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
     if (self.assessmentTree) {
-        self.caliper.text = [NSString stringWithFormat:@"%@ \'", [self.assessmentTree.caliper stringValue]];
-        self.height.text = [NSString stringWithFormat:@"%@ \'", [self.assessmentTree.height stringValue]];
+		
+		//display the right caliper and height
+		NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
+		if ([lengthUnits isEqualToString:@"Metric"]) {
+			self.caliper.text = [NSString stringWithFormat:@"%d m %d cm", self.assessmentTree.caliper.m, self.assessmentTree.caliper.cm];
+			self.height.text = [NSString stringWithFormat:@"%d m %d cm", self.assessmentTree.height.m, self.assessmentTree.height.cm];
+			[self.caliperButton setTitle:[NSString stringWithFormat:@"%d m %d cm", self.assessmentTree.caliper.m, self.assessmentTree.caliper.cm] forState:UIControlStateNormal];
+			[self.heightButton setTitle:[NSString stringWithFormat:@"%d m %d cm", self.assessmentTree.height.m, self.assessmentTree.height.cm] forState:UIControlStateNormal];
+		} else if ([lengthUnits isEqualToString:@"Imperial"]){
+			self.caliper.text = [NSString stringWithFormat:@"%d ft %d in", self.assessmentTree.caliper.ft, self.assessmentTree.caliper.in];
+			self.height.text = [NSString stringWithFormat:@"%d ft %d in", self.assessmentTree.height.ft, self.assessmentTree.height.in];
+			[self.caliperButton setTitle:[NSString stringWithFormat:@"%d ft %d in", self.assessmentTree.caliper.ft, self.assessmentTree.caliper.in] forState:UIControlStateNormal];
+			[self.heightButton setTitle:[NSString stringWithFormat:@"%d in %d in", self.assessmentTree.height.ft, self.assessmentTree.height.in] forState:UIControlStateNormal];
+		}
 		
         //for now, just show a random selected condition and recommendation
 		self.formCText.text = [[self.assessmentTree.form valueForKeyPath:@"condition.name"] anyObject];
@@ -74,8 +86,6 @@
         self.rootsRText.text = [[self.assessmentTree.roots valueForKeyPath:@"recommendation.name"] anyObject];
         self.overallRText.text = [[self.assessmentTree.overall valueForKeyPath:@"recommendation.name"] anyObject];
         self.assessorField.text = self.assessmentTree.assessor;
-		[self.caliperButton setTitle:[self.assessmentTree.caliper stringValue] forState:UIControlStateNormal];
-		[self.heightButton setTitle:[self.assessmentTree.height stringValue] forState:UIControlStateNormal];
     }
     if (self.formCText.text == nil || self.formRText.text == nil) {
         [button1 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
@@ -262,10 +272,36 @@
     }
 }
 - (void)caliperSelected:(id)sender {
+	//user clicks done on action sheet
+	NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
 	[caliperActionSheet dismissWithClickedButtonIndex:0 animated:YES];
+	
+
+	Caliper *cap = [NSEntityDescription insertNewObjectForEntityForName:@"Caliper" inManagedObjectContext:managedObjectContext];
+	if ([lengthUnits isEqualToString:@"Imperial"]) {
+		NSLog(@"%d", [caliperPickerView selectedRowInComponent:0] * 10 + [caliperPickerView selectedRowInComponent:1]);
+		cap.ft = [NSNumber numberWithInt:([caliperPickerView selectedRowInComponent:0] * 10 + [caliperPickerView selectedRowInComponent:1])];
+		cap.in = [NSNumber numberWithInt:[caliperPickerView selectedRowInComponent:2]];
+		[caliperButton setTitle:[NSString stringWithFormat:@"%d ft %d in", [cap.ft intValue], [cap.in intValue]] forState:UIControlStateNormal];
+		self.caliper.text = [NSString stringWithFormat:@"%d ft %d in", [cap.ft intValue], [cap.in intValue]];
+		NSLog(@"%d ft %d in", cap.ft, cap.in);
+	} else if ([lengthUnits isEqualToString:@"Metric"]) {
+		cap.m = [NSNumber numberWithInt:[caliperPickerView selectedRowInComponent:0]];
+		cap.cm = [NSNumber numberWithInt:([caliperPickerView selectedRowInComponent:1] * 10 + [caliperPickerView selectedRowInComponent:2])];
+		[caliperButton setTitle:[NSString stringWithFormat:@"%d m %d cm", [cap.m intValue], [cap.cm intValue]] forState:UIControlStateNormal];
+		self.caliper.text = [NSString stringWithFormat:@"%d m %d cm", [cap.m intValue], [cap.cm intValue]];
+	}
+	self.assessmentTree.caliper = cap;
+	
+	NSError *saveError;
+	if (![managedObjectContext save:&saveError]) {
+		NSLog(@"Saving changes to caliper failed: %@", saveError);
+	}
+	
 }
 
 - (void)heightSelected:(id)sender {
+	//user clicks done on action sheet
 	[heightActionSheet dismissWithClickedButtonIndex:0 animated:YES];
 }
 
@@ -396,11 +432,6 @@
 	//shouldn't ever get here
 	return 1;
 }
-
-//- (NSString *)pickerView:(DistancePickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    //load data into picker views
-//	return [NSString stringWithFormat:@"%d", row];
-//}
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
 	NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
