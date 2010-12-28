@@ -186,9 +186,9 @@
 	CGSize size = selectedImage.size;
 	CGFloat ratio = 0;
 	if (size.width > size.height) {
-		ratio = 95.0 / size.width;
+		ratio = 128.0 / size.width;
 	} else {
-		ratio = 95.0 / size.height;
+		ratio = 128.0 / size.height;
 	}
 	CGRect rect = CGRectMake(0.0, 0.0, ratio * size.width, ratio * size.height);
 	
@@ -220,7 +220,7 @@
 		photoButton.enabled = editing;
 		
 		if (editing) {
-			[photoButton setImage:[UIImage imageNamed:@"photo_camera_29.png"] forState:UIControlStateNormal];
+			[photoButton setImage:[UIImage imageNamed:@"photo_camera_128.png"] forState:UIControlStateNormal];
 		} else {
 			[photoButton setImage:nil forState:UIControlStateNormal];
 		}
