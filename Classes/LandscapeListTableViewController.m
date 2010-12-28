@@ -15,6 +15,13 @@
     // Configure the navigation bar
     self.title = @"Landscapes";
 	
+	self.tableView.backgroundColor = [UIColor colorWithRed:0.808 green:0.808 blue:0.808 alpha:1.0];
+	self.tableView.opaque = NO;
+	self.tableView.backgroundView = nil;
+	//[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLineEtched];
+	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+	
+	
 	//load managedObjectContext from AppDelegate
     if(!managedObjectContext){
         managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext];
@@ -131,9 +138,9 @@
 	
 	UIView *backgroundView = [[UIView alloc] init];
 	if ((row % 2) == 0)
-		backgroundView.backgroundColor = [UIColor lightGrayColor];
+		backgroundView.backgroundColor = [UIColor colorWithRed:0.808 green:0.808 blue:0.808 alpha:1.0];
 	else
-		backgroundView.backgroundColor = [UIColor whiteColor];
+		backgroundView.backgroundColor = [UIColor colorWithRed:0.733 green:0.733 blue:0.733 alpha:1.0];
 	
 	landscapeCell.backgroundView = backgroundView;
 	[backgroundView release]; 
