@@ -960,8 +960,6 @@
 				20AC43AC12C3B48900BC4C12 /* TreeCrownCondition.m */,
 				20AC43AD12C3B48900BC4C12 /* TreeRootsCondition.h */,
 				20AC43AE12C3B48900BC4C12 /* TreeRootsCondition.m */,
-				20CE55F412C93DC6008624F3 /* Distance.h */,
-				20CE55F512C93DC6008624F3 /* Distance.m */,
 				20CE582F12CA4D40008624F3 /* AssessmentTree.h */,
 				20CE583012CA4D40008624F3 /* AssessmentTree.m */,
 				20CE583112CA4D40008624F3 /* Height.h */,
@@ -976,6 +974,8 @@
 		208B329512BFE27A00D8FA03 /* Not Generated */ = {
 			isa = PBXGroup;
 			children = (
+				20CE55F412C93DC6008624F3 /* Distance.h */,
+				20CE55F512C93DC6008624F3 /* Distance.m */,
 				208B329612BFE27A00D8FA03 /* PhotoSet.h */,
 				208B329712BFE27A00D8FA03 /* PhotoSet.m */,
 				208B329812BFE27A00D8FA03 /* DisplayPhoto.h */,
