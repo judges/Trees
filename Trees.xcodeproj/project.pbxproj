@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		140A237512CA3EF300E88D65 /* photo_camera_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 140A237412CA3EF300E88D65 /* photo_camera_128.png */; };
 		149B80FA12C264C3001557AB /* LandscapeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149B80F912C264C3001557AB /* LandscapeListTableViewController.m */; };
 		149B810012C2673B001557AB /* LandscapeAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149B80FE12C2673B001557AB /* LandscapeAddViewController.m */; };
 		149B810112C2673B001557AB /* LandscapeAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 149B80FF12C2673B001557AB /* LandscapeAddView.xib */; };
@@ -527,6 +528,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		140A237412CA3EF300E88D65 /* photo_camera_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_camera_128.png; sourceTree = "<group>"; };
 		149B80F812C264C3001557AB /* LandscapeListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeListTableViewController.h; sourceTree = "<group>"; };
 		149B80F912C264C3001557AB /* LandscapeListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeListTableViewController.m; sourceTree = "<group>"; };
 		149B80FD12C2673B001557AB /* LandscapeAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeAddViewController.h; sourceTree = "<group>"; };
@@ -862,6 +864,7 @@
 		208B325412BFE24A00D8FA03 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				140A237412CA3EF300E88D65 /* photo_camera_128.png */,
 				208B325512BFE24A00D8FA03 /* button-notdone.png */,
 				208B325612BFE24A00D8FA03 /* edit_50.png */,
 				208B325712BFE24A00D8FA03 /* NPS-57.png */,
@@ -1860,6 +1863,7 @@
 				20AC461412C8FCB700BC4C12 /* IASKSpecifierValuesView.xib in Resources */,
 				20AC464712C900A400BC4C12 /* Settings.bundle in Resources */,
 				14DBFCAD12C954680051B792 /* TreeListTableViewController.xib in Resources */,
+				140A237512CA3EF300E88D65 /* photo_camera_128.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

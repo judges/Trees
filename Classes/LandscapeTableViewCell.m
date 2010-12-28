@@ -91,9 +91,9 @@
 }
 
 
-#define IMAGE_SIZE          42.0
-#define EDITING_INSET       10.0
-#define TEXT_LEFT_MARGIN    8.0
+#define IMAGE_SIZE          64.0
+#define EDITING_INSET       0.0
+#define TEXT_LEFT_MARGIN    5.0
 #define TEXT_RIGHT_MARGIN   5.0
 #define PREP_TIME_WIDTH     80.0
 
