@@ -1,17 +1,17 @@
 // 
-//  Caliper.m
+//  Height.m
 //  Trees
 //
 //  Created by Evan on 12/28/10.
 //  Copyright 2010 NCPTT. All rights reserved.
 //
 
-#import "Caliper.h"
+#import "Height.h"
 
 #import "AssessmentTree.h"
 
-@implementation Caliper 
+@implementation Height 
 
-@dynamic assessment;
+@dynamic tree;
 
 @end

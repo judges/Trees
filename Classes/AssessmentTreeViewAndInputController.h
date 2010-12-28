@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Assessment.h"
 #import "AssessmentTree.h"
+#import "Height.h"
+#import "Caliper.h"
 #import "AppDelegate_Shared.h"
 #import "DistancePickerView.h"
 

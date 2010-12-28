@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="117"/>
+			<integer value="61"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -284,7 +284,7 @@
 							<object class="IBUILabel" id="251891979">
 								<reference key="NSNextResponder" ref="980112499"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{211, 1}, {41, 21}}</string>
+								<string key="NSFrame">{{195, 1}, {41, 21}}</string>
 								<reference key="NSSuperview" ref="980112499"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -303,7 +303,7 @@
 							<object class="IBUILabel" id="236709048">
 								<reference key="NSNextResponder" ref="980112499"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{211, 20}, {41, 21}}</string>
+								<string key="NSFrame">{{195, 20}, {41, 21}}</string>
 								<reference key="NSSuperview" ref="980112499"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -322,7 +322,7 @@
 							<object class="IBUILabel" id="510608717">
 								<reference key="NSNextResponder" ref="980112499"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{259, 1}, {41, 21}}</string>
+								<string key="NSFrame">{{240, 1}, {60, 21}}</string>
 								<reference key="NSSuperview" ref="980112499"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -340,7 +340,7 @@
 							<object class="IBUILabel" id="366911369">
 								<reference key="NSNextResponder" ref="980112499"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{259, 20}, {41, 21}}</string>
+								<string key="NSFrame">{{240, 20}, {60, 21}}</string>
 								<reference key="NSSuperview" ref="980112499"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -1722,7 +1722,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>AssessmentTreeViewAndInputController</string>
 					<string>UIResponder</string>
-					<string>{{786, 658}, {320, 480}}</string>
+					<string>{{1152, 659}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1806,7 +1806,10 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>caliperClick:</string>
+							<string>caliperSelected:</string>
+							<string>dismissActionSheet:</string>
 							<string>heightClick:</string>
+							<string>heightSelected:</string>
 							<string>notesButtonClick:</string>
 							<string>photoButtonClick:</string>
 							<string>saveAssessor:</string>
@@ -1815,6 +1818,9 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -1829,7 +1835,10 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>caliperClick:</string>
+							<string>caliperSelected:</string>
+							<string>dismissActionSheet:</string>
 							<string>heightClick:</string>
+							<string>heightSelected:</string>
 							<string>notesButtonClick:</string>
 							<string>photoButtonClick:</string>
 							<string>saveAssessor:</string>
@@ -1843,7 +1852,19 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">caliperSelected:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">dismissActionSheet:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">heightClick:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">heightSelected:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">

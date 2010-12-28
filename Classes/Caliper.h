@@ -15,7 +15,7 @@
 {
 }
 
-@property (nonatomic, retain) AssessmentTree * assessment;
+@property (nonatomic, retain) AssessmentTree * tree;
 
 @end
 
