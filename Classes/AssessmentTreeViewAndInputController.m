@@ -61,15 +61,15 @@
 		//display the right caliper and height
 		NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
 		if ([lengthUnits isEqualToString:@"Metric"]) {
-			self.caliper.text = [NSString stringWithFormat:@"%d m %d cm", self.assessmentTree.caliper.m, self.assessmentTree.caliper.cm];
-			self.height.text = [NSString stringWithFormat:@"%d m %d cm", self.assessmentTree.height.m, self.assessmentTree.height.cm];
-			[self.caliperButton setTitle:[NSString stringWithFormat:@"%d m %d cm", self.assessmentTree.caliper.m, self.assessmentTree.caliper.cm] forState:UIControlStateNormal];
-			[self.heightButton setTitle:[NSString stringWithFormat:@"%d m %d cm", self.assessmentTree.height.m, self.assessmentTree.height.cm] forState:UIControlStateNormal];
+			self.caliper.text = [NSString stringWithFormat:@"%d m %d cm", [self.assessmentTree.caliper.m intValue], [self.assessmentTree.caliper.cm intValue]];
+			self.height.text = [NSString stringWithFormat:@"%d m %d cm", [self.assessmentTree.height.m intValue], [self.assessmentTree.height.cm intValue]];
+			[self.caliperButton setTitle:[NSString stringWithFormat:@"%d m %d cm", [self.assessmentTree.caliper.m intValue], [self.assessmentTree.caliper.cm intValue]] forState:UIControlStateNormal];
+			[self.heightButton setTitle:[NSString stringWithFormat:@"%d m %d cm", [self.assessmentTree.height.m intValue], [self.assessmentTree.height.cm intValue]] forState:UIControlStateNormal];
 		} else if ([lengthUnits isEqualToString:@"Imperial"]){
-			self.caliper.text = [NSString stringWithFormat:@"%d ft %d in", self.assessmentTree.caliper.ft, self.assessmentTree.caliper.in];
-			self.height.text = [NSString stringWithFormat:@"%d ft %d in", self.assessmentTree.height.ft, self.assessmentTree.height.in];
-			[self.caliperButton setTitle:[NSString stringWithFormat:@"%d ft %d in", self.assessmentTree.caliper.ft, self.assessmentTree.caliper.in] forState:UIControlStateNormal];
-			[self.heightButton setTitle:[NSString stringWithFormat:@"%d in %d in", self.assessmentTree.height.ft, self.assessmentTree.height.in] forState:UIControlStateNormal];
+			self.caliper.text = [NSString stringWithFormat:@"%d ft %d in", [self.assessmentTree.caliper.ft intValue], [self.assessmentTree.caliper.in intValue]];
+			self.height.text = [NSString stringWithFormat:@"%d ft %d in", [self.assessmentTree.height.ft intValue], [self.assessmentTree.height.in intValue]];
+			[self.caliperButton setTitle:[NSString stringWithFormat:@"%d ft %d in", [self.assessmentTree.caliper.ft intValue], [self.assessmentTree.caliper.in intValue]] forState:UIControlStateNormal];
+			[self.heightButton setTitle:[NSString stringWithFormat:@"%d in %d in", [self.assessmentTree.height.ft intValue], [self.assessmentTree.height.in intValue]] forState:UIControlStateNormal];
 		}
 		
         //for now, just show a random selected condition and recommendation
@@ -274,10 +274,11 @@
 - (void)caliperSelected:(id)sender {
 	//user clicks done on action sheet
 	NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
-	[caliperActionSheet dismissWithClickedButtonIndex:0 animated:YES];
 	
+	[caliperActionSheet dismissWithClickedButtonIndex:0 animated:YES];
 
 	Caliper *cap = [NSEntityDescription insertNewObjectForEntityForName:@"Caliper" inManagedObjectContext:managedObjectContext];
+	
 	if ([lengthUnits isEqualToString:@"Imperial"]) {
 		NSLog(@"%d", [caliperPickerView selectedRowInComponent:0] * 10 + [caliperPickerView selectedRowInComponent:1]);
 		cap.ft = [NSNumber numberWithInt:([caliperPickerView selectedRowInComponent:0] * 10 + [caliperPickerView selectedRowInComponent:1])];
@@ -302,7 +303,31 @@
 
 - (void)heightSelected:(id)sender {
 	//user clicks done on action sheet
+	NSString *lengthUnits = [[NSUserDefaults standardUserDefaults] stringForKey:@"lengthUnits"];
+	
 	[heightActionSheet dismissWithClickedButtonIndex:0 animated:YES];
+	
+	Height *hat = [NSEntityDescription insertNewObjectForEntityForName:@"Height" inManagedObjectContext:managedObjectContext];
+	
+	if ([lengthUnits isEqualToString:@"Imperial"]) {
+		NSLog(@"%d", [heightPickerView selectedRowInComponent:0] * 10 + [heightPickerView selectedRowInComponent:1]);
+		hat.ft = [NSNumber numberWithInt:([heightPickerView selectedRowInComponent:0] * 10 + [heightPickerView selectedRowInComponent:1])];
+		hat.in = [NSNumber numberWithInt:[heightPickerView selectedRowInComponent:2]];
+		[heightButton setTitle:[NSString stringWithFormat:@"%d ft %d in", [hat.ft intValue], [hat.in intValue]] forState:UIControlStateNormal];
+		self.height.text = [NSString stringWithFormat:@"%d ft %d in", [hat.ft intValue], [hat.in intValue]];
+		NSLog(@"%d ft %d in", hat.ft, hat.in);
+	} else if ([lengthUnits isEqualToString:@"Metric"]) {
+		hat.m = [NSNumber numberWithInt:[heightPickerView selectedRowInComponent:0]];
+		hat.cm = [NSNumber numberWithInt:([heightPickerView selectedRowInComponent:1] * 10 + [heightPickerView selectedRowInComponent:2])];
+		[heightButton setTitle:[NSString stringWithFormat:@"%d m %d cm", [hat.m intValue], [hat.cm intValue]] forState:UIControlStateNormal];
+		self.height.text = [NSString stringWithFormat:@"%d m %d cm", [hat.m intValue], [hat.cm intValue]];
+	}
+	self.assessmentTree.height = hat;
+	
+	NSError *saveError;
+	if (![managedObjectContext save:&saveError]) {
+		NSLog(@"Saving changes to height failed: %@", saveError);
+	}
 }
 
 - (void)dismissActionSheet:(id)sender {
