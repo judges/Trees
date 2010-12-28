@@ -230,7 +230,7 @@
 	
 	// note: here you can also change its "tintColor" property to a different UIColor
 	
-	[self.view addSubview: self.mySearchBar];
+	//[self.view addSubview: self.mySearchBar];
 }
 
 // called after the view controller's view is released and set to nil.
