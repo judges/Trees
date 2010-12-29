@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Assessment.h"
 #import "AssessmentTree.h"
+#import "AssessmentTreeTableViewCell.h"
+#import "AssessmentTreeTableViewHeaderCell.h"
 #import "Height.h"
 #import "Caliper.h"
 #import "AppDelegate_Shared.h"
@@ -97,6 +99,7 @@
 -(IBAction)heightClick:(id)sender;
 -(IBAction)photoButtonClick:(id)sender;
 -(IBAction)notesButtonClick:(id)sender;
+-(void)configureCell:(AssessmentTreeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
 - (void)dismissActionSheet:(id)sender;
 - (void)caliperSelected:(id)sender;

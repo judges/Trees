@@ -742,92 +742,74 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    
-    
-    
-    return 5;
+    return 6;
     
 }
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	switch (section) {
-		case 0:
-			return @"Form";	
-			break;
-		case 1:
-			return @"Crown";
-			break;
-		case 2:
-			return @"Trunk";
-		case 3:
-			return @"Root Flare";
-			break;
-		case 4:
-			return @"Roots";
-			break;
-		case 5:
-			return @"Overall";
-			break;
-
-		default:
-			break;
-	}
-	return @"Error";
-}
-
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Assessment"] autorelease];
-	cell.selectionStyle = UITableViewCellSelectionStyleNone;
- 
-    return cell;
-	
-	
-	/// Define your row
-   // NSInteger row = [indexPath row];
-	/*
-   // static NSString *AssessmentCellIdentifier = @"AssessmentTableViewCell";
-    UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CR"] autorelease];
-	
-    AssessmentTableViewCell *assessmentCell = (AssessmentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:AssessmentCellIdentifier];
-    if (assessmentCell == nil) {
-        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"AssessmentTableViewCell" owner:nil options:nil];
-        for (id currentObject in topLevelObjects) {
-            if ([currentObject isKindOfClass:[UITableViewCell class]]) {
-                assessmentCell = (AssessmentTableViewCell *) currentObject;
-                break;
-            }
-        }
-        [self configureCell:assessmentCell atIndexPath:indexPath];
-    }
-    
-    if (row % 2)
-        [assessmentCell setBackgroundColor:[UIColor colorWithRed:0.616f green:0.616f blue:0.627f alpha:1.0f]];
-    else
-        [assessmentCell setBackgroundColor:[UIColor colorWithRed:0.525f green:0.5250f blue:0.541f alpha:1.0f]];
-
-    return cell;
-	 */
+		//load standard cell
+		static NSString *AssessmentCellIdentifier = @"AssessmentTreeTableViewCell";
+		AssessmentTreeTableViewCell *assessmentCell = (AssessmentTreeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:AssessmentCellIdentifier];
+		if (assessmentCell == nil) {
+			NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"AssessmentTreeTableViewCell" owner:nil options:nil];
+			for (id currentObject in topLevelObjects) {
+				if ([currentObject isKindOfClass:[UITableViewCell class]]) {
+					assessmentCell = (AssessmentTreeTableViewCell *) currentObject;
+					break;
+				}
+			}
+			[self configureCell:assessmentCell atIndexPath:indexPath];
+		}
+		return assessmentCell;
 }
 
-//- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    // Configure the cell
-	/*
-    Assessment *assessment = (Assessment *)[fetchedResultsController objectAtIndexPath:indexPath];
-    cell.assessment = assessment;
-    cell.landscapeName.text = assessment.landscape.name;
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterLongStyle];
-    NSString *date= [dateFormatter stringFromDate:assessment.created_at];
-    [dateFormatter release];
-    cell.date.text = date;
-    cell.typeName.text = assessment.type.name;
-	 */
-//}
+- (void)configureCell:(AssessmentTreeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+	//normal cells
+	cell.conditionLabel.text = @"Cond";
+	cell.recommendationLabel.text = @"Rec";	
+}
 
-
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	static NSString *HeaderIdentifier = @"AssessmentTreeTableViewHeaderCell";
+	AssessmentTreeTableViewHeaderCell *headerCell = (AssessmentTreeTableViewHeaderCell *)[tableView dequeueReusableCellWithIdentifier:HeaderIdentifier];
+	if (headerCell == nil) {
+		NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"AssessmentTreeTableViewHeaderCell" owner:nil options:nil];
+		for (id currentObject in topLevelObjects) {
+			if ([currentObject isKindOfClass:[UIView class]]) {
+				headerCell = (AssessmentTreeTableViewHeaderCell *) currentObject;
+				break;
+			}
+		}
+	}
+	switch (section) {
+		case 0:
+			headerCell.label.text = @"Form";
+			break;
+		case 1:
+			headerCell.label.text = @"Crown";
+			break;
+		case 2:
+			headerCell.label.text = @"Trunk";
+			break;
+		case 3:
+			headerCell.label.text = @"Roots";
+			break;
+		case 4:
+			headerCell.label.text = @"Root Flare";
+			break;
+		case 5:
+			headerCell.label.text = @"Overall";
+			break;
+		default:
+			break;
+	}
+	return headerCell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	//set header height
+	return 30;
+}
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
      

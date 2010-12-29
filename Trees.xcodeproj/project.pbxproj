@@ -179,6 +179,11 @@
 		20CE583512CA4D40008624F3 /* AssessmentTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE583012CA4D40008624F3 /* AssessmentTree.m */; };
 		20CE583612CA4D40008624F3 /* Height.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE583212CA4D40008624F3 /* Height.m */; };
 		20CE583712CA4D40008624F3 /* Caliper.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE583412CA4D40008624F3 /* Caliper.m */; };
+		20CE5B6E12CBB8AB008624F3 /* AssessmentTreeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE5B6D12CBB8AB008624F3 /* AssessmentTreeTableViewCell.m */; };
+		20CE5B7012CBB9C8008624F3 /* AssessmentTreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20CE5B6F12CBB9C8008624F3 /* AssessmentTreeTableViewCell.xib */; };
+		20CE5BD012CBCC56008624F3 /* headerCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 20CE5BCF12CBCC56008624F3 /* headerCell.png */; };
+		20CE5BD412CBCD46008624F3 /* AssessmentTreeTableViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20CE5BD312CBCD46008624F3 /* AssessmentTreeTableViewHeaderCell.xib */; };
+		20CE5C3B12CBD635008624F3 /* AssessmentTreeTableViewHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE5C3A12CBD635008624F3 /* AssessmentTreeTableViewHeaderCell.m */; };
 		2860E38A111B897F00E27156 /* AppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E388111B897F00E27156 /* AppDelegate_iPhone.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28EEBFDD1118E19E00187D67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EEBFDC1118E19E00187D67 /* CoreData.framework */; };
@@ -818,6 +823,13 @@
 		20CE583212CA4D40008624F3 /* Height.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Height.m; path = ../Shared/Height.m; sourceTree = "<group>"; };
 		20CE583312CA4D40008624F3 /* Caliper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Caliper.h; path = ../Shared/Caliper.h; sourceTree = "<group>"; };
 		20CE583412CA4D40008624F3 /* Caliper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Caliper.m; path = ../Shared/Caliper.m; sourceTree = "<group>"; };
+		20CE5B6C12CBB8AB008624F3 /* AssessmentTreeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssessmentTreeTableViewCell.h; sourceTree = "<group>"; };
+		20CE5B6D12CBB8AB008624F3 /* AssessmentTreeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssessmentTreeTableViewCell.m; sourceTree = "<group>"; };
+		20CE5B6F12CBB9C8008624F3 /* AssessmentTreeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssessmentTreeTableViewCell.xib; sourceTree = "<group>"; };
+		20CE5BCF12CBCC56008624F3 /* headerCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headerCell.png; sourceTree = "<group>"; };
+		20CE5BD312CBCD46008624F3 /* AssessmentTreeTableViewHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssessmentTreeTableViewHeaderCell.xib; sourceTree = "<group>"; };
+		20CE5C3912CBD635008624F3 /* AssessmentTreeTableViewHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssessmentTreeTableViewHeaderCell.h; sourceTree = "<group>"; };
+		20CE5C3A12CBD635008624F3 /* AssessmentTreeTableViewHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssessmentTreeTableViewHeaderCell.m; sourceTree = "<group>"; };
 		2860E387111B897F00E27156 /* AppDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_iPhone.h; sourceTree = "<group>"; };
 		2860E388111B897F00E27156 /* AppDelegate_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_iPhone.m; sourceTree = "<group>"; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -888,6 +900,7 @@
 		208B325412BFE24A00D8FA03 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				20CE5BCF12CBCC56008624F3 /* headerCell.png */,
 				1462916812CBA2CF00223CF8 /* Tree-Assessment.png */,
 				1462916912CBA2CF00223CF8 /* Tree-Assessment@2x.png */,
 				1462916012CBA0AF00223CF8 /* button-default.png */,
@@ -1081,6 +1094,10 @@
 				208B32D612BFE27B00D8FA03 /* AssessmentTreeViewAndInputController.m */,
 				208B32D712BFE27B00D8FA03 /* AssessmentTreeCRViewController.h */,
 				208B32D812BFE27B00D8FA03 /* AssessmentTreeCRViewController.m */,
+				20CE5B6C12CBB8AB008624F3 /* AssessmentTreeTableViewCell.h */,
+				20CE5B6D12CBB8AB008624F3 /* AssessmentTreeTableViewCell.m */,
+				20CE5C3912CBD635008624F3 /* AssessmentTreeTableViewHeaderCell.h */,
+				20CE5C3A12CBD635008624F3 /* AssessmentTreeTableViewHeaderCell.m */,
 			);
 			name = AssessmentTree;
 			sourceTree = "<group>";
@@ -1101,6 +1118,8 @@
 				208B330212BFE2D200D8FA03 /* AssessmentTreeViewAndInput.xib */,
 				208B330312BFE2D200D8FA03 /* AssessmentTableView.xib */,
 				208B330412BFE2D200D8FA03 /* AssessmentTableViewCell.xib */,
+				20CE5B6F12CBB9C8008624F3 /* AssessmentTreeTableViewCell.xib */,
+				20CE5BD312CBCD46008624F3 /* AssessmentTreeTableViewHeaderCell.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1912,6 +1931,9 @@
 				1462916312CBA0AF00223CF8 /* button-default@2x.png in Resources */,
 				1462916A12CBA2CF00223CF8 /* Tree-Assessment.png in Resources */,
 				1462916B12CBA2CF00223CF8 /* Tree-Assessment@2x.png in Resources */,
+				20CE5B7012CBB9C8008624F3 /* AssessmentTreeTableViewCell.xib in Resources */,
+				20CE5BD012CBCC56008624F3 /* headerCell.png in Resources */,
+				20CE5BD412CBCD46008624F3 /* AssessmentTreeTableViewHeaderCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2024,6 +2046,8 @@
 				20CE583612CA4D40008624F3 /* Height.m in Sources */,
 				20CE583712CA4D40008624F3 /* Caliper.m in Sources */,
 				144D4CE112CA590800EB71A4 /* Trees.xcdatamodeld in Sources */,
+				20CE5B6E12CBB8AB008624F3 /* AssessmentTreeTableViewCell.m in Sources */,
+				20CE5C3B12CBD635008624F3 /* AssessmentTreeTableViewHeaderCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
