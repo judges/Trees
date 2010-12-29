@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="1"/>
+			<integer value="8"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -76,6 +76,10 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="NSNull" id="4"/>
 							<reference ref="4"/>
+						</object>
+						<object class="NSColor" key="IBTintColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC42MTQxMzI4NzUzIDAuNjYzMDQzNDc4MyAwLjQ4NjMzODAyNzEAA</bytes>
 						</object>
 					</object>
 					<object class="IBUIView" id="815865319">
@@ -385,7 +389,7 @@
 												<int key="NSvFlags">256</int>
 												<object class="NSMutableArray" key="NSSubviews">
 													<bool key="EncodedWithXMLCoder">YES</bool>
-													<object class="IBUIImageView" id="271374495">
+													<object class="IBUIImageView" id="332667134">
 														<reference key="NSNextResponder" ref="833817793"/>
 														<int key="NSvFlags">292</int>
 														<string key="NSFrameSize">{320, 30}</string>
@@ -472,7 +476,6 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<bool key="IBUIAlwaysBounceVertical">YES</bool>
 								<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
-								<int key="IBUISeparatorStyle">1</int>
 								<int key="IBUISectionIndexMinimumDisplayRowCount">6</int>
 								<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
 								<float key="IBUIRowHeight">44</float>
@@ -1191,7 +1194,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="102270538"/>
 							<reference ref="1045765943"/>
-							<reference ref="271374495"/>
+							<reference ref="332667134"/>
 						</object>
 						<reference key="parent" ref="980284814"/>
 					</object>
@@ -1207,7 +1210,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">129</int>
-						<reference key="object" ref="271374495"/>
+						<reference key="object" ref="332667134"/>
 						<reference key="parent" ref="1017548430"/>
 					</object>
 				</object>
@@ -1462,24 +1465,12 @@
 							<string>button6</string>
 							<string>caliper</string>
 							<string>caliperButton</string>
-							<string>crownCText</string>
-							<string>crownRText</string>
 							<string>date</string>
-							<string>formCText</string>
-							<string>formRText</string>
 							<string>height</string>
 							<string>heightButton</string>
 							<string>inputView</string>
 							<string>notesButton</string>
-							<string>overallCText</string>
-							<string>overallRText</string>
 							<string>photoButton</string>
-							<string>rootFlareCText</string>
-							<string>rootFlareRText</string>
-							<string>rootsCText</string>
-							<string>rootsRText</string>
-							<string>trunkCText</string>
-							<string>trunkRText</string>
 							<string>viewView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -1497,22 +1488,10 @@
 							<string>UIButton</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
 							<string>UIButton</string>
 							<string>UIView</string>
 							<string>UIButton</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
 							<string>UIButton</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
-							<string>UILabel</string>
 							<string>UIView</string>
 						</object>
 					</object>
@@ -1531,24 +1510,12 @@
 							<string>button6</string>
 							<string>caliper</string>
 							<string>caliperButton</string>
-							<string>crownCText</string>
-							<string>crownRText</string>
 							<string>date</string>
-							<string>formCText</string>
-							<string>formRText</string>
 							<string>height</string>
 							<string>heightButton</string>
 							<string>inputView</string>
 							<string>notesButton</string>
-							<string>overallCText</string>
-							<string>overallRText</string>
 							<string>photoButton</string>
-							<string>rootFlareCText</string>
-							<string>rootFlareRText</string>
-							<string>rootsCText</string>
-							<string>rootsRText</string>
-							<string>trunkCText</string>
-							<string>trunkRText</string>
 							<string>viewView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -1598,23 +1565,7 @@
 								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">crownCText</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">crownRText</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">date</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">formCText</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">formRText</string>
 								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
@@ -1634,40 +1585,8 @@
 								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">overallCText</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">overallRText</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">photoButton</string>
 								<string key="candidateClassName">UIButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">rootFlareCText</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">rootFlareRText</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">rootsCText</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">rootsRText</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">trunkCText</string>
-								<string key="candidateClassName">UILabel</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">trunkRText</string>
-								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">viewView</string>
