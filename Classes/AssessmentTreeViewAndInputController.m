@@ -12,9 +12,7 @@
 @implementation AssessmentTreeViewAndInputController
 
 @synthesize assessmentTree, assessor, date, caliper, height;
-@synthesize formCText, crownCText, trunkCText, rootFlareCText, rootsCText, overallCText;
-@synthesize formRText, crownRText, trunkRText, rootFlareRText, rootsRText, overallRText;
-@synthesize assessorField, caliperButton, heightButton;
+@synthesize assessorField, caliperButton, heightButton, assessmentTable;
 
 -(id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
     //initializes and passes assessment from parent controller
@@ -100,21 +98,9 @@
 			[self.heightButton setTitle:[NSString stringWithFormat:@"%dft %din", [self.assessmentTree.height.ft intValue], [self.assessmentTree.height.in intValue]] forState:UIControlStateNormal];
 		}
 		
-        //for now, just show a random selected condition and recommendation
-		self.formCText.text = [[self.assessmentTree.form valueForKeyPath:@"condition.name"] anyObject];
-		self.crownCText.text = [[self.assessmentTree.crown valueForKeyPath:@"condition.name"] anyObject];
-        self.trunkCText.text = [[self.assessmentTree.trunk valueForKeyPath:@"condition.name"] anyObject];
-        self.rootFlareCText.text = [[self.assessmentTree.rootflare valueForKeyPath:@"condition.name"] anyObject];
-        self.rootsCText.text = [[self.assessmentTree.roots valueForKeyPath:@"condition.name"] anyObject];
-        self.overallCText.text = [[self.assessmentTree.overall valueForKeyPath:@"condition.name"] anyObject];
-        self.formRText.text = [[self.assessmentTree.form valueForKeyPath:@"recommendation.name"] anyObject];
-        self.crownRText.text = [[self.assessmentTree.crown valueForKeyPath:@"recommendation.name"] anyObject];
-        self.trunkRText.text = [[self.assessmentTree.trunk valueForKeyPath:@"recommendation.name"] anyObject];
-        self.rootFlareRText.text = [[self.assessmentTree.rootflare valueForKeyPath:@"recommendation.name"] anyObject];
-        self.rootsRText.text = [[self.assessmentTree.roots valueForKeyPath:@"recommendation.name"] anyObject];
-        self.overallRText.text = [[self.assessmentTree.overall valueForKeyPath:@"recommendation.name"] anyObject];
-        self.assessorField.text = self.assessmentTree.assessor;
+	   self.assessorField.text = self.assessmentTree.assessor;
     }
+	/*redo this part
     if (self.formCText.text == nil || self.formRText.text == nil) {
         [button1 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
     } else {
@@ -145,6 +131,7 @@
     } else {
         [button6 setBackgroundImage:[UIImage imageNamed:@"button-default.png"] forState:UIControlStateNormal];
     }
+	*/
     //clear the shared cache
     int urlctr = 0;
     NSString *path = [NSString stringWithFormat:@"images/%d.jpg", urlctr];
@@ -155,6 +142,7 @@
         [[TTURLCache sharedCache] removeURL:url fromDisk:YES];
         ++urlctr;
     }
+	[assessmentTable reloadData];
 }
 
 -(IBAction)segmentSwitch:(id)sender {
@@ -739,11 +727,36 @@
     return 6;
 }
 
+- (NSInteger)greatestOfInt:(NSInteger)a andInt:(NSInteger)b {
+	return (a >= b) ? a : b;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 6;
-    
+	// This has to be big enough to fit all conditions or recommendations, whichever is larger
+	switch (section) {
+		case 0:
+			return [self greatestOfInt:[[assessmentTree mutableSetValueForKeyPath:@"form.condition"] count] andInt:[[assessmentTree mutableSetValueForKeyPath:@"form.recommendation"] count]];
+			break;
+		case 1:
+			return [self greatestOfInt:[[assessmentTree mutableSetValueForKeyPath:@"crown.condition"] count] andInt:[[assessmentTree mutableSetValueForKeyPath:@"crown.recommendation"] count]];
+			break;
+		case 2:
+			return [self greatestOfInt:[[assessmentTree mutableSetValueForKeyPath:@"trunk.condition"] count] andInt:[[assessmentTree mutableSetValueForKeyPath:@"trunk.recommendation"] count]];
+			break;
+		case 3:
+			return [self greatestOfInt:[[assessmentTree mutableSetValueForKeyPath:@"roots.condition"] count] andInt:[[assessmentTree mutableSetValueForKeyPath:@"roots.recommendation"] count]];
+			break;
+		case 4:
+			return [self greatestOfInt:[[assessmentTree mutableSetValueForKeyPath:@"rootflare.condition"] count] andInt:[[assessmentTree mutableSetValueForKeyPath:@"rootflare.recommendation"] count]];
+			break;
+		case 5:
+			return [self greatestOfInt:[[assessmentTree mutableSetValueForKeyPath:@"overall.condition"] count] andInt:[[assessmentTree mutableSetValueForKeyPath:@"overall.recommendation"] count]];
+			break;
+		default:
+			break;
+	}
+    return 0;
 }
 
 // Customize the appearance of table view cells.
@@ -766,8 +779,53 @@
 
 - (void)configureCell:(AssessmentTreeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
 	//normal cells
-	cell.conditionLabel.text = @"Cond";
-	cell.recommendationLabel.text = @"Rec";	
+	NSArray *descriptors = [NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease]];
+	NSString *str;
+	switch (indexPath.section) {
+		case 0:
+			str = @"form";
+			break;
+		case 1:
+			str = @"crown";
+			break;
+		case 2:
+			str = @"trunk";
+			break;
+		case 3:
+			str = @"roots";
+			break;
+		case 4:
+			str = @"rootflare";
+			break;
+		case 5:
+			str = @"overall";
+			break;
+		default:
+		{
+			cell.conditionLabel.text = @"Cond";
+			cell.recommendationLabel.text = @"Rec";
+			return;
+			break;
+		}
+	}
+	
+	NSMutableSet *cSet = [assessmentTree mutableSetValueForKeyPath:[NSString stringWithFormat:@"%@.condition", str]];
+	NSMutableSet *rSet = [assessmentTree mutableSetValueForKeyPath:[NSString stringWithFormat:@"%@.recommendation", str]];
+	//This could be inefficient
+	if (indexPath.row < cSet.count) {
+		TreeOption *condOpt = [[cSet sortedArrayUsingDescriptors:descriptors] objectAtIndex:indexPath.row];
+		cell.conditionLabel.text = condOpt.name;
+	} else {
+		cell.conditionLabel.text = @"";
+	}
+
+	if (indexPath.row < rSet.count) {
+		TreeOption *recOpt = [[rSet sortedArrayUsingDescriptors:descriptors] objectAtIndex:indexPath.row];
+		cell.recommendationLabel.text = recOpt.name;
+	} else {
+		cell.recommendationLabel.text = @"";
+	}
+
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -808,7 +866,12 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 	//set header height
-	return 30;
+	if ([self tableView:tableView numberOfRowsInSection:section] == 0) {
+		//don't show headers if sections are empty
+		return 0;
+	} else {
+		return 30;
+	}
 }
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -923,10 +986,15 @@
 }
 
 - (void)dealloc {
-    //[mainView release];
-    //[assessment release];
-    //[assessmentTree release];
-    //[managedObjectContext release];
+	[assessmentTree release];
+	[assessor release];
+	[date release];
+	[caliper release];
+	[height release];
+	[assessmentTable release];
+	[assessorField release];
+	[caliperButton release];
+	[heightButton release];
 	[photoActionSheet release];
 	[caliperActionSheet release];
 	[heightActionSheet release];
@@ -935,6 +1003,5 @@
     [imagePicker release];
     [super dealloc];
 }
-
 
 @end

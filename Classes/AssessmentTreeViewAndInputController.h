@@ -23,7 +23,7 @@
     IBOutlet UIView *inputView;
     IBOutlet UIButton *photoButton;
     IBOutlet UIButton *notesButton;
-    
+	IBOutlet UITableView *assessmentTable;
     AssessmentTree *assessmentTree;
     UIImagePickerController *imagePicker;
 	UIActionSheet *photoActionSheet;
@@ -33,18 +33,6 @@
     IBOutlet UILabel *date;
     IBOutlet UILabel *caliper;
     IBOutlet UILabel *height;
-    IBOutlet UILabel *formCText;
-    IBOutlet UILabel *crownCText;
-    IBOutlet UILabel *trunkCText;
-    IBOutlet UILabel *rootFlareCText;
-    IBOutlet UILabel *rootsCText;
-    IBOutlet UILabel *overallCText;
-    IBOutlet UILabel *formRText;
-    IBOutlet UILabel *crownRText;
-    IBOutlet UILabel *trunkRText;
-    IBOutlet UILabel *rootFlareRText;
-    IBOutlet UILabel *rootsRText;
-    IBOutlet UILabel *overallRText;
     
     //input page
     IBOutlet UITextField *assessorField;
@@ -72,19 +60,7 @@
 @property (nonatomic, retain) UILabel *date;
 @property (nonatomic, retain) UILabel *caliper;
 @property (nonatomic, retain) UILabel *height;
-@property (nonatomic, retain) UILabel *formCText;
-@property (nonatomic, retain) UILabel *crownCText;
-@property (nonatomic, retain) UILabel *trunkCText;
-@property (nonatomic, retain) UILabel *rootFlareCText;
-@property (nonatomic, retain) UILabel *rootsCText;
-@property (nonatomic, retain) UILabel *overallCText;
-@property (nonatomic, retain) UILabel *formRText;
-@property (nonatomic, retain) UILabel *crownRText;
-@property (nonatomic, retain) UILabel *trunkRText;
-@property (nonatomic, retain) UILabel *rootFlareRText;
-@property (nonatomic, retain) UILabel *rootsRText;
-@property (nonatomic, retain) UILabel *overallRText;
-
+@property (nonatomic, retain) UITableView *assessmentTable;
 //input
 @property (nonatomic, retain) UITextField *assessorField;
 @property (nonatomic, retain) UIButton *caliperButton;
@@ -104,4 +80,7 @@
 - (void)dismissActionSheet:(id)sender;
 - (void)caliperSelected:(id)sender;
 - (void)heightSelected:(id)sender;
+
+- (NSInteger)greatestOfInt:(NSInteger)a andInt:(NSInteger)b;
+
 @end
