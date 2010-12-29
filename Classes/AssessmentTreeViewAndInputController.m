@@ -772,15 +772,22 @@
 		default:
 			break;
 	}
+	return @"Error";
 }
 
-/*
+
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Assessment"] autorelease];
+	cell.selectionStyle = UITableViewCellSelectionStyleNone;
+ 
+    return cell;
+	
+	
 	/// Define your row
    // NSInteger row = [indexPath row];
-	
+	/*
    // static NSString *AssessmentCellIdentifier = @"AssessmentTableViewCell";
     UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CR"] autorelease];
 	
@@ -802,8 +809,9 @@
         [assessmentCell setBackgroundColor:[UIColor colorWithRed:0.525f green:0.5250f blue:0.541f alpha:1.0f]];
 
     return cell;
+	 */
 }
-*/
+
 //- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     // Configure the cell
 	/*
