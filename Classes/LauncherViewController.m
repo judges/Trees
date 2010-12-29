@@ -103,29 +103,29 @@
 	_launcherView.pages = [NSArray arrayWithObjects:
 						   [NSArray arrayWithObjects:
 							[[[TTLauncherItem alloc] initWithTitle:@"Landscapes"
-															 image:@"bundle://landscapes-57.png"
+															 image:@"bundle://landscapes.png"
 															   URL:@"land://Landscapes"  canDelete:NO] autorelease],
 
 							/*
 							[[[TTLauncherItem alloc] initWithTitle:@"Inventory"
-															 image:@"bundle://inventory-57.png"
+															 image:@"bundle://inventory.png"
 															   URL:@"land://Inventory" canDelete:NO] autorelease],
 							*/
 
 							
 							
 							[[[TTLauncherItem alloc] initWithTitle:@"Tree Inventory"
-															 image:@"bundle://tree-57.png"
+															 image:@"bundle://tree.png"
 															   URL:@"land://Trees" canDelete:NO] autorelease],								
 							
 							[[[TTLauncherItem alloc] initWithTitle:@"Assessments"
-															 image:@"bundle://assessments-57.png"
+															 image:@"bundle://assessments.png"
 															   URL:@"land://assessments" canDelete:NO] autorelease],
 
 							
 							/*
 							[[[TTLauncherItem alloc] initWithTitle:@"Tasks"
-															 image:@"bundle://tasks-57.png"
+															 image:@"bundle://tasks.png"
 															   URL:@"land://Tasks" canDelete:NO] autorelease],							
 							
 							*/
@@ -133,37 +133,38 @@
 
 							/*
 							[[[TTLauncherItem alloc] initWithTitle:@"Cemetery"
-															 image:@"bundle://cemetery-57.png"
+															 image:@"bundle://cemetery.png"
 															   URL:@"land://Cemetery" canDelete:NO] autorelease],								
 							
 							[[[TTLauncherItem alloc] initWithTitle:@"Structures"
-															 image:@"bundle://structures-57.png"
+															 image:@"bundle://structures.png"
 															   URL:@"land://Structures" canDelete:NO] autorelease],
 							
 							[[[TTLauncherItem alloc] initWithTitle:@"Wildlife"
-															 image:@"bundle://wildlife-57.png"
+															 image:@"bundle://wildlife.png"
 															   URL:@"land://Wildlife" canDelete:NO] autorelease],
 							
 							*/
 							 
 							[[[TTLauncherItem alloc] initWithTitle:@"Photos"
-															 image:@"bundle://photos-57.png"
+															 image:@"bundle://photos.png"
 															   URL:@"land://Photos" canDelete:NO] autorelease],		
 							
 							/*
 							
 							[[[TTLauncherItem alloc] initWithTitle:@"Maps"
-															 image:@"bundle://maps-57.png"
+															 image:@"bundle://maps.png"
 															   URL:@"land://Maps" canDelete:NO] autorelease],								
 							
 							*/
 							 
 							 
 							[[[TTLauncherItem alloc] initWithTitle:@"Settings"
-															 image:@"bundle://settings-57.png"
-															   URL:@"land://Settings" canDelete:NO] autorelease],								
+															 image:@"bundle://settings.png"
+															   URL:@"land://Settings" canDelete:NO] autorelease],		
+							
 							[[[TTLauncherItem alloc] initWithTitle:@"NCPTT Web"
-															 image:@"bundle://ncptt-57.png"
+															 image:@"bundle://ncptt.png"
 															   URL:@"http://www.ncptt.nps.gov" canDelete:NO] autorelease],								
 
 							
@@ -178,7 +179,7 @@
 						
 							
 							[[[TTLauncherItem alloc] initWithTitle:@"NPS"
-															 image:@"bundle://NPS-57.png"
+															 image:@"bundle://NPS.png"
 															   URL:@"http://www.nps.gov" canDelete:NO] autorelease],								
 
 							
