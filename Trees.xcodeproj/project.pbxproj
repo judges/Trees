@@ -22,6 +22,8 @@
 		1462915F12CBA0A700223CF8 /* button-notdone.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462915D12CBA0A700223CF8 /* button-notdone.png */; };
 		1462916212CBA0AF00223CF8 /* button-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462916012CBA0AF00223CF8 /* button-default.png */; };
 		1462916312CBA0AF00223CF8 /* button-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462916112CBA0AF00223CF8 /* button-default@2x.png */; };
+		1462916A12CBA2CF00223CF8 /* Tree-Assessment.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462916812CBA2CF00223CF8 /* Tree-Assessment.png */; };
+		1462916B12CBA2CF00223CF8 /* Tree-Assessment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462916912CBA2CF00223CF8 /* Tree-Assessment@2x.png */; };
 		149B80FA12C264C3001557AB /* LandscapeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149B80F912C264C3001557AB /* LandscapeListTableViewController.m */; };
 		149B810012C2673B001557AB /* LandscapeAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149B80FE12C2673B001557AB /* LandscapeAddViewController.m */; };
 		149B810112C2673B001557AB /* LandscapeAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 149B80FF12C2673B001557AB /* LandscapeAddView.xib */; };
@@ -554,6 +556,8 @@
 		1462915D12CBA0A700223CF8 /* button-notdone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-notdone.png"; sourceTree = "<group>"; };
 		1462916012CBA0AF00223CF8 /* button-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default.png"; sourceTree = "<group>"; };
 		1462916112CBA0AF00223CF8 /* button-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default@2x.png"; sourceTree = "<group>"; };
+		1462916812CBA2CF00223CF8 /* Tree-Assessment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tree-Assessment.png"; sourceTree = "<group>"; };
+		1462916912CBA2CF00223CF8 /* Tree-Assessment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tree-Assessment@2x.png"; sourceTree = "<group>"; };
 		149B80F812C264C3001557AB /* LandscapeListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeListTableViewController.h; sourceTree = "<group>"; };
 		149B80F912C264C3001557AB /* LandscapeListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeListTableViewController.m; sourceTree = "<group>"; };
 		149B80FD12C2673B001557AB /* LandscapeAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeAddViewController.h; sourceTree = "<group>"; };
@@ -884,6 +888,8 @@
 		208B325412BFE24A00D8FA03 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1462916812CBA2CF00223CF8 /* Tree-Assessment.png */,
+				1462916912CBA2CF00223CF8 /* Tree-Assessment@2x.png */,
 				1462916012CBA0AF00223CF8 /* button-default.png */,
 				1462916112CBA0AF00223CF8 /* button-default@2x.png */,
 				1462915C12CBA0A700223CF8 /* button-notdone@2x.png */,
@@ -1904,6 +1910,8 @@
 				1462915F12CBA0A700223CF8 /* button-notdone.png in Resources */,
 				1462916212CBA0AF00223CF8 /* button-default.png in Resources */,
 				1462916312CBA0AF00223CF8 /* button-default@2x.png in Resources */,
+				1462916A12CBA2CF00223CF8 /* Tree-Assessment.png in Resources */,
+				1462916B12CBA2CF00223CF8 /* Tree-Assessment@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
