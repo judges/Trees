@@ -7,9 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		140A237512CA3EF300E88D65 /* photo_camera_128.png in Resources */ = {isa = PBXBuildFile; fileRef = 140A237412CA3EF300E88D65 /* photo_camera_128.png */; };
 		144D4CE112CA590800EB71A4 /* Trees.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 144D4CDF12CA590800EB71A4 /* Trees.xcdatamodeld */; };
 		1462910C12CB934900223CF8 /* archeologist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462910B12CB934900223CF8 /* archeologist@2x.png */; };
+		1462911212CB94FC00223CF8 /* tree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462911112CB94FC00223CF8 /* tree@2x.png */; };
+		1462913612CB972400223CF8 /* landscapes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462913512CB972400223CF8 /* landscapes@2x.png */; };
+		1462913A12CB97E700223CF8 /* assessments@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462913912CB97E700223CF8 /* assessments@2x.png */; };
+		1462913E12CB983A00223CF8 /* photos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462913D12CB983A00223CF8 /* photos@2x.png */; };
+		1462914212CB991C00223CF8 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462914112CB991C00223CF8 /* settings@2x.png */; };
+		1462914712CB9A0000223CF8 /* ncptt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462914512CB9A0000223CF8 /* ncptt.png */; };
+		1462914812CB9A0000223CF8 /* ncptt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462914612CB9A0000223CF8 /* ncptt@2x.png */; };
+		1462915412CB9ADA00223CF8 /* photo_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462915212CB9ADA00223CF8 /* photo_camera.png */; };
+		1462915512CB9ADA00223CF8 /* photo_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462915312CB9ADA00223CF8 /* photo_camera@2x.png */; };
 		149B80FA12C264C3001557AB /* LandscapeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149B80F912C264C3001557AB /* LandscapeListTableViewController.m */; };
 		149B810012C2673B001557AB /* LandscapeAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149B80FE12C2673B001557AB /* LandscapeAddViewController.m */; };
 		149B810112C2673B001557AB /* LandscapeAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 149B80FF12C2673B001557AB /* LandscapeAddView.xib */; };
@@ -34,14 +42,12 @@
 		208B327812BFE24A00D8FA03 /* wildlife.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B325B12BFE24A00D8FA03 /* wildlife.png */; };
 		208B327912BFE24A00D8FA03 /* parks.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B325C12BFE24A00D8FA03 /* parks.png */; };
 		208B327A12BFE24A00D8FA03 /* landscapes.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B325D12BFE24A00D8FA03 /* landscapes.png */; };
-		208B327B12BFE24A00D8FA03 /* photo_camera_29.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B325E12BFE24A00D8FA03 /* photo_camera_29.png */; };
 		208B327C12BFE24A00D8FA03 /* archeologist.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B325F12BFE24A00D8FA03 /* archeologist.png */; };
 		208B327D12BFE24A00D8FA03 /* structures.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B326012BFE24A00D8FA03 /* structures.png */; };
 		208B327E12BFE24A00D8FA03 /* assessments.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B326112BFE24A00D8FA03 /* assessments.png */; };
 		208B327F12BFE24A00D8FA03 /* cemetery.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B326212BFE24A00D8FA03 /* cemetery.png */; };
 		208B328012BFE24A00D8FA03 /* inventory.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B326312BFE24A00D8FA03 /* inventory.png */; };
 		208B328112BFE24A00D8FA03 /* maps.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B326412BFE24A00D8FA03 /* maps.png */; };
-		208B328212BFE24A00D8FA03 /* ncptt.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B326512BFE24A00D8FA03 /* ncptt.png */; };
 		208B328312BFE24A00D8FA03 /* photos.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B326612BFE24A00D8FA03 /* photos.png */; };
 		208B328412BFE24A00D8FA03 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B326712BFE24A00D8FA03 /* settings.png */; };
 		208B328512BFE24A00D8FA03 /* tasks.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B326812BFE24A00D8FA03 /* tasks.png */; };
@@ -529,9 +535,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		140A237412CA3EF300E88D65 /* photo_camera_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_camera_128.png; sourceTree = "<group>"; };
 		144D4CE012CA590800EB71A4 /* Trees.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Trees.xcdatamodel; sourceTree = "<group>"; };
 		1462910B12CB934900223CF8 /* archeologist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "archeologist@2x.png"; sourceTree = "<group>"; };
+		1462911112CB94FC00223CF8 /* tree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tree@2x.png"; sourceTree = "<group>"; };
+		1462911512CB965000223CF8 /* NPS@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NPS@2x.png"; sourceTree = "<group>"; };
+		1462911712CB965000223CF8 /* wildlife@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wildlife@2x.png"; sourceTree = "<group>"; };
+		1462913512CB972400223CF8 /* landscapes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "landscapes@2x.png"; sourceTree = "<group>"; };
+		1462913912CB97E700223CF8 /* assessments@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "assessments@2x.png"; sourceTree = "<group>"; };
+		1462913D12CB983A00223CF8 /* photos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos@2x.png"; sourceTree = "<group>"; };
+		1462914112CB991C00223CF8 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		1462914512CB9A0000223CF8 /* ncptt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ncptt.png; sourceTree = "<group>"; };
+		1462914612CB9A0000223CF8 /* ncptt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ncptt@2x.png"; sourceTree = "<group>"; };
+		1462915212CB9ADA00223CF8 /* photo_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_camera.png; sourceTree = "<group>"; };
+		1462915312CB9ADA00223CF8 /* photo_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_camera@2x.png"; sourceTree = "<group>"; };
 		149B80F812C264C3001557AB /* LandscapeListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeListTableViewController.h; sourceTree = "<group>"; };
 		149B80F912C264C3001557AB /* LandscapeListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeListTableViewController.m; sourceTree = "<group>"; };
 		149B80FD12C2673B001557AB /* LandscapeAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeAddViewController.h; sourceTree = "<group>"; };
@@ -563,14 +579,12 @@
 		208B325B12BFE24A00D8FA03 /* wildlife.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wildlife.png; sourceTree = "<group>"; };
 		208B325C12BFE24A00D8FA03 /* parks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = parks.png; sourceTree = "<group>"; };
 		208B325D12BFE24A00D8FA03 /* landscapes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = landscapes.png; sourceTree = "<group>"; };
-		208B325E12BFE24A00D8FA03 /* photo_camera_29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_camera_29.png; sourceTree = "<group>"; };
 		208B325F12BFE24A00D8FA03 /* archeologist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = archeologist.png; sourceTree = "<group>"; };
 		208B326012BFE24A00D8FA03 /* structures.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = structures.png; sourceTree = "<group>"; };
 		208B326112BFE24A00D8FA03 /* assessments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = assessments.png; sourceTree = "<group>"; };
 		208B326212BFE24A00D8FA03 /* cemetery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cemetery.png; sourceTree = "<group>"; };
 		208B326312BFE24A00D8FA03 /* inventory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inventory.png; sourceTree = "<group>"; };
 		208B326412BFE24A00D8FA03 /* maps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maps.png; sourceTree = "<group>"; };
-		208B326512BFE24A00D8FA03 /* ncptt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ncptt.png; sourceTree = "<group>"; };
 		208B326612BFE24A00D8FA03 /* photos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photos.png; sourceTree = "<group>"; };
 		208B326712BFE24A00D8FA03 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		208B326812BFE24A00D8FA03 /* tasks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tasks.png; sourceTree = "<group>"; };
@@ -866,8 +880,18 @@
 		208B325412BFE24A00D8FA03 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1462915212CB9ADA00223CF8 /* photo_camera.png */,
+				1462915312CB9ADA00223CF8 /* photo_camera@2x.png */,
+				1462914512CB9A0000223CF8 /* ncptt.png */,
+				1462914612CB9A0000223CF8 /* ncptt@2x.png */,
+				1462914112CB991C00223CF8 /* settings@2x.png */,
+				1462913D12CB983A00223CF8 /* photos@2x.png */,
+				1462913912CB97E700223CF8 /* assessments@2x.png */,
+				1462913512CB972400223CF8 /* landscapes@2x.png */,
+				1462911112CB94FC00223CF8 /* tree@2x.png */,
+				1462911512CB965000223CF8 /* NPS@2x.png */,
+				1462911712CB965000223CF8 /* wildlife@2x.png */,
 				1462910B12CB934900223CF8 /* archeologist@2x.png */,
-				140A237412CA3EF300E88D65 /* photo_camera_128.png */,
 				208B325512BFE24A00D8FA03 /* button-notdone.png */,
 				208B325612BFE24A00D8FA03 /* edit_50.png */,
 				208B325712BFE24A00D8FA03 /* NPS.png */,
@@ -877,14 +901,12 @@
 				208B325B12BFE24A00D8FA03 /* wildlife.png */,
 				208B325C12BFE24A00D8FA03 /* parks.png */,
 				208B325D12BFE24A00D8FA03 /* landscapes.png */,
-				208B325E12BFE24A00D8FA03 /* photo_camera_29.png */,
 				208B325F12BFE24A00D8FA03 /* archeologist.png */,
 				208B326012BFE24A00D8FA03 /* structures.png */,
 				208B326112BFE24A00D8FA03 /* assessments.png */,
 				208B326212BFE24A00D8FA03 /* cemetery.png */,
 				208B326312BFE24A00D8FA03 /* inventory.png */,
 				208B326412BFE24A00D8FA03 /* maps.png */,
-				208B326512BFE24A00D8FA03 /* ncptt.png */,
 				208B326612BFE24A00D8FA03 /* photos.png */,
 				208B326712BFE24A00D8FA03 /* settings.png */,
 				208B326812BFE24A00D8FA03 /* tasks.png */,
@@ -1830,14 +1852,12 @@
 				208B327812BFE24A00D8FA03 /* wildlife.png in Resources */,
 				208B327912BFE24A00D8FA03 /* parks.png in Resources */,
 				208B327A12BFE24A00D8FA03 /* landscapes.png in Resources */,
-				208B327B12BFE24A00D8FA03 /* photo_camera_29.png in Resources */,
 				208B327C12BFE24A00D8FA03 /* archeologist.png in Resources */,
 				208B327D12BFE24A00D8FA03 /* structures.png in Resources */,
 				208B327E12BFE24A00D8FA03 /* assessments.png in Resources */,
 				208B327F12BFE24A00D8FA03 /* cemetery.png in Resources */,
 				208B328012BFE24A00D8FA03 /* inventory.png in Resources */,
 				208B328112BFE24A00D8FA03 /* maps.png in Resources */,
-				208B328212BFE24A00D8FA03 /* ncptt.png in Resources */,
 				208B328312BFE24A00D8FA03 /* photos.png in Resources */,
 				208B328412BFE24A00D8FA03 /* settings.png in Resources */,
 				208B328512BFE24A00D8FA03 /* tasks.png in Resources */,
@@ -1866,8 +1886,16 @@
 				20AC461412C8FCB700BC4C12 /* IASKSpecifierValuesView.xib in Resources */,
 				20AC464712C900A400BC4C12 /* Settings.bundle in Resources */,
 				14DBFCAD12C954680051B792 /* TreeListTableViewController.xib in Resources */,
-				140A237512CA3EF300E88D65 /* photo_camera_128.png in Resources */,
 				1462910C12CB934900223CF8 /* archeologist@2x.png in Resources */,
+				1462911212CB94FC00223CF8 /* tree@2x.png in Resources */,
+				1462913612CB972400223CF8 /* landscapes@2x.png in Resources */,
+				1462913A12CB97E700223CF8 /* assessments@2x.png in Resources */,
+				1462913E12CB983A00223CF8 /* photos@2x.png in Resources */,
+				1462914212CB991C00223CF8 /* settings@2x.png in Resources */,
+				1462914712CB9A0000223CF8 /* ncptt.png in Resources */,
+				1462914812CB9A0000223CF8 /* ncptt@2x.png in Resources */,
+				1462915412CB9ADA00223CF8 /* photo_camera.png in Resources */,
+				1462915512CB9ADA00223CF8 /* photo_camera@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
