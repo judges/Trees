@@ -18,6 +18,10 @@
 		1462914812CB9A0000223CF8 /* ncptt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462914612CB9A0000223CF8 /* ncptt@2x.png */; };
 		1462915412CB9ADA00223CF8 /* photo_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462915212CB9ADA00223CF8 /* photo_camera.png */; };
 		1462915512CB9ADA00223CF8 /* photo_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462915312CB9ADA00223CF8 /* photo_camera@2x.png */; };
+		1462915E12CBA0A700223CF8 /* button-notdone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462915C12CBA0A700223CF8 /* button-notdone@2x.png */; };
+		1462915F12CBA0A700223CF8 /* button-notdone.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462915D12CBA0A700223CF8 /* button-notdone.png */; };
+		1462916212CBA0AF00223CF8 /* button-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462916012CBA0AF00223CF8 /* button-default.png */; };
+		1462916312CBA0AF00223CF8 /* button-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462916112CBA0AF00223CF8 /* button-default@2x.png */; };
 		149B80FA12C264C3001557AB /* LandscapeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149B80F912C264C3001557AB /* LandscapeListTableViewController.m */; };
 		149B810012C2673B001557AB /* LandscapeAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149B80FE12C2673B001557AB /* LandscapeAddViewController.m */; };
 		149B810112C2673B001557AB /* LandscapeAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 149B80FF12C2673B001557AB /* LandscapeAddView.xib */; };
@@ -33,7 +37,6 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		208B327212BFE24A00D8FA03 /* button-notdone.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B325512BFE24A00D8FA03 /* button-notdone.png */; };
 		208B327312BFE24A00D8FA03 /* edit_50.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B325612BFE24A00D8FA03 /* edit_50.png */; };
 		208B327412BFE24A00D8FA03 /* NPS.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B325712BFE24A00D8FA03 /* NPS.png */; };
 		208B327512BFE24A00D8FA03 /* tree.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B325812BFE24A00D8FA03 /* tree.png */; };
@@ -54,7 +57,6 @@
 		208B328612BFE24A00D8FA03 /* vegetation.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B326912BFE24A00D8FA03 /* vegetation.png */; };
 		208B328712BFE24A00D8FA03 /* delete_50.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B326A12BFE24A00D8FA03 /* delete_50.png */; };
 		208B328812BFE24A00D8FA03 /* add_50.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B326B12BFE24A00D8FA03 /* add_50.png */; };
-		208B328912BFE24A00D8FA03 /* button-default.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B326C12BFE24A00D8FA03 /* button-default.png */; };
 		208B328A12BFE24A00D8FA03 /* Tree-Assessment-280x295.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B326D12BFE24A00D8FA03 /* Tree-Assessment-280x295.png */; };
 		208B328B12BFE24A00D8FA03 /* Tree-Assessment-113x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B326E12BFE24A00D8FA03 /* Tree-Assessment-113x120.png */; };
 		208B328C12BFE24A00D8FA03 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B326F12BFE24A00D8FA03 /* Default.png */; };
@@ -548,6 +550,10 @@
 		1462914612CB9A0000223CF8 /* ncptt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ncptt@2x.png"; sourceTree = "<group>"; };
 		1462915212CB9ADA00223CF8 /* photo_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_camera.png; sourceTree = "<group>"; };
 		1462915312CB9ADA00223CF8 /* photo_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_camera@2x.png"; sourceTree = "<group>"; };
+		1462915C12CBA0A700223CF8 /* button-notdone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-notdone@2x.png"; sourceTree = "<group>"; };
+		1462915D12CBA0A700223CF8 /* button-notdone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-notdone.png"; sourceTree = "<group>"; };
+		1462916012CBA0AF00223CF8 /* button-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default.png"; sourceTree = "<group>"; };
+		1462916112CBA0AF00223CF8 /* button-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default@2x.png"; sourceTree = "<group>"; };
 		149B80F812C264C3001557AB /* LandscapeListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeListTableViewController.h; sourceTree = "<group>"; };
 		149B80F912C264C3001557AB /* LandscapeListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeListTableViewController.m; sourceTree = "<group>"; };
 		149B80FD12C2673B001557AB /* LandscapeAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeAddViewController.h; sourceTree = "<group>"; };
@@ -570,7 +576,6 @@
 		1D3623250D0F684500981E51 /* AppDelegate_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate_iPad.m; path = iPad/AppDelegate_iPad.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* Trees.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trees.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		208B325512BFE24A00D8FA03 /* button-notdone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-notdone.png"; sourceTree = "<group>"; };
 		208B325612BFE24A00D8FA03 /* edit_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_50.png; sourceTree = "<group>"; };
 		208B325712BFE24A00D8FA03 /* NPS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NPS.png; sourceTree = "<group>"; };
 		208B325812BFE24A00D8FA03 /* tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree.png; sourceTree = "<group>"; };
@@ -591,7 +596,6 @@
 		208B326912BFE24A00D8FA03 /* vegetation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vegetation.png; sourceTree = "<group>"; };
 		208B326A12BFE24A00D8FA03 /* delete_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_50.png; sourceTree = "<group>"; };
 		208B326B12BFE24A00D8FA03 /* add_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_50.png; sourceTree = "<group>"; };
-		208B326C12BFE24A00D8FA03 /* button-default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default.png"; sourceTree = "<group>"; };
 		208B326D12BFE24A00D8FA03 /* Tree-Assessment-280x295.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tree-Assessment-280x295.png"; sourceTree = "<group>"; };
 		208B326E12BFE24A00D8FA03 /* Tree-Assessment-113x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tree-Assessment-113x120.png"; sourceTree = "<group>"; };
 		208B326F12BFE24A00D8FA03 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -880,6 +884,10 @@
 		208B325412BFE24A00D8FA03 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1462916012CBA0AF00223CF8 /* button-default.png */,
+				1462916112CBA0AF00223CF8 /* button-default@2x.png */,
+				1462915C12CBA0A700223CF8 /* button-notdone@2x.png */,
+				1462915D12CBA0A700223CF8 /* button-notdone.png */,
 				1462915212CB9ADA00223CF8 /* photo_camera.png */,
 				1462915312CB9ADA00223CF8 /* photo_camera@2x.png */,
 				1462914512CB9A0000223CF8 /* ncptt.png */,
@@ -892,7 +900,6 @@
 				1462911512CB965000223CF8 /* NPS@2x.png */,
 				1462911712CB965000223CF8 /* wildlife@2x.png */,
 				1462910B12CB934900223CF8 /* archeologist@2x.png */,
-				208B325512BFE24A00D8FA03 /* button-notdone.png */,
 				208B325612BFE24A00D8FA03 /* edit_50.png */,
 				208B325712BFE24A00D8FA03 /* NPS.png */,
 				208B325812BFE24A00D8FA03 /* tree.png */,
@@ -913,7 +920,6 @@
 				208B326912BFE24A00D8FA03 /* vegetation.png */,
 				208B326A12BFE24A00D8FA03 /* delete_50.png */,
 				208B326B12BFE24A00D8FA03 /* add_50.png */,
-				208B326C12BFE24A00D8FA03 /* button-default.png */,
 				208B326D12BFE24A00D8FA03 /* Tree-Assessment-280x295.png */,
 				208B326E12BFE24A00D8FA03 /* Tree-Assessment-113x120.png */,
 				208B326F12BFE24A00D8FA03 /* Default.png */,
@@ -1843,7 +1849,6 @@
 				320B6C86F11D9990244A9731 /* Three20.bundle in Resources */,
 				14DA250F12BFA7CD008400A2 /* Tree-256.png in Resources */,
 				149BF39A12BFB20D000E27DB /* License.txt in Resources */,
-				208B327212BFE24A00D8FA03 /* button-notdone.png in Resources */,
 				208B327312BFE24A00D8FA03 /* edit_50.png in Resources */,
 				208B327412BFE24A00D8FA03 /* NPS.png in Resources */,
 				208B327512BFE24A00D8FA03 /* tree.png in Resources */,
@@ -1864,7 +1869,6 @@
 				208B328612BFE24A00D8FA03 /* vegetation.png in Resources */,
 				208B328712BFE24A00D8FA03 /* delete_50.png in Resources */,
 				208B328812BFE24A00D8FA03 /* add_50.png in Resources */,
-				208B328912BFE24A00D8FA03 /* button-default.png in Resources */,
 				208B328A12BFE24A00D8FA03 /* Tree-Assessment-280x295.png in Resources */,
 				208B328B12BFE24A00D8FA03 /* Tree-Assessment-113x120.png in Resources */,
 				208B328C12BFE24A00D8FA03 /* Default.png in Resources */,
@@ -1896,6 +1900,10 @@
 				1462914812CB9A0000223CF8 /* ncptt@2x.png in Resources */,
 				1462915412CB9ADA00223CF8 /* photo_camera.png in Resources */,
 				1462915512CB9ADA00223CF8 /* photo_camera@2x.png in Resources */,
+				1462915E12CBA0A700223CF8 /* button-notdone@2x.png in Resources */,
+				1462915F12CBA0A700223CF8 /* button-notdone.png in Resources */,
+				1462916212CBA0AF00223CF8 /* button-default.png in Resources */,
+				1462916312CBA0AF00223CF8 /* button-default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
