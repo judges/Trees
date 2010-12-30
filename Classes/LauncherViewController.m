@@ -85,7 +85,9 @@
 	
 	
 	_launcherView = [[TTLauncherView alloc] initWithFrame:self.view.bounds];
-	_launcherView.backgroundColor = [UIColor colorWithRed:0.486 green:0.318 blue:0.192 alpha:1.0]; //earth brown
+	//_launcherView.backgroundColor = [UIColor colorWithRed:0.486 green:0.318 blue:0.192 alpha:1.0]; //earth brown
+	//_launcherView.backgroundColor = [UIColor colorWithRed:0.616 green:0.663 blue:0.486 alpha:1.0]; //light green
+	_launcherView.backgroundColor = [UIColor colorWithRed:0.369 green:0.435 blue:0.200 alpha:1.0]; //darker green
 	_launcherView.opaque = YES;
 	_launcherView.delegate = self;
 
@@ -206,8 +208,10 @@
         ++urlctr;
     }
 	self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.180 green:0.267 blue: 0.173 alpha:1.0]; //forest green
-	self.view.backgroundColor = [UIColor colorWithRed:0.486 green:0.318 blue:0.192 alpha:1.0];		//earth brown
-	
+	//self.view.backgroundColor = [UIColor colorWithRed:0.486 green:0.318 blue:0.192 alpha:1.0];		//earth brown
+	//self.view.backgroundColor = [UIColor colorWithRed:0.486 green:0.318 blue:0.192 alpha:1.0];			//light green
+	self.view.backgroundColor = [UIColor colorWithRed:0.369 green:0.435 blue:0.200 alpha:1.0]; //darker green
+
 	
 	
 	

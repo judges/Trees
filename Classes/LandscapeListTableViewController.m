@@ -19,7 +19,10 @@
 	//self.tableView.backgroundColor = [UIColor colorWithRed:0.808 green:0.808 blue:0.808 alpha:1.0];
 	
 	//Light Green
-	self.tableView.backgroundColor = [UIColor colorWithRed:0.616 green:0.663 blue:0.486 alpha:1.0];
+	//self.tableView.backgroundColor = [UIColor colorWithRed:0.616 green:0.663 blue:0.486 alpha:1.0];
+	
+	//Darker Green
+	self.tableView.backgroundColor = [UIColor colorWithRed:0.369 green:0.435 blue:0.200 alpha:1.0];
 	
 	self.tableView.opaque = NO;
 	self.tableView.backgroundView = nil;
@@ -143,15 +146,20 @@
 	
 	UIView *backgroundView = [[UIView alloc] init];
 	if ((row % 2) == 0)
-		//light green
-		backgroundView.backgroundColor = [UIColor colorWithRed:0.616 green:0.663 blue:0.486 alpha:1.0];
-		//backgroundView.backgroundColor = [UIColor colorWithRed:0.808 green:0.808 blue:0.808 alpha:1.0];
-	else
+		
 		//darker green color
 		backgroundView.backgroundColor = [UIColor colorWithRed:0.369 green:0.435 blue:0.200 alpha:1.0];
 		
+		//light grey
+		//backgroundView.backgroundColor = [UIColor colorWithRed:0.808 green:0.808 blue:0.808 alpha:1.0];
+	else
+
+		//light green
+		backgroundView.backgroundColor = [UIColor colorWithRed:0.616 green:0.663 blue:0.486 alpha:1.0];	
+	
 		//darker grey color
 		//backgroundView.backgroundColor = [UIColor colorWithRed:0.733 green:0.733 blue:0.733 alpha:1.0];
+	
 	landscapeCell.backgroundView = backgroundView;
 	[backgroundView release]; 
     
