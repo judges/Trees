@@ -782,6 +782,7 @@
 	//normal cells
 	NSArray *descriptors = [NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease]];
 	NSString *str;
+	NSLog(@"%d", indexPath.section);
 	switch (indexPath.section) {
 		case 0:
 			str = @"form";

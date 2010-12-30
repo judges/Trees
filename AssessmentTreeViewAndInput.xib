@@ -486,7 +486,7 @@
 							<object class="IBUILabel" id="243395038">
 								<reference key="NSNextResponder" ref="980112499"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{68, 0}, {145, 21}}</string>
+								<string key="NSFrame">{{68, 0}, {123, 21}}</string>
 								<reference key="NSSuperview" ref="980112499"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -620,7 +620,7 @@
 							<object class="IBUILabel" id="278594247">
 								<reference key="NSNextResponder" ref="980112499"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{68, 20}, {145, 21}}</string>
+								<string key="NSFrame">{{68, 20}, {123, 21}}</string>
 								<reference key="NSSuperview" ref="980112499"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -1270,7 +1270,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>AssessmentTreeViewAndInputController</string>
 					<string>UIResponder</string>
-					<string>{{1155, 254}, {320, 480}}</string>
+					<string>{{1332, 334}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
