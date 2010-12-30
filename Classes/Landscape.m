@@ -17,6 +17,9 @@
 @dynamic assessments;
 @dynamic image;
 @dynamic address1;
+@dynamic city;
+@dynamic state;
+@dynamic zip;
 @dynamic thumbnailImage;
 @dynamic gps;
 

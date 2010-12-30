@@ -25,6 +25,9 @@
 
 
 @property (nonatomic, retain) NSString *address1;
+@property (nonatomic, retain) NSString *city;
+@property (nonatomic, retain) NSString *state;
+@property (nonatomic, retain) NSString *zip;
 @property (nonatomic, retain) NSString *gps;
 @property (nonatomic, retain) UIImage *thumbnailImage;
 @property (nonatomic, retain) NSManagedObject *image;
