@@ -956,7 +956,6 @@
 		208B329312BFE27A00D8FA03 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				20CE565C12C94165008624F3 /* DistancePickerView */,
 				208B329412BFE27A00D8FA03 /* Models */,
 				208B32DB12BFE27B00D8FA03 /* Views */,
 				208B32CA12BFE27B00D8FA03 /* Controllers */,
@@ -1344,6 +1343,7 @@
 				20CE565E12C94197008624F3 /* DistancePickerView.m */,
 			);
 			name = DistancePickerView;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		2860E386111B897F00E27156 /* iPhone */ = {
@@ -1372,6 +1372,7 @@
 			children = (
 				149BF39912BFB20D000E27DB /* License.txt */,
 				208B329112BFE25D00D8FA03 /* ReadMe.txt */,
+				20CE565C12C94165008624F3 /* DistancePickerView */,
 				20AC45D712C8FCB700BC4C12 /* InAppSettingsKit */,
 				208B3C2612C01B6B00D8FA03 /* HTTPRequest */,
 				208B3DB412C02B0100D8FA03 /* KissXML */,
