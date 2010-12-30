@@ -81,8 +81,8 @@
 
 	
 	// launcherView
-	_launcherView.frame = CGRectMake(0,45,bounds.size.width,bounds.size.height-2*45); 
-	
+	//_launcherView.frame = CGRectMake(0,45,bounds.size.width,bounds.size.height-2*45); 
+	_launcherView.frame = CGRectMake(0,88,bounds.size.width,bounds.size.height-2*90); 
 	
 	_launcherView = [[TTLauncherView alloc] initWithFrame:self.view.bounds];
 	//_launcherView.backgroundColor = [UIColor colorWithRed:0.486 green:0.318 blue:0.192 alpha:1.0]; //earth brown
@@ -224,16 +224,23 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	
 
 	self.mySearchBar = [[[UISearchBar alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, 44.0)] autorelease];
 	self.mySearchBar.delegate = self;
 	self.mySearchBar.showsCancelButton = YES;
 	self.mySearchBar.tintColor=[UIColor colorWithRed:0.180 green:0.267 blue: 0.173 alpha:1.0]; //forest green
 	
+	if((self.interfaceOrientation == UIDeviceOrientationLandscapeLeft) || (self.interfaceOrientation == UIDeviceOrientationLandscapeRight)){
+		//resize search bar
+		
+	} else	if((self.interfaceOrientation == UIDeviceOrientationPortrait) || (self.interfaceOrientation == UIDeviceOrientationPortraitUpsideDown)){
+		//resize search bar
+	}
+ 	
+	
 	// note: here you can also change its "tintColor" property to a different UIColor
 	
-	//[self.view addSubview: self.mySearchBar];
+	[self.view addSubview: self.mySearchBar];
 }
 
 // called after the view controller's view is released and set to nil.

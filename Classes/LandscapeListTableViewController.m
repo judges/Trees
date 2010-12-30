@@ -26,8 +26,8 @@
 	
 	self.tableView.opaque = NO;
 	self.tableView.backgroundView = nil;
-	//[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLineEtched];
-	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLineEtched];
+	//[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 	
 	
 	//load managedObjectContext from AppDelegate
