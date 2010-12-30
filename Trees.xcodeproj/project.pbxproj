@@ -654,10 +654,10 @@
 		208B32DA12BFE27B00D8FA03 /* LauncherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LauncherViewController.m; sourceTree = "<group>"; };
 		208B32DC12BFE27B00D8FA03 /* AppDelegate_Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate_Shared.h; path = Classes/AppDelegate_Shared.h; sourceTree = "<group>"; };
 		208B32DD12BFE27B00D8FA03 /* AppDelegate_Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate_Shared.m; path = Classes/AppDelegate_Shared.m; sourceTree = "<group>"; };
-		208B330112BFE2D200D8FA03 /* AssessmentTreeCRView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssessmentTreeCRView.xib; sourceTree = "<group>"; };
-		208B330212BFE2D200D8FA03 /* AssessmentTreeViewAndInput.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssessmentTreeViewAndInput.xib; sourceTree = "<group>"; };
-		208B330312BFE2D200D8FA03 /* AssessmentTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssessmentTableView.xib; sourceTree = "<group>"; };
-		208B330412BFE2D200D8FA03 /* AssessmentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssessmentTableViewCell.xib; sourceTree = "<group>"; };
+		208B330112BFE2D200D8FA03 /* AssessmentTreeCRView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AssessmentTreeCRView.xib; path = ../AssessmentTreeCRView.xib; sourceTree = "<group>"; };
+		208B330212BFE2D200D8FA03 /* AssessmentTreeViewAndInput.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AssessmentTreeViewAndInput.xib; path = ../AssessmentTreeViewAndInput.xib; sourceTree = "<group>"; };
+		208B330312BFE2D200D8FA03 /* AssessmentTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AssessmentTableView.xib; path = ../AssessmentTableView.xib; sourceTree = "<group>"; };
+		208B330412BFE2D200D8FA03 /* AssessmentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AssessmentTableViewCell.xib; path = ../AssessmentTableViewCell.xib; sourceTree = "<group>"; };
 		208B33DC12BFE32700D8FA03 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		208B33E012BFE33900D8FA03 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		208B387512C00EDA00D8FA03 /* LauncherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LauncherViewController.h; path = Classes/LauncherViewController.h; sourceTree = SOURCE_ROOT; };
@@ -829,9 +829,9 @@
 		20CE583412CA4D40008624F3 /* Caliper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Caliper.m; path = ../Shared/Caliper.m; sourceTree = "<group>"; };
 		20CE5B6C12CBB8AB008624F3 /* AssessmentTreeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssessmentTreeTableViewCell.h; sourceTree = "<group>"; };
 		20CE5B6D12CBB8AB008624F3 /* AssessmentTreeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssessmentTreeTableViewCell.m; sourceTree = "<group>"; };
-		20CE5B6F12CBB9C8008624F3 /* AssessmentTreeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssessmentTreeTableViewCell.xib; sourceTree = "<group>"; };
+		20CE5B6F12CBB9C8008624F3 /* AssessmentTreeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AssessmentTreeTableViewCell.xib; path = ../AssessmentTreeTableViewCell.xib; sourceTree = "<group>"; };
 		20CE5BCF12CBCC56008624F3 /* headerCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headerCell.png; sourceTree = "<group>"; };
-		20CE5BD312CBCD46008624F3 /* AssessmentTreeTableViewHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssessmentTreeTableViewHeaderCell.xib; sourceTree = "<group>"; };
+		20CE5BD312CBCD46008624F3 /* AssessmentTreeTableViewHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AssessmentTreeTableViewHeaderCell.xib; path = ../AssessmentTreeTableViewHeaderCell.xib; sourceTree = "<group>"; };
 		20CE5C3912CBD635008624F3 /* AssessmentTreeTableViewHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssessmentTreeTableViewHeaderCell.h; sourceTree = "<group>"; };
 		20CE5C3A12CBD635008624F3 /* AssessmentTreeTableViewHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssessmentTreeTableViewHeaderCell.m; sourceTree = "<group>"; };
 		2860E387111B897F00E27156 /* AppDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_iPhone.h; sourceTree = "<group>"; };
@@ -888,7 +888,6 @@
 			children = (
 				14DBFCA912C954680051B792 /* TreeListTableViewController.h */,
 				14DBFCAA12C954680051B792 /* TreeListTableViewController.m */,
-				14DBFCAB12C954680051B792 /* TreeListTableViewController.xib */,
 			);
 			name = Trees;
 			sourceTree = "<group>";
@@ -1069,10 +1068,8 @@
 				149B80F912C264C3001557AB /* LandscapeListTableViewController.m */,
 				149B80FD12C2673B001557AB /* LandscapeAddViewController.h */,
 				149B80FE12C2673B001557AB /* LandscapeAddViewController.m */,
-				149B80FF12C2673B001557AB /* LandscapeAddView.xib */,
 				149B812C12C26F04001557AB /* LandscapeDetailViewController.h */,
 				149B812D12C26F04001557AB /* LandscapeDetailViewController.m */,
-				149B812E12C26F04001557AB /* DetailHeaderView.xib */,
 				149B813512C26F68001557AB /* LandscapeTableViewCell.h */,
 				149B813612C26F68001557AB /* LandscapeTableViewCell.m */,
 				149B814D12C276EC001557AB /* LandscapePhotoViewController.h */,
@@ -1111,6 +1108,9 @@
 		208B32DB12BFE27B00D8FA03 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				20AE14C412CCF65E00771642 /* Landscapes */,
+				20AE14C312CCF65400771642 /* Trees */,
+				20AE14C112CCF60D00771642 /* Assessments */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1120,12 +1120,6 @@
 			children = (
 				20AC3F4412C10B9300BC4C12 /* TreeOptions.xml */,
 				320B6C86F11D9990244A9730 /* Three20.bundle */,
-				208B330112BFE2D200D8FA03 /* AssessmentTreeCRView.xib */,
-				208B330212BFE2D200D8FA03 /* AssessmentTreeViewAndInput.xib */,
-				208B330312BFE2D200D8FA03 /* AssessmentTableView.xib */,
-				208B330412BFE2D200D8FA03 /* AssessmentTableViewCell.xib */,
-				20CE5B6F12CBB9C8008624F3 /* AssessmentTreeTableViewCell.xib */,
-				20CE5BD312CBCD46008624F3 /* AssessmentTreeTableViewHeaderCell.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1303,6 +1297,44 @@
 				20AC45FF12C8FCB700BC4C12 /* IASKSpecifierValuesView.xib */,
 			);
 			path = Xibs;
+			sourceTree = "<group>";
+		};
+		20AE14C112CCF60D00771642 /* Assessments */ = {
+			isa = PBXGroup;
+			children = (
+				208B330312BFE2D200D8FA03 /* AssessmentTableView.xib */,
+				208B330412BFE2D200D8FA03 /* AssessmentTableViewCell.xib */,
+				20AE14C212CCF61400771642 /* AssessmentTree */,
+			);
+			name = Assessments;
+			sourceTree = "<group>";
+		};
+		20AE14C212CCF61400771642 /* AssessmentTree */ = {
+			isa = PBXGroup;
+			children = (
+				20CE5BD312CBCD46008624F3 /* AssessmentTreeTableViewHeaderCell.xib */,
+				20CE5B6F12CBB9C8008624F3 /* AssessmentTreeTableViewCell.xib */,
+				208B330112BFE2D200D8FA03 /* AssessmentTreeCRView.xib */,
+				208B330212BFE2D200D8FA03 /* AssessmentTreeViewAndInput.xib */,
+			);
+			name = AssessmentTree;
+			sourceTree = "<group>";
+		};
+		20AE14C312CCF65400771642 /* Trees */ = {
+			isa = PBXGroup;
+			children = (
+				14DBFCAB12C954680051B792 /* TreeListTableViewController.xib */,
+			);
+			name = Trees;
+			sourceTree = "<group>";
+		};
+		20AE14C412CCF65E00771642 /* Landscapes */ = {
+			isa = PBXGroup;
+			children = (
+				149B80FF12C2673B001557AB /* LandscapeAddView.xib */,
+				149B812E12C26F04001557AB /* DetailHeaderView.xib */,
+			);
+			name = Landscapes;
 			sourceTree = "<group>";
 		};
 		20CE565C12C94165008624F3 /* DistancePickerView */ = {
