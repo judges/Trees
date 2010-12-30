@@ -201,41 +201,26 @@
 	[image setValue:selectedImage forKey:@"image"];
 	
 	// Create a thumbnail version of the image for the landscape object.
-	CGSize size = selectedImage.size;
-	CGFloat ratio = 0;
-	if (size.width > size.height) {
-		ratio = 128.0 / size.width;
-	} else {
-		ratio = 128.0 / size.height;
-	}
-	CGRect rect = CGRectMake(0.0, 0.0, ratio * size.width, ratio * size.height);
+	// following code sourced at: http://tharindufit.wordpress.com/2010/04/19/how-to-create-iphone-photos-like-thumbs-in-an-iphone-app/
 	
-	UIGraphicsBeginImageContext(rect.size);
-	[selectedImage drawInRect:rect];
-	landscape.thumbnailImage = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
-	
-    [self dismissModalViewControllerAnimated:YES];
-}
+	CGFloat ratio = 128.0;
 
-/** generate thumbnail version of given image to show in properly **/
-- (UIImage *)generatePhotoThumbnail:(UIImage *)image withRatio:(float)ratio {
 	// first crop to a rectangle and then scale the cropped image to ratio
 	CGRect cropRect;
-	if (image.size.width == image.size.height) {
+	if (selectedImage.size.width == selectedImage.size.height) {
 		// height and width are same - do not crop here
-		cropRect = CGRectMake(0.0, 0.0, image.size.width, image.size.height);
-	} else if (image.size.width > image.size.height) {
+		cropRect = CGRectMake(0.0, 0.0, selectedImage.size.width, selectedImage.size.height);
+	} else if (selectedImage.size.width > selectedImage.size.height) {
 		// width is longer - take height and adjust xgap to crop
-		int xgap = (image.size.width - image.size.height)/2;
-		cropRect = CGRectMake(xgap, 0.0, image.size.height, image.size.height);
+		int xgap = (selectedImage.size.width - selectedImage.size.height)/2;
+		cropRect = CGRectMake(xgap, 0.0, selectedImage.size.height, selectedImage.size.height);
 	} else {
 		// height is longer - take height and adjust ygap to crop
-		int ygap = (image.size.height - image.size.width)/2;
-		cropRect = CGRectMake(0.0, ygap, image.size.width, image.size.width);
+		int ygap = (selectedImage.size.height - selectedImage.size.width)/2;
+		cropRect = CGRectMake(0.0, ygap, selectedImage.size.width, selectedImage.size.width);
 	}
 	// crop image with calcuted crop rect
-	CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+	CGImageRef imageRef = CGImageCreateWithImageInRect([selectedImage CGImage], cropRect);
 	UIImage *cropped = [UIImage imageWithCGImage:imageRef];
 	CGImageRelease(imageRef);
 	// scale the image to ratio to create proper thumb
@@ -248,12 +233,17 @@
 	// now redraw our image in a smaller rectangle.
 	[myThumbNail drawInRect:CGRectMake(0.0, 0.0, ratio, ratio)];
 	
-	// make a copy of the image from the current context
-	UIImage *newImage    = UIGraphicsGetImageFromCurrentImageContext();
+	// save the image from the current context
+	landscape.thumbnailImage = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
-	[myThumbNail release];
-	return newImage;
+
+	//[selectedImage drawInRect:rect];
+	[myThumbNail release];	
+	
+    [self dismissModalViewControllerAnimated:YES];
 }
+
+
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [self dismissModalViewControllerAnimated:YES];
