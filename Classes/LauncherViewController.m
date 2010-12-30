@@ -97,7 +97,7 @@
 		_launcherView.frame=self.view.bounds;
 		
 	} else	if((self.interfaceOrientation == UIDeviceOrientationPortrait) || (self.interfaceOrientation == UIDeviceOrientationPortraitUpsideDown)){
-		_launcherView.columnCount = 4;
+		_launcherView.columnCount = 3;
 		_launcherView.frame=self.view.bounds;
 	}
  
