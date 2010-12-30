@@ -12,12 +12,10 @@
 
 @class Landscape;
 
-
 @interface LandscapeDetailViewController : UITableViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate> {
 
 	Landscape *landscape;
 
-	
 	UIView *tableHeaderView;    
 	UIButton *photoButton;
 	UITextField *nameTextField;
@@ -30,7 +28,6 @@
 }
 
 @property (nonatomic, retain) Landscape *landscape;
-
 
 @property (nonatomic, retain) IBOutlet UIView *tableHeaderView;
 @property (nonatomic, retain) IBOutlet UIButton *photoButton;

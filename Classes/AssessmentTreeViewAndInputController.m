@@ -772,8 +772,9 @@
 					break;
 				}
 			}
-			[self configureCell:assessmentCell atIndexPath:indexPath];
+			
 		}
+		[self configureCell:assessmentCell atIndexPath:indexPath];
 		return assessmentCell;
 }
 

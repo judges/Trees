@@ -32,6 +32,8 @@
 		149B813712C26F68001557AB /* LandscapeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 149B813612C26F68001557AB /* LandscapeTableViewCell.m */; };
 		149B814F12C276EC001557AB /* LandscapePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149B814E12C276EC001557AB /* LandscapePhotoViewController.m */; };
 		149BF39A12BFB20D000E27DB /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 149BF39912BFB20D000E27DB /* License.txt */; };
+		14C5562A12CCE5B100642D20 /* photo_camera-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 14C5562912CCE5B100642D20 /* photo_camera-small.png */; };
+		14C5562C12CCE5F800642D20 /* photo_camera-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14C5562B12CCE5F800642D20 /* photo_camera-small@2x.png */; };
 		14DA250F12BFA7CD008400A2 /* Tree-256.png in Resources */ = {isa = PBXBuildFile; fileRef = 14DA250E12BFA7CD008400A2 /* Tree-256.png */; };
 		14DBFCAC12C954680051B792 /* TreeListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14DBFCAA12C954680051B792 /* TreeListTableViewController.m */; };
 		14DBFCAD12C954680051B792 /* TreeListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14DBFCAB12C954680051B792 /* TreeListTableViewController.xib */; };
@@ -576,6 +578,8 @@
 		149B814D12C276EC001557AB /* LandscapePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapePhotoViewController.h; sourceTree = "<group>"; };
 		149B814E12C276EC001557AB /* LandscapePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapePhotoViewController.m; sourceTree = "<group>"; };
 		149BF39912BFB20D000E27DB /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
+		14C5562912CCE5B100642D20 /* photo_camera-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_camera-small.png"; sourceTree = "<group>"; };
+		14C5562B12CCE5F800642D20 /* photo_camera-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_camera-small@2x.png"; sourceTree = "<group>"; };
 		14DA250E12BFA7CD008400A2 /* Tree-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tree-256.png"; sourceTree = "<group>"; };
 		14DBFCA912C954680051B792 /* TreeListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeListTableViewController.h; sourceTree = "<group>"; };
 		14DBFCAA12C954680051B792 /* TreeListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeListTableViewController.m; sourceTree = "<group>"; };
@@ -900,6 +904,8 @@
 		208B325412BFE24A00D8FA03 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				14C5562912CCE5B100642D20 /* photo_camera-small.png */,
+				14C5562B12CCE5F800642D20 /* photo_camera-small@2x.png */,
 				20CE5BCF12CBCC56008624F3 /* headerCell.png */,
 				1462916812CBA2CF00223CF8 /* Tree-Assessment.png */,
 				1462916912CBA2CF00223CF8 /* Tree-Assessment@2x.png */,
@@ -1934,6 +1940,8 @@
 				20CE5B7012CBB9C8008624F3 /* AssessmentTreeTableViewCell.xib in Resources */,
 				20CE5BD012CBCC56008624F3 /* headerCell.png in Resources */,
 				20CE5BD412CBCD46008624F3 /* AssessmentTreeTableViewHeaderCell.xib in Resources */,
+				14C5562A12CCE5B100642D20 /* photo_camera-small.png in Resources */,
+				14C5562C12CCE5F800642D20 /* photo_camera-small@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

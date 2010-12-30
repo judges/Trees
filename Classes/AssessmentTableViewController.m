@@ -391,8 +391,9 @@
                 break;
             }
         }
-        [self configureCell:assessmentCell atIndexPath:indexPath];
+        
     }
+	[self configureCell:assessmentCell atIndexPath:indexPath];
     
     if (row % 2)
         [assessmentCell setBackgroundColor:[UIColor colorWithRed:0.616f green:0.616f blue:0.627f alpha:1.0f]];
