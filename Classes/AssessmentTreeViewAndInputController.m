@@ -98,39 +98,8 @@
 		}
 		
 	   self.assessorField.text = self.assessmentTree.assessor;
-    }
-	/*redo this part
-    if (self.formCText.text == nil || self.formRText.text == nil) {
-        [button1 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
-    } else {
-        [button1 setBackgroundImage:[UIImage imageNamed:@"button-default.png"] forState:UIControlStateNormal];
-    }
-    if (self.crownCText.text == nil || self.crownRText.text == nil) {
-        [button2 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
-    } else {
-        [button2 setBackgroundImage:[UIImage imageNamed:@"button-default.png"] forState:UIControlStateNormal];
-    }
-    if (self.trunkCText.text == nil || self.trunkRText.text == nil) {
-        [button3 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
-    } else {
-        [button3 setBackgroundImage:[UIImage imageNamed:@"button-default.png"] forState:UIControlStateNormal];
-    }
-    if (self.rootFlareCText.text == nil || self.rootFlareRText.text == nil) {
-        [button4 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
-    } else {
-        [button4 setBackgroundImage:[UIImage imageNamed:@"button-default.png"] forState:UIControlStateNormal];
-    }
-    if (self.rootsCText.text == nil || self.rootsRText.text == nil) {
-        [button5 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
-    } else {
-        [button5 setBackgroundImage:[UIImage imageNamed:@"button-default.png"] forState:UIControlStateNormal];
-    }
-    if (self.overallCText.text == nil || self.overallRText.text == nil) {
-        [button6 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
-    } else {
-        [button6 setBackgroundImage:[UIImage imageNamed:@"button-default.png"] forState:UIControlStateNormal];
-    }
-	*/
+    }	
+
     //clear the shared cache
     int urlctr = 0;
     NSString *path = [NSString stringWithFormat:@"images/%d.jpg", urlctr];
@@ -159,6 +128,38 @@
 						   [NSArray arrayWithArray:[[assessmentTree mutableSetValueForKeyPath:@"rootflare.recommendation"] sortedArrayUsingDescriptors:descriptors]],
 						   [NSArray arrayWithArray:[[assessmentTree mutableSetValueForKeyPath:@"overall.recommendation"] sortedArrayUsingDescriptors:descriptors]] ,nil];
 	[assessmentTable reloadData];
+	
+	//Set button colors for complete/incomplete parts of assessment
+	if ([assessmentTable numberOfRowsInSection:0] == 0) {
+		[button1 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
+	} else {
+		[button1 setBackgroundImage:[UIImage imageNamed:@"button-default.png"] forState:UIControlStateNormal];
+	}
+	if ([assessmentTable numberOfRowsInSection:1] == 0) {
+		[button2 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
+	} else {
+		[button2 setBackgroundImage:[UIImage imageNamed:@"button-default.png"] forState:UIControlStateNormal];
+	}
+	if ([assessmentTable numberOfRowsInSection:2] == 0) {
+		[button3 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
+	} else {
+		[button3 setBackgroundImage:[UIImage imageNamed:@"button-default.png"] forState:UIControlStateNormal];
+	}
+	if ([assessmentTable numberOfRowsInSection:3] == 0) {
+		[button4 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
+	} else {
+		[button4 setBackgroundImage:[UIImage imageNamed:@"button-default.png"] forState:UIControlStateNormal];
+	}
+	if ([assessmentTable numberOfRowsInSection:4] == 0) {
+		[button5 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
+	} else {
+		[button5 setBackgroundImage:[UIImage imageNamed:@"button-default.png"] forState:UIControlStateNormal];
+	}
+	if ([assessmentTable numberOfRowsInSection:5] == 0) {
+		[button6 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
+	} else {
+		[button6 setBackgroundImage:[UIImage imageNamed:@"button-default.png"] forState:UIControlStateNormal];
+	}
 }
 
 -(IBAction)segmentSwitch:(id)sender {
