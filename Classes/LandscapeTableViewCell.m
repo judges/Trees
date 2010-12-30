@@ -15,6 +15,7 @@
 - (CGRect)_imageViewFrame;
 - (CGRect)_nameLabelFrame;
 - (CGRect)_address1LabelFrame;
+- (CGRect)_cityLabelFrame;
 - (CGRect)_gpsLabelFrame;
 @end
 
@@ -23,7 +24,7 @@
 
 @implementation LandscapeTableViewCell
 
-@synthesize landscape, imageView, nameLabel, address1Label, gpsLabel;
+@synthesize landscape, imageView, nameLabel, address1Label, cityLabel, stateLabel, zipLabel, gpsLabel;
 
 
 
@@ -47,6 +48,27 @@
         [address1Label setHighlightedTextColor:[UIColor whiteColor]];
 		[address1Label setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:address1Label];
+
+        cityLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [cityLabel setFont:[UIFont systemFontOfSize:12.0]];
+        [cityLabel setTextColor:[UIColor darkGrayColor]];
+        [cityLabel setHighlightedTextColor:[UIColor whiteColor]];
+		[cityLabel setBackgroundColor:[UIColor clearColor]];
+        [self.contentView addSubview:cityLabel];		
+
+        stateLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [stateLabel setFont:[UIFont systemFontOfSize:12.0]];
+        [stateLabel setTextColor:[UIColor darkGrayColor]];
+        [stateLabel setHighlightedTextColor:[UIColor whiteColor]];
+		[stateLabel setBackgroundColor:[UIColor clearColor]];
+        [self.contentView addSubview:stateLabel];			
+
+        zipLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [zipLabel setFont:[UIFont systemFontOfSize:12.0]];
+        [zipLabel setTextColor:[UIColor darkGrayColor]];
+        [zipLabel setHighlightedTextColor:[UIColor whiteColor]];
+		[zipLabel setBackgroundColor:[UIColor clearColor]];
+        [self.contentView addSubview:zipLabel];		
 		
         gpsLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         gpsLabel.textAlignment = UITextAlignmentRight;
@@ -82,6 +104,7 @@
     [imageView setFrame:[self _imageViewFrame]];
     [nameLabel setFrame:[self _nameLabelFrame]];
     [address1Label setFrame:[self _address1LabelFrame]];
+    [cityLabel setFrame:[self _cityLabelFrame]];
     [gpsLabel setFrame:[self _gpsLabelFrame]];
     if (self.editing) {
         gpsLabel.alpha = 0.0;
@@ -127,6 +150,15 @@
     }
 }
 
+- (CGRect)_cityLabelFrame {
+    if (self.editing) {
+        return CGRectMake(IMAGE_SIZE + EDITING_INSET + TEXT_LEFT_MARGIN, 38.0, self.contentView.bounds.size.width - IMAGE_SIZE - EDITING_INSET - TEXT_LEFT_MARGIN, 16.0);
+    }
+	else {
+        return CGRectMake(IMAGE_SIZE + TEXT_LEFT_MARGIN, 38.0, self.contentView.bounds.size.width - IMAGE_SIZE - TEXT_LEFT_MARGIN, 16.0);
+    }
+}
+
 - (CGRect)_gpsLabelFrame {
     CGRect contentViewBounds = self.contentView.bounds;
     return CGRectMake(contentViewBounds.size.width - PREP_TIME_WIDTH - TEXT_RIGHT_MARGIN, 4.0, PREP_TIME_WIDTH, 16.0);
@@ -141,9 +173,18 @@
         [landscape release];
         landscape = [newLandscape retain];
 	}
+
+	NSString *city = [landscape.city stringByAppendingString:@", "];
+	NSString *state = [landscape.state stringByAppendingString:@" "];
+	NSString *zip = [landscape.zip stringByAppendingString:@" "];
+		
+	NSString *cityStateZipString = [[city stringByAppendingString:state] stringByAppendingString:zip];
+
 	imageView.image = landscape.thumbnailImage;
 	nameLabel.text = landscape.name;
-	address1Label.text = landscape.address1;
+	address1Label.text = landscape.address1;	
+	cityLabel.text = cityStateZipString;
+	
 	gpsLabel.text = landscape.gps;
 }
 
