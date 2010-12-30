@@ -19,9 +19,7 @@
 @synthesize landscape;
 
 
-@synthesize tableHeaderView;
-@synthesize photoButton;
-@synthesize nameTextField, address1TextField, cityTextField, stateTextField, zipTextField, gpsTextField;
+@synthesize tableHeaderView, photoButton, nameTextField, address1TextField, cityTextField, stateTextField, zipTextField, gpsTextField;
 
 #pragma mark -
 #pragma mark View controller
@@ -240,10 +238,10 @@
 		photoButton.enabled = editing;
 		
 		if (editing) {
-			[photoButton setImage:[UIImage imageNamed:@"photo_camera_128.png"] forState:UIControlStateNormal];
+			[photoButton setImage:[UIImage imageNamed:@"photo_camera.png"] forState:UIControlStateNormal];
 		} else {
 			//[photoButton setImage:nil forState:UIControlStateNormal];
-			[photoButton setImage:[UIImage imageNamed:@"photo_camera_128.png"] forState:UIControlStateNormal];
+			[photoButton setImage:[UIImage imageNamed:@"photo_camera.png"] forState:UIControlStateNormal];
 		}
 	}
 }
