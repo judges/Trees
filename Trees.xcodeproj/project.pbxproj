@@ -976,8 +976,6 @@
 				208B32B512BFE27B00D8FA03 /* TreeForm.m */,
 				208B32B612BFE27B00D8FA03 /* TreeRootFlare.h */,
 				208B32B712BFE27B00D8FA03 /* TreeRootFlare.m */,
-				208B32C012BFE27B00D8FA03 /* Landscape.h */,
-				208B32C112BFE27B00D8FA03 /* Landscape.m */,
 				208B32C212BFE27B00D8FA03 /* Photo.h */,
 				208B32C312BFE27B00D8FA03 /* Photo.m */,
 				208B32C412BFE27B00D8FA03 /* TreeCrown.h */,
@@ -1024,6 +1022,8 @@
 		208B329512BFE27A00D8FA03 /* Not Generated */ = {
 			isa = PBXGroup;
 			children = (
+				208B32C012BFE27B00D8FA03 /* Landscape.h */,
+				208B32C112BFE27B00D8FA03 /* Landscape.m */,
 				20CE55F412C93DC6008624F3 /* Distance.h */,
 				20CE55F512C93DC6008624F3 /* Distance.m */,
 				208B329612BFE27A00D8FA03 /* PhotoSet.h */,
