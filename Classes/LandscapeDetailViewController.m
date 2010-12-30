@@ -21,7 +21,7 @@
 
 @synthesize tableHeaderView;
 @synthesize photoButton;
-@synthesize nameTextField, address1TextField, gpsTextField;
+@synthesize nameTextField, address1TextField, cityTextField, stateTextField, zipTextField, gpsTextField;
 
 #pragma mark -
 #pragma mark View controller
@@ -47,6 +47,9 @@
 	self.navigationItem.title = landscape.name;
     nameTextField.text = landscape.name;    
     address1TextField.text = landscape.address1;    
+	cityTextField.text = landscape.city;
+	stateTextField.text = landscape.state;
+	zipTextField.text = landscape.zip;
     gpsTextField.text = landscape.gps;    
 	[self updatePhotoButton];
 	
@@ -70,6 +73,9 @@
 	self.photoButton = nil;
 	self.nameTextField = nil;
 	self.address1TextField = nil;
+	self.cityTextField = nil;
+	self.stateTextField = nil;
+	self.zipTextField = nil;
 	self.gpsTextField = nil;
 	[super viewDidUnload];
 }
@@ -84,6 +90,9 @@
 	[self updatePhotoButton];
 	nameTextField.enabled = editing;
 	address1TextField.enabled = editing;
+	cityTextField.enabled = editing;
+	stateTextField.enabled = editing;
+	zipTextField.enabled = editing;
 	gpsTextField.enabled = editing;
 	[self.navigationItem setHidesBackButton:editing animated:YES];
 	
@@ -123,6 +132,15 @@
 	}
 	else if (textField == address1TextField) {
 		landscape.address1 = address1TextField.text;
+	}
+	else if (textField == cityTextField) {
+		landscape.city = cityTextField.text;
+	}
+	else if (textField == stateTextField) {
+		landscape.state = stateTextField.text;
+	}
+	else if (textField == zipTextField) {
+		landscape.zip = zipTextField.text;
 	}
 	else if (textField == gpsTextField) {
 		landscape.gps = gpsTextField.text;
@@ -239,6 +257,9 @@
     [photoButton release];
     [nameTextField release];
     [address1TextField release];
+    [cityTextField release];
+    [stateTextField release];
+    [zipTextField release];
     [gpsTextField release];
     [landscape release];
     [super dealloc];

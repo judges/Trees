@@ -22,6 +22,9 @@
 	UIButton *photoButton;
 	UITextField *nameTextField;
 	UITextField *address1TextField;
+	UITextField *cityTextField;
+	UITextField *stateTextField;
+	UITextField *zipTextField;
 	UITextField *gpsTextField;	
 	
 }
@@ -33,6 +36,9 @@
 @property (nonatomic, retain) IBOutlet UIButton *photoButton;
 @property (nonatomic, retain) IBOutlet UITextField *nameTextField;
 @property (nonatomic, retain) IBOutlet UITextField *address1TextField;
+@property (nonatomic, retain) IBOutlet UITextField *cityTextField;
+@property (nonatomic, retain) IBOutlet UITextField *stateTextField;
+@property (nonatomic, retain) IBOutlet UITextField *zipTextField;
 @property (nonatomic, retain) IBOutlet UITextField *gpsTextField;
 
 - (IBAction)photoTapped;
