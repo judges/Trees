@@ -26,8 +26,6 @@
 
 @synthesize landscape, imageView, nameLabel, address1Label, cityLabel, stateLabel, zipLabel, gpsLabel;
 
-
-
 #pragma mark -
 #pragma mark Initialization
 
@@ -180,52 +178,14 @@
 		
 	NSString *cityStateZipString = [[city stringByAppendingString:state] stringByAppendingString:zip];
 
-
-	
 	imageView.image = landscape.thumbnailImage;
 	nameLabel.text = landscape.name;
 	address1Label.text = landscape.address1;	
-	cityLabel.text = cityStateZipString;
-	
+	cityLabel.text = cityStateZipString;	
 	gpsLabel.text = landscape.gps;
 }
 
-/** generate thumbnail version of given image to show in properly **/
-- (UIImage *)generatePhotoThumbnail:(UIImage *)image withRatio:(float)ratio {
-	// first crop to a rectangle and then scale the cropped image to ratio
-	CGRect cropRect;
-	if (image.size.width == image.size.height) {
-		// height and width are same - do not crop here
-		cropRect = CGRectMake(0.0, 0.0, image.size.width, image.size.height);
-	} else if (image.size.width > image.size.height) {
-		// width is longer - take height and adjust xgap to crop
-		int xgap = (image.size.width - image.size.height)/2;
-		cropRect = CGRectMake(xgap, 0.0, image.size.height, image.size.height);
-	} else {
-		// height is longer - take height and adjust ygap to crop
-		int ygap = (image.size.height - image.size.width)/2;
-		cropRect = CGRectMake(0.0, ygap, image.size.width, image.size.width);
-	}
-	// crop image with calcuted crop rect
-	CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
-	UIImage *cropped = [UIImage imageWithCGImage:imageRef];
-	CGImageRelease(imageRef);
-	// scale the image to ratio to create proper thumb
-	NSData *pngData = UIImagePNGRepresentation(cropped);
-	UIImage *myThumbNail    = [[UIImage alloc] initWithData:pngData];
-	
-	// begin an image context that will essentially keep our new image
-	UIGraphicsBeginImageContext(CGSizeMake(ratio,ratio));
-	
-	// now redraw our image in a smaller rectangle.
-	[myThumbNail drawInRect:CGRectMake(0.0, 0.0, ratio, ratio)];
-	
-	// make a copy of the image from the current context
-	UIImage *newImage    = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
-	[myThumbNail release];
-	return newImage;
-}
+
 
 
 
