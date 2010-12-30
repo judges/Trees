@@ -51,7 +51,7 @@
     gpsTextField.text = landscape.gps;    
 	[self updatePhotoButton];
 	
-	// Update landscape type and ingredients on return.
+	// Update landscape attributes and inventory items on return. - to be added later
     [self.tableView reloadData]; 
 }
 
@@ -93,16 +93,10 @@
 	zipTextField.enabled = editing;
 	gpsTextField.enabled = editing;
 	[self.navigationItem setHidesBackButton:editing animated:YES];
-	
-	
 	[self.tableView beginUpdates];
-	
-    
     [self.tableView endUpdates];
 	
-	
 
-	
 	/*
 	 If editing is finished, save the managed object context.
 	 */
