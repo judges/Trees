@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="8"/>
+			<integer value="1"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -647,7 +647,7 @@
 					<object class="IBUIButton" id="660397305">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{10, 5}, {51, 29}}</string>
+						<string key="NSFrame">{{9, -6}, {50, 50}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -662,7 +662,7 @@
 						<reference key="IBUINormalTitleShadowColor" ref="276161386"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">photo_camera_29.png</string>
+							<string key="NSResourceName">photo_camera-small.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="291205336">
@@ -1878,7 +1878,7 @@
 				<string>button-default.png</string>
 				<string>headerCell.png</string>
 				<string>notes_100.png</string>
-				<string>photo_camera_29.png</string>
+				<string>photo_camera-small.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1886,7 +1886,7 @@
 				<string>{50, 50}</string>
 				<string>{1, 30}</string>
 				<string>{100, 100}</string>
-				<string>{16, 16}</string>
+				<string>{40, 40}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">132</string>

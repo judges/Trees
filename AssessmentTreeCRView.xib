@@ -81,7 +81,7 @@
 					<object class="IBUIButton" id="892503372">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{10, 5}, {51, 29}}</string>
+						<string key="NSFrame">{{8, -8}, {50, 50}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -106,7 +106,7 @@
 						</object>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">photo_camera_29.png</string>
+							<string key="NSResourceName">photo_camera-small.png</string>
 						</object>
 					</object>
 					<object class="IBUITableView" id="290578782">
@@ -369,23 +369,11 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>addCondition</string>
-							<string>addRecommendation</string>
-							<string>deleteCondition</string>
-							<string>deleteRecommendation</string>
-							<string>editCondition</string>
-							<string>editRecommendation</string>
 							<string>photoButtonClick:</string>
 							<string>segmentSwitch:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -394,41 +382,11 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>addCondition</string>
-							<string>addRecommendation</string>
-							<string>deleteCondition</string>
-							<string>deleteRecommendation</string>
-							<string>editCondition</string>
-							<string>editRecommendation</string>
 							<string>photoButtonClick:</string>
 							<string>segmentSwitch:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">addCondition</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">addRecommendation</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">deleteCondition</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">deleteRecommendation</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">editCondition</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">editRecommendation</string>
-								<string key="candidateClassName">id</string>
-							</object>
 							<object class="IBActionInfo">
 								<string key="name">photoButtonClick:</string>
 								<string key="candidateClassName">id</string>
@@ -740,8 +698,8 @@
 		<string key="IBDocument.LastKnownRelativeProjectPath">Trees.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">photo_camera_29.png</string>
-			<string key="NS.object.0">{36, 29}</string>
+			<string key="NS.key.0">photo_camera-small.png</string>
+			<string key="NS.object.0">{40, 40}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">132</string>
 	</data>
