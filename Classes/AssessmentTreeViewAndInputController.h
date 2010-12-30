@@ -27,7 +27,9 @@
     AssessmentTree *assessmentTree;
     UIImagePickerController *imagePicker;
 	UIActionSheet *photoActionSheet;
-    
+	NSArray *conditionArray;																	
+	NSArray *recommendationArray;
+																		
     //view page
     IBOutlet UILabel *assessor;
     IBOutlet UILabel *date;
@@ -54,6 +56,8 @@
 }
 
 @property (nonatomic, retain) AssessmentTree *assessmentTree;
+@property (nonatomic, retain) NSArray *conditionArray;
+@property (nonatomic, retain) NSArray *recommendationArray;
 
 //view
 @property (nonatomic, retain) UILabel *assessor;

@@ -13,6 +13,7 @@
 
 @synthesize assessmentTree, assessor, date, caliper, height;
 @synthesize assessorField, caliperButton, heightButton, assessmentTable;
+@synthesize conditionArray, recommendationArray;
 
 -(id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
     //initializes and passes assessment from parent controller
@@ -75,9 +76,7 @@
 	} else if ([lengthUnits isEqualToString:@"Imperial"]) {
 		[heightPickerView addLabel:@"ft" forComponent:2 forLongestString:@"m"];
 		[heightPickerView addLabel:@"in" forComponent:3 forLongestString:@"cm"];
-	}
-	
-    
+	}   
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -142,6 +141,23 @@
         [[TTURLCache sharedCache] removeURL:url fromDisk:YES];
         ++urlctr;
     }
+	//Set up condition and recommendation arrays
+	//Nested array so that they correspond to the sections
+	NSArray *descriptors = [NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease]];
+	
+	conditionArray = [[NSArray alloc] initWithObjects:[NSArray arrayWithArray:[[assessmentTree mutableSetValueForKeyPath:@"form.condition"] sortedArrayUsingDescriptors:descriptors]],												   
+					  [NSArray arrayWithArray:[[assessmentTree mutableSetValueForKeyPath:@"crown.condition"] sortedArrayUsingDescriptors:descriptors]],
+					  [NSArray arrayWithArray:[[assessmentTree mutableSetValueForKeyPath:@"trunk.condition"] sortedArrayUsingDescriptors:descriptors]],
+					  [NSArray arrayWithArray:[[assessmentTree mutableSetValueForKeyPath:@"roots.condition"] sortedArrayUsingDescriptors:descriptors]],
+					  [NSArray arrayWithArray:[[assessmentTree mutableSetValueForKeyPath:@"rootflare.condition"] sortedArrayUsingDescriptors:descriptors]],
+					  [NSArray arrayWithArray:[[assessmentTree mutableSetValueForKeyPath:@"overall.condition"] sortedArrayUsingDescriptors:descriptors]], nil];
+	
+	recommendationArray = [[NSArray alloc] initWithObjects:[NSArray arrayWithArray:[[assessmentTree mutableSetValueForKeyPath:@"form.recommendation"] sortedArrayUsingDescriptors:descriptors]],
+						   [NSArray arrayWithArray:[[assessmentTree mutableSetValueForKeyPath:@"crown.recommendation"] sortedArrayUsingDescriptors:descriptors]],
+						   [NSArray arrayWithArray:[[assessmentTree mutableSetValueForKeyPath:@"trunk.recommendation"] sortedArrayUsingDescriptors:descriptors]],
+						   [NSArray arrayWithArray:[[assessmentTree mutableSetValueForKeyPath:@"roots.recommendation"] sortedArrayUsingDescriptors:descriptors]],
+						   [NSArray arrayWithArray:[[assessmentTree mutableSetValueForKeyPath:@"rootflare.recommendation"] sortedArrayUsingDescriptors:descriptors]],
+						   [NSArray arrayWithArray:[[assessmentTree mutableSetValueForKeyPath:@"overall.recommendation"] sortedArrayUsingDescriptors:descriptors]] ,nil];
 	[assessmentTable reloadData];
 }
 
@@ -780,49 +796,16 @@
 
 - (void)configureCell:(AssessmentTreeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
 	//normal cells
-	NSArray *descriptors = [NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease]];
-	NSString *str;
-	NSLog(@"%d", indexPath.section);
-	switch (indexPath.section) {
-		case 0:
-			str = @"form";
-			break;
-		case 1:
-			str = @"crown";
-			break;
-		case 2:
-			str = @"trunk";
-			break;
-		case 3:
-			str = @"roots";
-			break;
-		case 4:
-			str = @"rootflare";
-			break;
-		case 5:
-			str = @"overall";
-			break;
-		default:
-		{
-			cell.conditionLabel.text = @"Cond";
-			cell.recommendationLabel.text = @"Rec";
-			return;
-			break;
-		}
-	}
 	
-	NSMutableSet *cSet = [assessmentTree mutableSetValueForKeyPath:[NSString stringWithFormat:@"%@.condition", str]];
-	NSMutableSet *rSet = [assessmentTree mutableSetValueForKeyPath:[NSString stringWithFormat:@"%@.recommendation", str]];
-	//This could be inefficient
-	if (indexPath.row < cSet.count) {
-		TreeOption *condOpt = [[cSet sortedArrayUsingDescriptors:descriptors] objectAtIndex:indexPath.row];
+	if (indexPath.row < [[conditionArray objectAtIndex:indexPath.section] count]) {
+		TreeOption *condOpt = (TreeOption *)[[conditionArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 		cell.conditionLabel.text = condOpt.name;
 	} else {
 		cell.conditionLabel.text = @"";
 	}
 
-	if (indexPath.row < rSet.count) {
-		TreeOption *recOpt = [[rSet sortedArrayUsingDescriptors:descriptors] objectAtIndex:indexPath.row];
+	if (indexPath.row < [[recommendationArray objectAtIndex:indexPath.section] count]) {
+		TreeOption *recOpt = (TreeOption *)[[recommendationArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 		cell.recommendationLabel.text = recOpt.name;
 	} else {
 		cell.recommendationLabel.text = @"";
@@ -989,6 +972,8 @@
 
 - (void)dealloc {
 	[assessmentTree release];
+	[conditionArray release];
+	[recommendationArray release];
 	[assessor release];
 	[date release];
 	[caliper release];
