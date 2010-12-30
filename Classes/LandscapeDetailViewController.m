@@ -31,7 +31,7 @@
     
     // Create and set the table header view.
     if (tableHeaderView == nil) {
-        [[NSBundle mainBundle] loadNibNamed:@"DetailHeaderView" owner:self options:nil];
+        [[NSBundle mainBundle] loadNibNamed:@"LandscapeDetailHeaderView" owner:self options:nil];
         self.tableView.tableHeaderView = tableHeaderView;
         self.tableView.allowsSelectionDuringEditing = YES;
 		self.tableView.backgroundColor  = [UIColor colorWithRed:0.369 green:0.435 blue:0.200 alpha:1.0]; //darker green
