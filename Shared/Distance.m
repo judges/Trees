@@ -3,7 +3,7 @@
 //  Trees
 //
 //  Created by Evan on 12/27/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 NCPTT. All rights reserved.
 //
 
 #import "Distance.h"
@@ -17,19 +17,58 @@
 @dynamic ft;
 
 -(void)willSave {
-	if([[self.changedValues allKeys] containsObject:@"cm"] && ![[self.changedValues allKeys] containsObject:@"in"]) {
-		//metric
-		//NSNumber *feet = [NSNumber numberWithDouble: [[self.changedValues valueForKey:@"m"] intValue] / 0.3048];
-		//NSNumber *fractionalFeet = [NSNumber numberWithDouble:[feet doubleValue] - round([feet doubleValue])];
-		//NSLog(@"%d, %d", [feet doubleValue], [fractionalFeet doubleValue]);
-		self.ft = [NSNumber numberWithDouble: [[self.changedValues valueForKey:@"m"] intValue] / 0.3048];
-		self.in = [NSNumber numberWithInt: round([[self.changedValues valueForKey:@"cm"] intValue] / 2.54)];
-		//NSLog(@"%d, %d, %d, %d", [self.m intValue], [self.cm intValue], [self.ft intValue], [self.in intValue]);
-	} else if ([[self.changedValues allKeys] containsObject:@"in"] && ![[self.changedValues allKeys] containsObject:@"cm"]) {
-		//imperial
-		self.m = [NSNumber numberWithDouble: [[self.changedValues valueForKey:@"ft"] intValue] / 3.2808];
-		self.cm = [NSNumber numberWithInt: round([[self.changedValues valueForKey:@"in"] intValue] / 0.3837)];
-		//NSLog(@"%d, %d, %d, %d", [self.m intValue], [self.cm intValue], [self.ft intValue], [self.in intValue]);
+	
+	if (([[self.changedValues allKeys] containsObject:@"cm"] || [[self.changedValues allKeys] containsObject:@"m"]) && !([[self.changedValues allKeys] containsObject:@"ft"] || [[self.changedValues allKeys] containsObject:@"in"])) {
+		//metric was changed
+		
+		NSNumber *theCM;
+		NSNumber *theM;
+		//get new value if changed, otherwise get the stored value
+		if ([[self.changedValues allKeys] containsObject:@"cm"]) {
+			theCM = [self.changedValues valueForKey:@"cm"];
+		} else {
+			theCM = self.cm;
+		}
+		if ([[self.changedValues allKeys] containsObject:@"m"]) {
+			theM = [self.changedValues valueForKey:@"m"];
+		} else {
+			theM = self.m;
+		}
+
+		NSNumber *inches = [NSNumber numberWithInt: round(([theCM intValue] + ([theM intValue]* 100)) / 2.54)]; 
+		NSNumber *feet = [NSNumber numberWithInt: 0];
+		while ([inches intValue] >= 12) {
+			feet = [NSNumber numberWithInt:[feet intValue] + 1];
+			inches = [NSNumber numberWithInt:[inches intValue] - 12];
+		}
+		self.ft = [NSNumber numberWithInt:[feet intValue]];
+		self.in = [NSNumber numberWithInt:[inches intValue]];
+	} else if (([[self.changedValues allKeys] containsObject:@"ft"] || [[self.changedValues allKeys] containsObject:@"in"]) && !([[self.changedValues allKeys] containsObject:@"cm"] || [[self.changedValues allKeys] containsObject:@"m"])) {
+		//imperial was changed
+		
+		NSNumber *theFT;
+		NSNumber *theIN;
+		//get new value if changed, otherwise get the stored value
+		if ([[self.changedValues allKeys] containsObject:@"ft"]) {
+			theFT = [self.changedValues valueForKey:@"ft"];
+		} else {
+			theFT = self.ft;
+		}
+		if ([[self.changedValues allKeys] containsObject:@"in"]) {
+			theIN = [self.changedValues valueForKey:@"in"];
+		} else {
+			theIN = self.in;
+		}
+		
+		NSNumber *centimeters = [NSNumber numberWithInt:round(([theIN intValue] + ([theFT intValue] * 12)) / 0.3937)];
+		NSNumber *meters = [NSNumber numberWithInt:0];
+		while ([centimeters intValue] >= 100) {
+			meters = [NSNumber numberWithInt:[meters intValue] + 1];
+			centimeters = [NSNumber numberWithInt:[centimeters intValue] - 100];
+		}
+		self.m = [NSNumber numberWithInt:[meters intValue]];
+		self.cm = [NSNumber numberWithInt:[centimeters intValue]];
+		NSLog(@"%d, %d, %d, %d", [self.m intValue], [self.cm intValue], [self.ft intValue], [self.in intValue]);
 	} else {
 		//ready to save once we get here. The above options end up calling willSave again, so this else ensures that there's no inf loop
 	}
