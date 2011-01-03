@@ -198,6 +198,9 @@
     [imageView release];
     [nameLabel release];
     [address1Label release];
+	[cityLabel release];
+	[stateLabel release];
+	[zipLabel release];
     [gpsLabel release];
     [super dealloc];
 }

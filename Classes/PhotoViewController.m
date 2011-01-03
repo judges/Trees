@@ -132,6 +132,7 @@
     [photos release];
     [ids release];
     [captions release];
+	[objID release];
     [_deleteButton release];
     self.photoSet = nil; 
     self.count = 0;
