@@ -7,7 +7,9 @@
 //
 
 #import "TreeListTableViewController.h"
-
+#import "TreeDetailViewController.h"
+#import "Tree.h"
+#import "TreeTableViewCell.h"
 
 @implementation TreeListTableViewController
 
@@ -79,7 +81,7 @@
 }
 
 
-/*
+
 - (void)treeAddViewController:(TreeAddViewController *)treeAddViewController didAddTree:(Tree *)tree {
     if (tree) {        
         // Show the tree in a new view controller
@@ -89,9 +91,9 @@
     // Dismiss the modal add tree view controller
     [self dismissModalViewControllerAnimated:YES];
 }
-*/
 
-/*
+
+
 
 - (void)showTree:(Tree *)tree animated:(BOOL)animated {
     // Create a detail view controller, set the tree, then push it.
@@ -101,7 +103,7 @@
     [self.navigationController pushViewController:detailViewController animated:animated];
     [detailViewController release];
 }
-*/
+
 
 #pragma mark -
 #pragma mark Table view methods
