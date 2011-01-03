@@ -11,7 +11,6 @@
 
 @implementation AssessmentTableViewController
 @synthesize fetchedResultsController;
-@synthesize managedObjectContext;
 @synthesize typesArray, landscapesArray;
 
 #pragma mark -
@@ -552,7 +551,6 @@
     [typeActionSheet release];
     [landscapeActionSheet release];
     [fetchedResultsController release];
-	[managedObjectContext release];
     [super dealloc];
 }
 

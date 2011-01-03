@@ -51,7 +51,6 @@
 
 
 - (void)dealloc {
-	[mySearchBar release];
 	[super dealloc];
 }
 
@@ -248,6 +247,7 @@
 	[super viewDidUnload];
 	
 	// release and set to nil
+	[mySearchBar release];
 	self.mySearchBar = nil;
 }
 
