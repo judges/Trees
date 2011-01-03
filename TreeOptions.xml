@@ -115,6 +115,7 @@
 			<option>Fair</option>
 			<option>Poor</option>
 			<option>Dead</option>
+			<option>Hazard</option>
 		</condition>
 		<recommendation>
 			<option>No action</option>
