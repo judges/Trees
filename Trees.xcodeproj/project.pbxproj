@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1402A24A12CD375A00434217 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1402A24912CD375A00434217 /* Default.png */; };
 		1402A25612CD37DE00434217 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1402A25512CD37DE00434217 /* Default@2x.png */; };
+		1410C58512D23B5B00943E73 /* Tree.m in Sources */ = {isa = PBXBuildFile; fileRef = 1410C58212D23B5B00943E73 /* Tree.m */; };
+		1410C58612D23B5B00943E73 /* ImageTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 1410C58412D23B5B00943E73 /* ImageTree.m */; };
 		144D4CE112CA590800EB71A4 /* Trees.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 144D4CDF12CA590800EB71A4 /* Trees.xcdatamodeld */; };
 		1462910C12CB934900223CF8 /* archeologist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462910B12CB934900223CF8 /* archeologist@2x.png */; };
 		1462911212CB94FC00223CF8 /* tree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462911112CB94FC00223CF8 /* tree@2x.png */; };
@@ -549,6 +551,10 @@
 /* Begin PBXFileReference section */
 		1402A24912CD375A00434217 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		1402A25512CD37DE00434217 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		1410C58112D23B5B00943E73 /* Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tree.h; path = ../Tree.h; sourceTree = "<group>"; };
+		1410C58212D23B5B00943E73 /* Tree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tree.m; path = ../Tree.m; sourceTree = "<group>"; };
+		1410C58312D23B5B00943E73 /* ImageTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageTree.h; path = ../ImageTree.h; sourceTree = "<group>"; };
+		1410C58412D23B5B00943E73 /* ImageTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageTree.m; path = ../ImageTree.m; sourceTree = "<group>"; };
 		144D4CE012CA590800EB71A4 /* Trees.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Trees.xcdatamodel; sourceTree = "<group>"; };
 		1462910B12CB934900223CF8 /* archeologist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "archeologist@2x.png"; sourceTree = "<group>"; };
 		1462911112CB94FC00223CF8 /* tree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tree@2x.png"; sourceTree = "<group>"; };
@@ -969,6 +975,10 @@
 		208B329412BFE27A00D8FA03 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1410C58112D23B5B00943E73 /* Tree.h */,
+				1410C58212D23B5B00943E73 /* Tree.m */,
+				1410C58312D23B5B00943E73 /* ImageTree.h */,
+				1410C58412D23B5B00943E73 /* ImageTree.m */,
 				208B329C12BFE27B00D8FA03 /* TreeRoots.h */,
 				208B329D12BFE27B00D8FA03 /* TreeRoots.m */,
 				208B32A212BFE27B00D8FA03 /* Image.h */,
@@ -2093,6 +2103,8 @@
 				144D4CE112CA590800EB71A4 /* Trees.xcdatamodeld in Sources */,
 				20CE5B6E12CBB8AB008624F3 /* AssessmentTreeTableViewCell.m in Sources */,
 				20CE5C3B12CBD635008624F3 /* AssessmentTreeTableViewHeaderCell.m in Sources */,
+				1410C58512D23B5B00943E73 /* Tree.m in Sources */,
+				1410C58612D23B5B00943E73 /* ImageTree.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
