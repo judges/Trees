@@ -41,7 +41,6 @@
 @property NSInteger tappedRow;
 @property NSInteger editingRow;
 @property (nonatomic, retain) NSTimer *tapTimer;
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSMutableArray *conditionStringArray;
 @property (nonatomic, retain) NSMutableArray *recommendationStringArray;
 @property (nonatomic, retain) NSMutableArray *conditionArray;

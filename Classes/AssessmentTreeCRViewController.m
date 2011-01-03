@@ -12,7 +12,7 @@
 
 @implementation AssessmentTreeCRViewController
 
-@synthesize whichId, managedObjectContext, conditionStringArray, recommendationStringArray, conditionArray, recommendationArray, tree, isEditing, conditionTableView, recommendationTableView;
+@synthesize whichId, conditionStringArray, recommendationStringArray, conditionArray, recommendationArray, tree, isEditing, conditionTableView, recommendationTableView;
 @synthesize selectedConditionIndices, selectedRecommendationIndices, tapCount, tapTimer, tappedRow, editingRow;
 
 -(id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
@@ -967,7 +967,6 @@
 	[tree release];
 	[whichId release];
 	[tapTimer release];
-	[managedObjectContext release];
     [conditionStringArray release];
     [recommendationStringArray release];
     [conditionArray release];
