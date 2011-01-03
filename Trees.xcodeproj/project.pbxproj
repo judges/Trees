@@ -11,6 +11,7 @@
 		1402A25612CD37DE00434217 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1402A25512CD37DE00434217 /* Default@2x.png */; };
 		1410C58512D23B5B00943E73 /* Tree.m in Sources */ = {isa = PBXBuildFile; fileRef = 1410C58212D23B5B00943E73 /* Tree.m */; };
 		1410C58612D23B5B00943E73 /* ImageTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 1410C58412D23B5B00943E73 /* ImageTree.m */; };
+		1410C61712D2421600943E73 /* TreeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1410C61612D2421600943E73 /* TreeTableViewCell.m */; };
 		144D4CE112CA590800EB71A4 /* Trees.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 144D4CDF12CA590800EB71A4 /* Trees.xcdatamodeld */; };
 		1462910C12CB934900223CF8 /* archeologist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462910B12CB934900223CF8 /* archeologist@2x.png */; };
 		1462911212CB94FC00223CF8 /* tree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1462911112CB94FC00223CF8 /* tree@2x.png */; };
@@ -555,6 +556,8 @@
 		1410C58212D23B5B00943E73 /* Tree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tree.m; path = ../Tree.m; sourceTree = "<group>"; };
 		1410C58312D23B5B00943E73 /* ImageTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageTree.h; path = ../ImageTree.h; sourceTree = "<group>"; };
 		1410C58412D23B5B00943E73 /* ImageTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageTree.m; path = ../ImageTree.m; sourceTree = "<group>"; };
+		1410C61512D2421600943E73 /* TreeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeTableViewCell.h; sourceTree = "<group>"; };
+		1410C61612D2421600943E73 /* TreeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeTableViewCell.m; sourceTree = "<group>"; };
 		144D4CE012CA590800EB71A4 /* Trees.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Trees.xcdatamodel; sourceTree = "<group>"; };
 		1462910B12CB934900223CF8 /* archeologist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "archeologist@2x.png"; sourceTree = "<group>"; };
 		1462911112CB94FC00223CF8 /* tree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tree@2x.png"; sourceTree = "<group>"; };
@@ -896,6 +899,8 @@
 			children = (
 				14DBFCA912C954680051B792 /* TreeListTableViewController.h */,
 				14DBFCAA12C954680051B792 /* TreeListTableViewController.m */,
+				1410C61512D2421600943E73 /* TreeTableViewCell.h */,
+				1410C61612D2421600943E73 /* TreeTableViewCell.m */,
 			);
 			name = Trees;
 			sourceTree = "<group>";
@@ -903,6 +908,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				1D6058910D05DD3D006BFB54 /* Trees.app */,
 			);
 			name = Products;
@@ -1057,9 +1063,9 @@
 				14DBFCA812C954220051B792 /* Trees */,
 				208B387512C00EDA00D8FA03 /* LauncherViewController.h */,
 				208B32DA12BFE27B00D8FA03 /* LauncherViewController.m */,
+				208B32CB12BFE27B00D8FA03 /* Photos */,
 				208B32CF12BFE27B00D8FA03 /* Assessments */,
 				208B32CE12BFE27B00D8FA03 /* Landscapes */,
-				208B32CB12BFE27B00D8FA03 /* Photos */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1383,6 +1389,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				28EEBF621118D79A00187D67 /* Shared */,
 				149BF39912BFB20D000E27DB /* License.txt */,
 				208B329112BFE25D00D8FA03 /* ReadMe.txt */,
 				20CE565C12C94165008624F3 /* DistancePickerView */,
@@ -1394,9 +1401,7 @@
 				208B325412BFE24A00D8FA03 /* images */,
 				2860E386111B897F00E27156 /* iPhone */,
 				29B97317FDCFA39411CA2CEA /* iPad */,
-				28EEBF621118D79A00187D67 /* Shared */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				20AC464612C900A400BC4C12 /* Settings.bundle */,
 			);
@@ -2105,6 +2110,7 @@
 				20CE5C3B12CBD635008624F3 /* AssessmentTreeTableViewHeaderCell.m in Sources */,
 				1410C58512D23B5B00943E73 /* Tree.m in Sources */,
 				1410C58612D23B5B00943E73 /* ImageTree.m in Sources */,
+				1410C61712D2421600943E73 /* TreeTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
