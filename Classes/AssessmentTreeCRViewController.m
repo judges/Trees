@@ -965,12 +965,18 @@
 
 - (void)dealloc {
     //[mainView release];
+	[tree release];
+	[whichId release];
+	[tapTimer release];
+	[managedObjectContext release];
     [conditionStringArray release];
     [recommendationStringArray release];
     [conditionArray release];
     [recommendationArray release];
 	[selectedConditionIndices release];
 	[selectedRecommendationIndices release];
+	[conditionTableView release];
+	[recommendationTableView release];
     [imagePicker release];
 	[addTextField release];
     [super dealloc];

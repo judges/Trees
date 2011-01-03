@@ -238,6 +238,8 @@
 
 
 - (void)dealloc {
+	[fetchedResultsController release];
+	[managedObjectContext release];
     [super dealloc];
 }
 

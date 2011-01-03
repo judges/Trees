@@ -552,6 +552,7 @@
     [typeActionSheet release];
     [landscapeActionSheet release];
     [fetchedResultsController release];
+	[managedObjectContext release];
     [super dealloc];
 }
 
