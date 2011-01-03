@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate_Shared.h"
+#import "TreeAddViewController.h"
 
 
 @interface TreeListTableViewController : UITableViewController <NSFetchedResultsControllerDelegate> {

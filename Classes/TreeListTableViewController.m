@@ -58,7 +58,50 @@
 }
 
 
+#pragma mark -
+#pragma mark Tree support
 
+- (void)add:(id)sender {
+	// To add a new tree, create a TreeAddViewController.  Present it as a modal view so that the user's focus is on the task of adding the tree; wrap the controller in a navigation controller to provide a navigation bar for the Done and Save buttons (added by the TreeAddViewController in its viewDidLoad method).
+	
+    TreeAddViewController *addController = [[TreeAddViewController alloc] initWithNibName:@"TreeAddView" bundle:nil];
+	
+    addController.delegate = self;
+	
+	Tree *newTree = [NSEntityDescription insertNewObjectForEntityForName:@"Tree" inManagedObjectContext:self.managedObjectContext];
+	addController.tree = newTree;
+	
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:addController];
+    [self presentModalViewController:navigationController animated:YES];
+    
+    [navigationController release];
+    [addController release];
+}
+
+
+/*
+- (void)treeAddViewController:(TreeAddViewController *)treeAddViewController didAddTree:(Tree *)tree {
+    if (tree) {        
+        // Show the tree in a new view controller
+        [self showTree:tree animated:NO];
+    }
+    
+    // Dismiss the modal add tree view controller
+    [self dismissModalViewControllerAnimated:YES];
+}
+*/
+
+/*
+
+- (void)showTree:(Tree *)tree animated:(BOOL)animated {
+    // Create a detail view controller, set the tree, then push it.
+    TreeDetailViewController *detailViewController = [[TreeDetailViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    detailViewController.tree = tree;
+    
+    [self.navigationController pushViewController:detailViewController animated:animated];
+    [detailViewController release];
+}
+*/
 
 #pragma mark -
 #pragma mark Table view methods
