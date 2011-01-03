@@ -8,9 +8,32 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TreeAddDelegate;
+@class Tree;
 
-@interface TreeAddViewController : UIViewController {
-
+@interface TreeAddViewController : UIViewController <UITextFieldDelegate>
+{
+@private
+	
+	Tree *tree;
+	UITextField *nameTextField;
+	id <TreeAddDelegate> delegate;
 }
+
+@property(nonatomic, retain) Tree *tree;
+@property(nonatomic, retain) IBOutlet UITextField *nameTextField;
+@property(nonatomic, assign) id <TreeAddDelegate> delegate;
+
+-(void)save;
+-(void)cancel;
+
+@end
+
+
+
+
+@protocol TreeAddDelegate <NSObject> 
+// tree == nil on cancel
+- (void)treeAddViewController:(TreeAddViewController *)treeAddViewController didAddTree:(Tree *)tree;
 
 @end

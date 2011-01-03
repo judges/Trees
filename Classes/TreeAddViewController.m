@@ -7,35 +7,83 @@
 //
 
 #import "TreeAddViewController.h"
-
+#import "Tree.h"
 
 @implementation TreeAddViewController
 
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
+@synthesize tree;
+@synthesize nameTextField;
+@synthesize delegate;
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	
+	[super viewDidLoad];
+	
+    // Configure navigation bar
+	self.navigationItem.title=@"Add Tree";
+	
+    UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancel)];
+    self.navigationItem.leftBarButtonItem = cancelButtonItem;
+    [cancelButtonItem release];
+    
+    UIBarButtonItem *saveButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleDone target:self action:@selector(save)];
+    self.navigationItem.rightBarButtonItem = saveButtonItem;
+    [saveButtonItem release];
+	
+	[nameTextField becomeFirstResponder];
+	
 }
-*/
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	if (textField == nameTextField) {
+		[nameTextField resignFirstResponder];
+		[self save];
+	}
+	return YES;
 }
-*/
+
+- (void)save {
+    
+    tree.name = nameTextField.text;
+	
+	NSError *error = nil;
+	if (![tree.managedObjectContext save:&error]) {
+		/*
+		 Replace this implementation with code to handle the error appropriately.
+		 
+		 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+		 */
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		abort();
+	}		
+    
+	[self.delegate treeAddViewController:self didAddTree:tree];
+}
+
+- (void)cancel {
+	
+	[tree.managedObjectContext deleteObject:tree];
+	
+	NSError *error = nil;
+	if (![tree.managedObjectContext save:&error]) {
+		/*
+		 Replace this implementation with code to handle the error appropriately.
+		 
+		 abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+		 */
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		abort();
+	}		
+	
+    [self.delegate treeAddViewController:self didAddTree:nil];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // All but upside down
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -44,14 +92,23 @@
     // Release any cached data, images, etc. that aren't in use.
 }
 
+
+
 - (void)viewDidUnload {
+	
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+	
+	self.nameTextField = nil;
+	
 }
 
 
 - (void)dealloc {
+	[tree release];
+	[nameTextField release];
+	[delegate release];
     [super dealloc];
 }
 
