@@ -10,7 +10,7 @@
 #import <Three20/Three20.h>
 #import "IASKAppSettingsViewController.h"
 
-@interface LauncherViewController : TTViewController <TTLauncherViewDelegate, IASKSettingsDelegate> {
+@interface LauncherViewController : TTViewController <TTLauncherViewDelegate, IASKSettingsDelegate, UITextFieldDelegate> {
 	TTLauncherView* _launcherView;
 }
 

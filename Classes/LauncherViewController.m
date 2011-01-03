@@ -254,7 +254,8 @@
 - (void)launcherView:(TTLauncherView*)launcher didSelectItem:(TTLauncherItem*)item {
 	TTNavigator *navigator = [TTNavigator navigator];
 
-    [navigator openURLAction:[TTURLAction actionWithURLPath:item.URL]];
+    //[navigator openURLAction:[TTURLAction actionWithURLPath:item.URL]];
+	[navigator openURLAction:[[TTURLAction actionWithURLPath:item.URL] applyAnimated:YES] ];
 	
 }
 
