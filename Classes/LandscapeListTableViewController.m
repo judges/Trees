@@ -6,7 +6,7 @@
 @implementation LandscapeListTableViewController
 
 
-@synthesize managedObjectContext, fetchedResultsController;
+@synthesize fetchedResultsController;
 
 #pragma mark -
 #pragma mark UIViewController overrides
@@ -28,6 +28,9 @@
         managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     }
 	
+	//set up fetchedresultscontroller
+	[self fetchedResultsController];
+	[fetchedResultsController retain];
 	UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add:)];
     self.navigationItem.rightBarButtonItem = addButtonItem;
     [addButtonItem release];
@@ -47,6 +50,9 @@
 	}		
 }
 
+- (void) viewDidUnload {
+	[fetchedResultsController release];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Support all orientations except upside down
@@ -64,7 +70,7 @@
 	
     addController.delegate = self;
 	
-	Landscape *newLandscape = [NSEntityDescription insertNewObjectForEntityForName:@"Landscape" inManagedObjectContext:self.managedObjectContext];
+	Landscape *newLandscape = [NSEntityDescription insertNewObjectForEntityForName:@"Landscape" inManagedObjectContext:managedObjectContext];
 	addController.landscape = newLandscape;
 	
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:addController];
@@ -175,14 +181,11 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the managed object for the given index path
 		
-		
-		
-		NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
-		[context deleteObject:[fetchedResultsController objectAtIndexPath:indexPath]];
+		[managedObjectContext deleteObject:[fetchedResultsController objectAtIndexPath:indexPath]];
 		
 		// Save the context.
 		NSError *error;
-		if (![context save:&error]) {
+		if (![managedObjectContext save:&error]) {
 			/*
 			 Replace this implementation with code to handle the error appropriately.
 			 
@@ -227,6 +230,7 @@
 	
 	return fetchedResultsController;
 }    
+
 
 
 /**
@@ -287,8 +291,6 @@
 #pragma mark Memory management
 
 - (void)dealloc {
-	[fetchedResultsController release];
-	[managedObjectContext release];
     [super dealloc];
 }
 

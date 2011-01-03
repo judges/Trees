@@ -13,17 +13,16 @@
 @class Landscape;
 @class LandscapeTableViewCell;
 
-@interface LandscapeListTableViewController : UITableViewController <NSFetchedResultsControllerDelegate> {
+@interface LandscapeListTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, LandscapeAddDelegate> {
 	
 @private
 
 	NSFetchedResultsController *fetchedResultsController_;
-	NSManagedObjectContext *managedObjectContext_;
+	NSManagedObjectContext *managedObjectContext;
 	
 }
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
  - (void)showLandscape:(Landscape *)landscape animated:(BOOL)animated;
  - (void)configureCell:(LandscapeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;

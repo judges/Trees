@@ -102,9 +102,8 @@
 	 */
 	if (!editing) {
 		
-		NSManagedObjectContext *context = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext];
 		NSError *error = nil;
-		if (![context save:&error]) {
+		if (![[(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext] save:&error]) {
 			/*
 			 Replace this implementation with code to handle the error appropriately.
 			 
@@ -279,7 +278,6 @@
     [stateTextField release];
     [zipTextField release];
     [gpsTextField release];
-    [landscape release];
     [super dealloc];
 }
 

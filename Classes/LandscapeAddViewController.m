@@ -106,9 +106,7 @@
 
 
 - (void)dealloc {
-	[landscape release];
 	[nameTextField release];
-	[delegate release];
     [super dealloc];
 }
 

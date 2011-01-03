@@ -28,7 +28,6 @@
 }
 
 @property (nonatomic, retain) Landscape *landscape;
-
 @property (nonatomic, retain) IBOutlet UIView *tableHeaderView;
 @property (nonatomic, retain) IBOutlet UIButton *photoButton;
 @property (nonatomic, retain) IBOutlet UITextField *nameTextField;
