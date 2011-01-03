@@ -20,19 +20,25 @@
     // Configure the navigation bar
     self.title = @"Trees";
 	
+	//Darker Green
+	self.tableView.backgroundColor = [UIColor colorWithRed:0.369 green:0.435 blue:0.200 alpha:1.0];
+	
+	self.tableView.opaque = NO;
+	self.tableView.backgroundView = nil;
+	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLineEtched];
+	
+	
 	//load managedObjectContext from AppDelegate
     if(!managedObjectContext){
         managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     }
 	
-    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
-    
-    UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add:)];
+	UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add:)];
     self.navigationItem.rightBarButtonItem = addButtonItem;
     [addButtonItem release];
     
     // Set the table view's row height
-    self.tableView.rowHeight = 44.0;
+    self.tableView.rowHeight = 64.0;
 	
 	NSError *error = nil;
 	if (![[self fetchedResultsController] performFetch:&error]) {
@@ -53,68 +59,32 @@
 
 
 
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-*/
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-}
-*/
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
 
 #pragma mark -
-#pragma mark Table view data source
+#pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
-	/*
-	NSInteger count = [[fetchedResultsController sections] count];
+    NSInteger count = [[fetchedResultsController sections] count];
     
 	if (count == 0) {
 		count = 1;
 	}
 	
     return count;
-	 */
-	
-	return 1;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger numberOfRows = 0;
 	
-	/*
     if ([[fetchedResultsController sections] count] > 0) {
         id <NSFetchedResultsSectionInfo> sectionInfo = [[fetchedResultsController sections] objectAtIndex:section];
         numberOfRows = [sectionInfo numberOfObjects];
     }
     
     return numberOfRows;
-	 */
-	
-	return 0;
 }
+
 
 
 // Customize the appearance of table view cells.
@@ -127,7 +97,24 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    // Configure the cell...
+	// Define your row
+    NSInteger row = [indexPath row];
+	
+	UIView *backgroundView = [[UIView alloc] init];
+	if ((row % 2) == 0)
+		
+		//darker green color
+		backgroundView.backgroundColor = [UIColor colorWithRed:0.369 green:0.435 blue:0.200 alpha:1.0];
+	
+	else
+		
+		//light green
+		backgroundView.backgroundColor = [UIColor colorWithRed:0.616 green:0.663 blue:0.486 alpha:1.0];	
+	
+	cell.backgroundView = backgroundView;
+	[backgroundView release]; 
+    
+	[self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
