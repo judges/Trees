@@ -146,14 +146,14 @@
 		[button3 setBackgroundImage:[UIImage imageNamed:@"button-default.png"] forState:UIControlStateNormal];
 	}
 	if ([assessmentTable numberOfRowsInSection:3] == 0) {
-		[button4 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
-	} else {
-		[button4 setBackgroundImage:[UIImage imageNamed:@"button-default.png"] forState:UIControlStateNormal];
-	}
-	if ([assessmentTable numberOfRowsInSection:4] == 0) {
 		[button5 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
 	} else {
 		[button5 setBackgroundImage:[UIImage imageNamed:@"button-default.png"] forState:UIControlStateNormal];
+	}
+	if ([assessmentTable numberOfRowsInSection:4] == 0) {
+		[button4 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
+	} else {
+		[button4 setBackgroundImage:[UIImage imageNamed:@"button-default.png"] forState:UIControlStateNormal];
 	}
 	if ([assessmentTable numberOfRowsInSection:5] == 0) {
 		[button6 setBackgroundImage:[UIImage imageNamed:@"button-notdone.png"] forState:UIControlStateNormal];
