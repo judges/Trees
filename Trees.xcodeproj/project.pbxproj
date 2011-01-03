@@ -39,6 +39,8 @@
 		149BF39A12BFB20D000E27DB /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 149BF39912BFB20D000E27DB /* License.txt */; };
 		14ABD40812D2783E0037F689 /* TreeAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14ABD40612D2783E0037F689 /* TreeAddViewController.m */; };
 		14ABD40912D2783E0037F689 /* TreeAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14ABD40712D2783E0037F689 /* TreeAddView.xib */; };
+		14ABD42E12D27DB40037F689 /* TreeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14ABD42C12D27DB40037F689 /* TreeDetailViewController.m */; };
+		14ABD42F12D27DB40037F689 /* TreeDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14ABD42D12D27DB40037F689 /* TreeDetailHeaderView.xib */; };
 		14C5562A12CCE5B100642D20 /* photo_camera-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 14C5562912CCE5B100642D20 /* photo_camera-small.png */; };
 		14C5562C12CCE5F800642D20 /* photo_camera-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14C5562B12CCE5F800642D20 /* photo_camera-small@2x.png */; };
 		14DA250F12BFA7CD008400A2 /* Tree-256.png in Resources */ = {isa = PBXBuildFile; fileRef = 14DA250E12BFA7CD008400A2 /* Tree-256.png */; };
@@ -595,6 +597,9 @@
 		14ABD40512D2783E0037F689 /* TreeAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeAddViewController.h; sourceTree = "<group>"; };
 		14ABD40612D2783E0037F689 /* TreeAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeAddViewController.m; sourceTree = "<group>"; };
 		14ABD40712D2783E0037F689 /* TreeAddView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TreeAddView.xib; sourceTree = "<group>"; };
+		14ABD42B12D27DB40037F689 /* TreeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeDetailViewController.h; sourceTree = "<group>"; };
+		14ABD42C12D27DB40037F689 /* TreeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeDetailViewController.m; sourceTree = "<group>"; };
+		14ABD42D12D27DB40037F689 /* TreeDetailHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TreeDetailHeaderView.xib; sourceTree = "<group>"; };
 		14C5562912CCE5B100642D20 /* photo_camera-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_camera-small.png"; sourceTree = "<group>"; };
 		14C5562B12CCE5F800642D20 /* photo_camera-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo_camera-small@2x.png"; sourceTree = "<group>"; };
 		14DA250E12BFA7CD008400A2 /* Tree-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tree-256.png"; sourceTree = "<group>"; };
@@ -909,6 +914,9 @@
 				14ABD40512D2783E0037F689 /* TreeAddViewController.h */,
 				14ABD40612D2783E0037F689 /* TreeAddViewController.m */,
 				14ABD40712D2783E0037F689 /* TreeAddView.xib */,
+				14ABD42B12D27DB40037F689 /* TreeDetailViewController.h */,
+				14ABD42C12D27DB40037F689 /* TreeDetailViewController.m */,
+				14ABD42D12D27DB40037F689 /* TreeDetailHeaderView.xib */,
 			);
 			name = Trees;
 			sourceTree = "<group>";
@@ -2003,6 +2011,7 @@
 				1402A24A12CD375A00434217 /* Default.png in Resources */,
 				1402A25612CD37DE00434217 /* Default@2x.png in Resources */,
 				14ABD40912D2783E0037F689 /* TreeAddView.xib in Resources */,
+				14ABD42F12D27DB40037F689 /* TreeDetailHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2121,6 +2130,7 @@
 				1410C58612D23B5B00943E73 /* ImageTree.m in Sources */,
 				1410C61712D2421600943E73 /* TreeTableViewCell.m in Sources */,
 				14ABD40812D2783E0037F689 /* TreeAddViewController.m in Sources */,
+				14ABD42E12D27DB40037F689 /* TreeDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
