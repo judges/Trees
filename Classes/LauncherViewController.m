@@ -19,7 +19,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
 
-		//Set navigation bar color
+		//Set navigation bar title
 		self.title = @"Trees";
 		
 	}
@@ -29,9 +29,7 @@
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	//return TTIsSupportedOrientation(interfaceOrientation);
-	//return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-	return YES;
+	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
@@ -40,7 +38,7 @@
 		_launcherView.frame=self.view.bounds;
 	
 	} else	if((self.interfaceOrientation == UIDeviceOrientationPortrait) || (self.interfaceOrientation == UIDeviceOrientationPortraitUpsideDown)){
-		_launcherView.columnCount = 4;
+		_launcherView.columnCount = 3;
 		_launcherView.frame=self.view.bounds;
 	}
 }
@@ -78,15 +76,11 @@
 - (void)loadView {
 	[super loadView];
 	CGRect  bounds = self.view.bounds;
-
+	[self.mySearchBar sizeToFit];
 	
 	// launcherView
-	//_launcherView.frame = CGRectMake(0,45,bounds.size.width,bounds.size.height-2*45); 
-	_launcherView.frame = CGRectMake(0,88,bounds.size.width,bounds.size.height-2*90); 
-	
+	_launcherView.frame = CGRectMake(0,45,bounds.size.width,bounds.size.height-2*45); 
 	_launcherView = [[TTLauncherView alloc] initWithFrame:self.view.bounds];
-	//_launcherView.backgroundColor = [UIColor colorWithRed:0.486 green:0.318 blue:0.192 alpha:1.0]; //earth brown
-	//_launcherView.backgroundColor = [UIColor colorWithRed:0.616 green:0.663 blue:0.486 alpha:1.0]; //light green
 	_launcherView.backgroundColor = [UIColor colorWithRed:0.369 green:0.435 blue:0.200 alpha:1.0]; //darker green
 	_launcherView.opaque = YES;
 	_launcherView.delegate = self;
@@ -95,10 +89,13 @@
 	if((self.interfaceOrientation == UIDeviceOrientationLandscapeLeft) || (self.interfaceOrientation == UIDeviceOrientationLandscapeRight)){
 		_launcherView.columnCount = 5;
 		_launcherView.frame=self.view.bounds;
+		[self.mySearchBar sizeToFit];
 		
 	} else	if((self.interfaceOrientation == UIDeviceOrientationPortrait) || (self.interfaceOrientation == UIDeviceOrientationPortraitUpsideDown)){
 		_launcherView.columnCount = 3;
 		_launcherView.frame=self.view.bounds;
+		[self.mySearchBar sizeToFit];
+		
 	}
  
 	
@@ -239,9 +236,6 @@
 
 	}
  	
-	
-	// note: here you can also change its "tintColor" property to a different UIColor
-	
 	[self.view addSubview: self.mySearchBar];
 }
 
