@@ -10,10 +10,10 @@
 #import <Three20/Three20.h>
 #import "IASKAppSettingsViewController.h"
 
-@interface LauncherViewController : TTViewController <TTLauncherViewDelegate, IASKSettingsDelegate, UISearchBarDelegate> {
+@interface LauncherViewController : TTViewController <TTLauncherViewDelegate, IASKSettingsDelegate> {
 	TTLauncherView* _launcherView;
 }
 
-@property (nonatomic, retain) UISearchBar *mySearchBar;
+@property (nonatomic, retain) TTSearchBar *mySearchBar;
 
 @end

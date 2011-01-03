@@ -964,7 +964,6 @@
 
 
 - (void)dealloc {
-    //[mainView release];
 	[tree release];
 	[whichId release];
 	[tapTimer release];
