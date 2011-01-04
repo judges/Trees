@@ -96,7 +96,7 @@
 		[self.mySearchBar sizeToFit];
 		
 	}
- 
+	_launcherView.frame = CGRectMake(_launcherView.frame.origin.x, _launcherView.frame.origin.y + 44, _launcherView.frame.size.width, _launcherView.frame.size.height - 44);
 	
 	_launcherView.pages = [NSArray arrayWithObjects:
 						   [NSArray arrayWithObjects:
