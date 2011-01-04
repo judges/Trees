@@ -47,7 +47,6 @@
 	//load assosciated assessment records
 	NSArray *descriptors = [NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"created_at" ascending:NO] autorelease]];
 	assessmentArray = [[NSArray alloc] initWithArray:[[landscape mutableSetValueForKey:@"assessments"] sortedArrayUsingDescriptors:descriptors]];
-	NSLog(@"%@", assessmentArray);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -203,7 +202,6 @@
 
 - (void)configureCell:(AssessmentTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
 	Assessment *assessment = [assessmentArray objectAtIndex:indexPath.row];
-	NSLog(@"%@", assessment);
 	cell.assessment = assessment;
 	//This logic should probably be moved into the assessment cell class, since it only needs the assessment to fill the rest in
 	cell.landscapeName.text = assessment.landscape.name;

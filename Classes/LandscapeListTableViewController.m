@@ -260,7 +260,8 @@
 			break;
 			
 		case NSFetchedResultsChangeUpdate:
-			[self configureCell:(LandscapeTableViewCell *)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+			//[self configureCell:(LandscapeTableViewCell *)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+			[self.tableView cellForRowAtIndexPath:indexPath];
 			break;
 			
 		case NSFetchedResultsChangeMove:
