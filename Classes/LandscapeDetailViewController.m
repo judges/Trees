@@ -172,7 +172,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 0;
+	//just one for now
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -212,6 +213,11 @@
     [dateFormatter release];
     cell.date.text = date;
     cell.typeName.text = assessment.type.name;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
 }
 
 #pragma mark -
@@ -337,6 +343,7 @@
 #pragma mark dealloc
 
 - (void)dealloc {
+	[assessmentArray release];
     [tableHeaderView release];
     [photoButton release];
     [nameTextField release];
