@@ -36,9 +36,9 @@
         managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     }
 	
-	//set up fetchedresultscontroller
+	//set up fetched results controller
 	[self fetchedResultsController];
-	[fetchedResultsController retain];
+	
 	UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add:)];
     self.navigationItem.rightBarButtonItem = addButtonItem;
     [addButtonItem release];
@@ -102,11 +102,8 @@
 
 - (void)showLandscape:(Landscape *)landscape animated:(BOOL)animated {
     // Create a detail view controller, set the landscape, then push it.
-    LandscapeDetailViewController *detailViewController = [[LandscapeDetailViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    detailViewController.landscape = landscape;
-    
-    [self.navigationController pushViewController:detailViewController animated:animated];
-    [detailViewController release];
+    NSDictionary *query = [NSDictionary dictionaryWithObject:landscape forKey:@"landscape"];
+	[[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Landscapes/LandscapeDetailView"] applyQuery:query] applyAnimated:YES]];
 }
 
 
@@ -204,7 +201,6 @@
 		}
 	}   
 }
-
 
 #pragma mark -
 #pragma mark Fetched results controller

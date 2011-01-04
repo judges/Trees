@@ -44,6 +44,7 @@
   [map from:@"land://launcher" toViewController:[LauncherViewController class]];	
 
   [map from:@"land://Landscapes" toViewController:[LandscapeListTableViewController class]];
+  [map from:@"land://Landscapes/LandscapeDetailView?" toViewController:[LandscapeDetailViewController class]];
   [map from:@"land://assessments" toViewController:[AssessmentTableViewController class]];
   [map from:@"land://assessments/TreeViewAndInput?" toViewController:[AssessmentTreeViewAndInputController class]];
   [map from:@"land://assessments/TreeForm?" toViewController:[AssessmentTreeCRViewController class]];
@@ -58,7 +59,7 @@
   }
 	// Set the application defaults
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:@"Metric" forKey:@"lengthUnits"];
+	NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:@"Imperial" forKey:@"lengthUnits"];
 	[defaults registerDefaults:appDefaults];
 	[defaults synchronize];
   

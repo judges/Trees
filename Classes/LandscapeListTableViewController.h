@@ -13,7 +13,7 @@
 @class Landscape;
 @class LandscapeTableViewCell;
 
-@interface LandscapeListTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, LandscapeAddDelegate> {
+@interface LandscapeListTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource, LandscapeAddDelegate> {
 	
 @private
 

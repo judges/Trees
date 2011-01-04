@@ -16,15 +16,23 @@
 
 @implementation LandscapeDetailViewController
 
-@synthesize landscape;
-
+@synthesize landscape, assessmentArray;
 
 @synthesize tableHeaderView, photoButton, nameTextField, address1TextField, cityTextField, stateTextField, zipTextField, gpsTextField;
 
 #pragma mark -
 #pragma mark View controller
 
+-(id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
+    //initializes and passes landscape from parent controller
+	if(query && [query objectForKey:@"landscape"]){ 
+		self.landscape = (Landscape*) [query objectForKey:@"landscape"]; 
+	} 
+    return self; 
+} 
+
 - (void)viewDidLoad {
+	[super viewDidLoad];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     // Create and set the table header view.
@@ -35,6 +43,11 @@
 		self.tableView.backgroundColor  = [UIColor colorWithRed:0.369 green:0.435 blue:0.200 alpha:1.0]; //darker green
 		self.tableView.tableHeaderView.backgroundColor = [UIColor colorWithRed:0.369 green:0.435 blue:0.200 alpha:1.0]; //darker green
     }
+	
+	//load assosciated assessment records
+	NSArray *descriptors = [NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"created_at" ascending:NO] autorelease]];
+	assessmentArray = [[NSArray alloc] initWithArray:[[landscape mutableSetValueForKey:@"assessments"] sortedArrayUsingDescriptors:descriptors]];
+	NSLog(@"%@", assessmentArray);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -154,9 +167,63 @@
     return canMove;
 }
 
+#pragma mark -
+#pragma mark Table view data source
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 0;
+}
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+	return [[landscape mutableSetValueForKey:@"assessments"] count];
+}
 
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	//Right now there are only tree assessments so this is pretty simple
+	//But this is loading the nibs from the assessment page, eventually we should create cells specifically for this table
+	static NSString *AssessmentCellIdentifier = @"AssessmentTableViewCell";
+	AssessmentTableViewCell *assessmentCell = (AssessmentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:AssessmentCellIdentifier];
+	if (assessmentCell == nil) {
+		NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"AssessmentTableViewCell" owner:nil options:nil];
+		for (id currentObject in topLevelObjects) {
+			if ([currentObject isKindOfClass:[UITableViewCell class]]) {
+				assessmentCell = (AssessmentTableViewCell *) currentObject;
+				break;
+			}
+		}
+		
+	}
+	[self configureCell:assessmentCell atIndexPath:indexPath];
+	return assessmentCell;
+}
+
+- (void)configureCell:(AssessmentTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+	Assessment *assessment = [assessmentArray objectAtIndex:indexPath.row];
+	NSLog(@"%@", assessment);
+	cell.assessment = assessment;
+	//This logic should probably be moved into the assessment cell class, since it only needs the assessment to fill the rest in
+	cell.landscapeName.text = assessment.landscape.name;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterLongStyle];
+    NSString *date= [dateFormatter stringFromDate:assessment.created_at];
+    [dateFormatter release];
+    cell.date.text = date;
+    cell.typeName.text = assessment.type.name;
+}
+
+#pragma mark -
+#pragma mark Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Assessment *assessment = [assessmentArray objectAtIndex:indexPath.row];
+    NSDictionary *query = [NSDictionary dictionaryWithObject:assessment forKey:@"assessment"];
+    if([assessment.type.name isEqualToString:@"Tree"]) {
+        [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://assessments/TreeViewAndInput"] applyQuery:query] applyAnimated:YES]];
+    }
+}
 
 #pragma mark -
 #pragma mark Photo

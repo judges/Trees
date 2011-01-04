@@ -12,6 +12,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 #import "LauncherViewController.h"
 #import "LandscapeListTableViewController.h"
+#import "LandscapeDetailViewController.h"
 #import "TreeListTableViewController.h"
 #import "AssessmentTableViewController.h"
 #import "AssessmentTreeViewAndInputController.h"
