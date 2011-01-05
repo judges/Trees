@@ -7,7 +7,7 @@
 //
 
 #import "TreeAddViewController.h"
-#import "Tree.h"
+#import "InventoryTree.h"
 
 @implementation TreeAddViewController
 

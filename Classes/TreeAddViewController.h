@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @protocol TreeAddDelegate;
-@class Tree;
+@class InventoryTree;
 
 @interface TreeAddViewController : UIViewController <UITextFieldDelegate>
 {
 @private
 	
-	Tree *tree;
+	InventoryTree *tree;
 	UITextField *nameTextField;
 	id <TreeAddDelegate> delegate;
 }
