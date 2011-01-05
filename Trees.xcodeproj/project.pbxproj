@@ -916,10 +916,8 @@
 				1410C61612D2421600943E73 /* TreeTableViewCell.m */,
 				14ABD40512D2783E0037F689 /* TreeAddViewController.h */,
 				14ABD40612D2783E0037F689 /* TreeAddViewController.m */,
-				14ABD40712D2783E0037F689 /* TreeAddView.xib */,
 				14ABD42B12D27DB40037F689 /* TreeDetailViewController.h */,
 				14ABD42C12D27DB40037F689 /* TreeDetailViewController.m */,
-				14ABD42D12D27DB40037F689 /* TreeDetailHeaderView.xib */,
 				14ABD4BF12D284590037F689 /* TreePhotoViewController.h */,
 				14ABD4C012D284590037F689 /* TreePhotoViewController.m */,
 			);
@@ -1362,6 +1360,8 @@
 		20AE14C312CCF65400771642 /* Trees */ = {
 			isa = PBXGroup;
 			children = (
+				14ABD40712D2783E0037F689 /* TreeAddView.xib */,
+				14ABD42D12D27DB40037F689 /* TreeDetailHeaderView.xib */,
 				14DBFCAB12C954680051B792 /* TreeListTableViewController.xib */,
 			);
 			name = Trees;
