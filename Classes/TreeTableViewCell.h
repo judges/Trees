@@ -16,7 +16,7 @@
     UIImageView *imageView;
     UILabel *nameLabel;
     UILabel *gpsLabel;
-    UILabel *timeStampLabel;	
+    UILabel *created_atLabel;	
 }
 
 @property (nonatomic, retain) InventoryTree *tree;
@@ -24,7 +24,7 @@
 @property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) UILabel *nameLabel;
 @property (nonatomic, retain) UILabel *gpsLabel;
-@property (nonatomic, retain) UILabel *timeStampLabel;
+@property (nonatomic, retain) UILabel *created_atLabel;
 
 @end
 

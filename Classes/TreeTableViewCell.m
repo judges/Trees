@@ -14,14 +14,14 @@
 @interface TreeTableViewCell (SubviewFrames)
 - (CGRect)_imageViewFrame;
 - (CGRect)_nameLabelFrame;
-- (CGRect)_timeStampLabelFrame;
+- (CGRect)_created_atLabelFrame;
 - (CGRect)_gpsLabelFrame;
 @end
 
 
 @implementation TreeTableViewCell
 
-@synthesize tree, imageView, nameLabel, timeStampLabel, gpsLabel;
+@synthesize tree, imageView, nameLabel, created_atLabel, gpsLabel;
 
 #pragma mark -
 #pragma mark Initialization
@@ -36,12 +36,12 @@
 		[imageView setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:imageView];
 		
-        timeStampLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        [timeStampLabel setFont:[UIFont systemFontOfSize:12.0]];
-        [timeStampLabel setTextColor:[UIColor darkGrayColor]];
-        [timeStampLabel setHighlightedTextColor:[UIColor whiteColor]];
-		[timeStampLabel setBackgroundColor:[UIColor clearColor]];
-        [self.contentView addSubview:timeStampLabel];
+        created_atLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [created_atLabel setFont:[UIFont systemFontOfSize:12.0]];
+        [created_atLabel setTextColor:[UIColor darkGrayColor]];
+        [created_atLabel setHighlightedTextColor:[UIColor whiteColor]];
+		[created_atLabel setBackgroundColor:[UIColor clearColor]];
+        [self.contentView addSubview:created_atLabel];
 	
         gpsLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         gpsLabel.textAlignment = UITextAlignmentRight;
@@ -77,7 +77,7 @@
 	
     [imageView setFrame:[self _imageViewFrame]];
     [nameLabel setFrame:[self _nameLabelFrame]];
-     [timeStampLabel setFrame:[self _timeStampLabelFrame]];
+     [created_atLabel setFrame:[self _created_atLabelFrame]];
     [gpsLabel setFrame:[self _gpsLabelFrame]];
     if (self.editing) {
         gpsLabel.alpha = 0.0;
@@ -114,7 +114,7 @@
     }
 }
 
-- (CGRect)_timeStampLabelFrame {
+- (CGRect)_created_atLabelFrame {
     if (self.editing) {
         return CGRectMake(IMAGE_SIZE + EDITING_INSET + TEXT_LEFT_MARGIN, 22.0, self.contentView.bounds.size.width - IMAGE_SIZE - EDITING_INSET - TEXT_LEFT_MARGIN, 16.0);
     }
@@ -136,7 +136,7 @@
     [tree release];
     [imageView release];
     [nameLabel release];
-    [timeStampLabel release];
+    [created_atLabel release];
     [gpsLabel release];
     [super dealloc];
 }
