@@ -7,6 +7,7 @@
 //
 
 #import "TreeTableViewCell.h"
+#import "Image.h"
 
 #pragma mark -
 #pragma mark SubviewFrames category
@@ -77,7 +78,7 @@
 	
     [imageView setFrame:[self _imageViewFrame]];
     [nameLabel setFrame:[self _nameLabelFrame]];
-     [created_atLabel setFrame:[self _created_atLabelFrame]];
+	[created_atLabel setFrame:[self _created_atLabelFrame]];
     [gpsLabel setFrame:[self _gpsLabelFrame]];
     if (self.editing) {
         gpsLabel.alpha = 0.0;
@@ -128,6 +129,8 @@
     return CGRectMake(contentViewBounds.size.width - PREP_TIME_WIDTH - TEXT_RIGHT_MARGIN, 4.0, PREP_TIME_WIDTH, 16.0);
 }
 
+
+
 #pragma mark -
 #pragma mark Tree set accessor
 
@@ -136,14 +139,13 @@
         [tree release];
         tree = [newTree retain];
 	}
-	
-	/*
+
 	for (Image *i in [tree mutableSetValueForKeyPath:@"images"]) {
 		if ([i.isThumbnail boolValue] == YES) {
 			imageView.image = [UIImage imageWithData:i.image_data];
 		}
 	}
-	 */
+
 	
 	nameLabel.text = tree.name;
 	gpsLabel.text = tree.gps;
