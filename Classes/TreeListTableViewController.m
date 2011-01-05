@@ -13,7 +13,7 @@
 
 @implementation TreeListTableViewController
 
-@synthesize managedObjectContext, fetchedResultsController;
+@synthesize fetchedResultsController;
 
 #pragma mark -
 #pragma mark UIViewController overrides
@@ -34,6 +34,9 @@
     if(!managedObjectContext){
         managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext];
     }
+	
+	//set up fetched results controller
+	[self fetchedResultsController];
 	
 	UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add:)];
     self.navigationItem.rightBarButtonItem = addButtonItem;
@@ -70,7 +73,7 @@
 	
     addController.delegate = self;
 	
-	InventoryTree *newTree = [NSEntityDescription insertNewObjectForEntityForName:@"InventoryTree" inManagedObjectContext:self.managedObjectContext];
+	InventoryTree *newTree = [NSEntityDescription insertNewObjectForEntityForName:@"InventoryTree" inManagedObjectContext:managedObjectContext];
 	addController.tree = newTree;
 	
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:addController];
@@ -132,16 +135,16 @@
 
 
 
-// Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    // Dequeue or if necessary create a TreeTableViewCell, then set its tree to the tree for the current row.
+    static NSString *TreeCellIdentifier = @"TreeCellIdentifier";
+ 	
+    TreeTableViewCell *treeCell = (TreeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:TreeCellIdentifier];
+    if (treeCell == nil) {
+        treeCell = [[[TreeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TreeCellIdentifier] autorelease];
+		treeCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    
+	
 	// Define your row
     NSInteger row = [indexPath row];
 	
@@ -156,12 +159,19 @@
 		//light green
 		backgroundView.backgroundColor = [UIColor colorWithRed:0.616 green:0.663 blue:0.486 alpha:1.0];	
 	
-	cell.backgroundView = backgroundView;
+	treeCell.backgroundView = backgroundView;
 	[backgroundView release]; 
     
-	[self configureCell:cell atIndexPath:indexPath];
+	[self configureCell:treeCell atIndexPath:indexPath];
     
-    return cell;
+    return treeCell;
+}
+
+
+- (void)configureCell:(TreeTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    // Configure the cell
+	InventoryTree *tree = (InventoryTree *)[fetchedResultsController objectAtIndexPath:indexPath];
+    cell.tree = tree;
 }
 
 
@@ -259,7 +269,7 @@
 			break;
 			
 		case NSFetchedResultsChangeUpdate:
-			[self configureCell:(LandscapeTableViewCell *)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+			[self configureCell:(TreeTableViewCell *)[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
 			break;
 			
 		case NSFetchedResultsChangeMove:

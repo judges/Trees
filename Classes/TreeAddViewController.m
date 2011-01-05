@@ -47,6 +47,7 @@
 - (void)save {
     
     tree.name = nameTextField.text;
+	tree.created_at = [NSDate date];
 	
 	NSError *error = nil;
 	if (![tree.managedObjectContext save:&error]) {
