@@ -44,7 +44,7 @@
     [addButtonItem release];
     
     // Set the table view's row height
-    self.tableView.rowHeight = 64.0;
+    self.tableView.rowHeight = 59.0;
 	
 	NSError *error = nil;
 	if (![[self fetchedResultsController] performFetch:&error]) {
@@ -57,6 +57,16 @@
 		abort();
 	}		
 }
+
+- (void) viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[self.tableView reloadData];
+}
+
+- (void) viewDidUnload {
+	[fetchedResultsController release];
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Support all orientations except upside down
@@ -205,6 +215,12 @@
     cell.tree = tree;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	InventoryTree *tree = (InventoryTree *)[fetchedResultsController objectAtIndexPath:indexPath];
+    
+    [self showTree:tree animated:YES];
+}
+
 
 
 // Override to support editing the table view.
@@ -231,14 +247,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	InventoryTree *tree = (InventoryTree *)[fetchedResultsController objectAtIndexPath:indexPath];
-    
-    [self showTree:tree animated:YES];
-}
 
 #pragma mark -
 #pragma mark Fetched results controller
@@ -325,23 +334,8 @@
 	[self.tableView endUpdates];
 }
 
-
-
 #pragma mark -
 #pragma mark Memory management
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Relinquish ownership any cached data, images, etc. that aren't in use.
-}
-
-- (void)viewDidUnload {
-    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
-}
-
 
 - (void)dealloc {
 	[fetchedResultsController release];
