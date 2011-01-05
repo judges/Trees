@@ -82,19 +82,19 @@
 - (void)prepopulateDb {    
        
     Landscape *landscape = [NSEntityDescription insertNewObjectForEntityForName:@"Landscape" inManagedObjectContext:managedObjectContext];
-    landscape.name = @"Test Landscape";
+    landscape.name = @"American Cemetery";
     
     Type *type = [NSEntityDescription insertNewObjectForEntityForName:@"Type" inManagedObjectContext:managedObjectContext];
 	type.name = @"Tree";
 	
 	InventoryTree *inventoryTree = [NSEntityDescription insertNewObjectForEntityForName:@"InventoryTree" inManagedObjectContext:managedObjectContext];
-	inventoryTree.name = @"St. Denis Oak";
+	inventoryTree.name = @"St. Denis' Oak";
 	inventoryTree.created_at = [NSDate date];
 	inventoryTree.landscape = landscape;
 	inventoryTree.type = type;
 	
     AssessmentTree *assessmentTree = [NSEntityDescription insertNewObjectForEntityForName:@"AssessmentTree" inManagedObjectContext:managedObjectContext];
-    assessmentTree.assessor = @"Test Assessor";
+    assessmentTree.assessor = @"Evan Cordell";
     assessmentTree.created_at = [NSDate date];
     assessmentTree.type = type;
 	assessmentTree.tree = inventoryTree;
