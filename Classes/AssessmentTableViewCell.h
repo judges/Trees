@@ -13,13 +13,13 @@
     Assessment *assessment;
     
     IBOutlet UILabel *landscapeName;
-    IBOutlet UILabel *typeName;
+    IBOutlet UILabel *itemName;
     IBOutlet UILabel *date;
 }
 
 @property (nonatomic, retain) Assessment *assessment;
 @property (nonatomic, retain) UILabel *landscapeName;
-@property (nonatomic, retain) UILabel *typeName;
+@property (nonatomic, retain) UILabel *itemName;
 @property (nonatomic, retain) UILabel *date;
 
 @end

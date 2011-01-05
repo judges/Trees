@@ -17,6 +17,7 @@
 {
 }
 
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSDate * created_at;
 @property (nonatomic, retain) Landscape * landscape;
 @property (nonatomic, retain) Type * type;

@@ -2,7 +2,7 @@
 //  InventoryTree.h
 //  Trees
 //
-//  Created by Evan on 1/4/11.
+//  Created by Evan on 1/5/11.
 //  Copyright 2011 NCPTT. All rights reserved.
 //
 
@@ -14,7 +14,6 @@
 {
 }
 
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * gps;
 
 @end

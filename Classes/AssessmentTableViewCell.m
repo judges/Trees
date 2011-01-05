@@ -12,7 +12,7 @@
 
 @synthesize assessment;
 @synthesize landscapeName;
-@synthesize typeName;
+@synthesize itemName;
 @synthesize date;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -34,7 +34,7 @@
 - (void)dealloc {
     [assessment release];
     [landscapeName release];
-    [typeName release];
+    [itemName release];
     [date release];
     [super dealloc];
 }

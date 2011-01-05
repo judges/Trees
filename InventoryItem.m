@@ -14,6 +14,7 @@
 
 @implementation InventoryItem 
 
+@dynamic name;
 @dynamic created_at;
 @dynamic landscape;
 @dynamic type;

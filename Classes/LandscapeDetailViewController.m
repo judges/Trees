@@ -219,7 +219,7 @@
     NSString *date= [dateFormatter stringFromDate:assessment.created_at];
     [dateFormatter release];
     cell.date.text = date;
-    cell.typeName.text = assessment.type.name;
+    cell.itemName.text = assessment.inventoryItem.name;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

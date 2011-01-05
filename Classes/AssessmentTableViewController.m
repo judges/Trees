@@ -32,7 +32,7 @@
     //initialize actionsheet for adding new records
     typeActionSheet = [[UIActionSheet alloc] initWithTitle:@"Type" delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     landscapeActionSheet = [[UIActionSheet alloc] initWithTitle:@"Landscape" delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
-	inventoryActionSheet = [[UIActionSheet alloc] initWithTitle:@"Item" delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+	inventoryActionSheet = [[UIActionSheet alloc] initWithTitle:@"Inventory Item" delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     
     //set up arrays for type and landscape picker
     typesArray = [[NSMutableArray alloc] init];
@@ -67,18 +67,12 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Type" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
-    NSMutableArray *tmp = [NSMutableArray arrayWithArray:[managedObjectContext executeFetchRequest:fetchRequest error:&error]];
-    for (Type *t in tmp) {
-        [typesArray addObject:t];
-    }
+	[typesArray addObjectsFromArray:[managedObjectContext executeFetchRequest:fetchRequest error:&error]];
     
     //fetch data for landscape picker
     entity = [NSEntityDescription entityForName:@"Landscape" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
-    tmp = [NSMutableArray arrayWithArray:[managedObjectContext executeFetchRequest:fetchRequest error:&error]];
-    for (Landscape *l in tmp) {
-        [landscapesArray addObject:l];
-    }
+	[landscapesArray addObjectsFromArray:[managedObjectContext executeFetchRequest:fetchRequest error:&error]];
 	
 	[fetchRequest release];
     if (error) {
@@ -231,6 +225,7 @@
     
     //select the first entry by default
     if([typePickerView numberOfRowsInComponent:0] > 0) {
+		[typePickerView selectRow:0 inComponent:0 animated:YES];
         [self pickerView:typePickerView didSelectRow:0 inComponent:0];
     }
 }
@@ -270,6 +265,7 @@
     
     //select the first entry by default
     if ([landscapePickerView numberOfRowsInComponent:0]>0) {
+		[landscapePickerView selectRow:0 inComponent:0 animated:YES];
         [self pickerView:landscapePickerView didSelectRow:0 inComponent:0];
     }
      
@@ -323,8 +319,11 @@
 	[inventoryArray addObjectsFromArray:[managedObjectContext executeFetchRequest:fetchRequest error:&error]];
 	[fetchRequest release];
 	
+
+	
     //select the first entry by default
     if ([inventoryPickerView numberOfRowsInComponent:0]>0) {
+		[inventoryPickerView selectRow:0 inComponent:0 animated:YES];
         [self pickerView:inventoryPickerView didSelectRow:0 inComponent:0];
     }
 	
@@ -339,6 +338,7 @@
         AssessmentTree *new = [NSEntityDescription insertNewObjectForEntityForName:@"AssessmentTree" inManagedObjectContext:managedObjectContext];
         new.type = selectedType;
         new.tree = (InventoryTree *)selectedInventory;
+		new.tree.landscape = selectedLandscape;
         new.created_at = [NSDate date];
         TreeCrown *treeCrown = [NSEntityDescription insertNewObjectForEntityForName:@"TreeCrown" inManagedObjectContext:managedObjectContext];
         new.crown = treeCrown;
@@ -352,7 +352,10 @@
         new.roots = treeRoots;
         TreeOverall *treeOverall = [NSEntityDescription insertNewObjectForEntityForName:@"TreeOverall" inManagedObjectContext:managedObjectContext];
         new.overall = treeOverall;
-        
+		
+		//set up inverse relationship
+        [[selectedInventory mutableSetValueForKey:@"assessments"] addObject:new]; 
+		
         if (![managedObjectContext save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
@@ -484,13 +487,13 @@
     // Configure the cell
     Assessment *assessment = (Assessment *)[fetchedResultsController objectAtIndexPath:indexPath];
     cell.assessment = assessment;
-//    cell.landscapeName.text = assessment.landscape.name;
+	cell.landscapeName.text = assessment.inventoryItem.landscape.name;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterLongStyle];
     NSString *date= [dateFormatter stringFromDate:assessment.created_at];
     [dateFormatter release];
     cell.date.text = date;
-    cell.typeName.text = assessment.type.name;
+    cell.itemName.text = assessment.inventoryItem.name;
 }
 
 
