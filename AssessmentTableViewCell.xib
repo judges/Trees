@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="13"/>
+			<integer value="11"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -107,7 +107,7 @@
 									<object class="IBUILabel" id="3304007">
 										<reference key="NSNextResponder" ref="281776543"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{20, 3}, {280, 21}}</string>
+										<string key="NSFrame">{{20, 8}, {280, 21}}</string>
 										<reference key="NSSuperview" ref="281776543"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
