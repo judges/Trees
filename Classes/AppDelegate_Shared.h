@@ -14,6 +14,7 @@
 #import "LandscapeListTableViewController.h"
 #import "LandscapeDetailViewController.h"
 #import "TreeListTableViewController.h"
+#import "TreeDetailViewController.h"
 #import "AssessmentTableViewController.h"
 #import "AssessmentTreeViewAndInputController.h"
 #import "AssessmentTreeCRViewController.h"

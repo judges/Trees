@@ -84,26 +84,22 @@
     [addController release];
 }
 
-/*
+
  
- - (void)landscapeAddViewController:(LandscapeAddViewController *)landscapeAddViewController didAddLandscape:(Landscape *)landscape {
- if (landscape) {        
- // Show the landscape in a new view controller
- [self showLandscape:landscape animated:NO];
+ - (void)treeAddViewController:(TreeAddViewController *)treeAddViewController didAddTree:(InventoryTree *)tree {
+ if (tree) {        
+ // Show the tree in a new view controller
+ [self showTree:tree animated:NO];
  }
  
- // Dismiss the modal add landscape view controller
+ // Dismiss the modal add tree view controller
  [self dismissModalViewControllerAnimated:YES];
  }
  
  
- - (void)showLandscape:(Landscape *)landscape animated:(BOOL)animated {
- // Create a detail view controller, set the landscape, then push it.
- NSDictionary *query = [NSDictionary dictionaryWithObject:landscape forKey:@"landscape"];
- [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Landscapes/LandscapeDetailView?"] applyQuery:query] applyAnimated:YES]];
- }
  
- */
+
+/*
 
 - (void)treeAddViewController:(TreeAddViewController *)treeAddViewController didAddTree:(InventoryTree *)tree {
     if (tree) {        
@@ -114,6 +110,7 @@
     // Dismiss the modal add tree view controller
     [self dismissModalViewControllerAnimated:YES];
 }
+*/
 
 
 /*
@@ -129,7 +126,7 @@
 */
 
 - (void)showTree:(InventoryTree *)tree animated:(BOOL)animated {
-    // Create a detail view controller, set the landscape, then push it.
+    // Create a detail view controller, set the tree, then push it.
     NSDictionary *query = [NSDictionary dictionaryWithObject:tree forKey:@"inventorytree"];
 	[[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Trees/TreeDetailView?"] applyQuery:query] applyAnimated:YES]];
 }

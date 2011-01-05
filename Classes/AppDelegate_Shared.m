@@ -51,7 +51,7 @@
   [map from:@"land://Photos?" toSharedViewController:[PhotoViewController class]];
   [map from:@"land://Settings" toViewController:[IASKAppSettingsViewController class]];
   [map from:@"land://Trees" toViewController:[TreeListTableViewController class]];
-	
+  [map from:@"land://Trees/TreeDetailView?" toViewController:[TreeDetailViewController class]];	
 	
 	if (![navigator restoreViewControllers]) {
 		//set up launcher
