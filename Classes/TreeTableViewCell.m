@@ -128,6 +128,28 @@
     return CGRectMake(contentViewBounds.size.width - PREP_TIME_WIDTH - TEXT_RIGHT_MARGIN, 4.0, PREP_TIME_WIDTH, 16.0);
 }
 
+#pragma mark -
+#pragma mark Tree set accessor
+
+- (void)setTree:(InventoryTree *)newTree {
+    if (newTree != tree) {
+        [tree release];
+        tree = [newTree retain];
+	}
+	
+	/*
+	for (Image *i in [tree mutableSetValueForKeyPath:@"images"]) {
+		if ([i.isThumbnail boolValue] == YES) {
+			imageView.image = [UIImage imageWithData:i.image_data];
+		}
+	}
+	 */
+	
+	nameLabel.text = tree.name;
+	gpsLabel.text = tree.gps;
+}
+
+
 
 #pragma mark -
 #pragma mark Memory management
