@@ -54,7 +54,6 @@
 		20431A4312D3CEC6004C0268 /* TreeFormCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431A0C12D3CEC6004C0268 /* TreeFormCondition.m */; };
 		20431A4412D3CEC6004C0268 /* TreeOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431A0E12D3CEC6004C0268 /* TreeOption.m */; };
 		20431A4512D3CEC6004C0268 /* TreeCrownRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431A1012D3CEC6004C0268 /* TreeCrownRecommendation.m */; };
-		20431A4712D3CEC6004C0268 /* AssessmentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431A1412D3CEC6004C0268 /* AssessmentType.m */; };
 		20431A4812D3CEC6004C0268 /* TreeTrunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431A1612D3CEC6004C0268 /* TreeTrunk.m */; };
 		20431A4912D3CEC6004C0268 /* TreeRootsRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431A1812D3CEC6004C0268 /* TreeRootsRecommendation.m */; };
 		20431A4A12D3CEC6004C0268 /* TreeOverall.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431A1A12D3CEC6004C0268 /* TreeOverall.m */; };
@@ -66,7 +65,6 @@
 		20431A5012D3CEC6004C0268 /* TreeRootFlare.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431A2612D3CEC6004C0268 /* TreeRootFlare.m */; };
 		20431A5112D3CEC6004C0268 /* Height.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431A2812D3CEC6004C0268 /* Height.m */; };
 		20431A5212D3CEC6004C0268 /* Caliper.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431A2A12D3CEC6004C0268 /* Caliper.m */; };
-		20431A5312D3CEC6004C0268 /* InventoryType.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431A2C12D3CEC6004C0268 /* InventoryType.m */; };
 		20431A5412D3CEC6004C0268 /* TreeTrunkCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431A2E12D3CEC6004C0268 /* TreeTrunkCondition.m */; };
 		20431A5512D3CEC6004C0268 /* TreeTrunkRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431A3012D3CEC6004C0268 /* TreeTrunkRecommendation.m */; };
 		20431A5612D3CEC6004C0268 /* TreeRootFlareCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431A3212D3CEC6004C0268 /* TreeRootFlareCondition.m */; };
@@ -75,9 +73,10 @@
 		20431A5912D3CEC6004C0268 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431A3812D3CEC6004C0268 /* Photo.m */; };
 		20431A5D12D3CEC6004C0268 /* TreeRootsCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431A4012D3CEC6004C0268 /* TreeRootsCondition.m */; };
 		20431ACD12D3D81B004C0268 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431ACC12D3D81B004C0268 /* Image.m */; };
-		20431BBE12D3EA53004C0268 /* Assessment.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431BBB12D3EA53004C0268 /* Assessment.m */; };
-		20431BBF12D3EA53004C0268 /* InventoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431BBD12D3EA53004C0268 /* InventoryItem.m */; };
 		20431BC412D3EA83004C0268 /* InventoryTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431BC312D3EA83004C0268 /* InventoryTree.m */; };
+		20431C3B12D4CE3F004C0268 /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431C3612D4CE3F004C0268 /* Type.m */; };
+		20431C3C12D4CE3F004C0268 /* Assessment.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431C3812D4CE3F004C0268 /* Assessment.m */; };
+		20431C3D12D4CE3F004C0268 /* InventoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431C3A12D4CE3F004C0268 /* InventoryItem.m */; };
 		208B327312BFE24A00D8FA03 /* edit_50.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B325612BFE24A00D8FA03 /* edit_50.png */; };
 		208B327412BFE24A00D8FA03 /* NPS.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B325712BFE24A00D8FA03 /* NPS.png */; };
 		208B327512BFE24A00D8FA03 /* tree.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B325812BFE24A00D8FA03 /* tree.png */; };
@@ -621,8 +620,6 @@
 		20431A0E12D3CEC6004C0268 /* TreeOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeOption.m; sourceTree = "<group>"; };
 		20431A0F12D3CEC6004C0268 /* TreeCrownRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeCrownRecommendation.h; sourceTree = "<group>"; };
 		20431A1012D3CEC6004C0268 /* TreeCrownRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeCrownRecommendation.m; sourceTree = "<group>"; };
-		20431A1312D3CEC6004C0268 /* AssessmentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssessmentType.h; sourceTree = "<group>"; };
-		20431A1412D3CEC6004C0268 /* AssessmentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssessmentType.m; sourceTree = "<group>"; };
 		20431A1512D3CEC6004C0268 /* TreeTrunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeTrunk.h; sourceTree = "<group>"; };
 		20431A1612D3CEC6004C0268 /* TreeTrunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeTrunk.m; sourceTree = "<group>"; };
 		20431A1712D3CEC6004C0268 /* TreeRootsRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeRootsRecommendation.h; sourceTree = "<group>"; };
@@ -645,8 +642,6 @@
 		20431A2812D3CEC6004C0268 /* Height.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Height.m; sourceTree = "<group>"; };
 		20431A2912D3CEC6004C0268 /* Caliper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Caliper.h; sourceTree = "<group>"; };
 		20431A2A12D3CEC6004C0268 /* Caliper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Caliper.m; sourceTree = "<group>"; };
-		20431A2B12D3CEC6004C0268 /* InventoryType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryType.h; sourceTree = "<group>"; };
-		20431A2C12D3CEC6004C0268 /* InventoryType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryType.m; sourceTree = "<group>"; };
 		20431A2D12D3CEC6004C0268 /* TreeTrunkCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeTrunkCondition.h; sourceTree = "<group>"; };
 		20431A2E12D3CEC6004C0268 /* TreeTrunkCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeTrunkCondition.m; sourceTree = "<group>"; };
 		20431A2F12D3CEC6004C0268 /* TreeTrunkRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreeTrunkRecommendation.h; sourceTree = "<group>"; };
@@ -663,12 +658,14 @@
 		20431A4012D3CEC6004C0268 /* TreeRootsCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreeRootsCondition.m; sourceTree = "<group>"; };
 		20431ACB12D3D81B004C0268 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Image.h; path = ../Image.h; sourceTree = "<group>"; };
 		20431ACC12D3D81B004C0268 /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Image.m; path = ../Image.m; sourceTree = "<group>"; };
-		20431BBA12D3EA53004C0268 /* Assessment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assessment.h; sourceTree = "<group>"; };
-		20431BBB12D3EA53004C0268 /* Assessment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Assessment.m; sourceTree = "<group>"; };
-		20431BBC12D3EA53004C0268 /* InventoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryItem.h; sourceTree = "<group>"; };
-		20431BBD12D3EA53004C0268 /* InventoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryItem.m; sourceTree = "<group>"; };
 		20431BC212D3EA83004C0268 /* InventoryTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryTree.h; sourceTree = "<group>"; };
 		20431BC312D3EA83004C0268 /* InventoryTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryTree.m; sourceTree = "<group>"; };
+		20431C3512D4CE3F004C0268 /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
+		20431C3612D4CE3F004C0268 /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
+		20431C3712D4CE3F004C0268 /* Assessment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assessment.h; sourceTree = "<group>"; };
+		20431C3812D4CE3F004C0268 /* Assessment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Assessment.m; sourceTree = "<group>"; };
+		20431C3912D4CE3F004C0268 /* InventoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryItem.h; sourceTree = "<group>"; };
+		20431C3A12D4CE3F004C0268 /* InventoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryItem.m; sourceTree = "<group>"; };
 		208B325612BFE24A00D8FA03 /* edit_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_50.png; sourceTree = "<group>"; };
 		208B325712BFE24A00D8FA03 /* NPS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NPS.png; sourceTree = "<group>"; };
 		208B325812BFE24A00D8FA03 /* tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree.png; sourceTree = "<group>"; };
@@ -1005,12 +1002,14 @@
 		208B329412BFE27A00D8FA03 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				20431C3512D4CE3F004C0268 /* Type.h */,
+				20431C3612D4CE3F004C0268 /* Type.m */,
+				20431C3712D4CE3F004C0268 /* Assessment.h */,
+				20431C3812D4CE3F004C0268 /* Assessment.m */,
+				20431C3912D4CE3F004C0268 /* InventoryItem.h */,
+				20431C3A12D4CE3F004C0268 /* InventoryItem.m */,
 				20431BC212D3EA83004C0268 /* InventoryTree.h */,
 				20431BC312D3EA83004C0268 /* InventoryTree.m */,
-				20431BBA12D3EA53004C0268 /* Assessment.h */,
-				20431BBB12D3EA53004C0268 /* Assessment.m */,
-				20431BBC12D3EA53004C0268 /* InventoryItem.h */,
-				20431BBD12D3EA53004C0268 /* InventoryItem.m */,
 				20431ACB12D3D81B004C0268 /* Image.h */,
 				20431ACC12D3D81B004C0268 /* Image.m */,
 				20431A0712D3CEC6004C0268 /* TreeRootFlareRecommendation.h */,
@@ -1023,8 +1022,6 @@
 				20431A0E12D3CEC6004C0268 /* TreeOption.m */,
 				20431A0F12D3CEC6004C0268 /* TreeCrownRecommendation.h */,
 				20431A1012D3CEC6004C0268 /* TreeCrownRecommendation.m */,
-				20431A1312D3CEC6004C0268 /* AssessmentType.h */,
-				20431A1412D3CEC6004C0268 /* AssessmentType.m */,
 				20431A1512D3CEC6004C0268 /* TreeTrunk.h */,
 				20431A1612D3CEC6004C0268 /* TreeTrunk.m */,
 				20431A1712D3CEC6004C0268 /* TreeRootsRecommendation.h */,
@@ -1047,8 +1044,6 @@
 				20431A2812D3CEC6004C0268 /* Height.m */,
 				20431A2912D3CEC6004C0268 /* Caliper.h */,
 				20431A2A12D3CEC6004C0268 /* Caliper.m */,
-				20431A2B12D3CEC6004C0268 /* InventoryType.h */,
-				20431A2C12D3CEC6004C0268 /* InventoryType.m */,
 				20431A2D12D3CEC6004C0268 /* TreeTrunkCondition.h */,
 				20431A2E12D3CEC6004C0268 /* TreeTrunkCondition.m */,
 				20431A2F12D3CEC6004C0268 /* TreeTrunkRecommendation.h */,
@@ -2119,7 +2114,6 @@
 				20431A4312D3CEC6004C0268 /* TreeFormCondition.m in Sources */,
 				20431A4412D3CEC6004C0268 /* TreeOption.m in Sources */,
 				20431A4512D3CEC6004C0268 /* TreeCrownRecommendation.m in Sources */,
-				20431A4712D3CEC6004C0268 /* AssessmentType.m in Sources */,
 				20431A4812D3CEC6004C0268 /* TreeTrunk.m in Sources */,
 				20431A4912D3CEC6004C0268 /* TreeRootsRecommendation.m in Sources */,
 				20431A4A12D3CEC6004C0268 /* TreeOverall.m in Sources */,
@@ -2131,7 +2125,6 @@
 				20431A5012D3CEC6004C0268 /* TreeRootFlare.m in Sources */,
 				20431A5112D3CEC6004C0268 /* Height.m in Sources */,
 				20431A5212D3CEC6004C0268 /* Caliper.m in Sources */,
-				20431A5312D3CEC6004C0268 /* InventoryType.m in Sources */,
 				20431A5412D3CEC6004C0268 /* TreeTrunkCondition.m in Sources */,
 				20431A5512D3CEC6004C0268 /* TreeTrunkRecommendation.m in Sources */,
 				20431A5612D3CEC6004C0268 /* TreeRootFlareCondition.m in Sources */,
@@ -2140,9 +2133,10 @@
 				20431A5912D3CEC6004C0268 /* Photo.m in Sources */,
 				20431A5D12D3CEC6004C0268 /* TreeRootsCondition.m in Sources */,
 				20431ACD12D3D81B004C0268 /* Image.m in Sources */,
-				20431BBE12D3EA53004C0268 /* Assessment.m in Sources */,
-				20431BBF12D3EA53004C0268 /* InventoryItem.m in Sources */,
 				20431BC412D3EA83004C0268 /* InventoryTree.m in Sources */,
+				20431C3B12D4CE3F004C0268 /* Type.m in Sources */,
+				20431C3C12D4CE3F004C0268 /* Assessment.m in Sources */,
+				20431C3D12D4CE3F004C0268 /* InventoryItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

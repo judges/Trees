@@ -62,11 +62,11 @@
     
     //fetch data for type picker
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"AssessmentType" inManagedObjectContext:managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Type" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
     NSMutableArray *tmp = [NSMutableArray arrayWithArray:[managedObjectContext executeFetchRequest:fetchRequest error:&error]];
-    for (AssessmentType *at in tmp) {
-        [typesArray addObject:at];
+    for (Type *t in tmp) {
+        [typesArray addObject:t];
     }
     
     //fetch data for landscape picker
@@ -87,22 +87,19 @@
     Landscape *landscape = [NSEntityDescription insertNewObjectForEntityForName:@"Landscape" inManagedObjectContext:managedObjectContext];
     landscape.name = @"Test Landscape";
     
-    InventoryType *inType = [NSEntityDescription insertNewObjectForEntityForName:@"InventoryType" inManagedObjectContext:managedObjectContext];
-	inType.name = @"Tree";
+    Type *type = [NSEntityDescription insertNewObjectForEntityForName:@"Type" inManagedObjectContext:managedObjectContext];
+	type.name = @"Tree";
 	
 	InventoryTree *inventoryTree = [NSEntityDescription insertNewObjectForEntityForName:@"InventoryTree" inManagedObjectContext:managedObjectContext];
 	inventoryTree.name = @"St. Denis Oak";
 	inventoryTree.created_at = [NSDate date];
 	inventoryTree.landscape = landscape;
-	inventoryTree.type = inType;
-	
-	AssessmentType *asType = [NSEntityDescription insertNewObjectForEntityForName: @"AssessmentType" inManagedObjectContext:managedObjectContext];
-    asType.name = @"Tree";
+	inventoryTree.type = type;
 	
     AssessmentTree *assessmentTree = [NSEntityDescription insertNewObjectForEntityForName:@"AssessmentTree" inManagedObjectContext:managedObjectContext];
     assessmentTree.assessor = @"Test Assessor";
     assessmentTree.created_at = [NSDate date];
-    assessmentTree.type = asType;
+    assessmentTree.type = type;
 	assessmentTree.tree = inventoryTree;
 
 	[[inventoryTree mutableSetValueForKeyPath:@"assessments"] addObject:assessmentTree];

@@ -14,7 +14,7 @@
 #import "Assessment.h"
 #import "Landscape.h"
 #import "AssessmentTree.h"
-#import "AssessmentType.h"
+#import "Type.h"
 #import "TreeCrown.h"
 #import "TreeForm.h"
 #import "TreeTrunk.h"
@@ -39,7 +39,6 @@
 #import "DDXML.h"
 #import "InventoryItem.h"
 #import "InventoryTree.h"
-#import	"InventoryType.h"
 
 @interface AssessmentTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
     UIActionSheet *typeActionSheet;
@@ -47,10 +46,13 @@
 	UIActionSheet *InventoryActionSheet;
     UIPickerView *typePickerView;
     UIPickerView *landscapePickerView;
+	UIPickerView *inventoryPickerView;
     NSMutableArray *typesArray;
     NSMutableArray *landscapesArray;
+	NSMutableArray *inventoryArray;
     Landscape *selectedLandscape;
-    AssessmentType *selectedType;
+    Type *selectedType;
+	InventoryItem *selectedInventory;
     @private
         NSFetchedResultsController *fetchedResultsController;
         NSManagedObjectContext *managedObjectContext;

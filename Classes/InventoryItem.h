@@ -2,7 +2,7 @@
 //  InventoryItem.h
 //  Trees
 //
-//  Created by Evan on 1/4/11.
+//  Created by Evan on 1/5/11.
 //  Copyright 2011 NCPTT. All rights reserved.
 //
 
@@ -10,8 +10,8 @@
 #import "Photo.h"
 
 @class Assessment;
-@class InventoryType;
 @class Landscape;
+@class Type;
 
 @interface InventoryItem :  Photo  
 {
@@ -19,7 +19,7 @@
 
 @property (nonatomic, retain) NSDate * created_at;
 @property (nonatomic, retain) Landscape * landscape;
-@property (nonatomic, retain) InventoryType * type;
+@property (nonatomic, retain) Type * type;
 @property (nonatomic, retain) NSSet* assessments;
 
 @end
