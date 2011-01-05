@@ -8,8 +8,11 @@
 
 #import "TreeListTableViewController.h"
 #import "TreeDetailViewController.h"
+#import "InventoryItem.h"
 #import "InventoryTree.h"
 #import "TreeTableViewCell.h"
+
+
 
 @implementation TreeListTableViewController
 
@@ -151,13 +154,17 @@
 	UIView *backgroundView = [[UIView alloc] init];
 	if ((row % 2) == 0)
 		
-		//darker green color
-		backgroundView.backgroundColor = [UIColor colorWithRed:0.369 green:0.435 blue:0.200 alpha:1.0];
+		
+		//light green
+		backgroundView.backgroundColor = [UIColor colorWithRed:0.616 green:0.663 blue:0.486 alpha:1.0];			
+	
 	
 	else
 		
-		//light green
-		backgroundView.backgroundColor = [UIColor colorWithRed:0.616 green:0.663 blue:0.486 alpha:1.0];	
+		
+		//darker green color
+		backgroundView.backgroundColor = [UIColor colorWithRed:0.369 green:0.435 blue:0.200 alpha:1.0];		
+	
 	
 	treeCell.backgroundView = backgroundView;
 	[backgroundView release]; 
@@ -173,6 +180,7 @@
 	InventoryTree *tree = (InventoryTree *)[fetchedResultsController objectAtIndexPath:indexPath];
     cell.tree = tree;
 }
+
 
 
 // Override to support editing the table view.

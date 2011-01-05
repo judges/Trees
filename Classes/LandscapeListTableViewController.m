@@ -44,7 +44,7 @@
     [addButtonItem release];
     
     // Set the table view's row height
-    self.tableView.rowHeight = 64.0;
+    self.tableView.rowHeight = 59.0;
 	
 	NSError *error = nil;
 	if (![[self fetchedResultsController] performFetch:&error]) {
