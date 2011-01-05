@@ -11,7 +11,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 @implementation LauncherViewController
-@synthesize searchBar;
+@synthesize theSearchBar, allRecords, filteredRecords;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // NSObject
@@ -42,7 +42,7 @@
 		_launcherView.frame=self.view.bounds;
 	}
 	_launcherView.frame = CGRectMake(_launcherView.frame.origin.x, _launcherView.frame.origin.y + 44, _launcherView.frame.size.width, _launcherView.frame.size.height - 44);
-	[self.searchBar sizeToFit];
+	[self.theSearchBar sizeToFit];
 }
 
 -(void)reloadLauncherView
@@ -53,6 +53,8 @@
 
 
 - (void)dealloc {
+	[allRecords release];
+	[filteredRecords release];
 	[super dealloc];
 }
 
@@ -62,21 +64,62 @@
 // called when keyboard search button pressed
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-	[self.searchBar resignFirstResponder];
+	[searchBar resignFirstResponder];
 }
 
 // called when cancel button pressed
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-	[self.searchBar resignFirstResponder];
+	[searchBar resignFirstResponder];
 }
+
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-	[searchBar setShowsCancelButton:YES animated:YES];
 	return YES;
 }
+
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
-	[searchBar setShowsCancelButton:NO animated:YES];
+	[searchBar resignFirstResponder];
 	return YES;
+}
+
+#pragma mark -
+#pragma mark UISearchDisplayController
+
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+	//If we need to add scope later, refer to the Apple TableSearch example
+    [self filterContentForSearchText:searchString];
+    return YES;
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText
+{
+    [[self.filteredRecords objectAtIndex:0] removeAllObjects];
+	[[self.filteredRecords objectAtIndex:1] removeAllObjects];
+	[[self.filteredRecords objectAtIndex:2] removeAllObjects];
+	
+	for (Landscape* l in [allRecords objectAtIndex:0]) {
+		NSComparisonResult result = [l.name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+		if (result == NSOrderedSame)
+		{
+			[[self.filteredRecords objectAtIndex:0] addObject:l];
+		}
+	}
+	for (InventoryItem* i in [allRecords objectAtIndex:1]) {
+		NSComparisonResult result = [i.name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+		if (result == NSOrderedSame)
+		{
+			[[self.filteredRecords objectAtIndex:1] addObject:i];
+		}
+	}
+	for (Assessment* a in [allRecords objectAtIndex:2]) {
+		NSComparisonResult result = [a.inventoryItem.name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+		if (result == NSOrderedSame)
+		{
+			[[self.filteredRecords objectAtIndex:2] addObject:a];
+		}
+	}
 }
 
 #pragma mark -
@@ -89,7 +132,7 @@
 - (void)loadView {
 	[super loadView];
 	CGRect  bounds = self.view.bounds;
-	[self.searchBar sizeToFit];
+	[self.theSearchBar sizeToFit];
 	
 	// launcherView
 	_launcherView.frame = CGRectMake(0,45,bounds.size.width,bounds.size.height-2*45); 
@@ -102,12 +145,12 @@
 	if((self.interfaceOrientation == UIDeviceOrientationLandscapeLeft) || (self.interfaceOrientation == UIDeviceOrientationLandscapeRight)){
 		_launcherView.columnCount = 5;
 		_launcherView.frame=self.view.bounds;
-		[self.searchBar sizeToFit];
+		[self.theSearchBar sizeToFit];
 		
 	} else	if((self.interfaceOrientation == UIDeviceOrientationPortrait) || (self.interfaceOrientation == UIDeviceOrientationPortraitUpsideDown)){
 		_launcherView.columnCount = 3;
 		_launcherView.frame=self.view.bounds;
-		[self.searchBar sizeToFit];
+		[self.theSearchBar sizeToFit];
 		
 	}
 	_launcherView.frame = CGRectMake(_launcherView.frame.origin.x, _launcherView.frame.origin.y + 44, _launcherView.frame.size.width, _launcherView.frame.size.height - 44);
@@ -204,20 +247,52 @@
 	TTLauncherItem* item = [_launcherView itemWithURL:@"land://data/assessments"];
 	item.badgeNumber = 2;
 	*/
-	searchBar = [[[UISearchBar alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, 44.0)] autorelease];
-	searchBar.delegate = self;
-	searchBar.showsCancelButton = NO;
-	searchBar.tintColor=[UIColor colorWithRed:0.180 green:0.267 blue: 0.173 alpha:1.0]; //forest green
-	searchBar.placeholder = @"Search";
-	searchBar.showsScopeBar = YES;
-	searchBar.scopeButtonTitles = [NSArray arrayWithObject:@"Test Scope"];
 	
-	searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+	theSearchBar = [[[UISearchBar alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, 44.0)] autorelease];
+	theSearchBar.delegate = self;
+	theSearchBar.showsCancelButton = NO;
+	theSearchBar.tintColor=[UIColor colorWithRed:0.180 green:0.267 blue: 0.173 alpha:1.0]; //forest green
+	theSearchBar.placeholder = @"Search";
+	theSearchBar.showsScopeBar = NO;
+	
+	searchController = [[UISearchDisplayController alloc] initWithSearchBar:theSearchBar contentsController:self];
 	searchController.delegate = self;
 	searchController.searchResultsDataSource = self;
 	searchController.searchResultsDelegate = self;
 	
-	[self.view addSubview: searchBar];
+	[self.view addSubview: theSearchBar];
+	
+	//load data for searching
+	NSError *error;
+	NSManagedObjectContext *managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+	
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Landscape" inManagedObjectContext:managedObjectContext];
+	[fetchRequest setEntity:entity];
+	NSArray *allLandscapes = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+	
+	entity = [NSEntityDescription entityForName:@"InventoryItem" inManagedObjectContext:managedObjectContext];
+	[fetchRequest setEntity:entity];
+	NSArray *allInventoryItems = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+	
+	entity = [NSEntityDescription entityForName:@"Assessment" inManagedObjectContext:managedObjectContext];
+	[fetchRequest setEntity:entity];
+	NSArray *allAssessments = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+	
+	[fetchRequest release];
+	
+	allRecords = [[NSArray alloc] initWithObjects:allLandscapes, allInventoryItems, allAssessments, nil];
+	
+	//load dummy arrays into the filtered results
+	NSMutableArray *tmp1 = [[NSMutableArray alloc] initWithCapacity:0];
+	NSMutableArray *tmp2 = [[NSMutableArray alloc] initWithCapacity:0];
+	NSMutableArray *tmp3 = [[NSMutableArray alloc] initWithCapacity:0];
+
+	filteredRecords = [[NSArray alloc] initWithObjects:tmp1, tmp2, tmp3, nil];
+	
+	[tmp1 release];
+	[tmp2 release];
+	[tmp3 release];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -260,8 +335,8 @@
 	[super viewDidUnload];
 	
 	// release and set to nil
-	[searchBar release];
-	self.searchBar = nil;
+	[theSearchBar release];
+	self.theSearchBar = nil;
 }
 
 - (void)launcherView:(TTLauncherView*)launcher didSelectItem:(TTLauncherItem*)item {
@@ -282,13 +357,58 @@
 	[self.navigationItem setRightBarButtonItem:nil animated:YES];
 }
 
+#pragma mark -
+#pragma mark UITableViewDataSource
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CR"] autorelease];
+	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CR"] autorelease];
+	switch (indexPath.section) {
+		case 0:
+			cell.textLabel.text = [[[filteredRecords objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] name];
+			break;
+		case 1:
+			cell.textLabel.text = [[[filteredRecords objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] name];
+			break;
+		case 2:
+			cell.textLabel.text = [[[[filteredRecords objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] inventoryItem] name];
+			break;
+		default:
+			cell.textLabel.text = @"";
+			break;
+	}
+	
+	return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	
+	return [[self.filteredRecords objectAtIndex:section] count];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 3;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+		switch (section) {
+			case 0:
+				return @"Landscapes";
+				break;
+			case 1:
+				return @"Inventory";
+				break;
+			case 2:
+				return @"Assessments";
+				break;
+			default:
+				return @"";
+				break;
+		}
+}
+/* Maybe we can find a good way to use this later
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+	return [NSArray arrayWithObjects:@"Landscapes", @"Inventory", @"Assessments", nil];
+}*/
 
 #pragma mark -
 #pragma mark IASKAppSettingsViewControllerDelegate protocol

@@ -9,12 +9,19 @@
 #import <Foundation/Foundation.h>
 #import <Three20/Three20.h>
 #import "IASKAppSettingsViewController.h"
+#import "AppDelegate_Shared.h"
+#import "Assessment.h"
 
 @interface LauncherViewController : TTViewController <TTLauncherViewDelegate, IASKSettingsDelegate, UITextFieldDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate> {
 	TTLauncherView* _launcherView;
 	UISearchDisplayController *searchController;
+	NSArray *allRecords;
+	NSArray *filteredRecords;
 }
 
-@property (nonatomic, retain) UISearchBar *searchBar;
+@property (nonatomic, retain) UISearchBar *theSearchBar;
+@property (nonatomic, retain) NSArray *allRecords;
+@property (nonatomic, retain) NSArray *filteredRecords;
 
+- (void)filterContentForSearchText:(NSString*)searchText;
 @end
