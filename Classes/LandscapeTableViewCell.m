@@ -172,13 +172,36 @@
         landscape = [newLandscape retain];
 	}
 
-	NSString *city = [landscape.city stringByAppendingString:@", "];
-	NSString *state = [landscape.state stringByAppendingString:@" "];
-	NSString *zip = [landscape.zip stringByAppendingString:@" "];
+	NSString *city;
+	NSString *state;
+	NSString *zip;
+	if (landscape.city) {
+		city = [landscape.city stringByAppendingString:@", "];
+	} else {
+		//city is nil
+		city = [NSString stringWithString:@""];
+	}
+	if (landscape.state) {
+		state = [landscape.state stringByAppendingString:@" "];
+	} else {
+		//nil
+		state = [NSString stringWithString:@""];
+	}
+
+	if (landscape.zip) {
+		zip = [landscape.zip stringByAppendingString:@" "];
+	} else {
+		zip = [NSString stringWithString:@""];
+	}
 		
 	NSString *cityStateZipString = [[city stringByAppendingString:state] stringByAppendingString:zip];
-
-	imageView.image = landscape.thumbnailImage;
+	
+	for (Image *i in [landscape mutableSetValueForKeyPath:@"images"]) {
+		if ([i.isThumbnail boolValue] == YES) {
+			imageView.image = [UIImage imageWithData:i.image_data];
+		}
+	}
+	
 	nameLabel.text = landscape.name;
 	address1Label.text = landscape.address1;	
 	cityLabel.text = cityStateZipString;	

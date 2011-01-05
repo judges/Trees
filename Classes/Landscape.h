@@ -15,13 +15,13 @@
 }
 @end
 
-@interface Landscape :  NSManagedObject  
+@interface Landscape :  Photo 
 {
 }
 
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSDate * timeStamp;
-@property (nonatomic, retain) NSSet* assessments;
+@property (nonatomic, retain) NSDate * created_at;
+@property (nonatomic, retain) NSSet* inventoryItems;
 
 
 @property (nonatomic, retain) NSString *address1;
@@ -29,8 +29,6 @@
 @property (nonatomic, retain) NSString *state;
 @property (nonatomic, retain) NSString *zip;
 @property (nonatomic, retain) NSString *gps;
-@property (nonatomic, retain) UIImage *thumbnailImage;
-@property (nonatomic, retain) NSManagedObject *image;
 
 @end
 

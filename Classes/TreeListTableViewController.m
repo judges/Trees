@@ -8,7 +8,7 @@
 
 #import "TreeListTableViewController.h"
 #import "TreeDetailViewController.h"
-#import "Tree.h"
+#import "InventoryTree.h"
 #import "TreeTableViewCell.h"
 
 @implementation TreeListTableViewController
@@ -70,7 +70,7 @@
 	
     addController.delegate = self;
 	
-	Tree *newTree = [NSEntityDescription insertNewObjectForEntityForName:@"Tree" inManagedObjectContext:self.managedObjectContext];
+	Tree *newTree = [NSEntityDescription insertNewObjectForEntityForName:@"InventoryTree" inManagedObjectContext:self.managedObjectContext];
 	addController.tree = newTree;
 	
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:addController];
@@ -212,7 +212,7 @@
         // Create the fetch request for the entity.
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         // Edit the entity name as appropriate.
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Tree" inManagedObjectContext:managedObjectContext];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"InventoryTree" inManagedObjectContext:managedObjectContext];
         [fetchRequest setEntity:entity];
         
         // Edit the sort key as appropriate.

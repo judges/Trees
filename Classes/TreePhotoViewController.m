@@ -7,7 +7,7 @@
 //
 
 #import "TreePhotoViewController.h"
-#import "Tree.h"
+#import "InventoryTree.h"
 
 @implementation TreePhotoViewController
 
@@ -27,7 +27,8 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    imageView.image = [tree.image valueForKey:@"image"];
+	
+    imageView.image = [[tree mutableSetValueForKey:@"images"] anyObject];
 }
 
 

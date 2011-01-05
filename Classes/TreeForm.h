@@ -1,9 +1,9 @@
 //
 //  TreeForm.h
-//  landscapes
+//  Trees
 //
-//  Created by Evan Cordell on 8/16/10.
-//  Copyright 2010 NCPTT. All rights reserved.
+//  Created by Evan on 1/4/11.
+//  Copyright 2011 NCPTT. All rights reserved.
 //
 
 #import <CoreData/CoreData.h>
@@ -17,11 +17,23 @@
 {
 }
 
-@property (nonatomic, retain) TreeFormCondition * condition;
-@property (nonatomic, retain) TreeFormRecommendation * recommendation;
+@property (nonatomic, retain) NSSet* condition;
+@property (nonatomic, retain) NSSet* recommendation;
 @property (nonatomic, retain) AssessmentTree * tree;
 
 @end
 
 
+@interface TreeForm (CoreDataGeneratedAccessors)
+- (void)addConditionObject:(TreeFormCondition *)value;
+- (void)removeConditionObject:(TreeFormCondition *)value;
+- (void)addCondition:(NSSet *)value;
+- (void)removeCondition:(NSSet *)value;
+
+- (void)addRecommendationObject:(TreeFormRecommendation *)value;
+- (void)removeRecommendationObject:(TreeFormRecommendation *)value;
+- (void)addRecommendation:(NSSet *)value;
+- (void)removeRecommendation:(NSSet *)value;
+
+@end
 

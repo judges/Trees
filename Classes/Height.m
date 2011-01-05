@@ -2,8 +2,8 @@
 //  Height.m
 //  Trees
 //
-//  Created by Evan on 12/28/10.
-//  Copyright 2010 NCPTT. All rights reserved.
+//  Created by Evan on 1/4/11.
+//  Copyright 2011 NCPTT. All rights reserved.
 //
 
 #import "Height.h"
@@ -12,6 +12,6 @@
 
 @implementation Height 
 
-@dynamic tree;
+@dynamic assessment;
 
 @end

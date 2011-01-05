@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Tree.h"
+#import "InventoryTree.h"
 
 @interface TreeTableViewCell : UITableViewCell {
 	
-	Tree *tree;
+	InventoryTree *tree;
     
     UIImageView *imageView;
     UILabel *nameLabel;
@@ -19,7 +19,7 @@
     UILabel *timeStampLabel;	
 }
 
-@property (nonatomic, retain) Tree *tree;
+@property (nonatomic, retain) InventoryTree *tree;
 
 @property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) UILabel *nameLabel;

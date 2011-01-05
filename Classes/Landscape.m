@@ -13,14 +13,12 @@
 @implementation Landscape 
 
 @dynamic name;
-@dynamic timeStamp;
-@dynamic assessments;
-@dynamic image;
+@dynamic created_at;
+@dynamic inventoryItems;
 @dynamic address1;
 @dynamic city;
 @dynamic state;
 @dynamic zip;
-@dynamic thumbnailImage;
 @dynamic gps;
 
 @end

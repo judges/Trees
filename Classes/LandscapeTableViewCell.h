@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Landscape.h"
+#import "Image.h"
 
 @interface LandscapeTableViewCell : UITableViewCell {
 

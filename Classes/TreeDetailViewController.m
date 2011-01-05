@@ -7,8 +7,9 @@
 //
 
 #import "TreeDetailViewController.h"
-#import "Tree.h"
+#import "InventoryTree.h"
 #import "TreePhotoViewController.h"
+#import "Image.h"
 
 @interface TreeDetailViewController (PrivateMethods)
 - (void)updatePhotoButton;
@@ -40,8 +41,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-	
-    [photoButton setImage:tree.thumbnailImage forState:UIControlStateNormal];
+	for (Image *i in [tree mutableSetValueForKeyPath:@"images"]) {
+		if ([i.isThumbnail boolValue] == YES) {
+			[photoButton setImage:[UIImage imageWithData:i.image_data] forState:UIControlStateNormal];
+		}
+	}
+    
 	self.navigationItem.title = tree.name;
     nameTextField.text = tree.name;    
     gpsTextField.text = tree.gps;    
@@ -157,18 +162,20 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)selectedImage editingInfo:(NSDictionary *)editingInfo {
 	
-	// Delete any existing image.
-	NSManagedObject *oldImage = tree.image;
-	if (oldImage != nil) {
-		[tree.managedObjectContext deleteObject:oldImage];
+	for (Image *i in [tree mutableSetValueForKeyPath:@"images"]) {
+		if ([i.isThumbnail boolValue] == YES) {
+			i.isThumbnail = NO;
+		}
 	}
 	
     // Create an image object for the new image.
-	NSManagedObject *image = [NSEntityDescription insertNewObjectForEntityForName:@"ImageTree" inManagedObjectContext:tree.managedObjectContext];
-	tree.image = image;
+	Image *image = [NSEntityDescription insertNewObjectForEntityForName:@"Image" inManagedObjectContext:tree.managedObjectContext];
+	image.isThumbnail = [NSNumber numberWithBool:YES];
+	[[tree mutableSetValueForKey:@"images"] addObject:image];
 	
 	// Set the image for the image managed object.
-	[image setValue:selectedImage forKey:@"image"];
+	//image.image_data = UIImageJPEGRepresentation(selectedImage, 1.0);
+	//[image setValue:selectedImage forKey:@"image"];
 	
 	// Create a thumbnail version of the image for the tree object.
 	// following code sourced at: http://tharindufit.wordpress.com/2010/04/19/how-to-create-iphone-photos-like-thumbs-in-an-iphone-app/
@@ -204,7 +211,7 @@
 	[myThumbNail drawInRect:CGRectMake(0.0, 0.0, ratio, ratio)];
 	
 	// save the image from the current context
-	tree.thumbnailImage = UIGraphicsGetImageFromCurrentImageContext();
+	image = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
 	
 	//[selectedImage drawInRect:rect];
@@ -227,19 +234,22 @@
 	 * If the tree doesn't have a thumbnail, then: if editing, enable the button and show an image that says "Choose Photo" or similar; if not editing then disable the button and show nothing.  
 	 */
 	BOOL editing = self.editing;
-	
-	if (tree.thumbnailImage != nil) {
-		photoButton.highlighted = editing;
-	} else {
-		photoButton.enabled = editing;
-		
-		if (editing) {
-			[photoButton setImage:[UIImage imageNamed:@"photo_camera.png"] forState:UIControlStateNormal];
+	for (Image *i in [tree mutableSetValueForKeyPath:@"images"]) {
+		if ([i.isThumbnail boolValue] == YES) {
+			photoButton.enabled = editing;
+			
+			if (editing) {
+				[photoButton setImage:[UIImage imageNamed:@"photo_camera.png"] forState:UIControlStateNormal];
+			} else {
+				//[photoButton setImage:nil forState:UIControlStateNormal];
+				[photoButton setImage:[UIImage imageNamed:@"photo_camera.png"] forState:UIControlStateNormal];
+			}
 		} else {
-			//[photoButton setImage:nil forState:UIControlStateNormal];
-			[photoButton setImage:[UIImage imageNamed:@"photo_camera.png"] forState:UIControlStateNormal];
+			photoButton.highlighted = editing;
 		}
+
 	}
+
 }
 
 

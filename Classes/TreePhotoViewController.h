@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@class Tree;
+@class InventoryTree;
 
 @interface TreePhotoViewController : UIViewController {
 @private
-	Tree *tree;
+	InventoryTree *tree;
 	UIImageView *imageView;
 }
 
-@property(nonatomic, retain) Tree *tree;
+@property(nonatomic, retain) InventoryTree *tree;
 @property(nonatomic, retain) UIImageView *imageView;
 
 @end

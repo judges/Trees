@@ -1,9 +1,9 @@
 // 
 //  TreeCrown.m
-//  landscapes
+//  Trees
 //
-//  Created by Evan Cordell on 8/16/10.
-//  Copyright 2010 NCPTT. All rights reserved.
+//  Created by Evan on 1/4/11.
+//  Copyright 2011 NCPTT. All rights reserved.
 //
 
 #import "TreeCrown.h"

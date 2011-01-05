@@ -57,7 +57,10 @@
 		abort();
 	}		
 }
-
+- (void) viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[self.tableView reloadData];
+}
 - (void) viewDidUnload {
 	[fetchedResultsController release];
 }
@@ -103,7 +106,7 @@
 - (void)showLandscape:(Landscape *)landscape animated:(BOOL)animated {
     // Create a detail view controller, set the landscape, then push it.
     NSDictionary *query = [NSDictionary dictionaryWithObject:landscape forKey:@"landscape"];
-	[[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Landscapes/LandscapeDetailView"] applyQuery:query] applyAnimated:YES]];
+	[[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Landscapes/LandscapeDetailView?"] applyQuery:query] applyAnimated:YES]];
 }
 
 
@@ -265,8 +268,10 @@
 			break;
 			
 		case NSFetchedResultsChangeMove:
+		{
 			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
             [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+		}
             break;
 	}
 }

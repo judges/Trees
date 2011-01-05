@@ -1,9 +1,9 @@
 //
 //  TreeOverall.h
-//  landscapes
+//  Trees
 //
-//  Created by Evan Cordell on 8/16/10.
-//  Copyright 2010 NCPTT. All rights reserved.
+//  Created by Evan on 1/4/11.
+//  Copyright 2011 NCPTT. All rights reserved.
 //
 
 #import <CoreData/CoreData.h>
@@ -17,11 +17,23 @@
 {
 }
 
-@property (nonatomic, retain) TreeOverallCondition * condition;
-@property (nonatomic, retain) TreeOverallRecommendation * recommendation;
+@property (nonatomic, retain) NSSet* condition;
+@property (nonatomic, retain) NSSet* recommendation;
 @property (nonatomic, retain) AssessmentTree * tree;
 
 @end
 
 
+@interface TreeOverall (CoreDataGeneratedAccessors)
+- (void)addConditionObject:(TreeOverallCondition *)value;
+- (void)removeConditionObject:(TreeOverallCondition *)value;
+- (void)addCondition:(NSSet *)value;
+- (void)removeCondition:(NSSet *)value;
+
+- (void)addRecommendationObject:(TreeOverallRecommendation *)value;
+- (void)removeRecommendationObject:(TreeOverallRecommendation *)value;
+- (void)addRecommendation:(NSSet *)value;
+- (void)removeRecommendation:(NSSet *)value;
+
+@end
 

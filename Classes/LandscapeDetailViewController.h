@@ -16,7 +16,7 @@
 @interface LandscapeDetailViewController : UITableViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource> {
 
 	Landscape *landscape;
-	NSArray *assessmentArray;
+	NSMutableArray *assessmentArray;
 	UIView *tableHeaderView;    
 	UIButton *photoButton;
 	UITextField *nameTextField;
@@ -29,7 +29,7 @@
 }
 
 @property (nonatomic, retain) Landscape *landscape;
-@property (nonatomic, retain) NSArray *assessmentArray;
+@property (nonatomic, retain) NSMutableArray *assessmentArray;
 @property (nonatomic, retain) IBOutlet UIView *tableHeaderView;
 @property (nonatomic, retain) IBOutlet UIButton *photoButton;
 @property (nonatomic, retain) IBOutlet UITextField *nameTextField;

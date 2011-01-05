@@ -45,15 +45,24 @@
     }
 	
 	//load assosciated assessment records
+	assessmentArray = [[NSMutableArray alloc] initWithCapacity:0];
 	NSArray *descriptors = [NSArray arrayWithObject:[[[NSSortDescriptor alloc] initWithKey:@"created_at" ascending:NO] autorelease]];
-	assessmentArray = [[NSArray alloc] initWithArray:[[landscape mutableSetValueForKey:@"assessments"] sortedArrayUsingDescriptors:descriptors]];
+	NSArray *tempArray = [[NSArray alloc] initWithArray:[[landscape mutableSetValueForKey:@"inventoryItems"] sortedArrayUsingDescriptors:descriptors]];
+	for (InventoryItem *i in tempArray) {
+		[assessmentArray addObjectsFromArray:[NSArray arrayWithArray:[i.assessments sortedArrayUsingDescriptors:descriptors]]];
+	}
+	[tempArray release];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-	
-    [photoButton setImage:landscape.thumbnailImage forState:UIControlStateNormal];
+	for (Image *i in [landscape mutableSetValueForKeyPath:@"images"]) {
+		if ([i.isThumbnail boolValue] == YES) {
+			[photoButton setImage:[UIImage imageWithData:i.image_data] forState:UIControlStateNormal];
+		}
+	}
+    
 	self.navigationItem.title = landscape.name;
     nameTextField.text = landscape.name;    
     address1TextField.text = landscape.address1;    
@@ -177,7 +186,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-	return [[landscape mutableSetValueForKey:@"assessments"] count];
+	return [assessmentArray count];
 }
 
 // Customize the appearance of table view cells.
@@ -204,7 +213,7 @@
 	Assessment *assessment = [assessmentArray objectAtIndex:indexPath.row];
 	cell.assessment = assessment;
 	//This logic should probably be moved into the assessment cell class, since it only needs the assessment to fill the rest in
-	cell.landscapeName.text = assessment.landscape.name;
+//	cell.landscapeName.text = assessment.landscape.name;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterLongStyle];
     NSString *date= [dateFormatter stringFromDate:assessment.created_at];
@@ -251,18 +260,19 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)selectedImage editingInfo:(NSDictionary *)editingInfo {
 	
-	// Delete any existing image.
-	NSManagedObject *oldImage = landscape.image;
-	if (oldImage != nil) {
-		[landscape.managedObjectContext deleteObject:oldImage];
+	for (Image *i in [landscape mutableSetValueForKeyPath:@"images"]) {
+		if ([i.isThumbnail boolValue] == YES) {
+			i.isThumbnail = [NSNumber numberWithBool: NO];
+		}
 	}
 	
     // Create an image object for the new image.
-	NSManagedObject *image = [NSEntityDescription insertNewObjectForEntityForName:@"ImageLandscape" inManagedObjectContext:landscape.managedObjectContext];
-	landscape.image = image;
+	Image *image = [NSEntityDescription insertNewObjectForEntityForName:@"Image" inManagedObjectContext:landscape.managedObjectContext];
+	image.isThumbnail = [NSNumber numberWithBool:YES];
+	[[landscape mutableSetValueForKey:@"images"] addObject:image];
 	
 	// Set the image for the image managed object.
-	[image setValue:selectedImage forKey:@"image"];
+	image.image_data = UIImageJPEGRepresentation(selectedImage, 1.0);
 	
 	// Create a thumbnail version of the image for the landscape object.
 	// following code sourced at: http://tharindufit.wordpress.com/2010/04/19/how-to-create-iphone-photos-like-thumbs-in-an-iphone-app/
@@ -298,11 +308,12 @@
 	[myThumbNail drawInRect:CGRectMake(0.0, 0.0, ratio, ratio)];
 	
 	// save the image from the current context
-	landscape.thumbnailImage = UIGraphicsGetImageFromCurrentImageContext();
+	image.image_data = UIImageJPEGRepresentation(UIGraphicsGetImageFromCurrentImageContext(), 1.0);
 	UIGraphicsEndImageContext();
 
 	//[selectedImage drawInRect:rect];
 	[myThumbNail release];	
+	
 	
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -321,8 +332,13 @@
 	 * If the landscape doesn't have a thumbnail, then: if editing, enable the button and show an image that says "Choose Photo" or similar; if not editing then disable the button and show nothing.  
 	 */
 	BOOL editing = self.editing;
-	
-	if (landscape.thumbnailImage != nil) {
+	BOOL hasThumb = NO;
+	for (Image *i in [landscape mutableSetValueForKeyPath:@"images"]) {
+		if ([i.isThumbnail boolValue] == YES) {
+			hasThumb = YES;
+		}
+	}
+	if (hasThumb == YES) {
 		photoButton.highlighted = editing;
 	} else {
 		photoButton.enabled = editing;

@@ -1,9 +1,9 @@
 //
 //  TreeRootFlare.h
-//  landscapes
+//  Trees
 //
-//  Created by Evan Cordell on 8/16/10.
-//  Copyright 2010 NCPTT. All rights reserved.
+//  Created by Evan on 1/4/11.
+//  Copyright 2011 NCPTT. All rights reserved.
 //
 
 #import <CoreData/CoreData.h>
@@ -17,11 +17,23 @@
 {
 }
 
-@property (nonatomic, retain) TreeRootFlareCondition * condition;
+@property (nonatomic, retain) NSSet* condition;
 @property (nonatomic, retain) AssessmentTree * tree;
-@property (nonatomic, retain) TreeRootFlareRecommendation * recommendation;
+@property (nonatomic, retain) NSSet* recommendation;
 
 @end
 
 
+@interface TreeRootFlare (CoreDataGeneratedAccessors)
+- (void)addConditionObject:(TreeRootFlareCondition *)value;
+- (void)removeConditionObject:(TreeRootFlareCondition *)value;
+- (void)addCondition:(NSSet *)value;
+- (void)removeCondition:(NSSet *)value;
+
+- (void)addRecommendationObject:(TreeRootFlareRecommendation *)value;
+- (void)removeRecommendationObject:(TreeRootFlareRecommendation *)value;
+- (void)addRecommendation:(NSSet *)value;
+- (void)removeRecommendation:(NSSet *)value;
+
+@end
 

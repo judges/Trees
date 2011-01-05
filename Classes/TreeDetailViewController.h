@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate_Shared.h"
 
-@class Tree;
+@class InventoryTree;
 
 @interface TreeDetailViewController : UITableViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate> {
 	
-	Tree *tree;
+	InventoryTree *tree;
 	
 	UIView *tableHeaderView;    
 	UIButton *photoButton;
@@ -22,7 +22,7 @@
 	
 }
 
-@property (nonatomic, retain) Tree *tree;
+@property (nonatomic, retain) InventoryTree *tree;
 
 @property (nonatomic, retain) IBOutlet UIView *tableHeaderView;
 @property (nonatomic, retain) IBOutlet UIButton *photoButton;

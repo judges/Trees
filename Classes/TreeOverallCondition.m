@@ -1,0 +1,17 @@
+// 
+//  TreeOverallCondition.m
+//  Trees
+//
+//  Created by Evan on 1/4/11.
+//  Copyright 2011 NCPTT. All rights reserved.
+//
+
+#import "TreeOverallCondition.h"
+
+#import "TreeOverall.h"
+
+@implementation TreeOverallCondition 
+
+@dynamic overall;
+
+@end

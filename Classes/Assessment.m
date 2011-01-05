@@ -1,22 +1,22 @@
 // 
 //  Assessment.m
-//  landscapes
+//  Trees
 //
-//  Created by Evan Cordell on 8/16/10.
-//  Copyright 2010 NCPTT. All rights reserved.
+//  Created by Evan on 1/4/11.
+//  Copyright 2011 NCPTT. All rights reserved.
 //
 
 #import "Assessment.h"
 
 #import "AssessmentType.h"
-#import "Landscape.h"
+#import "InventoryItem.h"
 
 @implementation Assessment 
 
 @dynamic assessor;
 @dynamic notes;
 @dynamic created_at;
-@dynamic landscape;
+@dynamic inventoryItem;
 @dynamic type;
 
 @end

@@ -28,7 +28,7 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    imageView.image = [landscape.image valueForKey:@"image"];
+    imageView.image = [[landscape mutableSetValueForKey:@"images"] anyObject];
 }
 
 

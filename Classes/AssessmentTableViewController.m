@@ -87,14 +87,25 @@
     Landscape *landscape = [NSEntityDescription insertNewObjectForEntityForName:@"Landscape" inManagedObjectContext:managedObjectContext];
     landscape.name = @"Test Landscape";
     
-    AssessmentType *type = [NSEntityDescription insertNewObjectForEntityForName: @"AssessmentType" inManagedObjectContext:managedObjectContext];
-    type.name = @"Tree";
-    
+    InventoryType *inType = [NSEntityDescription insertNewObjectForEntityForName:@"InventoryType" inManagedObjectContext:managedObjectContext];
+	inType.name = @"Tree";
+	
+	InventoryTree *inventoryTree = [NSEntityDescription insertNewObjectForEntityForName:@"InventoryTree" inManagedObjectContext:managedObjectContext];
+	inventoryTree.name = @"St. Denis Oak";
+	inventoryTree.created_at = [NSDate date];
+	inventoryTree.landscape = landscape;
+	inventoryTree.type = inType;
+	
+	AssessmentType *asType = [NSEntityDescription insertNewObjectForEntityForName: @"AssessmentType" inManagedObjectContext:managedObjectContext];
+    asType.name = @"Tree";
+	
     AssessmentTree *assessmentTree = [NSEntityDescription insertNewObjectForEntityForName:@"AssessmentTree" inManagedObjectContext:managedObjectContext];
     assessmentTree.assessor = @"Test Assessor";
     assessmentTree.created_at = [NSDate date];
-    assessmentTree.landscape = landscape;
-    assessmentTree.type = type;
+    assessmentTree.type = asType;
+	assessmentTree.tree = inventoryTree;
+
+	[[inventoryTree mutableSetValueForKeyPath:@"assessments"] addObject:assessmentTree];
 	
 	NSString *treeOptionsPath = [[NSBundle mainBundle] pathForResource:@"TreeOptions" ofType:@"xml"];
 	NSData *treeOptionsData = [NSData dataWithContentsOfFile:treeOptionsPath];
@@ -272,7 +283,7 @@
     if ([selectedType.name isEqualToString:@"Tree"]) {
         AssessmentTree *new = [NSEntityDescription insertNewObjectForEntityForName:@"AssessmentTree" inManagedObjectContext:managedObjectContext];
         new.type = selectedType;
-        new.landscape = selectedLandscape;
+        //new.landscape = selectedLandscape;
         new.created_at = [NSDate date];
         TreeCrown *treeCrown = [NSEntityDescription insertNewObjectForEntityForName:@"TreeCrown" inManagedObjectContext:managedObjectContext];
         new.crown = treeCrown;
@@ -405,7 +416,7 @@
     // Configure the cell
     Assessment *assessment = (Assessment *)[fetchedResultsController objectAtIndexPath:indexPath];
     cell.assessment = assessment;
-    cell.landscapeName.text = assessment.landscape.name;
+//    cell.landscapeName.text = assessment.landscape.name;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterLongStyle];
     NSString *date= [dateFormatter stringFromDate:assessment.created_at];

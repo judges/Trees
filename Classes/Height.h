@@ -2,8 +2,8 @@
 //  Height.h
 //  Trees
 //
-//  Created by Evan on 12/28/10.
-//  Copyright 2010 NCPTT. All rights reserved.
+//  Created by Evan on 1/4/11.
+//  Copyright 2011 NCPTT. All rights reserved.
 //
 
 #import <CoreData/CoreData.h>
@@ -15,7 +15,7 @@
 {
 }
 
-@property (nonatomic, retain) AssessmentTree * tree;
+@property (nonatomic, retain) AssessmentTree * assessment;
 
 @end
 

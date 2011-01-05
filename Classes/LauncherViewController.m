@@ -41,6 +41,8 @@
 		_launcherView.columnCount = 3;
 		_launcherView.frame=self.view.bounds;
 	}
+	_launcherView.frame = CGRectMake(_launcherView.frame.origin.x, _launcherView.frame.origin.y + 44, _launcherView.frame.size.width, _launcherView.frame.size.height - 44);
+	[self.mySearchBar sizeToFit];
 }
 
 -(void)reloadLauncherView
