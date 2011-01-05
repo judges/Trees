@@ -112,9 +112,19 @@
 		{
 			[[self.filteredRecords objectAtIndex:1] addObject:i];
 		}
+		result = [i.landscape.name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+		if (result == NSOrderedSame)
+		{
+			[[self.filteredRecords objectAtIndex:1] addObject:i];
+		}
 	}
 	for (Assessment* a in [allRecords objectAtIndex:2]) {
 		NSComparisonResult result = [a.inventoryItem.name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+		if (result == NSOrderedSame)
+		{
+			[[self.filteredRecords objectAtIndex:2] addObject:a];
+		}
+		result = [a.inventoryItem.landscape.name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
 		if (result == NSOrderedSame)
 		{
 			[[self.filteredRecords objectAtIndex:2] addObject:a];
