@@ -8,6 +8,8 @@
 
 #import "TreeAddViewController.h"
 #import "InventoryTree.h"
+#import "Landscape.h"
+#import "Type.h"
 
 @implementation TreeAddViewController
 
@@ -46,8 +48,16 @@
 
 - (void)save {
     
+	Landscape *landscape = [NSEntityDescription insertNewObjectForEntityForName:@"Landscape" inManagedObjectContext:tree.managedObjectContext];
+    landscape.name = @"American Cemetery";
+
+	Type *type = [NSEntityDescription insertNewObjectForEntityForName:@"Type" inManagedObjectContext:tree.managedObjectContext];
+	type.name = @"Tree";
+	
     tree.name = nameTextField.text;
 	tree.created_at = [NSDate date];
+	tree.landscape = landscape;
+	tree.type = type;
 	
 	NSError *error = nil;
 	if (![tree.managedObjectContext save:&error]) {
@@ -58,7 +68,8 @@
 		 */
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 		abort();
-	}		
+	}	
+	
     
 	[self.delegate treeAddViewController:self didAddTree:tree];
 }
