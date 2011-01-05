@@ -94,6 +94,7 @@
 	
 	InventoryTree *inventoryTree = [NSEntityDescription insertNewObjectForEntityForName:@"InventoryTree" inManagedObjectContext:managedObjectContext];
 	inventoryTree.name = @"St. Denis' Oak";
+	inventoryTree.gps = @"31.754472,-93.091375";
 	inventoryTree.created_at = [NSDate date];
 	inventoryTree.landscape = landscape;
 	inventoryTree.type = type;
