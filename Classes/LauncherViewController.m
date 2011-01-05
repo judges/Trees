@@ -11,7 +11,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 @implementation LauncherViewController
-@synthesize mySearchBar;
+@synthesize searchBar;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // NSObject
@@ -42,7 +42,7 @@
 		_launcherView.frame=self.view.bounds;
 	}
 	_launcherView.frame = CGRectMake(_launcherView.frame.origin.x, _launcherView.frame.origin.y + 44, _launcherView.frame.size.width, _launcherView.frame.size.height - 44);
-	[self.mySearchBar sizeToFit];
+	[self.searchBar sizeToFit];
 }
 
 -(void)reloadLauncherView
@@ -62,14 +62,26 @@
 // called when keyboard search button pressed
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-	[self.mySearchBar resignFirstResponder];
+	[self.searchBar resignFirstResponder];
 }
 
 // called when cancel button pressed
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-	[self.mySearchBar resignFirstResponder];
+	[self.searchBar resignFirstResponder];
 }
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+	[searchBar setShowsCancelButton:YES animated:YES];
+	return YES;
+}
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
+	[searchBar setShowsCancelButton:NO animated:YES];
+	return YES;
+}
+
+#pragma mark -
+#pragma mark UISearchDisplayDelegate
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // UIViewController
@@ -77,7 +89,7 @@
 - (void)loadView {
 	[super loadView];
 	CGRect  bounds = self.view.bounds;
-	[self.mySearchBar sizeToFit];
+	[self.searchBar sizeToFit];
 	
 	// launcherView
 	_launcherView.frame = CGRectMake(0,45,bounds.size.width,bounds.size.height-2*45); 
@@ -90,12 +102,12 @@
 	if((self.interfaceOrientation == UIDeviceOrientationLandscapeLeft) || (self.interfaceOrientation == UIDeviceOrientationLandscapeRight)){
 		_launcherView.columnCount = 5;
 		_launcherView.frame=self.view.bounds;
-		[self.mySearchBar sizeToFit];
+		[self.searchBar sizeToFit];
 		
 	} else	if((self.interfaceOrientation == UIDeviceOrientationPortrait) || (self.interfaceOrientation == UIDeviceOrientationPortraitUpsideDown)){
 		_launcherView.columnCount = 3;
 		_launcherView.frame=self.view.bounds;
-		[self.mySearchBar sizeToFit];
+		[self.searchBar sizeToFit];
 		
 	}
 	_launcherView.frame = CGRectMake(_launcherView.frame.origin.x, _launcherView.frame.origin.y + 44, _launcherView.frame.size.width, _launcherView.frame.size.height - 44);
@@ -192,6 +204,20 @@
 	TTLauncherItem* item = [_launcherView itemWithURL:@"land://data/assessments"];
 	item.badgeNumber = 2;
 	*/
+	searchBar = [[[UISearchBar alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, 44.0)] autorelease];
+	searchBar.delegate = self;
+	searchBar.showsCancelButton = NO;
+	searchBar.tintColor=[UIColor colorWithRed:0.180 green:0.267 blue: 0.173 alpha:1.0]; //forest green
+	searchBar.placeholder = @"Search";
+	searchBar.showsScopeBar = YES;
+	searchBar.scopeButtonTitles = [NSArray arrayWithObject:@"Test Scope"];
+	
+	searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+	searchController.delegate = self;
+	searchController.searchResultsDataSource = self;
+	searchController.searchResultsDelegate = self;
+	
+	[self.view addSubview: searchBar];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -222,22 +248,7 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-
-	self.mySearchBar = [[[UISearchBar alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.bounds.size.width, 44.0)] autorelease];
-	self.mySearchBar.delegate = self;
-	self.mySearchBar.showsCancelButton = YES;
-	self.mySearchBar.tintColor=[UIColor colorWithRed:0.180 green:0.267 blue: 0.173 alpha:1.0]; //forest green
 	
-	if((self.interfaceOrientation == UIDeviceOrientationLandscapeLeft) || (self.interfaceOrientation == UIDeviceOrientationLandscapeRight)){
-		//resize search bar
-		
-		
-	} else	if((self.interfaceOrientation == UIDeviceOrientationPortrait) || (self.interfaceOrientation == UIDeviceOrientationPortraitUpsideDown)){
-		//resize search bar
-
-	}
- 	
-	[self.view addSubview: self.mySearchBar];
 }
 
 // called after the view controller's view is released and set to nil.
@@ -249,8 +260,8 @@
 	[super viewDidUnload];
 	
 	// release and set to nil
-	[mySearchBar release];
-	self.mySearchBar = nil;
+	[searchBar release];
+	self.searchBar = nil;
 }
 
 - (void)launcherView:(TTLauncherView*)launcher didSelectItem:(TTLauncherItem*)item {
@@ -271,6 +282,13 @@
 	[self.navigationItem setRightBarButtonItem:nil animated:YES];
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CR"] autorelease];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return 3;
+}
 
 #pragma mark -
 #pragma mark IASKAppSettingsViewControllerDelegate protocol
