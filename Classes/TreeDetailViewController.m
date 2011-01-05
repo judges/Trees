@@ -12,6 +12,7 @@
 #import "Type.h"
 #import "TreePhotoViewController.h"
 #import "Image.h"
+#import "AppDelegate_Shared.h"
 
 @interface TreeDetailViewController (PrivateMethods)
 - (void)updatePhotoButton;
