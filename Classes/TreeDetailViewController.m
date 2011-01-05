@@ -27,6 +27,14 @@
 #pragma mark -
 #pragma mark View controller
 
+-(id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
+    //initializes and passes a tree from parent controller
+	if(query && [query objectForKey:@"inventorytree"]){ 
+		self.tree = (InventoryTree*) [query objectForKey:@"inventorytree"]; 
+	} 
+    return self; 
+} 
+
 - (void)viewDidLoad {
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
@@ -137,6 +145,9 @@
 	
     return canMove;
 }
+
+
+
 
 
 
