@@ -43,7 +43,7 @@
 @interface AssessmentTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
     UIActionSheet *typeActionSheet;
     UIActionSheet *landscapeActionSheet;
-	UIActionSheet *InventoryActionSheet;
+	UIActionSheet *inventoryActionSheet;
     UIPickerView *typePickerView;
     UIPickerView *landscapePickerView;
 	UIPickerView *inventoryPickerView;
@@ -61,6 +61,7 @@
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSMutableArray *typesArray;
 @property (nonatomic, retain) NSMutableArray *landscapesArray;
+@property (nonatomic, retain) NSMutableArray *inventoryArray;
 
 - (void)configureCell:(AssessmentTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 - (void)prepopulateDb;

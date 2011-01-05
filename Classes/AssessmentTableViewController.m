@@ -11,7 +11,7 @@
 
 @implementation AssessmentTableViewController
 @synthesize fetchedResultsController;
-@synthesize typesArray, landscapesArray;
+@synthesize typesArray, landscapesArray, inventoryArray;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -32,13 +32,16 @@
     //initialize actionsheet for adding new records
     typeActionSheet = [[UIActionSheet alloc] initWithTitle:@"Type" delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     landscapeActionSheet = [[UIActionSheet alloc] initWithTitle:@"Landscape" delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+	inventoryActionSheet = [[UIActionSheet alloc] initWithTitle:@"Item" delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     
     //set up arrays for type and landscape picker
     typesArray = [[NSMutableArray alloc] init];
     landscapesArray = [[NSMutableArray alloc] init];
+	inventoryArray = [[NSMutableArray alloc] init];
     CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
     typePickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
     landscapePickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
+	inventoryPickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
 	
 	  // Include an Add + button
     UIBarButtonItem *addButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add:)];
@@ -76,8 +79,8 @@
     for (Landscape *l in tmp) {
         [landscapesArray addObject:l];
     }
-    [fetchRequest release];
-    
+	
+	[fetchRequest release];
     if (error) {
         NSLog(@"Error occured fetching from db: %@", error);
     }
@@ -273,14 +276,69 @@
 }
 
 - (void)landscapeSelected:(id)sender {
-    //landscape and type have been selected, so hide landscape picker and add a new record to the db
+    //landscape has been selected, so hide landscape picker and load and show inventory picker
     [landscapeActionSheet dismissWithClickedButtonIndex:0 animated:YES];
+    
+    [inventoryActionSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+    
+    inventoryPickerView.showsSelectionIndicator = YES;
+    inventoryPickerView.dataSource = self;
+    inventoryPickerView.delegate = self;
+    
+    [inventoryActionSheet addSubview:inventoryPickerView];
+    
+    UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Close"]];
+    closeButton.momentary = YES; 
+    closeButton.frame = CGRectMake(10, 7.0f, 50.0f, 30.0f);
+    closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
+    closeButton.tintColor = [UIColor blackColor];
+    [closeButton addTarget:self action:@selector(dismissActionSheet:) forControlEvents:UIControlEventValueChanged];
+    [inventoryActionSheet addSubview:closeButton];
+    [closeButton release];
+    
+    UISegmentedControl *selectButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Select"]];
+    selectButton.momentary = YES; 
+    selectButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
+    selectButton.segmentedControlStyle = UISegmentedControlStyleBar;
+    selectButton.tintColor = [UIColor blackColor];
+    [selectButton addTarget:self action:@selector(inventorySelected:) forControlEvents:UIControlEventValueChanged];
+    [inventoryActionSheet addSubview:selectButton];
+    [selectButton release];
+    
+    [inventoryActionSheet showInView:self.view];
+    [inventoryActionSheet setBounds:CGRectMake(0, 0, 320, 485)];
+    
+	//fetch data for inventory picker
+	
+	//clear the array
+	[inventoryArray removeAllObjects];
+	
+	//grab the appropriate records that match earlier selections
+	NSError *error;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"InventoryItem" inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(landscape == %@) AND (type == %@)", selectedLandscape, selectedType];
+	[fetchRequest setPredicate:predicate];
+	[inventoryArray addObjectsFromArray:[managedObjectContext executeFetchRequest:fetchRequest error:&error]];
+	[fetchRequest release];
+	
+    //select the first entry by default
+    if ([inventoryPickerView numberOfRowsInComponent:0]>0) {
+        [self pickerView:inventoryPickerView didSelectRow:0 inComponent:0];
+    }
+	
+}
+
+- (void)inventorySelected:(id)sender {
+    //landscape, type, and inventory item have been selected, so hide inventory picker and add a new record to the db
+    [inventoryActionSheet dismissWithClickedButtonIndex:0 animated:YES];
     NSError *error;
     //this could easily be modified to insert objects dynamically rather than with an if.
     if ([selectedType.name isEqualToString:@"Tree"]) {
         AssessmentTree *new = [NSEntityDescription insertNewObjectForEntityForName:@"AssessmentTree" inManagedObjectContext:managedObjectContext];
         new.type = selectedType;
-        //new.landscape = selectedLandscape;
+        new.tree = (InventoryTree *)selectedInventory;
         new.created_at = [NSDate date];
         TreeCrown *treeCrown = [NSEntityDescription insertNewObjectForEntityForName:@"TreeCrown" inManagedObjectContext:managedObjectContext];
         new.crown = treeCrown;
@@ -307,6 +365,7 @@
     //user clicks close on an action sheet
     [typeActionSheet dismissWithClickedButtonIndex:0 animated:YES];
     [landscapeActionSheet dismissWithClickedButtonIndex:0 animated:YES];
+	[inventoryActionSheet dismissWithClickedButtonIndex:0 animated:YES];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
@@ -318,27 +377,39 @@
     //get number of rows for picker views
     if (thePickerView==typePickerView) {
         return [typesArray count];
-    } else {
+    } else if (thePickerView==landscapePickerView) {
         return [landscapesArray count];
-    }
+    } else if (thePickerView==inventoryPickerView) {
+		return [inventoryArray count];
+	} else {
+		return 0;
+	}
+
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     //load data into picker views
-    if (thePickerView==typePickerView) {
+    if (thePickerView == typePickerView) {
         return [[typesArray objectAtIndex:row] name];
-    } else {
+    } else if (thePickerView ==landscapePickerView) {
         return [[landscapesArray objectAtIndex:row] name];
-    }
+    } else if (thePickerView == inventoryPickerView) {
+		return [[inventoryArray objectAtIndex:row] name];
+	} else {
+		return @"";
+	}
+
 }
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     //set the selected type or row based on user interaction
-    if (thePickerView==typePickerView) {
+    if (thePickerView == typePickerView) {
         selectedType = [typesArray objectAtIndex:row];
-    } else {
+    } else if (thePickerView == landscapePickerView) {
         selectedLandscape = [landscapesArray objectAtIndex:row];
-    }
+    } else if (thePickerView == inventoryPickerView) {
+		selectedInventory = [inventoryArray objectAtIndex:row];
+	}
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -554,10 +625,13 @@
 - (void)dealloc {
     [typesArray release];
     [landscapesArray release];
+	[inventoryArray release];
     [typePickerView release];
     [landscapePickerView release];
+	[inventoryPickerView release];
     [typeActionSheet release];
     [landscapeActionSheet release];
+	[inventoryActionSheet release];
     [fetchedResultsController release];
     [super dealloc];
 }
