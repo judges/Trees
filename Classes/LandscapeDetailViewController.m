@@ -277,7 +277,7 @@
 	// Create a thumbnail version of the image for the landscape object.
 	// following code sourced at: http://tharindufit.wordpress.com/2010/04/19/how-to-create-iphone-photos-like-thumbs-in-an-iphone-app/
 	
-	CGFloat ratio = 128.0;
+	CGFloat ratio = 100.0;
 
 	// first crop to a rectangle and then scale the cropped image to ratio
 	CGRect cropRect;

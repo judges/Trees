@@ -83,6 +83,11 @@
        
     Landscape *landscape = [NSEntityDescription insertNewObjectForEntityForName:@"Landscape" inManagedObjectContext:managedObjectContext];
     landscape.name = @"American Cemetery";
+	landscape.address1 = @"131 Second Street";
+	landscape.city = @"Natchitoches";
+	landscape.state = @"LA";
+	landscape.zip = @"71457";
+	landscape.gps = @"31.753833,-93.091053";
     
     Type *type = [NSEntityDescription insertNewObjectForEntityForName:@"Type" inManagedObjectContext:managedObjectContext];
 	type.name = @"Tree";
