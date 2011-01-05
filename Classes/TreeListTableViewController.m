@@ -12,8 +12,6 @@
 #import "InventoryTree.h"
 #import "TreeTableViewCell.h"
 
-
-
 @implementation TreeListTableViewController
 
 @synthesize fetchedResultsController;
@@ -86,7 +84,26 @@
     [addController release];
 }
 
-
+/*
+ 
+ - (void)landscapeAddViewController:(LandscapeAddViewController *)landscapeAddViewController didAddLandscape:(Landscape *)landscape {
+ if (landscape) {        
+ // Show the landscape in a new view controller
+ [self showLandscape:landscape animated:NO];
+ }
+ 
+ // Dismiss the modal add landscape view controller
+ [self dismissModalViewControllerAnimated:YES];
+ }
+ 
+ 
+ - (void)showLandscape:(Landscape *)landscape animated:(BOOL)animated {
+ // Create a detail view controller, set the landscape, then push it.
+ NSDictionary *query = [NSDictionary dictionaryWithObject:landscape forKey:@"landscape"];
+ [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Landscapes/LandscapeDetailView?"] applyQuery:query] applyAnimated:YES]];
+ }
+ 
+ */
 
 - (void)treeAddViewController:(TreeAddViewController *)treeAddViewController didAddTree:(InventoryTree *)tree {
     if (tree) {        
@@ -99,7 +116,7 @@
 }
 
 
-
+/*
 
 - (void)showTree:(InventoryTree *)tree animated:(BOOL)animated {
     // Create a detail view controller, set the tree, then push it.
@@ -109,6 +126,16 @@
     [self.navigationController pushViewController:detailViewController animated:animated];
     [detailViewController release];
 }
+*/
+
+- (void)showTree:(InventoryTree *)tree animated:(BOOL)animated {
+    // Create a detail view controller, set the landscape, then push it.
+    NSDictionary *query = [NSDictionary dictionaryWithObject:tree forKey:@"inventorytree"];
+	[[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Trees/TreeDetailView?"] applyQuery:query] applyAnimated:YES]];
+}
+
+
+
 
 
 #pragma mark -
@@ -211,14 +238,9 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-    // ...
-    // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
-    */
+	InventoryTree *tree = (InventoryTree *)[fetchedResultsController objectAtIndexPath:indexPath];
+    
+    [self showTree:tree animated:YES];
 }
 
 #pragma mark -

@@ -8,6 +8,8 @@
 
 #import "TreeDetailViewController.h"
 #import "InventoryTree.h"
+#import "InventoryItem.h"
+#import "Type.h"
 #import "TreePhotoViewController.h"
 #import "Image.h"
 
@@ -138,8 +140,6 @@
 
 
 
-
-
 #pragma mark -
 #pragma mark Photo
 
@@ -164,7 +164,7 @@
 	
 	for (Image *i in [tree mutableSetValueForKeyPath:@"images"]) {
 		if ([i.isThumbnail boolValue] == YES) {
-			i.isThumbnail = NO;
+			i.isThumbnail = [NSNumber numberWithBool: NO];
 		}
 	}
 	
@@ -174,13 +174,12 @@
 	[[tree mutableSetValueForKey:@"images"] addObject:image];
 	
 	// Set the image for the image managed object.
-	//image.image_data = UIImageJPEGRepresentation(selectedImage, 1.0);
-	//[image setValue:selectedImage forKey:@"image"];
+	image.image_data = UIImageJPEGRepresentation(selectedImage, 1.0);
 	
 	// Create a thumbnail version of the image for the tree object.
 	// following code sourced at: http://tharindufit.wordpress.com/2010/04/19/how-to-create-iphone-photos-like-thumbs-in-an-iphone-app/
 	
-	CGFloat ratio = 128.0;
+	CGFloat ratio = 100.0;
 	
 	// first crop to a rectangle and then scale the cropped image to ratio
 	CGRect cropRect;
@@ -211,11 +210,12 @@
 	[myThumbNail drawInRect:CGRectMake(0.0, 0.0, ratio, ratio)];
 	
 	// save the image from the current context
-	image = UIGraphicsGetImageFromCurrentImageContext();
+	image.image_data = UIImageJPEGRepresentation(UIGraphicsGetImageFromCurrentImageContext(), 1.0);
 	UIGraphicsEndImageContext();
 	
 	//[selectedImage drawInRect:rect];
 	[myThumbNail release];	
+	
 	
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -234,23 +234,27 @@
 	 * If the tree doesn't have a thumbnail, then: if editing, enable the button and show an image that says "Choose Photo" or similar; if not editing then disable the button and show nothing.  
 	 */
 	BOOL editing = self.editing;
+	BOOL hasThumb = NO;
 	for (Image *i in [tree mutableSetValueForKeyPath:@"images"]) {
 		if ([i.isThumbnail boolValue] == YES) {
-			photoButton.enabled = editing;
-			
-			if (editing) {
-				[photoButton setImage:[UIImage imageNamed:@"photo_camera.png"] forState:UIControlStateNormal];
-			} else {
-				//[photoButton setImage:nil forState:UIControlStateNormal];
-				[photoButton setImage:[UIImage imageNamed:@"photo_camera.png"] forState:UIControlStateNormal];
-			}
-		} else {
-			photoButton.highlighted = editing;
+			hasThumb = YES;
 		}
-
 	}
-
+	if (hasThumb == YES) {
+		photoButton.highlighted = editing;
+	} else {
+		photoButton.enabled = editing;
+		
+		if (editing) {
+			[photoButton setImage:[UIImage imageNamed:@"photo_camera.png"] forState:UIControlStateNormal];
+		} else {
+			//[photoButton setImage:nil forState:UIControlStateNormal];
+			[photoButton setImage:[UIImage imageNamed:@"photo_camera.png"] forState:UIControlStateNormal];
+		}
+	}
 }
+
+
 
 
 #pragma mark -
