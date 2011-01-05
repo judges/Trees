@@ -44,6 +44,7 @@
 @interface AssessmentTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
     UIActionSheet *typeActionSheet;
     UIActionSheet *landscapeActionSheet;
+	UIActionSheet *InventoryActionSheet;
     UIPickerView *typePickerView;
     UIPickerView *landscapePickerView;
     NSMutableArray *typesArray;

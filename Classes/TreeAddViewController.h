@@ -20,7 +20,7 @@
 	id <TreeAddDelegate> delegate;
 }
 
-@property(nonatomic, retain) Tree *tree;
+@property(nonatomic, retain) InventoryTree *tree;
 @property(nonatomic, retain) IBOutlet UITextField *nameTextField;
 @property(nonatomic, assign) id <TreeAddDelegate> delegate;
 
@@ -34,6 +34,6 @@
 
 @protocol TreeAddDelegate <NSObject> 
 // tree == nil on cancel
-- (void)treeAddViewController:(TreeAddViewController *)treeAddViewController didAddTree:(Tree *)tree;
+- (void)treeAddViewController:(TreeAddViewController *)treeAddViewController didAddTree:(InventoryTree *)tree;
 
 @end

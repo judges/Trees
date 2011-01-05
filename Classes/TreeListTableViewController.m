@@ -70,7 +70,7 @@
 	
     addController.delegate = self;
 	
-	Tree *newTree = [NSEntityDescription insertNewObjectForEntityForName:@"InventoryTree" inManagedObjectContext:self.managedObjectContext];
+	InventoryTree *newTree = [NSEntityDescription insertNewObjectForEntityForName:@"InventoryTree" inManagedObjectContext:self.managedObjectContext];
 	addController.tree = newTree;
 	
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:addController];
@@ -82,7 +82,7 @@
 
 
 
-- (void)treeAddViewController:(TreeAddViewController *)treeAddViewController didAddTree:(Tree *)tree {
+- (void)treeAddViewController:(TreeAddViewController *)treeAddViewController didAddTree:(InventoryTree *)tree {
     if (tree) {        
         // Show the tree in a new view controller
         [self showTree:tree animated:NO];
@@ -95,7 +95,7 @@
 
 
 
-- (void)showTree:(Tree *)tree animated:(BOOL)animated {
+- (void)showTree:(InventoryTree *)tree animated:(BOOL)animated {
     // Create a detail view controller, set the tree, then push it.
     TreeDetailViewController *detailViewController = [[TreeDetailViewController alloc] initWithStyle:UITableViewStyleGrouped];
     detailViewController.tree = tree;
