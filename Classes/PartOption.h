@@ -1,5 +1,5 @@
 //
-//  TreeOption.h
+//  PartOption.h
 //  Trees
 //
 //  Created by Evan on 1/6/11.
@@ -9,7 +9,7 @@
 #import <CoreData/CoreData.h>
 
 
-@interface TreeOption :  NSManagedObject  
+@interface PartOption :  NSManagedObject  
 {
 }
 

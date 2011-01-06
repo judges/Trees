@@ -61,79 +61,32 @@
 			DDXMLDocument *treeOptionsDoc = [[DDXMLDocument alloc] initWithData:treeOptionsData options:0 error:nil];
 			DDXMLElement *rootNode = [treeOptionsDoc rootElement];
 			//conditions
-			for(DDXMLElement *option in [[[rootNode childAtIndex:0] childAtIndex:0] children])
-			{
-				TreeFormCondition *treeFormCondition = [NSEntityDescription insertNewObjectForEntityForName:@"TreeFormCondition" inManagedObjectContext:managedObjectContext];
-				treeFormCondition.name = [option stringValue];
-			}
-			for(DDXMLElement *option in [[[rootNode childAtIndex:1] childAtIndex:0] children])
-			{
-				TreeCrownCondition *treeCrownCondition = [NSEntityDescription insertNewObjectForEntityForName:@"TreeCrownCondition" inManagedObjectContext:managedObjectContext];
-				treeCrownCondition.name = [option stringValue];
-			}
-			for(DDXMLElement *option in [[[rootNode childAtIndex:2] childAtIndex:0] children])
-			{
-				TreeTrunkCondition *treeTrunkCondition = [NSEntityDescription insertNewObjectForEntityForName:@"TreeTrunkCondition" inManagedObjectContext:managedObjectContext];
-				treeTrunkCondition.name = [option stringValue];
-			}
-			for(DDXMLElement *option in [[[rootNode childAtIndex:3] childAtIndex:0] children])
-			{
-				TreeRootFlareCondition *treeRootFlareCondition = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootFlareCondition" inManagedObjectContext:managedObjectContext];
-				treeRootFlareCondition.name = [option stringValue];
-			}
-			for(DDXMLElement *option in [[[rootNode childAtIndex:4] childAtIndex:0] children])
-			{
-				TreeRootsCondition *treeRootsCondition = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootsCondition" inManagedObjectContext:managedObjectContext];
-				treeRootsCondition.name = [option stringValue];
-			}
-			for(DDXMLElement *option in [[[rootNode childAtIndex:5] childAtIndex:0] children])
-			{
-				TreeOverallCondition *treeOverallCondition = [NSEntityDescription insertNewObjectForEntityForName:@"TreeOverallCondition" inManagedObjectContext:managedObjectContext];
-				treeOverallCondition.name = [option stringValue];
-			}
-			//recommendations
-			for(DDXMLElement *option in [[[rootNode childAtIndex:0] childAtIndex:1] children])
-			{
-				TreeFormRecommendation *treeFormRecommendation = [NSEntityDescription insertNewObjectForEntityForName:@"TreeFormRecommendation" inManagedObjectContext:managedObjectContext];
-				treeFormRecommendation.name = [option stringValue];
-			}
-			for(DDXMLElement *option in [[[rootNode childAtIndex:1] childAtIndex:1] children])
-			{
-				TreeCrownRecommendation *treeCrownRecommendation = [NSEntityDescription insertNewObjectForEntityForName:@"TreeCrownRecommendation" inManagedObjectContext:managedObjectContext];
-				treeCrownRecommendation.name = [option stringValue];
-			}
-			for(DDXMLElement *option in [[[rootNode childAtIndex:2] childAtIndex:1] children])
-			{
-				TreeTrunkRecommendation *treeTrunkRecommendation = [NSEntityDescription insertNewObjectForEntityForName:@"TreeTrunkRecommendation" inManagedObjectContext:managedObjectContext];
-				treeTrunkRecommendation.name = [option stringValue];
-			}
-			for(DDXMLElement *option in [[[rootNode childAtIndex:3] childAtIndex:1] children])
-			{
-				TreeRootFlareRecommendation *treeRootFlareRecommendation = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootFlareRecommendation" inManagedObjectContext:managedObjectContext];
-				treeRootFlareRecommendation.name = [option stringValue];
-			}
-			for(DDXMLElement *option in [[[rootNode childAtIndex:4] childAtIndex:1] children])
-			{
-				TreeRootsRecommendation *treeRootsRecommendation = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootsRecommendation" inManagedObjectContext:managedObjectContext];
-				treeRootsRecommendation.name = [option stringValue];
-			}
-			for(DDXMLElement *option in [[[rootNode childAtIndex:5] childAtIndex:1] children])
-			{
-				TreeOverallRecommendation *treeOverallRecommendation = [NSEntityDescription insertNewObjectForEntityForName:@"TreeOverallRecommendation" inManagedObjectContext:managedObjectContext];
-				treeOverallRecommendation.name = [option stringValue];
+			for (DDXMLElement *part in [rootNode children]) {
+				for(DDXMLElement *option in [[part childAtIndex:0] children])
+				{
+					PartCondition *condition = [NSEntityDescription insertNewObjectForEntityForName:@"PartCondition" inManagedObjectContext:managedObjectContext];
+					condition.name = [option stringValue];
+				}
+				for(DDXMLElement *option in [[part childAtIndex:1] children])
+				{
+					PartRecommendation *recommendation = [NSEntityDescription insertNewObjectForEntityForName:@"PartRecommendation" inManagedObjectContext:managedObjectContext];
+					recommendation.name = [option stringValue];
+				}
+				
 			}
 			
-			TreeForm *treeForm = [NSEntityDescription insertNewObjectForEntityForName:@"TreeForm" inManagedObjectContext:managedObjectContext];
+			
+			TreePart *treeForm = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
 			assessmentTree.form = treeForm;
-			TreeCrown *treeCrown = [NSEntityDescription insertNewObjectForEntityForName:@"TreeCrown" inManagedObjectContext:managedObjectContext];
+			TreePart *treeCrown = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
 			assessmentTree.crown = treeCrown;
-			TreeTrunk *treeTrunk = [NSEntityDescription insertNewObjectForEntityForName:@"TreeTrunk" inManagedObjectContext:managedObjectContext];
+			TreePart *treeTrunk = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
 			assessmentTree.trunk = treeTrunk;
-			TreeRootFlare *treeRootFlare = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootFlare" inManagedObjectContext:managedObjectContext];
+			TreePart *treeRootFlare = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
 			assessmentTree.rootflare = treeRootFlare;
-			TreeRoots *treeRoots = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRoots" inManagedObjectContext:managedObjectContext];
+			TreePart *treeRoots = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
 			assessmentTree.roots = treeRoots;
-			TreeOverall *treeOverall = [NSEntityDescription insertNewObjectForEntityForName:@"TreeOverall" inManagedObjectContext:managedObjectContext];
+			TreePart *treeOverall = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
 			assessmentTree.overall = treeOverall;
 			
 			NSError *error;

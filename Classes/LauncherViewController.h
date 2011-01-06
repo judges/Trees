@@ -11,6 +11,8 @@
 #import "IASKAppSettingsViewController.h"
 #import "AppDelegate_Shared.h"
 #import "Assessment.h"
+#import "PartCondition.h"
+#import "PartRecommendation.h"
 #import "LandscapeTableViewCell.h"
 #import "AssessmentTableViewCell.h"
 #import "TreeTableViewCell.h"

@@ -844,14 +844,14 @@
 	//normal cells
 	
 	if (indexPath.row < [[conditionArray objectAtIndex:indexPath.section] count]) {
-		TreeOption *condOpt = (TreeOption *)[[conditionArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+		PartOption *condOpt = (PartOption *)[[conditionArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 		cell.conditionLabel.text = condOpt.name;
 	} else {
 		cell.conditionLabel.text = @"";
 	}
 
 	if (indexPath.row < [[recommendationArray objectAtIndex:indexPath.section] count]) {
-		TreeOption *recOpt = (TreeOption *)[[recommendationArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+		PartOption *recOpt = (PartOption *)[[recommendationArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 		cell.recommendationLabel.text = recOpt.name;
 	} else {
 		cell.recommendationLabel.text = @"";

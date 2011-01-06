@@ -234,17 +234,17 @@
         new.inventoryItem = (InventoryTree *)selectedInventory;
 		new.inventoryItem.landscape = selectedLandscape;
         new.created_at = [NSDate date];
-        TreeCrown *treeCrown = [NSEntityDescription insertNewObjectForEntityForName:@"TreeCrown" inManagedObjectContext:managedObjectContext];
+		TreePart *treeCrown = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
         new.crown = treeCrown;
-        TreeForm *treeForm = [NSEntityDescription insertNewObjectForEntityForName:@"TreeForm" inManagedObjectContext:managedObjectContext];
+        TreePart *treeForm = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
         new.form = treeForm;
-        TreeTrunk *treeTrunk = [NSEntityDescription insertNewObjectForEntityForName:@"TreeTrunk" inManagedObjectContext:managedObjectContext];
+        TreePart *treeTrunk = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
         new.trunk = treeTrunk;
-        TreeRootFlare *treeRootFlare = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootFlare" inManagedObjectContext:managedObjectContext];
+        TreePart *treeRootFlare = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
         new.rootflare = treeRootFlare;
-        TreeRoots *treeRoots = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRoots" inManagedObjectContext:managedObjectContext];
+        TreePart *treeRoots = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
         new.roots = treeRoots;
-        TreeOverall *treeOverall = [NSEntityDescription insertNewObjectForEntityForName:@"TreeOverall" inManagedObjectContext:managedObjectContext];
+        TreePart *treeOverall = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
         new.overall = treeOverall;
 		
 		//set up inverse relationship

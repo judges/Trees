@@ -10,12 +10,7 @@
 
 #import "Caliper.h"
 #import "Height.h"
-#import "TreeCrown.h"
-#import "TreeForm.h"
-#import "TreeOverall.h"
-#import "TreeRootFlare.h"
-#import "TreeRoots.h"
-#import "TreeTrunk.h"
+#import "TreePart.h"
 
 @implementation AssessmentTree 
 
