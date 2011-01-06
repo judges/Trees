@@ -86,5 +86,6 @@
 - (void)heightSelected:(id)sender;
 
 - (NSInteger)greatestOfInt:(NSInteger)a andInt:(NSInteger)b;
+- (void)buildCaliperAndHeightStrings;
 
 @end

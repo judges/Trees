@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="61"/>
+			<integer value="1"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -363,7 +363,7 @@
 								<reference key="IBUINormalTitleShadowColor" ref="276161386"/>
 								<reference key="IBUINormalBackgroundImage" ref="355736517"/>
 							</object>
-							<object class="IBUILabel" id="972027411">
+							<object class="IBUILabel" id="572968850">
 								<reference key="NSNextResponder" ref="815865319"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{8, 298}, {60, 21}}</string>
@@ -379,7 +379,7 @@
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
-							<object class="IBUILabel" id="555826511">
+							<object class="IBUILabel" id="498375601">
 								<reference key="NSNextResponder" ref="815865319"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{268, 276}, {42, 21}}</string>
@@ -758,7 +758,7 @@
 					<object class="IBUIButton" id="291205336">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{267, 5}, {42, 42}}</string>
+						<string key="NSFrame">{{267, 5}, {30, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -1156,8 +1156,8 @@
 							<reference ref="193348323"/>
 							<reference ref="638554372"/>
 							<reference ref="1009210644"/>
-							<reference ref="555826511"/>
-							<reference ref="972027411"/>
+							<reference ref="498375601"/>
+							<reference ref="572968850"/>
 						</object>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -1325,12 +1325,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">146</int>
-						<reference key="object" ref="555826511"/>
+						<reference key="object" ref="498375601"/>
 						<reference key="parent" ref="815865319"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">147</int>
-						<reference key="object" ref="972027411"/>
+						<reference key="object" ref="572968850"/>
 						<reference key="parent" ref="815865319"/>
 					</object>
 				</object>
