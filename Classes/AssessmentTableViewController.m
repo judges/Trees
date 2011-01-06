@@ -478,7 +478,6 @@
                 break;
             }
         }
-        
     }
 	[self configureCell:assessmentCell atIndexPath:indexPath];
     

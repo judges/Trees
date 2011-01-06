@@ -374,17 +374,63 @@
 	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CR"] autorelease];
 	switch (indexPath.section) {
 		case 0:
-			cell.textLabel.text = [[[filteredRecords objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] name];
+		{
+			static NSString *LandscapeCellIdentifier = @"LandscapeCellIdentifier";
+			
+			LandscapeTableViewCell *landscapeCell = (LandscapeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:LandscapeCellIdentifier];
+			if (landscapeCell == nil) {
+				landscapeCell = [[[LandscapeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:LandscapeCellIdentifier] autorelease];
+				landscapeCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			}
+			landscapeCell.landscape = [[filteredRecords objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+			return landscapeCell;
 			break;
+		}
 		case 1:
-			cell.textLabel.text = [[[filteredRecords objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] name];
+		{
+			//this will need to handle other types later
+			static NSString *TreeCellIdentifier = @"TreeCellIdentifier";
+			
+			TreeTableViewCell *treeCell = (TreeTableViewCell *)[tableView dequeueReusableCellWithIdentifier:TreeCellIdentifier];
+			if (treeCell == nil) {
+				treeCell = [[[TreeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TreeCellIdentifier] autorelease];
+				treeCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			}
+			treeCell.tree = [[filteredRecords objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+			return treeCell;
 			break;
+		}
 		case 2:
-			cell.textLabel.text = [[[[filteredRecords objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] inventoryItem] name];
+		{
+			//this will need to handle other types later
+			static NSString *AssessmentCellIdentifier = @"AssessmentTableViewCell";
+			
+			AssessmentTableViewCell *assessmentCell = (AssessmentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:AssessmentCellIdentifier];
+			if (assessmentCell == nil) {
+				NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"AssessmentTableViewCell" owner:nil options:nil];
+				for (id currentObject in topLevelObjects) {
+					if ([currentObject isKindOfClass:[UITableViewCell class]]) {
+						assessmentCell = (AssessmentTableViewCell *) currentObject;
+						break;
+					}
+				}
+			}
+			assessmentCell.assessment = [[filteredRecords objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+			assessmentCell.landscapeName.text = assessmentCell.assessment.inventoryItem.landscape.name;
+			assessmentCell.itemName.text = assessmentCell.assessment.inventoryItem.name;
+			NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+			[dateFormatter setDateStyle:NSDateFormatterLongStyle];
+			NSString *date= [dateFormatter stringFromDate:assessmentCell.assessment.created_at];
+			[dateFormatter release];
+			assessmentCell.date.text = date;
+			return assessmentCell;
 			break;
+		}
 		default:
+		{
 			cell.textLabel.text = @"";
 			break;
+		}
 	}
 	
 	return cell;
@@ -415,10 +461,48 @@
 				break;
 		}
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return 50;
+}
 /* Maybe we can find a good way to use this later
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
 	return [NSArray arrayWithObjects:@"Landscapes", @"Inventory", @"Assessments", nil];
 }*/
+
+#pragma mark -
+#pragma mark UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	switch (indexPath.section) {
+		case 0:
+		{
+			NSDictionary *query = [NSDictionary dictionaryWithObject:[[filteredRecords objectAtIndex:0] objectAtIndex:indexPath.row] forKey:@"landscape"];
+			[[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Landscapes/LandscapeDetailView?"] applyQuery:query] applyAnimated:YES]];
+			break;
+		}
+		case 1:
+		{
+			InventoryItem *item = [[filteredRecords objectAtIndex:1] objectAtIndex:indexPath.row];
+			NSDictionary *query = [NSDictionary dictionaryWithObject:item forKey:@"inventorytree"];
+			if([item.type.name isEqualToString:@"Tree"]) {
+				[[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Trees/TreeDetailView?"] applyQuery:query] applyAnimated:YES]];
+			}
+			break;
+		}
+		case 2:
+		{
+			Assessment *assessment = [[filteredRecords objectAtIndex:2] objectAtIndex:indexPath.row];
+			NSDictionary *query = [NSDictionary dictionaryWithObject:assessment forKey:@"assessment"];
+			if([assessment.type.name isEqualToString:@"Tree"]) {
+				[[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://assessments/TreeViewAndInput"] applyQuery:query] applyAnimated:YES]];
+			}
+			break;
+		}
+		default:
+			break;
+	}
+}
 
 #pragma mark -
 #pragma mark IASKAppSettingsViewControllerDelegate protocol

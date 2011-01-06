@@ -11,6 +11,9 @@
 #import "IASKAppSettingsViewController.h"
 #import "AppDelegate_Shared.h"
 #import "Assessment.h"
+#import "LandscapeTableViewCell.h"
+#import "AssessmentTableViewCell.h"
+#import "TreeTableViewCell.h"
 
 @interface LauncherViewController : TTViewController <TTLauncherViewDelegate, IASKSettingsDelegate, UITextFieldDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate> {
 	TTLauncherView* _launcherView;
