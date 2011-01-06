@@ -14,6 +14,7 @@
 #import "LandscapeTableViewCell.h"
 #import "AssessmentTableViewCell.h"
 #import "TreeTableViewCell.h"
+#import "DDXML.h"
 
 @interface LauncherViewController : TTViewController <TTLauncherViewDelegate, IASKSettingsDelegate, UITextFieldDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate> {
 	TTLauncherView* _launcherView;
@@ -27,4 +28,5 @@
 @property (nonatomic, retain) NSArray *filteredRecords;
 
 - (void)filterContentForSearchText:(NSString*)searchText;
+- (void)prepopulateDb;
 @end

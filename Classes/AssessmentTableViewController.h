@@ -36,7 +36,6 @@
 #import "TreeTrunkRecommendation.h"
 #import "Image.h"
 #import "Photo.h"
-#import "DDXML.h"
 #import "InventoryItem.h"
 #import "InventoryTree.h"
 
@@ -64,7 +63,6 @@
 @property (nonatomic, retain) NSMutableArray *inventoryArray;
 
 - (void)configureCell:(AssessmentTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
-- (void)prepopulateDb;
 - (void)dismissActionSheet:(id)sender;
 - (void)typeSelected:(id)sender;
 @end
