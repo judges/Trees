@@ -15,9 +15,7 @@
 @synthesize count, entityString, objID, photos, ids, captions;
 
 -(id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query {
-    //initializes and passes assessment from parent controller
-
-	
+    //initializes and passes assessment from parent controller	
     if (self = [super init]){ 
         if(query && [query objectForKey:@"entity"]){ 
             self.entityString = (NSString*) [query objectForKey:@"entity"]; 
