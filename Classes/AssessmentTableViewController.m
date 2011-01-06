@@ -268,12 +268,18 @@
     [landscapeActionSheet showInView:self.view];
     [landscapeActionSheet setBounds:CGRectMake(0, 0, 320, 485)];
     
-    //select the first entry by default
-    if ([landscapePickerView numberOfRowsInComponent:0]>0) {
-		[landscapePickerView selectRow:0 inComponent:0 animated:YES];
-        [self pickerView:landscapePickerView didSelectRow:0 inComponent:0];
-    }
-     
+	if ([landscapesArray count] == 0) {
+		[self dismissActionSheet:self];
+		UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Cannot Add Assessment" message:@"There are no landscapes to which to add an assessment." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Okay", nil] autorelease];
+		[alert show];
+		
+	} else {
+		//select the first entry by default
+		if ([landscapePickerView numberOfRowsInComponent:0]>0) {
+			[landscapePickerView selectRow:0 inComponent:0 animated:YES];
+			[self pickerView:landscapePickerView didSelectRow:0 inComponent:0];
+		}
+	}
 }
 
 - (void)landscapeSelected:(id)sender {
@@ -325,12 +331,18 @@
 	[fetchRequest release];
 	
 
-	
-    //select the first entry by default
-    if ([inventoryPickerView numberOfRowsInComponent:0]>0) {
-		[inventoryPickerView selectRow:0 inComponent:0 animated:YES];
-        [self pickerView:inventoryPickerView didSelectRow:0 inComponent:0];
-    }
+	if ([inventoryArray count] == 0) {
+		[self dismissActionSheet:self];
+		UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Cannot Add Assessment" message:[NSString stringWithFormat:@"There are no items of type %@ in the inventory for %@.", selectedType.name, selectedLandscape.name] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Okay", nil] autorelease];
+		[alert show];
+		
+	} else {
+		//select the first entry by default
+		if ([inventoryPickerView numberOfRowsInComponent:0]>0) {
+			[inventoryPickerView selectRow:0 inComponent:0 animated:YES];
+			[self pickerView:inventoryPickerView didSelectRow:0 inComponent:0];
+		}
+	}
 	
 }
 

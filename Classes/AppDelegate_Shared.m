@@ -62,6 +62,11 @@
 	NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:@"Imperial" forKey:@"lengthUnits"];
 	[defaults registerDefaults:appDefaults];
 	[defaults synchronize];
+	
+	// We don't want zombies on the device, so alert if zombies are enabled
+	if(getenv("NSZombieEnabled") || getenv("NSAutoreleaseFreedObjectCheckEnabled")) {
+		NSLog(@"NSZombieEnabled/NSAutoreleaseFreedObjectCheckEnabled enabled!");
+	}
   
 }
 
