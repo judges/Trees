@@ -102,8 +102,7 @@
     AssessmentTree *assessmentTree = [NSEntityDescription insertNewObjectForEntityForName:@"AssessmentTree" inManagedObjectContext:managedObjectContext];
     assessmentTree.assessor = @"Evan Cordell";
     assessmentTree.created_at = [NSDate date];
-    assessmentTree.type = type;
-	assessmentTree.tree = inventoryTree;
+	assessmentTree.inventoryItem = inventoryTree;
 
 	[[inventoryTree mutableSetValueForKeyPath:@"assessments"] addObject:assessmentTree];
 	
@@ -342,7 +341,6 @@
     //this could easily be modified to insert objects dynamically rather than with an if.
     if ([selectedType.name isEqualToString:@"Tree"]) {
         AssessmentTree *new = [NSEntityDescription insertNewObjectForEntityForName:@"AssessmentTree" inManagedObjectContext:managedObjectContext];
-        new.type = selectedType;
         new.tree = (InventoryTree *)selectedInventory;
 		new.tree.landscape = selectedLandscape;
         new.created_at = [NSDate date];
@@ -361,6 +359,7 @@
 		
 		//set up inverse relationship
         [[selectedInventory mutableSetValueForKey:@"assessments"] addObject:new]; 
+		selectedInventory.type = selectedType;
 		
         if (![managedObjectContext save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
@@ -536,7 +535,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Assessment *assessment = (Assessment *)[fetchedResultsController objectAtIndexPath:indexPath];
     NSDictionary *query = [NSDictionary dictionaryWithObject:assessment forKey:@"assessment"];
-    if([assessment.type.name isEqualToString:@"Tree"]) {
+    if([assessment.inventoryItem.type.name isEqualToString:@"Tree"]) {
         [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://assessments/TreeViewAndInput"] applyQuery:query] applyAnimated:YES]];
     }
 }

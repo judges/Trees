@@ -371,7 +371,6 @@
 #pragma mark UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CR"] autorelease];
 	switch (indexPath.section) {
 		case 0:
 		{
@@ -428,12 +427,10 @@
 		}
 		default:
 		{
-			cell.textLabel.text = @"";
+			return [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"backup"] autorelease];
 			break;
 		}
 	}
-	
-	return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -494,7 +491,7 @@
 		{
 			Assessment *assessment = [[filteredRecords objectAtIndex:2] objectAtIndex:indexPath.row];
 			NSDictionary *query = [NSDictionary dictionaryWithObject:assessment forKey:@"assessment"];
-			if([assessment.type.name isEqualToString:@"Tree"]) {
+			if([assessment.inventoryItem.type.name isEqualToString:@"Tree"]) {
 				[[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://assessments/TreeViewAndInput"] applyQuery:query] applyAnimated:YES]];
 			}
 			break;
