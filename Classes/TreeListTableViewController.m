@@ -63,10 +63,6 @@
 	[self.tableView reloadData];
 }
 
-- (void) viewDidUnload {
-	[fetchedResultsController release];
-}
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Support all orientations except upside down
@@ -339,7 +335,6 @@
 
 - (void)dealloc {
 	[fetchedResultsController release];
-	[managedObjectContext release];
     [super dealloc];
 }
 

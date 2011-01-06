@@ -341,8 +341,8 @@
     //this could easily be modified to insert objects dynamically rather than with an if.
     if ([selectedType.name isEqualToString:@"Tree"]) {
         AssessmentTree *new = [NSEntityDescription insertNewObjectForEntityForName:@"AssessmentTree" inManagedObjectContext:managedObjectContext];
-        new.tree = (InventoryTree *)selectedInventory;
-		new.tree.landscape = selectedLandscape;
+        new.inventoryItem = (InventoryTree *)selectedInventory;
+		new.inventoryItem.landscape = selectedLandscape;
         new.created_at = [NSDate date];
         TreeCrown *treeCrown = [NSEntityDescription insertNewObjectForEntityForName:@"TreeCrown" inManagedObjectContext:managedObjectContext];
         new.crown = treeCrown;

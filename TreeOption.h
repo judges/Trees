@@ -1,5 +1,5 @@
 //
-//  InventoryTree.h
+//  TreeOption.h
 //  Trees
 //
 //  Created by Evan on 1/6/11.
@@ -7,14 +7,13 @@
 //
 
 #import <CoreData/CoreData.h>
-#import "InventoryItem.h"
 
 
-@interface InventoryTree :  InventoryItem  
+@interface TreeOption :  NSManagedObject  
 {
 }
 
-@property (nonatomic, retain) NSString * gps;
+@property (nonatomic, retain) NSString * name;
 
 @end
 

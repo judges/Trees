@@ -10,6 +10,7 @@
 #import "InventoryTree.h"
 #import "Landscape.h"
 #import "Type.h"
+#import "AppDelegate_Shared.h"
 
 @implementation TreeAddViewController
 
@@ -47,19 +48,39 @@
 }
 
 - (void)save {
-    
-	Landscape *landscape = [NSEntityDescription insertNewObjectForEntityForName:@"Landscape" inManagedObjectContext:tree.managedObjectContext];
-    landscape.name = @"American Cemetery";
+    NSError *error = nil;
 
-	Type *type = [NSEntityDescription insertNewObjectForEntityForName:@"Type" inManagedObjectContext:tree.managedObjectContext];
-	type.name = @"Tree";
+	/*Note to Sean:
+	   The code that was here before was adding new "American Cemetery" and "Tree" records every time it ran
+	   which bothered me so I changed it to this. Now new trees will point to the existing American Cemetery
+	   and Tree objects in core data.
+	 
+	   But, you're going to have to get rid of this eventually, because the user should be selecting the type and the landscape
+	   Although this code could be useful for that, too.
+	 */
+	
+	NSManagedObjectContext *managedObjectContext = [(AppDelegate_Shared *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Type" inManagedObjectContext:managedObjectContext];
+	[fetchRequest setEntity:entity];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(name == %@)", @"Tree"];
+	[fetchRequest setPredicate:predicate];
+	Type *treeType = [[managedObjectContext executeFetchRequest:fetchRequest error:&error] objectAtIndex:0];
+	
+	
+	entity = [NSEntityDescription entityForName:@"Landscape" inManagedObjectContext:managedObjectContext];
+	[fetchRequest setEntity:entity];
+	predicate = [NSPredicate predicateWithFormat:@"(name == %@)", @"American Cemetery"];
+	[fetchRequest setPredicate:predicate];
+	Landscape *landscape = [[managedObjectContext executeFetchRequest:fetchRequest error:&error] objectAtIndex:0]; 
+	[fetchRequest release];
+	
+	tree.type = treeType;
 	
     tree.name = nameTextField.text;
 	tree.created_at = [NSDate date];
 	tree.landscape = landscape;
-	tree.type = type;
 	
-	NSError *error = nil;
 	if (![tree.managedObjectContext save:&error]) {
 		/*
 		 Replace this implementation with code to handle the error appropriately.

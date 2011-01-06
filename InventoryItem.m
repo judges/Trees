@@ -2,7 +2,7 @@
 //  InventoryItem.m
 //  Trees
 //
-//  Created by Evan on 1/5/11.
+//  Created by Evan on 1/6/11.
 //  Copyright 2011 NCPTT. All rights reserved.
 //
 
@@ -14,8 +14,8 @@
 
 @implementation InventoryItem 
 
-@dynamic name;
 @dynamic created_at;
+@dynamic name;
 @dynamic landscape;
 @dynamic type;
 @dynamic assessments;

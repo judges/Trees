@@ -2,7 +2,7 @@
 //  InventoryItem.h
 //  Trees
 //
-//  Created by Evan on 1/5/11.
+//  Created by Evan on 1/6/11.
 //  Copyright 2011 NCPTT. All rights reserved.
 //
 
@@ -17,8 +17,8 @@
 {
 }
 
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSDate * created_at;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) Landscape * landscape;
 @property (nonatomic, retain) Type * type;
 @property (nonatomic, retain) NSSet* assessments;

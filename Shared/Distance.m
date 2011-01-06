@@ -68,7 +68,6 @@
 		}
 		self.m = [NSNumber numberWithInt:[meters intValue]];
 		self.cm = [NSNumber numberWithInt:[centimeters intValue]];
-		NSLog(@"%d, %d, %d, %d", [self.m intValue], [self.cm intValue], [self.ft intValue], [self.in intValue]);
 	} else {
 		//ready to save once we get here. The above options end up calling willSave again, so this else ensures that there's no inf loop
 	}

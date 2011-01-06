@@ -62,7 +62,7 @@
 	[self.tableView reloadData];
 }
 - (void) viewDidUnload {
-	[fetchedResultsController release];
+	
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -305,6 +305,7 @@
 #pragma mark Memory management
 
 - (void)dealloc {
+	[fetchedResultsController release];
     [super dealloc];
 }
 

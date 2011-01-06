@@ -1,16 +1,16 @@
 // 
-//  InventoryTree.m
+//  Type.m
 //  Trees
 //
 //  Created by Evan on 1/6/11.
 //  Copyright 2011 NCPTT. All rights reserved.
 //
 
-#import "InventoryTree.h"
+#import "Type.h"
 
 
-@implementation InventoryTree 
+@implementation Type 
 
-@dynamic gps;
+@dynamic name;
 
 @end
