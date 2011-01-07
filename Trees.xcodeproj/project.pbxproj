@@ -51,18 +51,13 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		20431F9F12D675F5004C0268 /* InventoryTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431F8412D675F5004C0268 /* InventoryTree.m */; };
 		20431FA012D675F5004C0268 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431F8612D675F5004C0268 /* Photo.m */; };
-		20431FA112D675F5004C0268 /* TreePart.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431F8812D675F5004C0268 /* TreePart.m */; };
-		20431FA212D675F5004C0268 /* PartRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431F8A12D675F5004C0268 /* PartRecommendation.m */; };
 		20431FA312D675F5004C0268 /* Height.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431F8C12D675F5004C0268 /* Height.m */; };
 		20431FA412D675F5004C0268 /* Caliper.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431F8E12D675F5004C0268 /* Caliper.m */; };
 		20431FA512D675F5004C0268 /* Assessment.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431F9012D675F5004C0268 /* Assessment.m */; };
 		20431FA612D675F5004C0268 /* PartOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431F9212D675F5004C0268 /* PartOption.m */; };
 		20431FA712D675F5004C0268 /* InventoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431F9412D675F5004C0268 /* InventoryItem.m */; };
-		20431FA812D675F5004C0268 /* Part.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431F9612D675F5004C0268 /* Part.m */; };
 		20431FA912D675F5004C0268 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431F9812D675F5004C0268 /* Image.m */; };
-		20431FAA12D675F5004C0268 /* PartCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431F9A12D675F5004C0268 /* PartCondition.m */; };
 		20431FAB12D675F5004C0268 /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431F9C12D675F5004C0268 /* Type.m */; };
-		20431FAC12D675F5004C0268 /* AssessmentTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 20431F9E12D675F5004C0268 /* AssessmentTree.m */; };
 		208B327312BFE24A00D8FA03 /* edit_50.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B325612BFE24A00D8FA03 /* edit_50.png */; };
 		208B327412BFE24A00D8FA03 /* NPS.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B325712BFE24A00D8FA03 /* NPS.png */; };
 		208B327512BFE24A00D8FA03 /* tree.png in Resources */ = {isa = PBXBuildFile; fileRef = 208B325812BFE24A00D8FA03 /* tree.png */; };
@@ -174,6 +169,12 @@
 		20AC461412C8FCB700BC4C12 /* IASKSpecifierValuesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20AC45FF12C8FCB700BC4C12 /* IASKSpecifierValuesView.xib */; };
 		20AC462E12C8FDA600BC4C12 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AC462D12C8FDA600BC4C12 /* MessageUI.framework */; };
 		20AC464712C900A400BC4C12 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 20AC464612C900A400BC4C12 /* Settings.bundle */; };
+		20C3C28612D6834700C3DA1E /* AssessmentTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C3C28512D6834700C3DA1E /* AssessmentTree.m */; };
+		20C3C29C12D6842200C3DA1E /* TreePart.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C3C29B12D6842200C3DA1E /* TreePart.m */; };
+		20C3C2D212D6895900C3DA1E /* PartType.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C3C2CB12D6895900C3DA1E /* PartType.m */; };
+		20C3C2D312D6895900C3DA1E /* PartRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C3C2CD12D6895900C3DA1E /* PartRecommendation.m */; };
+		20C3C2D412D6895900C3DA1E /* Part.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C3C2CF12D6895900C3DA1E /* Part.m */; };
+		20C3C2D512D6895900C3DA1E /* PartCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C3C2D112D6895900C3DA1E /* PartCondition.m */; };
 		20CE55F612C93DC6008624F3 /* Distance.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE55F512C93DC6008624F3 /* Distance.m */; };
 		20CE565F12C94197008624F3 /* DistancePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE565E12C94197008624F3 /* DistancePickerView.m */; };
 		20CE5B6E12CBB8AB008624F3 /* AssessmentTreeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE5B6D12CBB8AB008624F3 /* AssessmentTreeTableViewCell.m */; };
@@ -600,10 +601,6 @@
 		20431F8412D675F5004C0268 /* InventoryTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryTree.m; sourceTree = "<group>"; };
 		20431F8512D675F5004C0268 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		20431F8612D675F5004C0268 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
-		20431F8712D675F5004C0268 /* TreePart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreePart.h; sourceTree = "<group>"; };
-		20431F8812D675F5004C0268 /* TreePart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreePart.m; sourceTree = "<group>"; };
-		20431F8912D675F5004C0268 /* PartRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartRecommendation.h; sourceTree = "<group>"; };
-		20431F8A12D675F5004C0268 /* PartRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartRecommendation.m; sourceTree = "<group>"; };
 		20431F8B12D675F5004C0268 /* Height.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Height.h; sourceTree = "<group>"; };
 		20431F8C12D675F5004C0268 /* Height.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Height.m; sourceTree = "<group>"; };
 		20431F8D12D675F5004C0268 /* Caliper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Caliper.h; sourceTree = "<group>"; };
@@ -614,16 +611,10 @@
 		20431F9212D675F5004C0268 /* PartOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartOption.m; sourceTree = "<group>"; };
 		20431F9312D675F5004C0268 /* InventoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InventoryItem.h; sourceTree = "<group>"; };
 		20431F9412D675F5004C0268 /* InventoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InventoryItem.m; sourceTree = "<group>"; };
-		20431F9512D675F5004C0268 /* Part.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part.h; sourceTree = "<group>"; };
-		20431F9612D675F5004C0268 /* Part.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Part.m; sourceTree = "<group>"; };
 		20431F9712D675F5004C0268 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
 		20431F9812D675F5004C0268 /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
-		20431F9912D675F5004C0268 /* PartCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartCondition.h; sourceTree = "<group>"; };
-		20431F9A12D675F5004C0268 /* PartCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartCondition.m; sourceTree = "<group>"; };
 		20431F9B12D675F5004C0268 /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
 		20431F9C12D675F5004C0268 /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
-		20431F9D12D675F5004C0268 /* AssessmentTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssessmentTree.h; sourceTree = "<group>"; };
-		20431F9E12D675F5004C0268 /* AssessmentTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssessmentTree.m; sourceTree = "<group>"; };
 		208B325612BFE24A00D8FA03 /* edit_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_50.png; sourceTree = "<group>"; };
 		208B325712BFE24A00D8FA03 /* NPS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NPS.png; sourceTree = "<group>"; };
 		208B325812BFE24A00D8FA03 /* tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree.png; sourceTree = "<group>"; };
@@ -805,6 +796,18 @@
 		20AC45FF12C8FCB700BC4C12 /* IASKSpecifierValuesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IASKSpecifierValuesView.xib; sourceTree = "<group>"; };
 		20AC462D12C8FDA600BC4C12 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		20AC464612C900A400BC4C12 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		20C3C28412D6834700C3DA1E /* AssessmentTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssessmentTree.h; sourceTree = "<group>"; };
+		20C3C28512D6834700C3DA1E /* AssessmentTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssessmentTree.m; sourceTree = "<group>"; };
+		20C3C29A12D6842200C3DA1E /* TreePart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TreePart.h; path = ../TreePart.h; sourceTree = "<group>"; };
+		20C3C29B12D6842200C3DA1E /* TreePart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TreePart.m; path = ../TreePart.m; sourceTree = "<group>"; };
+		20C3C2CA12D6895900C3DA1E /* PartType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartType.h; sourceTree = "<group>"; };
+		20C3C2CB12D6895900C3DA1E /* PartType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartType.m; sourceTree = "<group>"; };
+		20C3C2CC12D6895900C3DA1E /* PartRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartRecommendation.h; sourceTree = "<group>"; };
+		20C3C2CD12D6895900C3DA1E /* PartRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartRecommendation.m; sourceTree = "<group>"; };
+		20C3C2CE12D6895900C3DA1E /* Part.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part.h; sourceTree = "<group>"; };
+		20C3C2CF12D6895900C3DA1E /* Part.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Part.m; sourceTree = "<group>"; };
+		20C3C2D012D6895900C3DA1E /* PartCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartCondition.h; sourceTree = "<group>"; };
+		20C3C2D112D6895900C3DA1E /* PartCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartCondition.m; sourceTree = "<group>"; };
 		20CE55F412C93DC6008624F3 /* Distance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Distance.h; path = ../Shared/Distance.h; sourceTree = "<group>"; };
 		20CE55F512C93DC6008624F3 /* Distance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Distance.m; path = ../Shared/Distance.m; sourceTree = "<group>"; };
 		20CE565D12C94197008624F3 /* DistancePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistancePickerView.h; sourceTree = "<group>"; };
@@ -958,14 +961,22 @@
 		208B329412BFE27A00D8FA03 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				20C3C2CA12D6895900C3DA1E /* PartType.h */,
+				20C3C2CB12D6895900C3DA1E /* PartType.m */,
+				20C3C2CC12D6895900C3DA1E /* PartRecommendation.h */,
+				20C3C2CD12D6895900C3DA1E /* PartRecommendation.m */,
+				20C3C2CE12D6895900C3DA1E /* Part.h */,
+				20C3C2CF12D6895900C3DA1E /* Part.m */,
+				20C3C2D012D6895900C3DA1E /* PartCondition.h */,
+				20C3C2D112D6895900C3DA1E /* PartCondition.m */,
+				20C3C29A12D6842200C3DA1E /* TreePart.h */,
+				20C3C29B12D6842200C3DA1E /* TreePart.m */,
+				20C3C28412D6834700C3DA1E /* AssessmentTree.h */,
+				20C3C28512D6834700C3DA1E /* AssessmentTree.m */,
 				20431F8312D675F5004C0268 /* InventoryTree.h */,
 				20431F8412D675F5004C0268 /* InventoryTree.m */,
 				20431F8512D675F5004C0268 /* Photo.h */,
 				20431F8612D675F5004C0268 /* Photo.m */,
-				20431F8712D675F5004C0268 /* TreePart.h */,
-				20431F8812D675F5004C0268 /* TreePart.m */,
-				20431F8912D675F5004C0268 /* PartRecommendation.h */,
-				20431F8A12D675F5004C0268 /* PartRecommendation.m */,
 				20431F8B12D675F5004C0268 /* Height.h */,
 				20431F8C12D675F5004C0268 /* Height.m */,
 				20431F8D12D675F5004C0268 /* Caliper.h */,
@@ -976,16 +987,10 @@
 				20431F9212D675F5004C0268 /* PartOption.m */,
 				20431F9312D675F5004C0268 /* InventoryItem.h */,
 				20431F9412D675F5004C0268 /* InventoryItem.m */,
-				20431F9512D675F5004C0268 /* Part.h */,
-				20431F9612D675F5004C0268 /* Part.m */,
 				20431F9712D675F5004C0268 /* Image.h */,
 				20431F9812D675F5004C0268 /* Image.m */,
-				20431F9912D675F5004C0268 /* PartCondition.h */,
-				20431F9A12D675F5004C0268 /* PartCondition.m */,
 				20431F9B12D675F5004C0268 /* Type.h */,
 				20431F9C12D675F5004C0268 /* Type.m */,
-				20431F9D12D675F5004C0268 /* AssessmentTree.h */,
-				20431F9E12D675F5004C0268 /* AssessmentTree.m */,
 				208B329512BFE27A00D8FA03 /* Not Generated */,
 			);
 			name = Models;
@@ -2041,18 +2046,19 @@
 				14ABD4C112D284590037F689 /* TreePhotoViewController.m in Sources */,
 				20431F9F12D675F5004C0268 /* InventoryTree.m in Sources */,
 				20431FA012D675F5004C0268 /* Photo.m in Sources */,
-				20431FA112D675F5004C0268 /* TreePart.m in Sources */,
-				20431FA212D675F5004C0268 /* PartRecommendation.m in Sources */,
 				20431FA312D675F5004C0268 /* Height.m in Sources */,
 				20431FA412D675F5004C0268 /* Caliper.m in Sources */,
 				20431FA512D675F5004C0268 /* Assessment.m in Sources */,
 				20431FA612D675F5004C0268 /* PartOption.m in Sources */,
 				20431FA712D675F5004C0268 /* InventoryItem.m in Sources */,
-				20431FA812D675F5004C0268 /* Part.m in Sources */,
 				20431FA912D675F5004C0268 /* Image.m in Sources */,
-				20431FAA12D675F5004C0268 /* PartCondition.m in Sources */,
 				20431FAB12D675F5004C0268 /* Type.m in Sources */,
-				20431FAC12D675F5004C0268 /* AssessmentTree.m in Sources */,
+				20C3C28612D6834700C3DA1E /* AssessmentTree.m in Sources */,
+				20C3C29C12D6842200C3DA1E /* TreePart.m in Sources */,
+				20C3C2D212D6895900C3DA1E /* PartType.m in Sources */,
+				20C3C2D312D6895900C3DA1E /* PartRecommendation.m in Sources */,
+				20C3C2D412D6895900C3DA1E /* Part.m in Sources */,
+				20C3C2D512D6895900C3DA1E /* PartCondition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

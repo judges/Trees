@@ -8,11 +8,14 @@
 
 #import "Part.h"
 
+#import "PartCondition.h"
 #import "PartRecommendation.h"
+#import "PartType.h"
 
 @implementation Part 
 
 @dynamic condition;
 @dynamic recommendation;
+@dynamic partType;
 
 @end

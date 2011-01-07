@@ -8,9 +8,12 @@
 
 #import "PartRecommendation.h"
 
+#import "Part.h"
+#import "PartType.h"
 
 @implementation PartRecommendation 
 
 @dynamic part;
+@dynamic partType;
 
 @end

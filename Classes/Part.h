@@ -9,7 +9,9 @@
 #import <CoreData/CoreData.h>
 #import "Photo.h"
 
+@class PartCondition;
 @class PartRecommendation;
+@class PartType;
 
 @interface Part :  Photo  
 {
@@ -17,13 +19,14 @@
 
 @property (nonatomic, retain) NSSet* condition;
 @property (nonatomic, retain) NSSet* recommendation;
+@property (nonatomic, retain) PartType * partType;
 
 @end
 
 
 @interface Part (CoreDataGeneratedAccessors)
-- (void)addConditionObject:(NSManagedObject *)value;
-- (void)removeConditionObject:(NSManagedObject *)value;
+- (void)addConditionObject:(PartCondition *)value;
+- (void)removeConditionObject:(PartCondition *)value;
 - (void)addCondition:(NSSet *)value;
 - (void)removeCondition:(NSSet *)value;
 

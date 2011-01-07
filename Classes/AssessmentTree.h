@@ -18,13 +18,13 @@
 }
 
 @property (nonatomic, retain) Height * height;
-@property (nonatomic, retain) TreePart * form;
+@property (nonatomic, retain) TreePart * crown;
 @property (nonatomic, retain) TreePart * rootflare;
 @property (nonatomic, retain) TreePart * roots;
 @property (nonatomic, retain) TreePart * trunk;
 @property (nonatomic, retain) Caliper * caliper;
 @property (nonatomic, retain) TreePart * overall;
-@property (nonatomic, retain) TreePart * crown;
+@property (nonatomic, retain) TreePart * form;
 
 @end
 

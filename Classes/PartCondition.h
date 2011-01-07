@@ -10,12 +10,14 @@
 #import "PartOption.h"
 
 @class Part;
+@class PartType;
 
 @interface PartCondition :  PartOption  
 {
 }
 
 @property (nonatomic, retain) NSSet* part;
+@property (nonatomic, retain) PartType * partType;
 
 @end
 

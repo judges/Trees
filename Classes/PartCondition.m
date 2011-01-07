@@ -9,9 +9,11 @@
 #import "PartCondition.h"
 
 #import "Part.h"
+#import "PartType.h"
 
 @implementation PartCondition 
 
 @dynamic part;
+@dynamic partType;
 
 @end

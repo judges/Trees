@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate_Shared.h"
-
+#import "TreePart.h"
 
 @interface AssessmentTreeCRViewController : UIViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate> {
-    AssessmentTree *tree;
+    TreePart *treePart;
     UIImagePickerController *imagePicker;
     IBOutlet UIView *mainView;
     IBOutlet UITableView *conditionTableView;
@@ -35,7 +35,7 @@
         NSManagedObjectContext *managedObjectContext;
 }
 @property  BOOL isEditing;
-@property (nonatomic, retain) AssessmentTree *tree;
+@property (nonatomic, retain) TreePart *treePart;
 @property (nonatomic, retain) NSNumber *whichId;
 @property NSInteger tapCount;
 @property NSInteger tappedRow;

@@ -15,12 +15,12 @@
 @implementation AssessmentTree 
 
 @dynamic height;
-@dynamic form;
+@dynamic crown;
 @dynamic rootflare;
 @dynamic roots;
 @dynamic trunk;
 @dynamic caliper;
 @dynamic overall;
-@dynamic crown;
+@dynamic form;
 
 @end

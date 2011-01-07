@@ -57,41 +57,54 @@
 		
 		NSString *treeOptionsPath = [[NSBundle mainBundle] pathForResource:@"TreeOptions" ofType:@"xml"];
 		NSData *treeOptionsData = [NSData dataWithContentsOfFile:treeOptionsPath];
+		NSMutableArray *typeArray = [[NSMutableArray alloc] initWithCapacity:0];
 		if (treeOptionsData) {
 			DDXMLDocument *treeOptionsDoc = [[DDXMLDocument alloc] initWithData:treeOptionsData options:0 error:nil];
 			DDXMLElement *rootNode = [treeOptionsDoc rootElement];
 			//conditions
 			for (DDXMLElement *part in [rootNode children]) {
+				PartType *partType = [NSEntityDescription insertNewObjectForEntityForName:@"PartType" inManagedObjectContext:managedObjectContext];
+				partType.name = [part stringValue];
+				[typeArray addObject:partType];
 				for(DDXMLElement *option in [[part childAtIndex:0] children])
 				{
 					PartCondition *condition = [NSEntityDescription insertNewObjectForEntityForName:@"PartCondition" inManagedObjectContext:managedObjectContext];
 					condition.name = [option stringValue];
+					condition.partType = partType;
 				}
 				for(DDXMLElement *option in [[part childAtIndex:1] children])
 				{
 					PartRecommendation *recommendation = [NSEntityDescription insertNewObjectForEntityForName:@"PartRecommendation" inManagedObjectContext:managedObjectContext];
 					recommendation.name = [option stringValue];
+					recommendation.partType = partType;
 				}
-				
 			}
 			
 			
 			TreePart *treeForm = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
+			treeForm.partType = [typeArray objectAtIndex:0];
 			assessmentTree.form = treeForm;
 			TreePart *treeCrown = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
+			treeForm.partType = [typeArray objectAtIndex:1];
 			assessmentTree.crown = treeCrown;
 			TreePart *treeTrunk = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
+			treeForm.partType = [typeArray objectAtIndex:2];
 			assessmentTree.trunk = treeTrunk;
 			TreePart *treeRootFlare = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
+			treeForm.partType = [typeArray objectAtIndex:3];
 			assessmentTree.rootflare = treeRootFlare;
 			TreePart *treeRoots = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
+			treeForm.partType = [typeArray objectAtIndex:4];
 			assessmentTree.roots = treeRoots;
 			TreePart *treeOverall = [NSEntityDescription insertNewObjectForEntityForName:@"TreePart" inManagedObjectContext:managedObjectContext];
+			treeForm.partType = [typeArray objectAtIndex:5];
 			assessmentTree.overall = treeOverall;
+			
+			[typeArray release];
 			
 			NSError *error;
 			if (![managedObjectContext save:&error]) {
-				NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+				NSLog(@"Whoops, couldn't save: %@", error);
 			}
 			
 			[treeOptionsDoc release];

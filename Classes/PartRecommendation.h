@@ -9,19 +9,22 @@
 #import <CoreData/CoreData.h>
 #import "PartOption.h"
 
+@class Part;
+@class PartType;
 
 @interface PartRecommendation :  PartOption  
 {
 }
 
 @property (nonatomic, retain) NSSet* part;
+@property (nonatomic, retain) PartType * partType;
 
 @end
 
 
 @interface PartRecommendation (CoreDataGeneratedAccessors)
-- (void)addPartObject:(NSManagedObject *)value;
-- (void)removePartObject:(NSManagedObject *)value;
+- (void)addPartObject:(Part *)value;
+- (void)removePartObject:(Part *)value;
 - (void)addPart:(NSSet *)value;
 - (void)removePart:(NSSet *)value;
 

@@ -244,7 +244,30 @@
 -(IBAction)treeButtonClick:(id)sender {
     //user clicked one of the tree buttons, so send them to the other view with the right id
     int clickId = [[(UIButton*)sender titleLabel].text intValue];
-    NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:self.assessmentTree, @"assessmentTree", [NSNumber numberWithInt:clickId], @"id", nil];
+	TreePart *treePart;
+	switch (clickId) {
+		case 1:
+			treePart = self.assessmentTree.form;
+			break;
+		case 2:
+			treePart = self.assessmentTree.crown;
+			break;
+		case 3:
+			treePart = self.assessmentTree.trunk;
+			break;
+		case 4:
+			treePart = self.assessmentTree.rootflare;
+			break;
+		case 5:
+			treePart = self.assessmentTree.roots;
+			break;
+		case 6:
+			treePart = self.assessmentTree.overall;
+			break;
+		default:
+			break;
+	}
+    NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:treePart, @"treePart", [NSNumber numberWithInt:clickId], @"id", nil];
     [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://assessments/TreeForm"] applyQuery:query] applyAnimated:YES]];
 }
 -(IBAction)saveAssessor:(id)sender {

@@ -13,6 +13,7 @@
 #import "Assessment.h"
 #import "PartCondition.h"
 #import "PartRecommendation.h"
+#import "PartType.h"
 #import "LandscapeTableViewCell.h"
 #import "AssessmentTableViewCell.h"
 #import "TreeTableViewCell.h"
