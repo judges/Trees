@@ -12,12 +12,12 @@
 
 @implementation AssessmentTreeCRViewController
 
-@synthesize whichId, conditionStringArray, recommendationStringArray, conditionArray, recommendationArray, treePart, isEditing, conditionTableView, recommendationTableView;
+@synthesize whichId, conditionStringArray, recommendationStringArray, conditionArray, recommendationArray, tree, isEditing, conditionTableView, recommendationTableView;
 @synthesize selectedConditionIndices, selectedRecommendationIndices, tapCount, tapTimer, tappedRow, editingRow;
 
 -(id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query { 
     if (self = [super initWithNibName:@"AssessmentTreeCRView" bundle:[NSBundle mainBundle]]){
-        if(query && [query objectForKey:@"treePart"] && [query objectForKey:@"id"]){ 
+        if(query && [query objectForKey:@"assessmentTree"] && [query objectForKey:@"id"]){ 
             //Grabs the id that called the page so we know which properties to load.
             whichId = [query objectForKey:@"id"];
 			//set tap count to zero
@@ -27,7 +27,7 @@
 			//no rows being edited at start
 			editingRow = -1;
             //pass the TreeAssessment from the previous view
-            treePart = [query objectForKey:@"treePart"];
+            tree = [query objectForKey:@"assessmentTree"];
             //initialize the arrays to store the conditions and recommendations
             conditionStringArray = [[NSMutableArray alloc] init];
             recommendationStringArray = [[NSMutableArray alloc] init];
@@ -93,13 +93,38 @@
 	//fetch all of the options
     NSFetchRequest *cFetchRequest = [[NSFetchRequest alloc] init];
     NSFetchRequest *rFetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *cEntity = [NSEntityDescription entityForName:@"PartCondition" inManagedObjectContext:managedObjectContext];
-    NSEntityDescription *rEntity = [NSEntityDescription entityForName:@"PartRecommendation" inManagedObjectContext:managedObjectContext];
-	[cFetchRequest setEntity:cEntity];
+    NSEntityDescription *cEntity;
+    NSEntityDescription *rEntity;
+    switch ([whichId intValue]) {
+        case 1:
+            cEntity = [NSEntityDescription entityForName:@"TreeFormCondition" inManagedObjectContext:managedObjectContext];
+            rEntity = [NSEntityDescription entityForName:@"TreeFormRecommendation" inManagedObjectContext:managedObjectContext];
+            break;
+        case 2:
+            cEntity = [NSEntityDescription entityForName:@"TreeCrownCondition" inManagedObjectContext:managedObjectContext];
+            rEntity = [NSEntityDescription entityForName:@"TreeCrownRecommendation" inManagedObjectContext:managedObjectContext];
+            break;
+        case 3:
+            cEntity = [NSEntityDescription entityForName:@"TreeTrunkCondition" inManagedObjectContext:managedObjectContext];
+            rEntity = [NSEntityDescription entityForName:@"TreeTrunkRecommendation" inManagedObjectContext:managedObjectContext];
+            break;
+        case 4:
+            cEntity = [NSEntityDescription entityForName:@"TreeRootFlareCondition" inManagedObjectContext:managedObjectContext];
+            rEntity = [NSEntityDescription entityForName:@"TreeRootFlareRecommendation" inManagedObjectContext:managedObjectContext];
+            break;
+        case 5:
+            cEntity = [NSEntityDescription entityForName:@"TreeRootsCondition" inManagedObjectContext:managedObjectContext];
+            rEntity = [NSEntityDescription entityForName:@"TreeRootsRecommendation" inManagedObjectContext:managedObjectContext];
+            break;
+        case 6:
+            cEntity = [NSEntityDescription entityForName:@"TreeOverallCondition" inManagedObjectContext:managedObjectContext];
+            rEntity = [NSEntityDescription entityForName:@"TreeOverallRecommendation" inManagedObjectContext:managedObjectContext];
+            break;
+        default:
+            break;
+    }
+    [cFetchRequest setEntity:cEntity];
     [rFetchRequest setEntity:rEntity];
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(partType == %@)", treePart.partType];
-	[cFetchRequest setPredicate:predicate];
-	[rFetchRequest setPredicate:predicate];
     
     // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
@@ -118,11 +143,11 @@
 	[self findSelectedItems];
 	
 	//add names to seperate string array
-    for (PartOption *item in conditionArray)
+    for (TreeOption *item in conditionArray)
 	{
 		[conditionStringArray addObject:item.name];
 	}
-	for (PartOption *item in recommendationArray)
+	for (TreeOption *item in recommendationArray)
 	{
 		[recommendationStringArray addObject:item.name];
 	}
@@ -137,18 +162,106 @@
     int rCtr = 0;
 	[selectedConditionIndices removeAllObjects];
 	[selectedRecommendationIndices removeAllObjects];
-    for (PartCondition *item in conditionArray) {
-		if ([[treePart valueForKey:@"condition"] containsObject:item]) {
-			[selectedConditionIndices addObject:[NSNumber numberWithInt:cCtr]];
-		}
-		++cCtr;
-	}
-	for (PartRecommendation *item in recommendationArray) {
-		if ([[treePart valueForKey:@"recommendation"] containsObject:item]) {
-			[selectedRecommendationIndices addObject:[NSNumber numberWithInt:rCtr]];
-		}
-		++rCtr;
-	}      
+    switch ([whichId intValue]) {
+        case 1:
+        {
+            for (TreeFormCondition *item in conditionArray) {
+                if ([[tree valueForKeyPath:@"form.condition"] containsObject:item]) {
+                    [selectedConditionIndices addObject:[NSNumber numberWithInt:cCtr]];
+                }
+                ++cCtr;
+            }
+            for (TreeFormRecommendation *item in recommendationArray) {
+                if ([[tree valueForKeyPath:@"form.recommendation"] containsObject:item]) {
+                    [selectedRecommendationIndices addObject:[NSNumber numberWithInt:rCtr]];
+                }
+                ++rCtr;
+            }
+            break;
+        }
+        case 2:
+        {
+            for (TreeCrownCondition *item in conditionArray) {
+                if ([[tree valueForKeyPath:@"crown.condition"] containsObject:item]) {
+                    [selectedConditionIndices addObject:[NSNumber numberWithInt: cCtr]];
+                }
+                ++cCtr;
+            }
+            for (TreeCrownRecommendation *item in recommendationArray) {
+                if ([[tree valueForKeyPath:@"crown.recommendation"] containsObject:item]) {
+                    [selectedRecommendationIndices addObject:[NSNumber numberWithInt: rCtr]];
+                }
+                ++rCtr;
+            }
+            break;
+        }
+        case 3:
+        {
+            for (TreeTrunkCondition *item in conditionArray) {
+                if ([[tree valueForKeyPath:@"trunk.condition"] containsObject:item]) {
+                    [selectedConditionIndices addObject:[NSNumber numberWithInt: cCtr]];
+                }
+                ++cCtr;
+            }
+            for (TreeTrunkRecommendation *item in recommendationArray) {
+                if ([[tree valueForKeyPath:@"trunk.recommendation"] containsObject:item]) {
+                    [selectedRecommendationIndices addObject:[NSNumber numberWithInt: rCtr]];
+                }
+                ++rCtr;
+            }
+            break;
+        }
+        case 4:
+        {
+            for (TreeRootFlareCondition *item in conditionArray) {
+                if ([[tree valueForKeyPath:@"rootflare.condition"] containsObject:item]) {
+                    [selectedConditionIndices addObject:[NSNumber numberWithInt: cCtr]];
+                }
+                ++cCtr;
+            }
+            for (TreeRootFlareRecommendation *item in recommendationArray) {
+                if ([[tree valueForKeyPath:@"rootflare.recommendation"] containsObject:item]) {
+                    [selectedRecommendationIndices addObject:[NSNumber numberWithInt: rCtr]];
+                }
+                ++rCtr;
+            }
+            break;
+        }
+        case 5:
+        {
+            for (TreeRootsCondition *item in conditionArray) {
+                if ([[tree valueForKeyPath:@"roots.condition"] containsObject:item]) {
+                    [selectedConditionIndices addObject:[NSNumber numberWithInt: cCtr]];
+                }
+                ++cCtr;
+            }
+            for (TreeRootsRecommendation *item in recommendationArray) {
+                if ([[tree valueForKeyPath:@"roots.recommendation"] containsObject:item]) {
+                    [selectedRecommendationIndices addObject:[NSNumber numberWithInt: rCtr]];
+                }
+                ++rCtr;
+            }
+            break;
+        }
+        case 6:
+        {
+            for (TreeOverallCondition *item in conditionArray) {
+                if ([[tree valueForKeyPath:@"overall.condition"] containsObject:item]) {
+                    [selectedConditionIndices addObject:[NSNumber numberWithInt: cCtr]];
+                }
+                ++cCtr;
+            }
+            for (TreeOverallRecommendation *item in recommendationArray) {
+                if ([[tree valueForKeyPath:@"overall.recommendation"] containsObject:item]) {
+                    [selectedRecommendationIndices addObject:[NSNumber numberWithInt: rCtr]];
+                }
+                ++rCtr;
+            }
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -256,19 +369,151 @@
 		cell.accessoryType = UITableViewCellAccessoryCheckmark;
 		if (tableView == self.conditionTableView) {
 			[selectedConditionIndices addObject:[NSNumber numberWithInt: indexPath.row]];
-			[[treePart mutableSetValueForKey:@"condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+			switch ([whichId intValue]) {
+				case 1:
+				{
+					[[tree mutableSetValueForKeyPath:@"form.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 2:
+				{
+					[[tree mutableSetValueForKeyPath:@"crown.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 3:
+				{
+					[[tree mutableSetValueForKeyPath:@"trunk.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 4:
+				{
+					[[tree mutableSetValueForKeyPath:@"rootflare.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 5:
+				{
+					[[tree mutableSetValueForKeyPath:@"roots.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 6:
+				{
+					[[tree mutableSetValueForKeyPath:@"overall.condition"] addObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				default:
+					break;
+			}
 		} else if (tableView == self.recommendationTableView) {
 			[selectedRecommendationIndices addObject:[NSNumber numberWithInt: indexPath.row]];
-			[[treePart mutableSetValueForKey:@"recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+			switch ([whichId intValue]) {
+				case 1:
+				{
+					[[tree mutableSetValueForKeyPath:@"form.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 2:
+				{
+					[[tree mutableSetValueForKeyPath:@"crown.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 3:
+				{
+					[[tree mutableSetValueForKeyPath:@"trunk.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 4:
+				{
+					[[tree mutableSetValueForKeyPath:@"rootflare.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 5:
+				{
+					[[tree mutableSetValueForKeyPath:@"roots.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 6:
+				{
+					[[tree mutableSetValueForKeyPath:@"overall.recommendation"] addObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				default:
+					break;
+			}
 		} 
 	} else {
 		cell.accessoryType = UITableViewCellAccessoryNone;
 		if (tableView == self.conditionTableView) {
 			[selectedConditionIndices removeObject:[NSNumber numberWithInt: indexPath.row]];
-			[[treePart mutableSetValueForKey:@"condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+			switch ([whichId intValue]) {
+				case 1:
+				{
+					[[tree mutableSetValueForKeyPath:@"form.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 2:
+				{
+					[[tree mutableSetValueForKeyPath:@"crown.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 3:
+				{
+					[[tree mutableSetValueForKeyPath:@"trunk.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 4:
+				{
+					[[tree mutableSetValueForKeyPath:@"rootflare.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 5:
+				{
+					[[tree mutableSetValueForKeyPath:@"roots.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 6:
+				{
+					[[tree mutableSetValueForKeyPath:@"overall.condition"] removeObject:[conditionArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				default:
+					break;
+			}
 		} else if (tableView == self.recommendationTableView) {
 			[selectedRecommendationIndices removeObject:[NSNumber numberWithInt: indexPath.row]];
-			[[treePart mutableSetValueForKey:@"recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+			switch ([whichId intValue]) {
+				case 1:
+				{
+					[[tree mutableSetValueForKeyPath:@"form.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 2:
+				{
+					[[tree mutableSetValueForKeyPath:@"crown.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 3:
+				{
+					[[tree mutableSetValueForKeyPath:@"trunk.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 4:
+				{
+					[[tree mutableSetValueForKeyPath:@"rootflare.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 5:
+				{
+					[[tree mutableSetValueForKeyPath:@"roots.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				case 6:
+				{
+					[[tree mutableSetValueForKeyPath:@"overall.recommendation"] removeObject:[recommendationArray objectAtIndex:indexPath.row]];
+					break;
+				}
+				default:
+					break;
+			}
 		}
 	}
 	NSError *error;
@@ -356,12 +601,59 @@
 
 - (void)addCondition {
     //adds a new condition record
-	PartCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"PartCondition" inManagedObjectContext:managedObjectContext];
-	item.name = [addTextField text];
-	[conditionArray addObject:item];
-	[[treePart mutableSetValueForKey:@"condition"] addObject:item];
-	
-	NSError *error;
+	switch ([whichId intValue]) {
+        case 1:
+        {
+            TreeFormCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeFormCondition" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [conditionArray addObject:item];
+			[[tree mutableSetValueForKeyPath:@"form.condition"] addObject:item];
+            break;
+        }
+        case 2:
+        {
+            TreeCrownCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeCrownCondition" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [conditionArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"crown.condition"] addObject:item];
+            break;
+        }
+        case 3:
+        {
+            TreeTrunkCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeTrunkCondition" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [conditionArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"trunk.condition"] addObject:item];
+            break;
+        }
+        case 4:
+        {
+            TreeRootFlareCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootFlareCondition" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [conditionArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"rootflare.condition"] addObject:item];
+            break;
+        }
+        case 5:
+        {
+            TreeRootsCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootsCondition" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [conditionArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"roots.condition"] addObject:item];
+            break;
+        }
+        case 6:
+        {
+            TreeOverallCondition *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeOverallCondition" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [conditionArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"overall.condition"] addObject:item];
+            break;
+        }
+        default:
+            break;
+    }
+    NSError *error;
     if (![managedObjectContext save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
@@ -376,12 +668,59 @@
 
 - (void)addRecommendation {
     //adds a new recommendation record
-	PartRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"PartRecommendation" inManagedObjectContext:managedObjectContext];
-	item.name = [addTextField text];
-	[recommendationArray addObject:item];
-	[[treePart mutableSetValueForKey:@"recommendation"] addObject:item];
-	
-	NSError *error;
+	switch ([whichId intValue]) {
+        case 1:
+        {
+            TreeFormRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeFormRecommendation" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [recommendationArray addObject:item];
+			[[tree mutableSetValueForKeyPath:@"form.recommendation"] addObject:item];
+            break;
+        }
+        case 2:
+        {
+            TreeCrownRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeCrownRecommendation" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [recommendationArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"crown.recommendation"] addObject:item];
+            break;
+        }
+        case 3:
+        {
+            TreeTrunkRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeTrunkRecommendation" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [recommendationArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"trunk.recommendation"] addObject:item];
+            break;
+        }
+        case 4:
+        {
+            TreeRootFlareRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootFlareRecommendation" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [recommendationArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"rootflare.recommendation"] addObject:item];
+            break;
+        }
+        case 5:
+        {
+            TreeRootsRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeRootsRecommendation" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [recommendationArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"roots.recommendation"] addObject:item];
+            break;
+        }
+        case 6:
+        {
+            TreeOverallRecommendation *item = [NSEntityDescription insertNewObjectForEntityForName:@"TreeOverallRecommendation" inManagedObjectContext:managedObjectContext];
+            item.name = [addTextField text];
+            [recommendationArray addObject:item];
+            [[tree mutableSetValueForKeyPath:@"overall.recommendation"] addObject:item];
+            break;
+        }
+        default:
+            break;
+    }
+    NSError *error;
     if (![managedObjectContext save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
@@ -408,7 +747,7 @@
 
 - (void)deleteCondition:(NSInteger)row {
     //delete a condition record
-	PartOption *item = [conditionArray objectAtIndex:row];
+	TreeOption *item = [conditionArray objectAtIndex:row];
 	[managedObjectContext deleteObject:item];
     NSError *error;
     if (![managedObjectContext save:&error]) {
@@ -427,7 +766,7 @@
 
 - (void)deleteRecommendation:(NSInteger)row {
     //delete a recommendation entry
-	PartOption *item = [recommendationArray objectAtIndex:row];
+	TreeOption *item = [recommendationArray objectAtIndex:row];
 	[managedObjectContext deleteObject:item];
     NSError *error;
     if (![managedObjectContext save:&error]) {
@@ -486,8 +825,50 @@
         [self presentModalViewController:imagePicker animated:YES];
     } else if (buttonIndex == 2) {
         //flip to ttimageview thing
-        NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:@"TreePart", @"entity", [treePart objectID] , @"objectID", nil];
-		[[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Photos"] applyQuery:query] applyAnimated:YES]];
+        
+        switch ([whichId intValue]) {
+            case 1:
+            {
+                NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:@"TreeForm", @"entity", [tree.form objectID] , @"objectID", nil];
+               // NSLog(@"CONDITION: %@", [conditionArray objectAtIndex:[conditionPicker selectedRowInComponent:0]]);
+                [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Photos"] applyQuery:query] applyAnimated:YES]];
+                break;
+            }
+            case 2:
+            {
+                NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:@"TreeCrown", @"entity", [tree.crown objectID] , @"objectID", nil];
+                [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Photos"] applyQuery:query] applyAnimated:YES]];
+                break;
+            }
+            case 3:
+            {
+                NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:@"TreeTrunk", @"entity", [tree.trunk objectID] , @"objectID", nil];
+                [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Photos"] applyQuery:query] applyAnimated:YES]];
+                break;
+            }
+            case 4:
+            {
+                NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:@"TreeRootFlare", @"entity", [tree.rootflare objectID] , @"objectID", nil];
+                [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Photos"] applyQuery:query] applyAnimated:YES]];
+                break;
+            }
+            case 5:
+            {
+                NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:@"TreeRoots", @"entity", [tree.roots objectID] , @"objectID", nil];
+                [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Photos"] applyQuery:query] applyAnimated:YES]];
+                break;
+            }
+            case 6:
+            {
+                NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:@"TreeOverall", @"entity", [tree.trunk objectID] , @"objectID", nil];
+                [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://Photos"] applyQuery:query] applyAnimated:YES]];
+                break;
+            }
+            default:
+                break;
+        }
+        
+        
     } else if (buttonIndex == 3) {
         //cancel
     }
@@ -499,10 +880,59 @@
     
     Image *newPhoto = [NSEntityDescription insertNewObjectForEntityForName:@"Image" inManagedObjectContext:managedObjectContext];
     newPhoto.image_data = UIImageJPEGRepresentation(image, 1.0);
-	newPhoto.image_caption = @"Tree Part";
-	NSMutableSet *photos = [treePart mutableSetValueForKey:@"images"];
-	[photos addObject:newPhoto];
-	[treePart setValue:photos forKey:@"images"];
+    switch ([whichId intValue]) {
+        case 1:
+        {
+            newPhoto.image_caption = @"Tree Assessment Form Condition";
+            NSMutableSet *photos = [tree.form mutableSetValueForKey:@"images"];
+            [photos addObject:newPhoto];
+            [tree.form setValue:photos forKey:@"images"];
+        }
+            break;
+        case 2:
+        {
+            newPhoto.image_caption = @"Tree Assessment Crown Condition";
+            NSMutableSet *photos = [tree.crown mutableSetValueForKey:@"images"];
+            [photos addObject:newPhoto];
+            [tree.crown setValue:photos forKey:@"images"];
+        }
+            break;
+        case 3:
+        {
+            newPhoto.image_caption = @"Tree Assessment Trunk Condition";
+            NSMutableSet *photos = [tree.trunk mutableSetValueForKey:@"images"];
+            [photos addObject:newPhoto];
+            [tree.trunk setValue:photos forKey:@"images"];
+        }
+            break;
+        case 4:
+        {
+            newPhoto.image_caption = @"Tree Assessment Rootflare Condition";
+            NSMutableSet *photos = [tree.rootflare mutableSetValueForKey:@"images"];
+            [photos addObject:newPhoto];
+            [tree.rootflare setValue:photos forKey:@"images"];
+        }
+            break;
+        case 5:
+        {
+            newPhoto.image_caption = @"Tree Assessment Roots Condition";
+            NSMutableSet *photos = [tree.roots mutableSetValueForKey:@"images"];
+            [photos addObject:newPhoto];
+            [tree.roots setValue:photos forKey:@"images"];
+        }
+            break;
+        case 6:
+        {
+            newPhoto.image_caption = @"Tree Assessment Overall Condition";
+            NSMutableSet *photos = [tree.overall mutableSetValueForKey:@"images"];
+            [photos addObject:newPhoto];
+            [tree.overall setValue:photos forKey:@"images"];
+        }
+            break;
+        default:
+            break;
+    }
+    
     
     
     NSError *error;
@@ -534,7 +964,7 @@
 
 
 - (void)dealloc {
-	[treePart release];
+	[tree release];
 	[whichId release];
 	[tapTimer release];
     [conditionStringArray release];

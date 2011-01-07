@@ -10,17 +10,22 @@
 
 #import "Caliper.h"
 #import "Height.h"
-#import "TreePart.h"
+#import "TreeCrown.h"
+#import "TreeForm.h"
+#import "TreeOverall.h"
+#import "TreeRootFlare.h"
+#import "TreeRoots.h"
+#import "TreeTrunk.h"
 
 @implementation AssessmentTree 
 
 @dynamic height;
-@dynamic crown;
+@dynamic form;
 @dynamic rootflare;
 @dynamic roots;
 @dynamic trunk;
 @dynamic caliper;
 @dynamic overall;
-@dynamic form;
+@dynamic crown;
 
 @end

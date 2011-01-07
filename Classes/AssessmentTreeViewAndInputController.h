@@ -13,7 +13,6 @@
 #import "AssessmentTreeTableViewHeaderCell.h"
 #import "Height.h"
 #import "Caliper.h"
-#import "PartOption.h"
 #import "AppDelegate_Shared.h"
 #import "DistancePickerView.h"
 

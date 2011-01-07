@@ -244,30 +244,7 @@
 -(IBAction)treeButtonClick:(id)sender {
     //user clicked one of the tree buttons, so send them to the other view with the right id
     int clickId = [[(UIButton*)sender titleLabel].text intValue];
-	TreePart *treePart;
-	switch (clickId) {
-		case 1:
-			treePart = self.assessmentTree.form;
-			break;
-		case 2:
-			treePart = self.assessmentTree.crown;
-			break;
-		case 3:
-			treePart = self.assessmentTree.trunk;
-			break;
-		case 4:
-			treePart = self.assessmentTree.rootflare;
-			break;
-		case 5:
-			treePart = self.assessmentTree.roots;
-			break;
-		case 6:
-			treePart = self.assessmentTree.overall;
-			break;
-		default:
-			break;
-	}
-    NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:treePart, @"treePart", [NSNumber numberWithInt:clickId], @"id", nil];
+    NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:self.assessmentTree, @"assessmentTree", [NSNumber numberWithInt:clickId], @"id", nil];
     [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"land://assessments/TreeForm"] applyQuery:query] applyAnimated:YES]];
 }
 -(IBAction)saveAssessor:(id)sender {
@@ -867,14 +844,14 @@
 	//normal cells
 	
 	if (indexPath.row < [[conditionArray objectAtIndex:indexPath.section] count]) {
-		PartOption *condOpt = (PartOption *)[[conditionArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+		TreeOption *condOpt = (TreeOption *)[[conditionArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 		cell.conditionLabel.text = condOpt.name;
 	} else {
 		cell.conditionLabel.text = @"";
 	}
 
 	if (indexPath.row < [[recommendationArray objectAtIndex:indexPath.section] count]) {
-		PartOption *recOpt = (PartOption *)[[recommendationArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+		TreeOption *recOpt = (TreeOption *)[[recommendationArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 		cell.recommendationLabel.text = recOpt.name;
 	} else {
 		cell.recommendationLabel.text = @"";
